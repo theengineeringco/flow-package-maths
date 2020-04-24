@@ -1,7 +1,7 @@
 from tec_flow import component
 from tec_flow.types import base
 
-from .e_log_n import inports, outports
+from pycomponents_general_maths.e_log_n.e_log_n import inports, outports
 import math
 
 

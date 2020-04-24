@@ -1,7 +1,7 @@
 from tec_flow import component
 from tec_flow.types import base
 
-from pycomponents_general_maths.divide import inports, outports
+from pycomponents_general_maths.subtract.subtract import inports, outports
 
 import random
 

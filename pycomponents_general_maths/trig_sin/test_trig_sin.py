@@ -3,7 +3,7 @@ from tec_flow.types import base
 
 # import pytest
 
-from .trig_sin import inports, outports
+from pycomponents_general_maths.trig_sin.trig_sin import inports, outports
 import math
 
 import random

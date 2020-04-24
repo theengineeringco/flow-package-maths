@@ -1,7 +1,7 @@
 from tec_flow import component
 from tec_flow.types import base
 
-from .mass_sum import inports, outports
+from pycomponents_general_maths.mass_sum.mass_sum import inports, outports
 
 import random
 
