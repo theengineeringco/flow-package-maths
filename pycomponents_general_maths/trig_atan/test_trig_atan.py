@@ -1,7 +1,6 @@
 from tec_flow import component
 from tec_flow.types import base
-
-# import pytest
+import pytest
 
 from pycomponents_general_maths.trig_atan.trig_atan import inports, outports
 import math
@@ -15,7 +14,8 @@ def run_test_func(inputs, outputs):
     test_data = component.test(inputs, outputs)
 
     for port_data in test_data.values():
-        assert port_data.expected == port_data.got
+        for p_exp, p_got in zip(port_data.expected, port_data.got):
+            assert p_exp["Value"] == pytest.approx(p_got["Value"], rel=0.000001)  # assert at least 0.00001% accurate
 
 
 def test_atan_double():
