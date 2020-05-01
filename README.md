@@ -7,12 +7,12 @@
 A Package of Python Flow Components
 
 ## Components
+These components depend on the pycomponents_utils library and not on anything else.
 
-- TODO
+This library includes General Mathematical components, such as Arithmetic (Plus, Multiply etc.), Logarithmic and Exponential (such as Ln, e^n, power(a, b)), and Trigonometric (sin, cos, tan etc.).
 
 ## Features
 
-- TODO
 
 ## Installation
 
