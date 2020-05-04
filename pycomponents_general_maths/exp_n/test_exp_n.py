@@ -2,7 +2,7 @@ from tec_flow import component
 from tec_flow.types import base
 import pytest
 
-from pycomponents_general_maths.exp_n.exp_n import inports, outports
+from pycomponents_general_maths.exp_n.flow_exp_n import inports, outports
 import random
 
 

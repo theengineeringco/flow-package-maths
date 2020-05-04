@@ -2,7 +2,7 @@ from tec_flow import component
 from tec_flow.types import base
 import pytest
 
-from pycomponents_general_maths.multiply.multiply import inports, outports
+from pycomponents_general_maths.multiply.flow_multiply import inports, outports
 
 import random
 

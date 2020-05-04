@@ -7,7 +7,7 @@ outports = ["result"]
 
 definition = {
     "name": "Divide",
-    "description": "Divides the first number by the second number together.",
+    "description": "Divides the first number by the second number.",
     "inports": [
         {
             "name": inports[0],
@@ -25,7 +25,7 @@ definition = {
 
 
 # The actual numeric function we are performing
-def dividing_function(use_values: dict = {1, 2.5}):
+def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
     the_values = list(use_values.values())
     return_value = the_values[0]
     for idx in range(1, len(the_values)):

@@ -2,7 +2,7 @@ from tec_flow import component
 from tec_flow.types import base
 import pytest
 
-from pycomponents_general_maths.trig_sin.trig_sin import inports, outports
+from pycomponents_general_maths.trig_sin.flow_trig_sin import inports, outports
 import math
 
 import random
