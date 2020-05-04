@@ -74,7 +74,7 @@ def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
     for idx in range(1, len(the_values)):
         return_value /= the_values[idx]
     return return_value
-````
+```
 
 Finally, the Flow Process for the componet is pretty easy to implement as a lot of the complexity is handled by the Pycomponents Utils functions.
 It is the `call_function_with_data` method from PyComponents Utils that handles a lot of the checking and packaging of data in to the `dividing_function` function.
