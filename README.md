@@ -7,17 +7,20 @@
 A Package of Python Flow Components
 
 ## Components
+
 These components depend on the pycomponents_utils library and not on anything else.
 
 This library includes General Mathematical components, such as Arithmetic (Plus, Multiply etc.), Logarithmic and Exponential (such as Ln, e^n, power(a, b)), and Trigonometric (sin, cos, tan etc.).
 
 ## Features
+
 Components can recieve either a single value on each input or an array of values to which the mathematical function will be applied to each value in the array individually.
 
 You may allow either 1 value on each port, exactly N values on any number of ports (including all inports).
 Having N, M number of values on port1, port2 will result in failure as how do we interpret that consistently?
 
 ## Making your own new mathematical components
+
 It is entirely possible to make new components using the FlowPythonCookieCutter, however there is functionality in the Pycomponents Utils that enables the Array Maths to be applied, and to minimise code-count for the user.
 
 A faster practice is to copy the "divide" folder and work from there. `flow_divide.py` is the component definition and process. `test_divide.py` is where the component testing functions are stored.
@@ -27,14 +30,17 @@ A faster practice is to copy the "divide" folder and work from there. `flow_divi
 ```bash
 flow library add --type python git+https://github.com/theengineeringco/pycomponents_general_maths.git
 ```
+
 ## Example code implementation
+
 A typical Basic Maths component is made up of 4 things:
+
 1. Port Definitions
 2. Flow Component Definition
 3. Mathematical Equation (as a function)
-4. Flow Process (as a function) 
+4. Flow Process (as a function)
 
-The port definitions are typically handled as arrays to allow the UI, the component, and the testing to access the names easily. *In many other component libraries the inports and outports are expressed as dicts to allow a name and a type to be assigned. All Basic Maths components allow for Ints and Doubles (and Arrays of each) as inputs only, with only very few exceptions.* 
+The port definitions are typically handled as arrays to allow the UI, the component, and the testing to access the names easily. _In many other component libraries the inports and outports are expressed as dicts to allow a name and a type to be assigned. All Basic Maths components allow for Ints and Doubles (and Arrays of each) as inputs only, with only very few exceptions._
 
 ```python
 inports = ["val1", "val2"]
@@ -46,7 +52,7 @@ The Flow Definition is used by Flow: backend for types and port handling; front-
 ```python
 allowable_types = ["base.Int", "[]base.Int", "base.Double", "[]base.Double"]
 definition = {
-    "name": "Divide",
+    "name": "divide",
     "description": "Divides the first number by the second number.",
     "inports": [
         {
@@ -74,7 +80,7 @@ def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
     for idx in range(1, len(the_values)):
         return_value /= the_values[idx]
     return return_value
-````
+```
 
 Finally, the Flow Process for the componet is pretty easy to implement as a lot of the complexity is handled by the Pycomponents Utils functions.
 It is the `call_function_with_data` method from PyComponents Utils that handles a lot of the checking and packaging of data in to the `dividing_function` function.
@@ -103,12 +109,12 @@ def process(component: Component):
         msgs = []
         for each_result in the_result:
             msgs.append(base.Double(each_result))
-        component.send_data(msgs, outports[0])
+        component.send_data_addressable(msgs, outports[0])
     else:
-        component.send_data(base.Double(the_result), outports[0])
+        component.send_data_addressable(base.Double(the_result), outports[0])
 ```
 
-*n.b. that sections of the process code are likely to be removed as the send_data method becomes more scalable and the debugging process becomes more standardised.*
+_n.b. that sections of the process code are likely to be removed as the send_data method becomes more scalable and the debugging process becomes more standardised._
 
 ## License
 

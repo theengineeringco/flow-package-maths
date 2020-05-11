@@ -1,5 +1,5 @@
 from tec_flow.component import run, print, Component
-from tec_flow.types import base
+from tec_flow.flow_types import base
 from flow_pycomponents_utils import call_function_with_data
 import math
 
@@ -8,7 +8,7 @@ outports = ["result"]
 
 
 definition = {
-    "name": "index to power",
+    "name": "log_index_to_base",
     "description": "Raises an index to a power and returns the result. \
         (Negative index values are treated as positive with negatived result).",
     "inports": [
@@ -51,8 +51,8 @@ def process(component: Component):
     data2 = component.get_data(inports[1])
 
     val_neg = False
-    if data1.Value < 0:
-        data1.Value = -1 * data1.Value
+    if data1.value < 0:
+        data1.value = -1 * data1.value
         val_neg = True
 
     get_data_arr = {inports[0]: data1, inports[1]: data2}
@@ -73,9 +73,9 @@ def process(component: Component):
         msgs = []
         for each_result in the_result:
             msgs.append(base.Double(each_result))
-        component.send_data(msgs, outports[0])
+        component.send_data_addressable(msgs, outports[0])
     else:
-        component.send_data(base.Double(the_result), outports[0])
+        component.send_data_addressable(base.Double(the_result), outports[0])
 
 
 if __name__ == "__main__":

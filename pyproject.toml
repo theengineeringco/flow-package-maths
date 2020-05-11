@@ -9,7 +9,8 @@ repository = "https://github.com/theengineeringco/pycomponents_general_maths.git
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
-tec-flow = {git = "https://github.com/theengineeringco/PythonAbstraction.git"}
+#tec-flow = {git ="https://github.com/theengineeringco/PythonAbstraction.git"}
+tec-flow = {path ="C:/Users/matts/Documents/Flow_component_development/flow_types_eng"}
 flow_pycomponents_utils = {path = "../flow_pycomponents_utils"}
 
 [tool.poetry.dev-dependencies]

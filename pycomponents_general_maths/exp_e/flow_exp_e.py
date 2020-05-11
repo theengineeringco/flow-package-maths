@@ -1,5 +1,5 @@
 from tec_flow.component import run, print, Component
-from tec_flow.types import base
+from tec_flow.flow_types import base
 from flow_pycomponents_utils import call_function_with_data
 from math import exp
 
@@ -7,7 +7,7 @@ inports = ["value"]
 outports = ["result"]
 
 definition = {
-    "name": "e to the power of n (exp(n))",
+    "name": "exp_n",
     "description": "Raises e to the power of n and returns the result.",
     "inports": [
         {
@@ -49,9 +49,9 @@ def process(component: Component):
         msgs = []
         for each_result in the_result:
             msgs.append(base.Double(each_result))
-        component.send_data(msgs, outports[0])
+        component.send_data_addressable(msgs, outports[0])
     else:
-        component.send_data(base.Double(the_result), outports[0])
+        component.send_data_addressable(base.Double(the_result), outports[0])
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 from tec_flow import component
-from tec_flow.types import base
-import pytest
+from tec_flow.flow_types import base
+from pycomponents_general_maths.util.utils_tests import standard_test
 
 from pycomponents_general_maths.add.flow_add import inports, outports
 
@@ -11,16 +11,7 @@ import random
 
 def add_test_func(inputs, outputs):
     test_data = component.test(inputs, outputs)
-    tolerance = 0.000001
-    for port_data in test_data.values():
-        for p_exp, p_got in zip(port_data.expected, port_data.got):
-            if isinstance(p_exp, list):
-                for i in range(0, len(p_exp)):
-                    p_exp[i]["Value"] == pytest.approx(p_got[i]["Value"], rel=tolerance)
-            else:
-                assert p_exp["Value"] == pytest.approx(
-                    p_got["Value"], rel=tolerance
-                )  # assert at least 0.00001% accurate
+    standard_test(test_data)
 
 
 def test_add_ints():

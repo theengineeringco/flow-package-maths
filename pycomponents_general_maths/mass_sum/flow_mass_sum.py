@@ -1,5 +1,5 @@
 from tec_flow.component import run, print, Component
-from tec_flow.types import base
+from tec_flow.flow_types import base
 from flow_pycomponents_utils import call_function_with_data
 import uuid
 
@@ -7,7 +7,7 @@ inports = ["values"]
 outports = ["result"]
 
 definition = {
-    "name": "Mass Sum",
+    "name": "mass_sum",
     "description": "Sum an entire array at the inport",
     "inports": [{"name": inports[0], "description": "The first number", "types": ["[]base.Int", "[]base.Double"]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
@@ -41,7 +41,7 @@ def process(component: Component):
         print("The Result of adding these is {0} ".format(the_result))
 
     # There is only one message from this output
-    component.send_data(base.Double(the_result), outports[0])
+    component.send_data_addressable(base.Double(the_result), outports[0])
 
 
 if __name__ == "__main__":
