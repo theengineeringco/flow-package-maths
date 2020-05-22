@@ -28,11 +28,6 @@ def standard_test(test_data: dict, tolerance: float = 1e-6, type_test: bool = Tr
             if isinstance(p_exp, list):
                 for i in range(0, len(p_exp)):
                     assert p_exp[i]["value"] == pytest.approx(p_got[i]["value"], rel=tolerance)
-                    if type_test:
-                        assert p_exp[i]["info"]["type"] == p_got[i]["info"]["type"]
             else:
                 assert p_exp["value"] == pytest.approx(p_got["value"], rel=tolerance)
-                if type_test:
-                    assert p_exp["info"]["type"] == p_got["info"]["type"]
-
     return True
