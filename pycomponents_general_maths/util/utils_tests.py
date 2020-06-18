@@ -14,8 +14,9 @@ def standard_test(test_data: dict, tolerance: float = 1e-6, type_test: bool = Tr
         ---------------------------------
 
         usage:
-            def run_test_func(inputs, outputs):
-                test_data = component.test(inputs, outputs)
+            def run_test_func(inputs, outputs, flow: FlowTest):
+                global component_file
+    test_data = flow.test(component_file, inputs, outputs)
                 standard_test(test_data)
 
         ----------------------------------

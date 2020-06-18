@@ -1,5 +1,5 @@
-from tec_flow.component import run, print, Component
-from tec_flow.flow_types import base
+from flow import run, print, Component
+from flow_types import base
 from flow_pycomponents_utils import call_function_with_data
 import math
 
@@ -10,13 +10,9 @@ definition = {
     "name": "natural_log",
     "description": "Natural log of the value",
     "inports": [
-        {
-            "name": inports[0],
-            "description": "The natural log of the value",
-            "types": ["base.Int", "[]base.Int", "base.Double", "[]base.Double"],
-        }
+        {"name": inports[0], "description": "The natural log of the value", "types": ["base.Int", "base.Double"],}
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double", "[]base.Double"]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
 }
 
 
@@ -44,14 +40,8 @@ def process(component: Component):
         print("{0} is {1}".format(inports, use_values))
         print("The Result of e^value is {0} ".format(the_result))
 
-    # send either a single message or an array of messages depending on how many inputs/outputs you make
-    if isinstance(the_result, list):  # TODO: want to be able to remove this
-        msgs = []
-        for each_result in the_result:
-            msgs.append(base.Double(each_result))
-        component.send_data_addressable(msgs, outports[0])
-    else:
-        component.send_data_addressable(base.Double(the_result), outports[0])
+    # send the result message to the outports (as addressable)
+    component.send_data_addressable(base.Double(the_result), outports[0])
 
 
 if __name__ == "__main__":

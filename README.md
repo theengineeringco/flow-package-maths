@@ -50,7 +50,7 @@ outports = ["result"]
 The Flow Definition is used by Flow: backend for types and port handling; front-end for Name, Description, and any other functionality we might add (such as Icons, Web-links, Viewport definitions).
 
 ```python
-allowable_types = ["base.Int", "[]base.Int", "base.Double", "[]base.Double"]
+allowable_types = ["base.Int", "base.Double"]
 definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
@@ -104,14 +104,8 @@ def process(component: Component):
         print("{0} is {1}".format(inports, use_values))
         print("The Result of dividing A by B is {0} ".format(the_result))
 
-    # send either a single message or an array of messages depending on how many inputs/outputs you make
-    if isinstance(the_result, list):  # TODO: want to be able to remove this
-        msgs = []
-        for each_result in the_result:
-            msgs.append(base.Double(each_result))
-        component.send_data_addressable(msgs, outports[0])
-    else:
-        component.send_data_addressable(base.Double(the_result), outports[0])
+    # send the result message to the outports (as addressable)
+    component.send_data_addressable(base.Double(the_result), outports[0])
 ```
 
 _n.b. that sections of the process code are likely to be removed as the send_data method becomes more scalable and the debugging process becomes more standardised._

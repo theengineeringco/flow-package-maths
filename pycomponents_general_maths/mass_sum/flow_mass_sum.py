@@ -1,5 +1,5 @@
-from tec_flow.component import run, print, Component
-from tec_flow.flow_types import base
+from flow import run, print, Component
+from flow_types import base
 from flow_pycomponents_utils import call_function_with_data
 import uuid
 
@@ -9,13 +9,22 @@ outports = ["result"]
 definition = {
     "name": "mass_sum",
     "description": "Sum an entire array at the inport",
-    "inports": [{"name": inports[0], "description": "The first number", "types": ["[]base.Int", "[]base.Double"]}],
+    "inports": [
+        {
+            "name": inports[0],
+            "description": "The array of numbers",
+            "types": ["base.Double", "base.Int"],
+            "addressable": True,
+        }
+    ],
     "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
 }
 
 
 # The actual numeric function we are performing
-def adding_function(use_values: dict = {"uuid": 1, "uuid": 2.5}):
+def adding_function(use_values: dict = None):
+    if use_values is None:
+        use_values = {"uuid": 1, "uuid": 2.5}
     return_value = 0
     for each in use_values.values():
         return_value += each
@@ -25,11 +34,11 @@ def adding_function(use_values: dict = {"uuid": 1, "uuid": 2.5}):
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not component.has_data(inports[0]):
+    if not component.has_data_addressable(inports[0]):
         return
 
     get_data_arr = {}
-    for each in component.get_data(inports[0]):
+    for each in component.get_data_addressable(inports[0]):
         get_data_arr[uuid.uuid1()] = each
 
     # actually run the adding function with the inputs. You can write the function explicitly instead but
