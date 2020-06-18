@@ -7,7 +7,7 @@
 
   // General Settings
   // https://code.visualstudio.com/docs/python/settings-reference#_general-settings
-  "python.pythonPath": ".venv\\Scripts\\python.exe",
+  "python.pythonPath": "c:\\Users\\matts\\Documents\\Flow_component_development\\test\\flow_pycomponents_general_maths\\.venv\\Scripts\\python.exe",
   "python.terminal.activateEnvInCurrentTerminal": true,
 
   // Code analysis settings

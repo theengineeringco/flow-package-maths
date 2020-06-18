@@ -1,18 +1,21 @@
-from tec_flow import component
-from tec_flow.flow_types import base
+from flow_types import base
 from pycomponents_general_maths.util.utils_tests import standard_test
+from flow.testing import FlowTest, flow_test
 
 from pycomponents_general_maths.e_log_n.flow_e_log_n import inports, outports
 import math
 
+component_file = "pycomponents_general_maths/e_log_n"
+
 
 # Tests
-def run_test_func(inputs, outputs):
-    test_data = component.test(inputs, outputs)
+def run_test_func(inputs, outputs, flow: FlowTest):
+    global component_file
+    test_data = flow.test(component_file, inputs, outputs)
     standard_test(test_data)
 
 
-def test_e_log_n_ints():
+def test_e_log_n_ints(flow: FlowTest):
     inputs = {
         inports[0]: [base.Int(10)],
         inports[1]: [base.Int(4)],
@@ -20,10 +23,10 @@ def test_e_log_n_ints():
 
     outputs = {outports[0]: [base.Double(math.log(10, 4))]}
 
-    run_test_func(inputs, outputs)
+    run_test_func(inputs, outputs, flow=flow)
 
 
-def test_e_log_n_double2double():
+def test_e_log_n_double2double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],
         inports[1]: [base.Double(0.4)],
@@ -31,7 +34,9 @@ def test_e_log_n_double2double():
 
     outputs = {outports[0]: [base.Double(math.log(3.67, 0.4))]}
 
-    run_test_func(inputs, outputs)
+    run_test_func(inputs, outputs, flow=flow)
+
 
 if __name__ == "__main__":
-    test_e_log_n_ints()
+    with flow_test() as flow:
+        test_e_log_n_ints(flow)
