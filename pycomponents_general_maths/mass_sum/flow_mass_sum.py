@@ -13,11 +13,11 @@ definition = {
         {
             "name": inports[0],
             "description": "The array of numbers",
-            "types": ["base.Double", "base.Int"],
+            "types": [base.Double, base.Int],
             "addressable": True,
         }
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 

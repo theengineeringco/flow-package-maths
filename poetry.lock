@@ -439,6 +439,7 @@ attrs = "^19.3.0"
 cattrs = "^1.0.0"
 flow-py-types = "branch master"
 jsonschema = "^3.2.0"
+toml = "^0.10.1"
 typeguard = "^2.7.1"
 
 [package.dependencies.psutil]
@@ -453,7 +454,7 @@ version = "^5.4.1"
 testing = ["psutil (^5.7.0)", "pytest (^5.4.1)"]
 
 [package.source]
-reference = "cac4622abe590f5e6cdeb2f76ab7834b7d6d928f"
+reference = "19dd452db986cdd72b5a0b39a555537dea8598a6"
 type = "git"
 url = "https://github.com/theengineeringco/PythonAbstraction.git"
 [[package]]
@@ -1024,7 +1025,7 @@ docs = ["sphinx", "zope.component", "sybil", "twisted", "mock", "django (<2)", "
 test = ["pytest (>=3.6)", "pytest-cov", "pytest-django", "zope.component", "sybil", "twisted", "mock", "django (<2)", "django"]
 
 [[package]]
-category = "dev"
+category = "main"
 description = "Python Library for Tom's Obvious, Minimal Language"
 name = "toml"
 optional = false

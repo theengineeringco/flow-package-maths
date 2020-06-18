@@ -9,8 +9,8 @@ outports = ["result"]
 definition = {
     "name": "exp_n",
     "description": "Raises e to the power of n and returns the result.",
-    "inports": [{"name": inports[0], "description": "The index (e ^ n)", "types": ["base.Int", "base.Double"],},],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "inports": [{"name": inports[0], "description": "The index (e ^ n)", "types": [base.Int, base.Double],},],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 

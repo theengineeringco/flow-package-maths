@@ -50,7 +50,7 @@ outports = ["result"]
 The Flow Definition is used by Flow: backend for types and port handling; front-end for Name, Description, and any other functionality we might add (such as Icons, Web-links, Viewport definitions).
 
 ```python
-allowable_types = ["base.Int", "base.Double"]
+allowable_types = [base.Int, base.Double]
 definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
