@@ -1,10 +1,10 @@
 from flow_types import base
 from pycomponents_general_maths.util.utils_tests import standard_test
 from flow.testing import FlowTest, flow_test
+from pathlib import Path
 
 from pycomponents_general_maths.trig_atan.flow_trig_atan import inports, outports
 import math
-from pathlib import Path
 
 
 # Tests
