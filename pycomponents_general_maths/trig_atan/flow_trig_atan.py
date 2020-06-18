@@ -9,8 +9,8 @@ outports = ["result"]
 definition = {
     "name": "atan",
     "description": "Produces the result of atan(N) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": ["base.Double", "base.Angle"],},],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, base.Angle],},],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 

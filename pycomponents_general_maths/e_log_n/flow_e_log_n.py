@@ -12,10 +12,10 @@ definition = {
     "description": "Raises an index to a power and returns the result. \
         (Negative index values are treated as positive with negatived result).",
     "inports": [
-        {"name": inports[0], "description": "The index to log, log(I, b)", "types": ["base.Int", "base.Double"],},
-        {"name": inports[1], "description": "The base to log, log(i, B)", "types": ["base.Int", "base.Double"],},
+        {"name": inports[0], "description": "The index to log, log(I, b)", "types": [base.Int, base.Double],},
+        {"name": inports[1], "description": "The base to log, log(i, B)", "types": [base.Int, base.Double],},
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 

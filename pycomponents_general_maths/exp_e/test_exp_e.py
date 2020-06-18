@@ -7,7 +7,7 @@ from pycomponents_general_maths.exp_e.flow_exp_e import inports, outports, exp
 # Tests
 
 
-component_file = "pycomponents_general_maths/exp_e"
+component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

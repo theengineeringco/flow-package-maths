@@ -5,11 +5,10 @@ from flow.testing import FlowTest, flow_test
 from pycomponents_general_maths.trig_cos.flow_trig_cos import inports, outports
 import math
 
-import random
 
 # Tests
 
-component_file = "pycomponents_general_maths/trig_cos"
+component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

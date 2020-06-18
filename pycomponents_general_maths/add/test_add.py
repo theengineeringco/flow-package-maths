@@ -4,10 +4,9 @@ from flow.testing import FlowTest, flow_test
 
 from pycomponents_general_maths.add.flow_add import inports, outports
 
-import random
 
 # Tests
-component_file = "pycomponents_general_maths/add"
+component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

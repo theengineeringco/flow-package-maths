@@ -10,10 +10,10 @@ definition = {
     "description": "Raises an index to a power and returns the result. \
         (Negative index values are treated as positive with negatived result).",
     "inports": [
-        {"name": inports[0], "description": "The index (I ^ n)", "types": ["base.Int", "base.Double"],},
-        {"name": inports[1], "description": "The power (i ^ N)", "types": ["base.Int", "base.Double"],},
+        {"name": inports[0], "description": "The index (I ^ n)", "types": [base.Int, base.Double],},
+        {"name": inports[1], "description": "The power (i ^ N)", "types": [base.Int, base.Double],},
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 

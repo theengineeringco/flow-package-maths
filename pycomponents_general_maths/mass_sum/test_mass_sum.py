@@ -4,10 +4,9 @@ from flow.testing import FlowTest, flow_test
 
 from pycomponents_general_maths.mass_sum.flow_mass_sum import inports, outports
 
-import random
 
 # Tests
-component_file = "pycomponents_general_maths/mass_sum/flow_mass_sum.py"
+component_file = Path(__file__).parent
 
 
 def add_test_func(inputs, outputs, flow: FlowTest):

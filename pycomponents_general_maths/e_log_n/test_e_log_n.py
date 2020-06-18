@@ -5,7 +5,7 @@ from flow.testing import FlowTest, flow_test
 from pycomponents_general_maths.e_log_n.flow_e_log_n import inports, outports
 import math
 
-component_file = "pycomponents_general_maths/e_log_n"
+component_file = Path(__file__).parent
 
 
 # Tests

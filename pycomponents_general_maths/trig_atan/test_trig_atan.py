@@ -4,11 +4,11 @@ from flow.testing import FlowTest, flow_test
 
 from pycomponents_general_maths.trig_atan.flow_trig_atan import inports, outports
 import math
+from pathlib import Path
 
-import random
 
 # Tests
-component_file = "pycomponents_general_maths/trig_atan"
+component_file = Path(__file__).parentPath(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

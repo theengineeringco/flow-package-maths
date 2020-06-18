@@ -7,7 +7,7 @@ import math
 
 # Tests
 
-component_file = "pycomponents_general_maths/e_ln"
+component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

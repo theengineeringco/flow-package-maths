@@ -9,10 +9,10 @@ definition = {
     "name": "multiply",
     "description": "Multiplies all numbers together.",
     "inports": [
-        {"name": inports[0], "description": "The first number", "types": ["base.Int", "base.Double"],},
-        {"name": inports[1], "description": "The second number", "types": ["base.Int", "base.Double"],},
+        {"name": inports[0], "description": "The first number", "types": [base.Int, base.Double],},
+        {"name": inports[1], "description": "The second number", "types": [base.Int, base.Double],},
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": ["base.Double"]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
