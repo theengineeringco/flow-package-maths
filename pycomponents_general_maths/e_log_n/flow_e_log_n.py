@@ -27,7 +27,7 @@ def e_log_n_function(use_values: dict = {"port1": 1, "port2": 2.5}):
     base_val = the_values[1]
 
     if base_val <= 0:
-        return  # TODO: want to put in an exception here
+        raise Exception("You cannot have a base value <= 0.")
 
     return math.log(index, base_val)
 
