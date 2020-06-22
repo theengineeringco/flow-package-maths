@@ -140,3 +140,4 @@ dmypy.json
 cython_debug/
 .isort.cfg
 poetry.lock
+scratch.py
