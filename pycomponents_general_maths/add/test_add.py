@@ -1,10 +1,10 @@
-from flow_types import base
-from pycomponents_general_maths.util.utils_tests import standard_test
-from flow.testing import FlowTest, flow_test
 from pathlib import Path
 
-from pycomponents_general_maths.add.flow_add import inports, outports
+from flow.testing import FlowTest, flow_test
+from flow_types import base
 
+from pycomponents_general_maths.add.flow_add import inports, outports
+from pycomponents_general_maths.util.utils_tests import standard_test
 
 # Tests
 component_file = Path(__file__).parent

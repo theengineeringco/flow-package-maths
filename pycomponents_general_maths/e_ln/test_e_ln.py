@@ -1,10 +1,11 @@
-from flow_types import base
-from pycomponents_general_maths.util.utils_tests import standard_test
-from flow.testing import FlowTest, flow_test
+import math
 from pathlib import Path
 
+from flow.testing import FlowTest, flow_test
+from flow_types import base
+
 from pycomponents_general_maths.e_ln.flow_e_ln import inports, outports
-import math
+from pycomponents_general_maths.util.utils_tests import standard_test
 
 # Tests
 
@@ -40,4 +41,3 @@ def test_ln_double(flow: FlowTest):
 if __name__ == "__main__":
     with flow_test() as flow:
         test_ln_double(flow)
-

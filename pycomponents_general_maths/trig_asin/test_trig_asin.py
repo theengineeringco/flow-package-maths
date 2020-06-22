@@ -1,11 +1,11 @@
-from flow_types import base
-from pycomponents_general_maths.util.utils_tests import standard_test
-from flow.testing import FlowTest, flow_test
+import math
 from pathlib import Path
 
-from pycomponents_general_maths.trig_asin.flow_trig_asin import inports, outports
-import math
+from flow.testing import FlowTest, flow_test
+from flow_types import base
 
+from pycomponents_general_maths.trig_asin.flow_trig_asin import inports, outports
+from pycomponents_general_maths.util.utils_tests import standard_test
 
 # Tests
 
