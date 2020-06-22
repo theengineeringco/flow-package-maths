@@ -35,7 +35,7 @@ def adding_function(use_values: dict = None):
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
     if not component.has_data_addressable(inports[0]):
-        raise ValueError("No data found in port {0}".format(inports[0]))
+        return
 
     get_data_arr = {}
     for each in component.get_data_addressable(inports[0]):

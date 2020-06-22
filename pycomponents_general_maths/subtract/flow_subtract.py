@@ -29,7 +29,7 @@ def subtracting_function(use_values: dict = {"port1": 1, "port2": 2.5}):
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
     if not (component.has_data(inports[0]) and component.has_data(inports[1])):
-        raise ValueError("No data found in port {0} or {1}".format(inports[0], inports[1]))
+        return
 
     # source the data from the inports
     data1 = component.get_data(inports[0])
