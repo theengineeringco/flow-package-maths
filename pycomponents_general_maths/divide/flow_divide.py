@@ -29,7 +29,7 @@ def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
     if not (component.has_data(inports[0]) and component.has_data(inports[1])):
-        return
+        raise ValueError("No data found in port {0} or {1}".format(inports[0], inports[1]))
 
     # source the data from the inports
     data1 = component.get_data(inports[0])
