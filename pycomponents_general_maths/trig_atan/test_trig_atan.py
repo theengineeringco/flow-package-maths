@@ -8,7 +8,7 @@ import math
 
 
 # Tests
-component_file = Path(__file__).parentPath(__file__).parent
+component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
