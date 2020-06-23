@@ -1,7 +1,7 @@
-from flow import run, print, Component
-from flow_types import base
-from flow_pycomponents_utils import call_function_with_data
 import math
+
+from flow import Component, print, run
+from flow_types import base
 
 inports = ["index", "base"]
 outports = ["result"]
@@ -42,22 +42,12 @@ def process(component: Component):
     data1 = component.get_data(inports[0])
     data2 = component.get_data(inports[1])
 
-    val_neg = False
-    if data1.value < 0:
-        data1.value = -1 * data1.value
-        val_neg = True
-
-    get_data_arr = {inports[0]: data1, inports[1]: data2}
-    # actually run the log function with the inputs. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, e_log_n_function)
-
-    if val_neg:
-        use_values[0] = -1 * use_values[0]
-        the_result = -1 * the_result
+    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
+    # actually run the log function with the inputs.
+    the_result = e_log_n_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of log(index, base) is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)

@@ -1,6 +1,5 @@
-from flow import run, print, Component
+from flow import Component, print, run
 from flow_types import base
-from flow_pycomponents_utils import call_function_with_data
 
 inports = ["val1", "val2"]
 outports = ["result"]
@@ -20,8 +19,8 @@ definition = {
 def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
     the_values = list(use_values.values())
     return_value = the_values[0]
-    for idx in range(1, len(the_values)):
-        return_value /= the_values[idx]
+    for _, each_value in enumerate(the_values[1:]):
+        return_value /= each_value
     return return_value
 
 
@@ -35,13 +34,12 @@ def process(component: Component):
     data1 = component.get_data(inports[0])
     data2 = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1, inports[1]: data2}
-    # actually run the dividing function with the inputs. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, dividing_function)
+    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
+    # actually run the dividing function with the inputs.
+    the_result = dividing_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of dividing A by B is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)

@@ -1,6 +1,5 @@
-from flow import run, print, Component
+from flow import Component, print, run
 from flow_types import base
-from flow_pycomponents_utils import call_function_with_data
 
 inports = ["index", "power"]
 outports = ["result"]
@@ -23,7 +22,9 @@ def exp_n_function(use_values: dict = {"port1": 1, "port2": 2.5}):
     index = the_values[0]
     exponents = the_values[1:]
     val_neg = False
-    if index < 0:
+    if (
+        index < 0
+    ):  # TODO this is going to be fixed with imaginary numbers! It self-sorts at the minute with how some calculators do it.
         index = abs(index)
         val_neg = True
 
@@ -49,13 +50,12 @@ def process(component: Component):
     data1 = component.get_data(inports[0])
     data2 = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1, inports[1]: data2}
-    # actually run the exponential function with the inputs. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, exp_n_function)
+    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
+    # actually run the exponential function with the inputs.
+    the_result = exp_n_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of val1 ^ val2 is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)

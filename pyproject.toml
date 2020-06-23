@@ -10,7 +10,6 @@ repository = "https://github.com/theengineeringco/flow_pycomponents_general_math
 [tool.poetry.dependencies]
 python = "^3.6.1"
 flow_py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="stable_master_22"}
-flow_pycomponents_utils = {git="https://github.com/theengineeringco/flow_pycomponents_utils.git"}
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
