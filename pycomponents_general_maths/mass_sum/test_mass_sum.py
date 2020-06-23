@@ -21,7 +21,7 @@ def test_mass_sum_doubles(flow: FlowTest):
     outs = []
 
     for i in range(0, 5):
-        in1 = random.uniform(-1000, 1000)
+        in1 = 1.5 ** i
         outs.append(in1)
         ins1.append(base.Double(in1))
 
