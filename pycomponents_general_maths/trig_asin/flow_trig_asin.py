@@ -1,7 +1,7 @@
-from flow import run, print, Component
-from flow_types import base
-from flow_pycomponents_utils import call_function_with_data
 import math
+
+from flow import Component, print, run
+from flow_types import base
 
 inports = ["theta"]
 outports = ["result"]
@@ -17,8 +17,10 @@ definition = {
 # The actual numeric function we are performing
 def asin_function(use_values: dict = {"port1": 1}):
     theta_val = list(use_values.values())[0]
-    if (theta_val > 1) or (theta_val < -1):
-        return
+    if abs(theta_val) > 1:
+        raise ArithmeticError(
+            "You cannot operate {0} with this value of theta of {1}".format(definition["name"], theta_val)
+        )
 
     return math.asin(theta_val)
 
@@ -32,13 +34,12 @@ def process(component: Component):
     # source the data from the inports
     data1 = component.get_data(inports[0])
 
-    get_data_arr = {inports[0]: data1}
-    # actually run the asin function with the input. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, asin_function)
+    get_data_arr = {inports[0]: data1.value}
+    # actually run the asin function with the input.
+    the_result = asin_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of asin(n) is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)

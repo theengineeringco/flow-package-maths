@@ -1,11 +1,11 @@
 from pathlib import Path
 
+import numpy as np
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 
 from pycomponents_general_maths.array.average.flow_average import inports, outports
 from pycomponents_general_maths.util.utils_tests import standard_test
-import numpy as np
 
 # Tests
 
@@ -13,7 +13,6 @@ component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
-    global component_file
     test_data = flow.test(component_file, inputs, outputs)
     standard_test(test_data)
 

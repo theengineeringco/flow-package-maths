@@ -1,6 +1,5 @@
-from flow import run, print, Component
+from flow import Component, print, run
 from flow_types import base
-from flow_pycomponents_utils import call_function_with_data
 
 inports = ["val1", "val2"]
 outports = ["result"]
@@ -34,13 +33,12 @@ def process(component: Component):
     data1 = component.get_data(inports[0])  # False is required to use the latest data if only one value updates
     data2 = component.get_data(inports[1])  # False is required to use the latest data if only one value updates
 
-    get_data_arr = {inports[0]: data1, inports[1]: data2}
-    # actually run the adding function with the inputs. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, adding_function)
+    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
+    # actually run the adding function with the inputs.
+    the_result = adding_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of adding these is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)

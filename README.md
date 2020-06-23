@@ -8,8 +8,6 @@ A Package of Python Flow Components
 
 ## Components
 
-These components depend on the pycomponents_utils library and not on anything else.
-
 This library includes General Mathematical components, such as Arithmetic (Plus, Multiply etc.), Logarithmic and Exponential (such as Ln, e^n, power(a, b)), and Trigonometric (sin, cos, tan etc.).
 
 ## Features
@@ -40,7 +38,7 @@ A typical Basic Maths component is made up of 4 things:
 3. Mathematical Equation (as a function)
 4. Flow Process (as a function)
 
-The port definitions are typically handled as arrays to allow the UI, the component, and the testing to access the names easily. _In many other component libraries the inports and outports are expressed as dicts to allow a name and a type to be assigned. All Basic Maths components allow for Ints and Doubles (and Arrays of each) as inputs only, with only very few exceptions._
+The port definitions are typically handled as arrays to allow the UI, the component, and the testing to access the names easily. _In many other component libraries the inports and outports are expressed as dicts to allow a name and a type to be assigned. All Basic Maths components allow for Ints and Doubles as inputs (or in the case of inherent Array functions, such as Mass_Sum, we allow MdInts and MdDoubles)._
 
 ```python
 inports = ["val1", "val2"]
@@ -70,7 +68,7 @@ definition = {
 }
 ```
 
-The reason we have the mathematical function separate from the `process` function is so that it can behave agnostically to arrays or single-value calls. i.e. The The mathematical function is written only for single value group inputs, and it is the `call_function_with_data` method from Pycomponents_Utils that handes the array-ness of inports.
+The reason we have the mathematical function separate from the `process` function is so that the process can behave agnostically to the function (splitting two conceptually different tasks up).
 
 ```python
 # The actual numeric function we are performing
@@ -82,8 +80,7 @@ def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
     return return_value
 ```
 
-Finally, the Flow Process for the componet is pretty easy to implement as a lot of the complexity is handled by the Pycomponents Utils functions.
-It is the `call_function_with_data` method from PyComponents Utils that handles a lot of the checking and packaging of data in to the `dividing_function` function.
+Finally, the Flow Process for the component is pretty easy to implement as we simply call the mathematical directly with the component port data.
 
 ```python
 def process(component: Component):
@@ -95,20 +92,17 @@ def process(component: Component):
     data1 = component.get_data(inports[0])
     data2 = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1, inports[1]: data2}
-    # actually run the dividing function with the inputs. You can write the function explicitly instead but
-    # we leverage the "call_function_with_data" as it works well for maths functions
-    use_values, the_result = call_function_with_data(get_data_arr, dividing_function)
+    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
+    # actually run the dividing function with the inputs.
+    the_result = dividing_function(get_data_arr)
 
     if component.debug is True:
-        print("{0} is {1}".format(inports, use_values))
+        print("{0} is {1}".format(inports, get_data_arr))
         print("The Result of dividing A by B is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])
 ```
-
-_n.b. that sections of the process code are likely to be removed as the send_data method becomes more scalable and the debugging process becomes more standardised._
 
 ## License
 

@@ -141,3 +141,4 @@ cython_debug/
 .isort.cfg
 poetry.lock
 scratch.py
+poetry.lock

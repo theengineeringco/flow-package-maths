@@ -10,7 +10,6 @@ component_file = Path(__file__).parent
 
 # Tests
 def run_test_func(inputs, outputs, flow: FlowTest):
-    global component_file
     test_data = flow.test(component_file, inputs, outputs)
     standard_test(test_data)
 
