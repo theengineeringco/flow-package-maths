@@ -6,8 +6,8 @@ inports = ["values"]
 outports = ["result"]
 
 definition = {
-    "name": "average",
-    "description": "Get the average of an entire Array of Numbers.",
+    "name": "sum",
+    "description": "Get the sum of an entire Array of Numbers.",
     "inports": [{"name": inports[0], "description": "The first number", "types": [base.MdDouble],},],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
@@ -23,10 +23,10 @@ def process(component: Component):
     array: np.array = values.to_np()
 
     # We are using numpy's built in functions so we don't have to worry
-    result: float = np.mean(array)
+    result: float = np.sum(array)
 
     if component.debug is True:
-        print("The average of {0} is {1} ".format(values, result))
+        print("The sum of {0} is {1} ".format(values, result))
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])
