@@ -28,6 +28,18 @@ create_component = "flow_python_cookiecutter -t component"
 [tool.black]
 line-length=120
 
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+known_third_party = ["aiorun", "async_generator", "attr", "boltons", "cattr", "definition", "flow_types", "jsonschema", "nats", "pkg_resources", "psutil", "pytest", "stan", "stringcase", "toml", "typeguard"]
+
+[tool.unimport]
+include = '^flow|^tests'
+exclude = '(__init__.py)'
+
 [build-system]
 requires = ["poetry>=1.0", "pip>=20.0"]
 build-backend = "poetry.masonry.api"
