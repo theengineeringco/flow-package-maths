@@ -38,9 +38,8 @@ def process(component: Component):
     # actually run the dividing function with the inputs.
     the_result = dividing_function(get_data_arr)
 
-    if component.debug is True:
-        print("{0} is {1}".format(inports, get_data_arr))
-        print("The Result of dividing A by B is {0} ".format(the_result))
+    print("{0} is {1}".format(inports, get_data_arr))
+    print("The Result of dividing A by B is {0} ".format(the_result))
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])
