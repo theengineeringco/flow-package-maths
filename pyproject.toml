@@ -9,12 +9,12 @@ repository = "https://github.com/theengineeringco/flow_pycomponents_general_math
 
 [tool.poetry.dependencies]
 python = "^3.6"
-flow_py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="NewTypes"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="NewTypes"}
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
 wemake-python-styleguide = "^0.14.0"
-flow-py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="NewTypes", extras = ["testing"]}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="NewTypes", extras = ["testing"]}
 taskipy = "^1.2.1"
 flow-python-cookiecutter = {git ="https://github.com/theengineeringco/FlowPythonCookiecutter.git"}
 pre-commit = { version = "^2.5.0", python = "^3.6.1" }
