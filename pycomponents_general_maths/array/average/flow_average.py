@@ -21,7 +21,7 @@ def process(component: Component):
 
     # source the data from the inports
     array_msg: base.MdDouble = component.get_data(inports[0])
-    array: np.array = array_msg.getarray()
+    array: np.array = array_msg.get_array()
 
     # We are using numpy's built in functions so we don't have to worry
     result: float = np.mean(array)
