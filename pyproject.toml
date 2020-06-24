@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/theengineeringco/flow_pycomponents_general_maths.git"
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
+python = "^3.6"
 flow_py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="NewTypes"}
 
 [tool.poetry.dev-dependencies]
