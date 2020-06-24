@@ -12,6 +12,7 @@ definition = {
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
+
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
@@ -19,14 +20,14 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    values: base.MdDouble = component.get_data(inports[0])
-    array: np.array = values.to_np()
+    array_msg: base.MdDouble = component.get_data(inports[0])
+    array: np.array = array_msg.get_array()
 
     # We are using numpy's built in functions so we don't have to worry
     result: float = np.mean(array)
 
     if component.debug is True:
-        print("The average of {0} is {1} ".format(values, result))
+        print("The average of {0} is {1} ".format(array_msg, result))
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])

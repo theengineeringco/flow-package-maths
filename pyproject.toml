@@ -5,27 +5,39 @@ authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <ne
 version = "0.1.0"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/theengineeringco/flow_pycomponents_general_maths.git"
+repository = "https://github.com/theengineeringco/flow-py-library-general_maths.git"
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
-flow_py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="stable_master_22"}
+python = "^3.6"
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
 wemake-python-styleguide = "^0.14.0"
-flow-py = {git ="https://github.com/theengineeringco/PythonAbstraction.git", rev="stable_master_22", extras = ["testing"]}
-taskipy = "^1.2.1"
-flow-python-cookiecutter = {git ="https://github.com/theengineeringco/FlowPythonCookiecutter.git"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}
+flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}
+pre-commit = { version = "^2.5.0", python = "^3.6.1" }
 
-[tool.poetry.plugins."flows"]
-"pycomponents_general_maths" = "flow._tools.find_components:find_pkg_components"
+[tool.poetry.plugins."flow.components"]
+"pycomponents_general_maths" = "flow.tools.find_components:find_pkg_components"
 
 [tool.taskipy.tasks]
 create_component = "flow_python_cookiecutter -t component"
 
 [tool.black]
 line-length=120
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+known_third_party = ["aiorun", "async_generator", "attr", "boltons", "cattr", "definition", "flow_types", "jsonschema", "nats", "pkg_resources", "psutil", "pytest", "stan", "stringcase", "toml", "typeguard"]
+
+[tool.unimport]
+include = '^flow|^tests'
+exclude = '(__init__.py)'
 
 [build-system]
 requires = ["poetry>=1.0", "pip>=20.0"]
