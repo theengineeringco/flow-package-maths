@@ -8,6 +8,7 @@ from pycomponents_general_maths.util.utils_tests import standard_test
 
 component_file = Path(__file__).parent
 
+
 # Tests
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
@@ -42,7 +43,7 @@ def test_exp_n_negatives(flow: FlowTest):
         inports[1]: [base.Double(-3)],
     }
 
-    outputs = {outports[0]: [base.Double(-(10 ** -3))]}
+    outputs = {outports[0]: [base.Double((((-(10 ** -3)))))]}
 
     run_test_func(inputs, outputs, flow=flow)
 

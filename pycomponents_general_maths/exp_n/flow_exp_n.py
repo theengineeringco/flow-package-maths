@@ -21,21 +21,11 @@ def exp_n_function(use_values: dict = {"port1": 1, "port2": 2.5}):
     the_values = list(use_values.values())
     index = the_values[0]
     exponents = the_values[1:]
-    val_neg = False
-    if (
-        index < 0
-    ):  # TODO this is going to be fixed with imaginary numbers! It self-sorts at the minute with how some calculators do it.
-        index = abs(index)
-        val_neg = True
-
     return_value = index
 
     # if you provide more than 1 "n" value it'll go (i**n1)**n2**...
     for ndx in exponents:
         return_value = return_value ** ndx
-
-    if val_neg:
-        return_value = return_value * -1
 
     return return_value
 
