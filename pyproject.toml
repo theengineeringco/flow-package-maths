@@ -9,13 +9,18 @@ repository = "https://github.com/theengineeringco/flow-py-library-general_maths.
 
 [tool.poetry.dependencies]
 python = "^3.6"
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", tag = "alpha-2020-06-26"}
 
 [tool.poetry.dev-dependencies]
-black = "^19.10b0"
-wemake-python-styleguide = "^0.14.0"
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}
-flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", tag = "alpha-2020-06-26", extras = ["testing"]}     # For Component Testing
+flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"} # For Component Generation
+wemake-python-styleguide = "^0.14.0"                # Linting
+mypy = "^0.770"                                     # Linting
+black = "^19.10b0"                                  # Formatting
+isort = {version = "^4.3", extras = ["pyproject"]}  # Formatting
+pytest = "^5.4.0"                                   # Testing
+
+# Pre-commit helps enforce code style. Use `pre-commit install` to install
 pre-commit = { version = "^2.5.0", python = "^3.6.1" }
 
 [tool.poetry.plugins."flow.components"]
