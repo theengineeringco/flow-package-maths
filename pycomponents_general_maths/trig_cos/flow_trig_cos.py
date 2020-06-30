@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, print, run
-from flow_types import base
+from flow_types import base, eng
 
 inports = ["theta"]
 outports = ["result"]
@@ -9,7 +9,7 @@ outports = ["result"]
 definition = {
     "name": "cos",
     "description": "Produces the result of cos(N) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, base.Angle],},],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle],},],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
