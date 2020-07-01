@@ -4,7 +4,7 @@ from flow.testing import FlowTest, flow_test
 from flow_types import base
 
 from pycomponents_general_maths.exp_n.flow_exp_n import inports, outports
-from pycomponents_general_maths.util.utils_tests import standard_test
+from pycomponents_general_maths.util.utils_tests import basic_test_eval
 
 component_file = Path(__file__).parent
 
@@ -12,7 +12,7 @@ component_file = Path(__file__).parent
 # Tests
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    standard_test(test_data)
+    basic_test_eval(test_data)
 
 
 def test_exp_n_ints(flow: FlowTest):
@@ -32,7 +32,7 @@ def test_exp_n_doubles(flow: FlowTest):
         inports[1]: [base.Double(-1e2)],
     }
 
-    outputs = {outports[0]: [base.Double(3.67 ** -1e2)]}
+    outputs = {outports[0]: [base.Double(3 ** -1e2)]}
 
     run_test_func(inputs, outputs, flow=flow)
 
