@@ -38,7 +38,7 @@ multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
-known_third_party = ["aiorun", "async_generator", "attr", "boltons", "cattr", "definition", "flow_types", "jsonschema", "nats", "pkg_resources", "psutil", "pytest", "stan", "stringcase", "toml", "typeguard"]
+known_third_party = ["flow", "flow_types", "numpy", "pytest"]
 
 [tool.unimport]
 include = '^flow|^tests'

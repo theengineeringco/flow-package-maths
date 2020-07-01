@@ -2,9 +2,9 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from flow.testing import FlowTest, flow_test
 from flow_types import base
 
-from flow.testing import FlowTest, flow_test
 from pycomponents_general_maths.array.sorting.item_by_index.coordinate_index.flow_coordinate_index import (
     inports,
     outports,
