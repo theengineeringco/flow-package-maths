@@ -12,7 +12,11 @@ definition = {
     "description": "Reshape an MdDouble array to a new shape provided as a list of integers.",
     "inports": [
         {"name": inports[0], "description": "The array", "types": [base.MdDouble]},
-        {"name": inports[1], "description": "The shape as a 1D array", "types": [base.MdInt]},  # base.MdArray(ints)?
+        {
+            "name": inports[1],
+            "description": "The shape as a 1D array",
+            "types": [base.MdInt],
+        },  # TODO base.MdArray(ints)
         {"name": "strict", "description": "Do not allow resizing.", "types": [base.Bool], "required": False},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?
     "outports": [{"name": outports[0], "description": "The reshaped array", "types": [base.MdDouble]}],
