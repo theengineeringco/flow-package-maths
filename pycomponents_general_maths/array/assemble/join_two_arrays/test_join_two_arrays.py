@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import numpy as np
+import pytest
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 
@@ -17,26 +18,37 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_equal_arrays_vertical(flow: FlowTest):
+@pytest.mark.parametrize(
+    ("vertical", "result"),
+    [
+        (False, np.array([[1, 2, 5, 6], [3, 4, 7, 8]])),
+        (True, np.array([[1, 2], [3, 4], [5, 6], [7, 8]])),
+    ],  # We can test this function multiple times with different values
+)
+def test_equal_arrays(vertical, result, flow: FlowTest):
     inputs = {
         inports[0]: [base.MdDouble(np.array([[1, 2], [3, 4]]))],
         inports[1]: [base.MdDouble(np.array([[5, 6], [7, 8]]))],
+        "vertical": base.Bool(vertical),
     }
-
-    outputs = {outports[0]: base.MdDouble(np.array([[1, 2], [3, 4], [5, 6], [7, 8]]))}
-
+    outputs = {outports[0]: base.MdDouble(result)}
     run_test_func(inputs, outputs, flow=flow)
 
 
-def test_equal_arrays_horizontal(flow: FlowTest):
+@pytest.mark.parametrize(
+    ("vertical", "result"),
+    [
+        (False, np.array([[1, 2, 3], [4, 5, 6]])),
+        (True, np.array([1, 2, 3, 4, 5, 6])),
+    ],  # We can test this function multiple times with different values
+)
+def test_equal_lists(vertical, result, flow: FlowTest):
     inputs = {
-        inports[0]: [base.MdDouble(np.array([[1, 2], [3, 4]]))],
-        inports[1]: [base.MdDouble(np.array([[5, 6], [7, 8]]))],
-        "vertical": base.Bool(False),
+        inports[0]: [base.MdDouble(np.array([1, 2, 3]))],
+        inports[1]: [base.MdDouble(np.array([4, 5, 6]))],
+        "vertical": base.Bool(vertical),
     }
-
-    outputs = {outports[0]: base.MdDouble(np.array([[1, 2, 5, 6], [3, 4, 7, 8]]))}
-
+    outputs = {outports[0]: base.MdDouble(result)}
     run_test_func(inputs, outputs, flow=flow)
 
 
@@ -57,6 +69,6 @@ def test_unequal_arrays(flow: FlowTest):
 
 if __name__ == "__main__":
     with flow_test() as flow:
-        test_equal_arrays_vertical(flow)
-        # test_equal_arrays_horizontal(flow)
+        # test_equal_arrays(False, np.array([[1, 2, 5, 6], [3, 4, 7, 8]]), flow)
+        test_equal_lists(True, np.array([[1, 2, 3], [4, 5, 6]]), flow)
         # test_unequal_arrays(flow)

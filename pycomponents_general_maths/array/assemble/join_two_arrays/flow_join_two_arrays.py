@@ -41,9 +41,9 @@ def process(component: Component):
 
     vertical: bool = component.get_data("vertical").value if component.has_data("vertical") else True
     if vertical:
-        array_msg.set_array(np.concatenate([each_vals for each_vals in vals]))  # Np List implementation automatically
+        array_msg.set_array(np.vstack(tuple(vals)))  # Np List implementation automatically
     else:  # Populate horizontally
-        array_msg.set_array(np.transpose(np.concatenate([np.transpose(each_vals) for each_vals in vals])))
+        array_msg.set_array(np.hstack(tuple(vals)))
 
     print("Joining\n{0}\nwith\n{1}\n{2}ly.".format(vals[0], vals[1], ("vertical" if vertical else "horizontal")))
     print("Produced:\n{0}".format(array_msg.get_array()))
