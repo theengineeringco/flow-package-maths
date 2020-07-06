@@ -1,6 +1,6 @@
-from flow import run, print, Component
-from flow_types import base
 import numpy as np
+from flow import Component, print, run
+from flow_types import base
 
 inports = ["values"]
 outports = ["result"]

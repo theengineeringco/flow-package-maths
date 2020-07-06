@@ -5,7 +5,7 @@ from flow.testing import FlowTest, flow_test
 from flow_types import base
 
 from pycomponents_general_maths.trig_acos.flow_trig_acos import inports, outports
-from pycomponents_general_maths.util.utils_tests import standard_test
+from pycomponents_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
 component_file = Path(__file__).parent
@@ -13,7 +13,7 @@ component_file = Path(__file__).parent
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    standard_test(test_data)
+    basic_test_eval(test_data)
 
 
 def test_acos_double(flow: FlowTest):

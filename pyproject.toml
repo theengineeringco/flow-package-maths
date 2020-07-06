@@ -9,10 +9,10 @@ repository = "https://github.com/theengineeringco/flow-py-library-general_maths.
 
 [tool.poetry.dependencies]
 python = "^3.6"
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", tag = "alpha-2020-06-26"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
 
 [tool.poetry.dev-dependencies]
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", tag = "alpha-2020-06-26", extras = ["testing"]}     # For Component Testing
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}     # For Component Testing
 flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"} # For Component Generation
 wemake-python-styleguide = "^0.14.0"                # Linting
 mypy = "^0.770"                                     # Linting
@@ -38,7 +38,7 @@ multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
-known_third_party = ["aiorun", "async_generator", "attr", "boltons", "cattr", "definition", "flow_types", "jsonschema", "nats", "pkg_resources", "psutil", "pytest", "stan", "stringcase", "toml", "typeguard"]
+known_third_party = ["flow", "flow_types", "numpy", "pytest"]
 
 [tool.unimport]
 include = '^flow|^tests'

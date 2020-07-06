@@ -1,34 +1,33 @@
-import pytest
+from flow.testing.helpers import strip_test_data_unique_info
 
 
-def standard_test(test_data: dict, tolerance: float = 1e-6, type_test: bool = True) -> bool:
+def basic_test_eval(test_data: dict, tolerance: float = 1e-6, type_test: bool = True, normalise: bool = True) -> bool:
     """
         Standard testing of components.
-
         ---------------------------------
 
         test_data: The resulting test_data from component.test(inputs, outputs)
         tolerance (optional): the tolerance to check for
         type_test (optional): assert types are the same, too
-        
         ---------------------------------
 
         usage:
             def run_test_func(inputs, outputs, flow: FlowTest):
                 global component_file
     test_data = flow.test(component_file, inputs, outputs)
-                standard_test(test_data)
-
+                basic_test_eval(test_data)
         ----------------------------------
 
         returns a bool True by default
     """
-
     for port_data in test_data.values():
         for p_exp, p_got in zip(port_data.expected, port_data.got):
+            if normalise:  # Strip the info fields (these will never match in normal tests)
+                p_exp = strip_test_data_unique_info(p_exp)
+                p_got = strip_test_data_unique_info(p_got)
             if isinstance(p_exp, list):
-                for i in range(0, len(p_exp)):
-                    assert p_exp[i]["value"] == pytest.approx(p_got[i]["value"], rel=tolerance)
+                for idx, _ in enumerate(p_exp):
+                    assert p_exp[idx] == p_got[idx]
             else:
-                assert p_exp["value"] == pytest.approx(p_got["value"], rel=tolerance)
+                assert p_exp == p_got
     return True
