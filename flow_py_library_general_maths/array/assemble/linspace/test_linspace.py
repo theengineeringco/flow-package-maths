@@ -6,13 +6,13 @@ from typing import List
 
 import pytest
 
-from pycomponents_general_maths.array.assemble.linspace.flow_linspace import (
+from flow_py_library_general_maths.array.assemble.linspace.flow_linspace import (
     start_port,
     stop_port,
     num_port,
     linspace_port,
 )
-from pycomponents_general_maths.util.utils_tests import basic_test_eval
+from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
 

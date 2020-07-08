@@ -9,11 +9,11 @@
 # from flow.testing import FlowTest, flow_test
 # from flow_types import base
 
-# from pycomponents_general_maths.array.sorting.item_by_index.coordinate_index.flow_coordinate_index import (
+# from flow_py_library_general_maths.array.sorting.item_by_index.coordinate_index.flow_coordinate_index import (
 #     inports,
 #     outports,
 # )
-# from pycomponents_general_maths.util.utils_tests import basic_test_eval
+# from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # # Tests
 

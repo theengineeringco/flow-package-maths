@@ -4,11 +4,11 @@ import numpy as np
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 
-from pycomponents_general_maths.array.assemble.addressable_to_int_list.flow_addressable_to_int_list import (
+from flow_py_library_general_maths.array.assemble.addressable_to_int_list.flow_addressable_to_int_list import (
     inports,
     outports,
 )
-from pycomponents_general_maths.util.utils_tests import basic_test_eval
+from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
 

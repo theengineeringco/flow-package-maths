@@ -3,8 +3,8 @@ from pathlib import Path
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 
-from pycomponents_general_maths.divide.flow_divide import inports, outports
-from pycomponents_general_maths.util.utils_tests import basic_test_eval
+from flow_py_library_general_maths.divide.flow_divide import inports, outports
+from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
 
