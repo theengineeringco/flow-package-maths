@@ -24,7 +24,7 @@ pytest = "^5.4.0"                                   # Testing
 pre-commit = { version = "^2.5.0", python = "^3.6.1" }
 
 [tool.poetry.plugins."flow.components"]
-"pycomponents_general_maths" = "flow.tools.find_components:find_pkg_components"
+"flow-py-library-general_maths" = "flow.tools.find_components:find_pkg_components"
 
 [tool.taskipy.tasks]
 create_component = "flow_python_cookiecutter -t component"
