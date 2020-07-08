@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pycomponents_general_maths"
+name = "flow-py-library-general_maths"
 description = "A Package of Python Flow Components"
 authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
 version = "0.1.0"
@@ -12,36 +12,46 @@ python = "^3.6"
 flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
 
 [tool.poetry.dev-dependencies]
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}     # For Component Testing
-flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"} # For Component Generation
-wemake-python-styleguide = "^0.14.0"                # Linting
-mypy = "^0.770"                                     # Linting
-black = "^19.10b0"                                  # Formatting
-isort = {version = "^4.3", extras = ["pyproject"]}  # Formatting
-pytest = "^5.4.0"                                   # Testing
+wemake-python-styleguide = "^0.14"                    # Linting
+mypy = "^0.770"                                       # Linting
+black = "^19.10b0"                                    # Formatting
+isort = { version = "^4.3", extras = ["pyproject"] }  # Formatting
+pytest = "^5.4"                                       # Runnning Tests
+tox = "^3.15"                                         # Tox Testing
+tox-pyenv = "^1.1"                                    # Tox Testing
+nitpick = "^0.21"                                     # Style Guide
+toml = "<0.10.1"                                      # Style Guide
+
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}      # For Component Testing
+flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}  # For Component Generation
 
 # Pre-commit helps enforce code style. Use `pre-commit install` to install
-pre-commit = { version = "^2.5.0", python = "^3.6.1" }
+pre-commit = { version = "^2.5", python = "^3.6.1" }
 
 [tool.poetry.plugins."flow.components"]
-"pycomponents_general_maths" = "flow.tools.find_components:find_pkg_components"
+"flow-py-library-general_maths" = "flow.tools.find_components:find_pkg_components"
 
 [tool.taskipy.tasks]
 create_component = "flow_python_cookiecutter -t component"
 
+[tool.nitpick]
+style = "https://raw.githubusercontent.com/theengineeringco/python-styleguide/master/TEC-style.toml"
+
 [tool.black]
-line-length=120
+line-length = 120
+target-version = ["py36"]
 
 [tool.isort]
 line_length = 120
 multi_line_output = 3
+indent = 4
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
 known_third_party = ["flow", "flow_types", "numpy", "pytest"]
 
 [tool.unimport]
-include = '^flow|^tests'
+include = '^flow_py_library_general_maths|^tests'
 exclude = '(__init__.py)'
 
 [build-system]
