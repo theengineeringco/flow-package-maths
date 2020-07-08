@@ -1,6 +1,5 @@
 from pathlib import Path
 
-import numpy as np
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 from typing import List

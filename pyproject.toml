@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pycomponents_general_maths"
+name = "flow-py-library-general_maths"
 description = "A Package of Python Flow Components"
 authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
 version = "0.1.0"
