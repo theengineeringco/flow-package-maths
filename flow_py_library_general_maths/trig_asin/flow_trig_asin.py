@@ -18,9 +18,7 @@ definition = {
 def asin_function(use_values: dict = {"port1": 1}):
     theta_val = list(use_values.values())[0]
     if abs(theta_val) > 1:
-        raise ArithmeticError(
-            "You cannot operate {0} with this value of theta of {1}".format(definition["name"], theta_val)
-        )
+        return None
 
     return math.asin(theta_val)
 

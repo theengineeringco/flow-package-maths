@@ -20,11 +20,11 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_Ints(flow: FlowTest):
-    inputs = {inports[0]: [base.Int(1), base.Int(2), base.Int(3.5), base.Int(5.8),]}
+def test_ints(flow: FlowTest):
+    inputs = {inports[0]: [base.Int(1), base.Int(2), base.Int(3), base.Int(5)]}
 
     array = base.MdInt()
-    array.set_array(np.array([1, 2, 3.5, 5.8]))
+    array.set_array(np.array([1, 2, 3, 5]))
     outputs = {outports[0]: array}
 
     run_test_func(inputs, outputs, flow=flow)
