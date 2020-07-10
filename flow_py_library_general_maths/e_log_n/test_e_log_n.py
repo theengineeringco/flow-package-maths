@@ -16,17 +16,6 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_e_log_n_ints(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Int(10)],
-        inports[1]: [base.Int(4)],
-    }
-
-    outputs = {outports[0]: [base.Double(math.log(10, 4))]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
 def test_e_log_n_double2double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],
@@ -40,4 +29,4 @@ def test_e_log_n_double2double(flow: FlowTest):
 
 if __name__ == "__main__":
     with flow_test() as flow:
-        test_e_log_n_ints(flow)
+        test_e_log_n_double2double(flow)

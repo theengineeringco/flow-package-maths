@@ -15,28 +15,6 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_multiply_ints(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Int(1)],
-        inports[1]: [base.Int(4)],
-    }
-
-    outputs = {outports[0]: [base.Double(4)]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
-def test_multiply_int2double(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Double(3.67)],
-        inports[1]: [base.Int(2)],
-    }
-
-    outputs = {outports[0]: [base.Double(3.67 * 2)]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
 def test_multiply_double2double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],

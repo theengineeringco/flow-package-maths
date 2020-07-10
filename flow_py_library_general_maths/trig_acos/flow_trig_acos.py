@@ -9,13 +9,15 @@ outports = ["result"]
 definition = {
     "name": "acos",
     "description": "Produces the result of acos(N) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle],},],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
 # The actual numeric function we are performing
-def acos_function(use_values: dict = {"port1": 1}):
+def acos_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"port1": 1}
     theta_val = list(use_values.values())[0]
     if abs(theta_val) > 1:
         return None
@@ -36,8 +38,8 @@ def process(component: Component):
     # actually run the acos function with the input.
     the_result = acos_function(get_data_arr)
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of acos(n) is {0} ".format(the_result))
+    print(f"{inports} is {get_data_arr}")
+    print(f"The Result of acos(n) is {the_result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])

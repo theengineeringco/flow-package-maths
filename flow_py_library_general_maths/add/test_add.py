@@ -15,28 +15,6 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_add_ints(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Int(1)],
-        inports[1]: [base.Int(4)],
-    }
-
-    outputs = {outports[0]: [base.Double(5)]}
-
-    run_test_func(inputs, outputs, flow)
-
-
-def test_add_int2double(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Double(3.67)],
-        inports[1]: [base.Int(2)],
-    }
-
-    outputs = {outports[0]: [base.Double(5.67)]}
-
-    run_test_func(inputs, outputs, flow)
-
-
 def test_add_double2double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],
@@ -50,4 +28,4 @@ def test_add_double2double(flow: FlowTest):
 
 if __name__ == "__main__":
     with flow_test() as flow:
-        test_add_ints(flow)
+        test_add_double2double(flow)

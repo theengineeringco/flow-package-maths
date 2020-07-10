@@ -9,13 +9,15 @@ outports = ["result"]
 definition = {
     "name": "exp_n",
     "description": "Raises e to the power of n and returns the result.",
-    "inports": [{"name": inports[0], "description": "The index (e ^ n)", "types": [base.Int, base.Double],},],
+    "inports": [{"name": inports[0], "description": "The index (e ^ n)", "types": [base.Double]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
 # The actual numeric function we are performing
-def exp_e_function(use_values: dict = {"port1": 1, "port2": 2.5}):
+def exp_e_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"port1": 1, "port2": 2.5}
     ndx = list(use_values.values())[0]
     return exp(ndx)
 
@@ -33,8 +35,8 @@ def process(component: Component):
     # actually run the exp function with the inputs.
     the_result = exp_e_function(get_data_arr)
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of e^value is {0} ".format(the_result))
+    print(f"{inports} is {get_data_arr}")
+    print(f"The Result of e^value is {the_result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])

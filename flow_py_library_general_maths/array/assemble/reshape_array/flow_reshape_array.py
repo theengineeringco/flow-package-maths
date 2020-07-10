@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 from flow import Component, print, run
 from flow_types import base
@@ -27,14 +25,15 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all([component.has_data(idx) for idx in inports]):
+    if not all(component.has_data(idx) for idx in inports):
         return
 
     # source the data from the inports
     array: base.MdDouble = component.get_data(inports[0])
     shape: base.MdInt = component.get_data(inports[1])
 
-    assert len(shape.shape) == 1  # Assert that the shape is only 1 dimensional, e.g. 2x2x3x1 is [2, 2, 3, 1]
+    if len(shape.shape) != 1:  # Assert that the shape is only 1 dimensional, e.g. 2x2x3x1 is [2, 2, 3, 1]
+        return
 
     strict: bool = component.get_data("strict").value if component.has_data("strict") else False
     np_array: np.array = array.get_array()
@@ -46,8 +45,8 @@ def process(component: Component):
     array_msg = base.MdDouble()
     array_msg.set_array(np_array)
 
-    print("Reshaping\n{0}\nto a shape of\n{1}".format(array.get_array(), shape.values))
-    print("Produced:\n{0}".format(np_array))
+    print(f"Reshaping\n{array.get_array()}\nto a shape of\n{shape.values}")
+    print(f"Produced:\n{np_array}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
 

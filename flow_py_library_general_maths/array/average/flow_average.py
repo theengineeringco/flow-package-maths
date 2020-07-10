@@ -8,7 +8,7 @@ outports = ["result"]
 definition = {
     "name": "average",
     "description": "Get the average of an entire Array of Numbers.",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.MdDouble],},],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.MdDouble]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
@@ -27,7 +27,7 @@ def process(component: Component):
     result: float = np.mean(array)
 
     if component.debug is True:
-        print("The average of {0} is {1} ".format(array_msg, result))
+        print(f"The average of {array_msg} is {result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])

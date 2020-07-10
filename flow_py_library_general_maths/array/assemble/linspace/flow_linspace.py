@@ -6,9 +6,9 @@ from flow_types import base
 # Component Definition
 # ---
 # Inports
-start_port = Inport(name="start", description="The start number to begin your range from.", types=[base.Double],)
-stop_port = Inport(name="stop", description="The stop number to end your range from.", types=[base.Double],)
-num_port = Inport(name="num", description="The number of elements in your linspace stream.", types=[base.Int],)
+start_port = Inport(name="start", description="The start number to begin your range from.", types=[base.Double])
+stop_port = Inport(name="stop", description="The stop number to end your range from.", types=[base.Double])
+num_port = Inport(name="num", description="The number of elements in your linspace stream.", types=[base.Int])
 
 # Outports
 linspace_port = Outport(
@@ -40,8 +40,8 @@ def process(component: Component):
 
     array = np.linspace(start, stop, num)
 
-    print("Creating linspace between {0} and {1} with {2} elements.".format(start, stop, num))
-    print("Produced:\n{0}".format(array))
+    print(f"Creating linspace between {start} and {stop} with {num} elements.")
+    print(f"Produced:\n{array}")
 
     # Send the result message to the outports (as addressable)
     for each_idx, each_elem in enumerate(array):

@@ -16,35 +16,13 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_subtract_ints(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Int(1)],
-        inports[1]: [base.Int(4)],
-    }
-
-    outputs = {outports[0]: [base.Double(-3)]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
-def test_subtract_int2double(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Double(3.67)],
-        inports[1]: [base.Int(2)],
-    }
-
-    outputs = {outports[0]: [base.Double(1.67)]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
 def test_subtract_double2double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],
         inports[1]: [base.Double(-1e9)],
     }
 
-    outputs = {outports[0]: [base.Double(3.67 - (-1e9))]}
+    outputs = {outports[0]: [base.Double(3.67 + 1e9)]}
 
     run_test_func(inputs, outputs, flow=flow)
 

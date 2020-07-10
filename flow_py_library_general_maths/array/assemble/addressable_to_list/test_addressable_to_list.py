@@ -18,7 +18,7 @@ def run_test_func(inputs, outputs, flow: FlowTest):
 
 
 def test_doubles(flow: FlowTest):
-    inputs = {inports[0]: [base.Double(1), base.Double(2), base.Double(3.5), base.Double(5.8),]}
+    inputs = {inports[0]: [base.Double(1), base.Double(2), base.Double(3.5), base.Double(5.8)]}
 
     array = base.MdDouble()
     array.set_array(np.array([1, 2, 3.5, 5.8]))

@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 from flow import Component, print, run
 from flow_types import base
@@ -28,7 +26,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all([component.has_data(idx) for idx in inports]):
+    if not all(component.has_data(idx) for idx in inports):
         return
 
     # source the data from the inports
@@ -45,8 +43,10 @@ def process(component: Component):
     else:  # Populate horizontally
         array_msg.set_array(np.hstack(tuple(vals)))
 
-    print("Joining\n{0}\nwith\n{1}\n{2}ly.".format(vals[0], vals[1], ("vertical" if vertical else "horizontal")))
-    print("Produced:\n{0}".format(array_msg.get_array()))
+    print(
+        f"Joining\n{vals[0]}\nwith\n{vals[1]}\n{'vertical' if vertical else 'horizontal'}ly.",
+    )  # noqa: WPS221 - Allow complex line
+    print(f"Produced:\n{array_msg.get_array()}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
 

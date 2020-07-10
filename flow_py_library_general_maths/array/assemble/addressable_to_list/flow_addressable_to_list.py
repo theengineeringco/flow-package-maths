@@ -11,12 +11,7 @@ definition = {
     "name": "addressable_to_list",
     "description": "Assemble the input values in to a list in the order with which they were recieved.",
     "inports": [
-        {
-            "name": inports[0],
-            "description": "All of the numbers",
-            "types": [base.Double, base.Int],
-            "addressable": True,
-        },
+        {"name": inports[0], "description": "All of the numbers", "types": [base.Double], "addressable": True},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?
     "outports": [{"name": outports[0], "description": "The resulting array (list)", "types": [base.MdDouble]}],
     # We enforce doubles for maths
@@ -38,11 +33,7 @@ def process(component: Component):
     array_msg = base.MdDouble()
     array_msg.set_array(np.array(addr_lst))  # Np List implementation automatically
 
-    print(
-        "Compiling the list of {0} in to an MdDouble of length {1} (1 dimensional).".format(
-            addr_lst, len(array_msg.values)
-        )
-    )
+    print(f"Compiling the list of {addr_lst} in to an MdDouble of length {len(array_msg.values)} (1 dimensional).")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
