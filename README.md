@@ -48,7 +48,7 @@ outports = ["result"]
 The Flow Definition is used by Flow: backend for types and port handling; front-end for Name, Description, and any other functionality we might add (such as Icons, Web-links, Viewport definitions).
 
 ```python
-allowable_types = [base.Int, base.Double]
+allowable_types = [base.Double]
 definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
@@ -64,7 +64,13 @@ definition = {
             "types": allowable_types,
         },
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": allowable_types}],
+    "outports": [
+        {
+            "name": outports[0],
+            "description": "The result number",
+            "types": allowable_types,
+        }
+    ],
 }
 ```
 
@@ -72,7 +78,9 @@ The reason we have the mathematical function separate from the `process` functio
 
 ```python
 # The actual numeric function we are performing
-def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
+def dividing_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"val1": 1, "val2": 2.5}
     the_values = list(use_values.values())
     return_value = the_values[0]
     for idx in range(1, len(the_values)):

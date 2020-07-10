@@ -9,13 +9,15 @@ outports = ["result"]
 definition = {
     "name": "natural_log",
     "description": "Natural log of the value",
-    "inports": [{"name": inports[0], "description": "The natural log of the value", "types": [base.Int, base.Double],}],
+    "inports": [{"name": inports[0], "description": "The natural log of the value", "types": [base.Double]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
 # The actual numeric function we are performing
-def ln_function(use_values: dict = {"port1": 1, "port2": 2.5}):
+def ln_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"port1": 1, "port2": 2.5}
     ndx = list(use_values.values())[0]
     return math.log(ndx)
 
@@ -32,8 +34,8 @@ def process(component: Component):
     get_data_arr = {inports[0]: data1.value}
     the_result = ln_function(get_data_arr)
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of e^value is {0} ".format(the_result))
+    print(f"{inports} is {get_data_arr}")
+    print(f"The Result of e^value is {the_result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])

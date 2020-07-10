@@ -2,9 +2,9 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from flow.exceptions import ComponentError
 from flow.testing import FlowTest, flow_test
 from flow_types import base
-from flow.exceptions import ComponentError
 
 from flow_py_library_general_maths.array.assemble.join_two_arrays.flow_join_two_arrays import inports, outports
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval

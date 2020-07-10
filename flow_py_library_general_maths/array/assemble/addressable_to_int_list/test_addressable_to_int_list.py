@@ -32,4 +32,4 @@ def test_ints(flow: FlowTest):
 
 if __name__ == "__main__":
     with flow_test() as flow:
-        test_Ints(flow)
+        test_ints(flow)

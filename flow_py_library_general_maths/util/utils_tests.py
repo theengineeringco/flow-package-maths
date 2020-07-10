@@ -3,8 +3,7 @@ from flow.testing.helpers import strip_test_data_unique_info
 
 def basic_test_eval(test_data: dict, tolerance: float = 1e-6, type_test: bool = True, normalise: bool = True) -> bool:
     """
-        Standard testing of components.
-        ---------------------------------
+        Test a component in the standard fashion.
 
         test_data: The resulting test_data from component.test(inputs, outputs)
         tolerance (optional): the tolerance to check for
@@ -27,7 +26,7 @@ def basic_test_eval(test_data: dict, tolerance: float = 1e-6, type_test: bool = 
                 p_got = strip_test_data_unique_info(p_got)
             if isinstance(p_exp, list):
                 for idx, _ in enumerate(p_exp):
-                    assert p_exp[idx] == p_got[idx]
+                    assert p_exp[idx] == p_got[idx]  # noqa: S101 - Allow Assert
             else:
-                assert p_exp == p_got
+                assert p_exp == p_got  # noqa: S101 - Allow Assert
     return True

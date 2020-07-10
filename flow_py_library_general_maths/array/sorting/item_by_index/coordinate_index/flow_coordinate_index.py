@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 from flow import Component, print, run
 from flow_types import base
@@ -26,20 +24,21 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all([component.has_data(idx) for idx in inports]):
+    if not all(component.has_data(idx) for idx in inports):
         return
 
     # source the data from the inports
     array: base.MdDouble = component.get_data(inports[0])
     index: base.MdInt = component.get_data(inports[1])
 
-    assert len(index.shape) == 1  # Assert that the coordinates are only 1 dimensional, e.g. [2, 2, 3, 1]
+    if len(index.shape) != 1:  # Assert that the coordinates are only 1 dimensional, e.g. [2, 2, 3, 1]
+        return
 
     np_array: np.array = array.get_array()
     return_value: float = np_array[tuple(index.values)]
 
-    print("Retrieving the value at coordinates {0} in the array:\n{1}".format(index.values, np_array))
-    print("Produced:\n{0}".format(return_value))
+    print(f"Retrieving the value at coordinates {index.values} in the array:\n{np_array}")
+    print(f"Produced:\n{return_value}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(return_value), outports[0])
 

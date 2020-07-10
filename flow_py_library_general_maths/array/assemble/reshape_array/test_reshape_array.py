@@ -17,12 +17,12 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_5_2_to_3_3_3(flow: FlowTest):
+def test_5_2_to_3_3_3(flow: FlowTest):  # noqa: WPS114 - Allow underscore named pattern
     inputs = {
         inports[0]: base.MdDouble(
             np.array(
-                [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25],],
-            )
+                [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]],
+            ),
         ),
         inports[1]: base.MdInt(np.array([3, 3, 3])),
     }
@@ -35,8 +35,8 @@ def test_5_2_to_3_3_3(flow: FlowTest):
                     [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
                     [[19, 20, 21], [22, 23, 24], [25, 0, 0]],
                 ],
-            )
-        )
+            ),
+        ),
     }
 
     run_test_func(inputs, outputs, flow=flow)

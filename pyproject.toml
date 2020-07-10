@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/theengineeringco/flow-py-library-general_maths.git"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.1"
 flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
 
 [tool.poetry.dev-dependencies]
@@ -26,7 +26,7 @@ flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["te
 flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}  # For Component Generation
 
 # Pre-commit helps enforce code style. Use `pre-commit install` to install
-pre-commit = { version = "^2.5", python = "^3.6.1" }
+pre-commit = "^2.5"
 
 [tool.poetry.plugins."flow.components"]
 "flow-py-library-general_maths" = "flow.tools.find_components:find_pkg_components"

@@ -8,15 +8,17 @@ definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
     "inports": [
-        {"name": inports[0], "description": "The first number", "types": [base.Int, base.Double],},
-        {"name": inports[1], "description": "The second number", "types": [base.Int, base.Double],},
+        {"name": inports[0], "description": "The first number", "types": [base.Double]},
+        {"name": inports[1], "description": "The second number", "types": [base.Double]},
     ],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
 # The actual numeric function we are performing
-def dividing_function(use_values: dict = {"val1": 1, "val2": 2.5}):
+def dividing_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"val1": 1, "val2": 2.5}
     the_values = list(use_values.values())
     return_value = the_values[0]
     for _, each_value in enumerate(the_values[1:]):
@@ -38,8 +40,8 @@ def process(component: Component):
     # actually run the dividing function with the inputs.
     the_result = dividing_function(get_data_arr)
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of dividing A by B is {0} ".format(the_result))
+    print(f"{inports} is {get_data_arr}")
+    print(f"The Result of dividing A by B is {the_result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])

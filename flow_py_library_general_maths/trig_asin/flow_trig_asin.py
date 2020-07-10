@@ -9,13 +9,15 @@ outports = ["result"]
 definition = {
     "name": "asin",
     "description": "Produces the result of asin(N) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle],},],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
 
 # The actual numeric function we are performing
-def asin_function(use_values: dict = {"port1": 1}):
+def asin_function(use_values=None):
+    if use_values is None:
+        use_values: dict = {"port1": 1}
     theta_val = list(use_values.values())[0]
     if abs(theta_val) > 1:
         return None
@@ -36,8 +38,8 @@ def process(component: Component):
     # actually run the asin function with the input.
     the_result = asin_function(get_data_arr)
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of asin(n) is {0} ".format(the_result))
+    print(f"{inports} is {get_data_arr}")
+    print(f"The Result of asin(n) is {the_result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(the_result), outports[0])

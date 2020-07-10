@@ -17,11 +17,11 @@ component_file = Path(__file__).parent
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
-    test_data = flow.test(component_file, inputs, outputs, timeout=1000)
+    test_data = flow.test(component_file, inputs, outputs)
     basic_test_eval(test_data)
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(  # noqa: WPS114 - Allow underscore named pattern
     ("index", "result"),
     [
         (base.MdInt(np.array([0, 0])), base.Double(1)),
@@ -33,8 +33,8 @@ def test_5_2(index: base.MdInt, result: base.Double, flow: FlowTest):
     inputs = {
         inports[0]: base.MdDouble(
             np.array(
-                [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25],],
-            )
+                [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]],
+            ),
         ),
         inports[1]: index,
     }

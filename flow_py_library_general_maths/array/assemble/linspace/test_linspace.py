@@ -1,16 +1,15 @@
 from pathlib import Path
-
-from flow.testing import FlowTest, flow_test
-from flow_types import base
 from typing import List
 
 import pytest
+from flow.testing import FlowTest, flow_test
+from flow_types import base
 
 from flow_py_library_general_maths.array.assemble.linspace.flow_linspace import (
+    linspace_port,
+    num_port,
     start_port,
     stop_port,
-    num_port,
-    linspace_port,
 )
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 

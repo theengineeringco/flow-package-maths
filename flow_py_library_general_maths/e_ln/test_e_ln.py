@@ -17,16 +17,6 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     basic_test_eval(test_data)
 
 
-def test_ln_int(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Int(10)],
-    }
-
-    outputs = {outports[0]: [base.Double(math.log(10))]}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
 def test_ln_double(flow: FlowTest):
     inputs = {
         inports[0]: [base.Double(3.67)],

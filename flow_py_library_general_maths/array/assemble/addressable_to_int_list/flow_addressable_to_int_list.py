@@ -9,14 +9,10 @@ outports = ["array"]
 
 definition = {
     "name": "addressable_to_int_list",
-    "description": "Assemble the input values in to a list in the order with which they were recieved. Specifically for integer values!",
+    "description": "Assemble the input values in to a list in the order with which they were recieved."
+    + "Specifically for integer values!",
     "inports": [
-        {
-            "name": inports[0],
-            "description": "All of the integers",
-            "types": [base.Int],
-            "addressable": True,
-        },
+        {"name": inports[0], "description": "All of the integers", "types": [base.Int], "addressable": True},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?
     "outports": [{"name": outports[0], "description": "The resulting array (list)", "types": [base.MdInt]}],
     # We enforce Ints for maths
@@ -38,11 +34,7 @@ def process(component: Component):
     array_msg = base.MdInt()
     array_msg.set_array(np.array(addr_lst))  # Np List implementation automatically
 
-    print(
-        "Compiling the list of {0} in to an MdInt of length {1} (1 dimensional).".format(
-            addr_lst, len(array_msg.values)
-        )
-    )
+    print(f"Compiling the list of {addr_lst} in to an MdInt of length {len(array_msg.values)} (1 dimensional).")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
