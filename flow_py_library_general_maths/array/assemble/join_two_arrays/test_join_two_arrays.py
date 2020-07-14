@@ -2,7 +2,6 @@ from pathlib import Path
 
 import numpy as np
 import pytest
-from flow.exceptions import ComponentError
 from flow.testing import FlowTest, flow_test
 from flow_types import base
 
@@ -22,8 +21,8 @@ def run_test_func(inputs, outputs, flow: FlowTest):
 @pytest.mark.parametrize(
     ("vertical", "result"),
     [
-        (False, np.array([[1, 2, 5, 6], [3, 4, 7, 8]])),
         (True, np.array([[1, 2], [3, 4], [5, 6], [7, 8]])),
+        (False, np.array([[1, 2, 5, 6], [3, 4, 7, 8]])),
     ],  # We can test this function multiple times with different values
 )
 def test_equal_arrays(vertical, result, flow: FlowTest):
