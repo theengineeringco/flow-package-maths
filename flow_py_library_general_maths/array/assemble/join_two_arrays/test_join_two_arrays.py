@@ -53,21 +53,7 @@ def test_equal_lists(vertical, result, flow: FlowTest):
     run_test_func(inputs, outputs, flow=flow)
 
 
-def test_unequal_arrays(flow: FlowTest):
-    with pytest.raises(ComponentError):  # This should not work!
-        inputs = {
-            inports[0]: [base.MdDouble(np.array([1, 2, 3, 4]))],
-            inports[1]: [base.MdDouble(np.array([[5, 6], [7, 8]]))],
-            "vertical": base.Bool(False),
-        }
-
-        outputs = {outports[0]: base.MdDouble(np.array([[1, 2, 5, 6], [3, 4, 7, 8]]))}
-
-        run_test_func(inputs, outputs, flow=flow)
-
-
 if __name__ == "__main__":
     with flow_test() as flow:
-        # test_equal_arrays(False, np.array([[1, 2, 5, 6], [3, 4, 7, 8]]), flow)
-        # test_equal_lists(True, np.array([[1, 2, 3], [4, 5, 6]]), flow)
-        test_unequal_arrays(flow)
+        # test_equal_arrays(vertical=False, result=np.array([[1, 2, 5, 6], [3, 4, 7, 8]]), flow=flow)
+        test_equal_lists(vertical=True, result=np.array([[1, 2, 3], [4, 5, 6]]), flow=flow)
