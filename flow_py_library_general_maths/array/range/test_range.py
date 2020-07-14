@@ -25,6 +25,7 @@ def test_MdDouble2x2(flow: FlowTest):
 
     run_test_func(inputs, outputs, flow=flow)
 
+
 def test_MdDouble2x2mixed(flow: FlowTest):
     array = base.MdDouble(np.array([[-1, 2.2], [4, 4]]))
     inputs = {inports[0]: [array]}
@@ -32,6 +33,7 @@ def test_MdDouble2x2mixed(flow: FlowTest):
     outputs = {outports[0]: base.Double(5.0)}
 
     run_test_func(inputs, outputs, flow=flow)
+
 
 def test_MdDouble5x5x5x5x5(flow: FlowTest):
     array = base.MdDouble(
