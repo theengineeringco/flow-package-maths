@@ -7,7 +7,7 @@ outports = ["result"]
 
 definition = {
     "name": "median",
-    "description": "Get the average of an entire Array of Numbers.",
+    "description": "Get the median of an entire array of numbers.",
     "inports": [{"name": inports[0], "description": "The first number", "types": [base.MdDouble]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
@@ -24,10 +24,10 @@ def process(component: Component):
     array: np.array = array_msg.get_array()
 
     # We are using numpy's built in functions so we don't have to worry
-    result: float = np.mean(array)
+    result: float = np.median(array)
 
     if component.debug is True:
-        print(f"The average of {array_msg} is {result} ")
+        print(f"The median of {array_msg} is {result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])
