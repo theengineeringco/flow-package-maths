@@ -51,9 +51,5 @@ def test_linspace(start: base.Double, stop: base.Double, num: base.Double, resul
 if __name__ == "__main__":
     with flow_test() as flow:
         test_linspace(
-            start=base.Double(0),
-            stop=base.Double(10),
-            num=base.Int(6),
-            result=[0, 2, 4, 6, 8, 10],
-            flow=flow,
+            start=base.Double(0), stop=base.Double(10), num=base.Int(6), result=[0, 2, 4, 6, 8, 10], flow=flow,
         )
