@@ -14,7 +14,7 @@ num_port = Inport(name="num", description="The number of elements in your linspa
 linspace_port = Outport(
     name="linspace",
     description="The elements of your linspace stream.",
-    types=[base.Double],
+    types=[base.MdDouble],
     addressable=True,  # This is default but stated explicitly.
 )
 
@@ -43,9 +43,11 @@ def process(component: Component):
     print(f"Creating linspace between {start} and {stop} with {num} elements.")
     print(f"Produced:\n{array}")
 
+    array_msg = base.MdDouble()
+    array_msg.set_array(array)
+
     # Send the result message to the outports (as addressable)
-    for each_idx, each_elem in enumerate(array):
-        component.send_data(base.Double(float(each_elem)), linspace_port.name, each_idx)
+    component.send_data_addressable(array_msg, linspace_port.name)
 
 
 if __name__ == "__main__":
