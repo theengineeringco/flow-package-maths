@@ -1,6 +1,6 @@
 import math
 
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base, eng
 
 inports = ["theta"]
@@ -29,18 +29,15 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
+    value_msg: base.Double = component.get_data(inports[0])
 
-    get_data_arr = {inports[0]: data1.value}
-    # actually run the cos function with the input.
-    the_result = cos_function(get_data_arr)
+    theta = value_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Calculating cos({theta})")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of cos(n) is {the_result} ")
+    # calculate the result
+    result = math.cos(theta)
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

@@ -1,4 +1,4 @@
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["index", "power"]
@@ -16,22 +16,6 @@ definition = {
 }
 
 
-# The actual numeric function we are performing
-def exp_n_function(use_values=None):
-    if use_values is None:
-        use_values: dict = {"port1": 1, "port2": 2.5}
-    the_values = list(use_values.values())
-    index = the_values[0]
-    exponents = the_values[1:]
-    return_value = index
-
-    # if you provide more than 1 "n" value it'll go (i**n1)**n2**...
-    for ndx in exponents:
-        return_value **= ndx
-
-    return return_value
-
-
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
@@ -39,19 +23,21 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
-    data2 = component.get_data(inports[1])
+    value1_msg: base.Double = component.get_data(inports[0])
+    value2_msg: base.Double = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
-    # actually run the exponential function with the inputs.
-    the_result = exp_n_function(get_data_arr)
+    val1 = value1_msg.value
+    val2 = value2_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Calculating the index: {val1} to the power of: {val2}")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of val1 ^ val2 is {the_result} ")
+    if val1 < 0 and not val2.is_integer():
+        component.log(log_level=LogLevel.ERROR, message="Flow currently does not support Complex Numbers!")
+        return
+
+    # calculate the result
+    result = val1 ** val2
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

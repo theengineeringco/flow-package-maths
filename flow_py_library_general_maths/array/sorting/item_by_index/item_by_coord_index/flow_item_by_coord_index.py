@@ -1,5 +1,7 @@
+from typing import List
+
 import numpy as np
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["array", "index_coord"]
@@ -32,16 +34,23 @@ def process(component: Component):
     index: base.MdInt = component.get_data(inports[1])
 
     if len(index.shape) != 1:  # Assert that the coordinates are only 1 dimensional, e.g. [2, 2, 3, 1]
+        component.log(
+            LogLevel.ERROR,
+            message=(
+                "You can only use a 1 Dimensional integer array to retrieve a coordinate value from a number array!",
+            ),
+        )
+
         return
 
-    np_array: np.array = array.get_array()
-    return_value: float = np_array[tuple(index.values)]
+    index_coords: List[int] = index.values
+    component.log(LogLevel.DEBUG, message=f"Retrieving the {index_coords}th...")
 
-    print(f"Retrieving the value at coordinates {index.values} in the array:\n{np_array}")
-    print(f"Produced:\n{return_value}")
+    np_array: np.array = array.get_array()
+    component.log(LogLevel.DEBUG, message=f"...from the array {np_array}")
+
+    return_value: float = np_array[tuple(index_coords)]
+
+    component.log(LogLevel.DEBUG, message=f"Retrieved:\n{return_value}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(return_value), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)

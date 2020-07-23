@@ -1,4 +1,4 @@
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["val1", "val2"]
@@ -15,13 +15,6 @@ definition = {
 }
 
 
-# The actual numeric function we are performing
-def adding_function(use_values=None):
-    if use_values is None:
-        use_values: dict = {"port1": 1, "port2": 2.5}
-    return sum(use_values.values())
-
-
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
@@ -29,19 +22,17 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])  # False is required to use the latest data if only one value updates
-    data2 = component.get_data(inports[1])  # False is required to use the latest data if only one value updates
+    value1_msg: base.Double = component.get_data(inports[0])
+    value2_msg: base.Double = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
-    # actually run the adding function with the inputs.
-    the_result = adding_function(get_data_arr)
+    val1 = value1_msg.value
+    val2 = value2_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Adding {val1} to {val2}")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of adding these is {the_result} ")
+    # calculate the result
+    result = val1 + val2
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

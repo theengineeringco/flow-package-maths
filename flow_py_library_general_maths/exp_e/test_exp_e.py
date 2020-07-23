@@ -1,15 +1,13 @@
-from pathlib import Path
+import math
 
-from flow.testing import FlowTest, flow_test
+from flow.test_framework import FlowTest, flow_test
 from flow_types import base
 
-from flow_py_library_general_maths.exp_e.flow_exp_e import exp, inports, outports
+from flow_py_library_general_maths.exp_e.flow_exp_e import inports, outports
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
-
-
-component_file = Path(__file__).parent
+component_file = "general_maths/exp_e"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
@@ -22,7 +20,7 @@ def test_exp_e_double(flow: FlowTest):
         inports[0]: [base.Double(3.67)],
     }
 
-    outputs = {outports[0]: [base.Double(exp(3.67))]}
+    outputs = {outports[0]: [base.Double(math.exp(3.67))]}
 
     run_test_func(inputs, outputs, flow=flow)
 
@@ -32,7 +30,7 @@ def test_exp_e_negatives(flow: FlowTest):
         inports[0]: [base.Double(-10)],
     }
 
-    outputs = {outports[0]: [base.Double(exp(-10))]}
+    outputs = {outports[0]: [base.Double(math.exp(-10))]}
 
     run_test_func(inputs, outputs, flow=flow)
 

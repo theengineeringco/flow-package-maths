@@ -1,4 +1,4 @@
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["val1", "val2"]
@@ -32,19 +32,17 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
-    data2 = component.get_data(inports[1])
+    value1_msg: base.Double = component.get_data(inports[0])
+    value2_msg: base.Double = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
-    # actually run the multiplying function with the inputs.
-    the_result = multiplying_function(get_data_arr)
+    val1 = value1_msg.value
+    val2 = value2_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Multiplying {val1} by {val2}")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of multiplying these is {the_result} ")
+    # calculate the result
+    result = val1 * val2
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

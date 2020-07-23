@@ -1,4 +1,4 @@
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["val1", "val2"]
@@ -8,22 +8,11 @@ definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
     "inports": [
-        {"name": inports[0], "description": "The first number", "types": [base.Double]},
-        {"name": inports[1], "description": "The second number", "types": [base.Double]},
+        {"name": inports[0], "description": "The numerator", "types": [base.Double]},
+        {"name": inports[1], "description": "The denominator", "types": [base.Double]},
     ],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
-
-
-# The actual numeric function we are performing
-def dividing_function(use_values=None):
-    if use_values is None:
-        use_values: dict = {"val1": 1, "val2": 2.5}
-    the_values = list(use_values.values())
-    return_value = the_values[0]
-    for _, each_value in enumerate(the_values[1:]):
-        return_value /= each_value
-    return return_value
 
 
 # The process that the component performs
@@ -33,19 +22,17 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
-    data2 = component.get_data(inports[1])
+    value1_msg: base.Double = component.get_data(inports[0])
+    value2_msg: base.Double = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
-    # actually run the dividing function with the inputs.
-    the_result = dividing_function(get_data_arr)
+    val1 = value1_msg.value
+    val2 = value2_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Dividing {val1} by {val2}")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of dividing A by B is {the_result} ")
+    # calculate the result
+    result = val1 / val2
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

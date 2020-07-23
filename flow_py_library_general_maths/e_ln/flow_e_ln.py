@@ -1,6 +1,6 @@
 import math
 
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["value"]
@@ -14,14 +14,6 @@ definition = {
 }
 
 
-# The actual numeric function we are performing
-def ln_function(use_values=None):
-    if use_values is None:
-        use_values: dict = {"port1": 1, "port2": 2.5}
-    ndx = list(use_values.values())[0]
-    return math.log(ndx)
-
-
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
@@ -29,17 +21,15 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
+    value_msg: base.Double = component.get_data(inports[0])
 
-    get_data_arr = {inports[0]: data1.value}
-    the_result = ln_function(get_data_arr)
+    val = value_msg.value
+    component.log(log_level=LogLevel.DEBUG, message=f"Getting the Natural Log of {val}")
 
-    print(f"{inports} is {get_data_arr}")
-    print(f"The Result of e^value is {the_result} ")
+    # calculate the results
+    result = math.log(val)
+    result_msg = base.Double(result)
+    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)
+    component.send_data_addressable(result_msg, outports[0])

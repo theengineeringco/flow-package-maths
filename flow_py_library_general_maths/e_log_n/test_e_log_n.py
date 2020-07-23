@@ -1,13 +1,12 @@
 import math
-from pathlib import Path
 
-from flow.testing import FlowTest, flow_test
+from flow.test_framework import FlowTest, flow_test
 from flow_types import base
 
 from flow_py_library_general_maths.e_log_n.flow_e_log_n import inports, outports
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
-component_file = Path(__file__).parent
+component_file = "general_maths/e_log_n"
 
 
 # Tests

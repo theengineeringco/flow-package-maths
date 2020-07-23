@@ -2,14 +2,14 @@
 name = "flow-py-library-general_maths"
 description = "A Package of Python Flow Components"
 authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
-version = "0.1.0"
+version = "0.2.0"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/theengineeringco/flow-py-library-general_maths.git"
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="dev"}
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
@@ -22,14 +22,14 @@ tox-pyenv = "^1.1"                                    # Tox Testing
 nitpick = "^0.21"                                     # Style Guide
 toml = "<0.10.1"                                      # Style Guide
 
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}      # For Component Testing
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="dev", extras = ["testing"]}      # For Component Testing
 flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}  # For Component Generation
 
 # Pre-commit helps enforce code style. Use `pre-commit install` to install
 pre-commit = "^2.5"
 
 [tool.poetry.plugins."flow.components"]
-"flow-py-library-general_maths" = "flow.tools.find_components:find_pkg_components"
+"general_maths" = "flow_py_library_general_maths"
 
 [tool.taskipy.tasks]
 create_component = "flow_python_cookiecutter -t component"
