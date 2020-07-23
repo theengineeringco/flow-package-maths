@@ -13,7 +13,7 @@ from flow_py_library_general_maths.array.assemble.linspace.flow_linspace import 
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
-component_file = "general_maths/array/assemble/linspace"
+component_file = "array_maths/assemble/linspace"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

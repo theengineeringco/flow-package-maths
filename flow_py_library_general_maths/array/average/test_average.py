@@ -6,7 +6,7 @@ from flow_py_library_general_maths.array.average.flow_average import inports, ou
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
-component_file = "general_maths/array/average"
+component_file = "array_maths/average"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

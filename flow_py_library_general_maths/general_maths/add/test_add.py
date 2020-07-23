@@ -1,7 +1,7 @@
 from flow.test_framework import FlowTest, flow_test
 from flow_types import base
 
-from flow_py_library_general_maths.add.flow_add import inports, outports
+from flow_py_library_general_maths.general_maths.add.flow_add import inports, outports
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests

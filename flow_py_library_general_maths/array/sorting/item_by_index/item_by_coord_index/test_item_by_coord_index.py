@@ -10,7 +10,7 @@ from flow_py_library_general_maths.array.sorting.item_by_index.item_by_coord_ind
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
-component_file = "general_maths/array/sorting/item_by_index/item_by_coord_index"
+component_file = "array_maths/sorting/item_by_index/item_by_coord_index"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

@@ -29,7 +29,8 @@ flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookie
 pre-commit = "^2.5"
 
 [tool.poetry.plugins."flow.components"]
-"general_maths" = "flow_py_library_general_maths"
+"general_maths" = "flow_py_library_general_maths.general_maths"
+"array_maths" = "flow_py_library_general_maths.array"
 
 [tool.taskipy.tasks]
 create_component = "flow_python_cookiecutter -t component"

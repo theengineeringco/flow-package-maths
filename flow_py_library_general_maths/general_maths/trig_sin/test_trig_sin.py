@@ -3,7 +3,7 @@ import math
 from flow.test_framework import FlowTest, flow_test
 from flow_types import base
 
-from flow_py_library_general_maths.trig_sin.flow_trig_sin import inports, outports
+from flow_py_library_general_maths.general_maths.trig_sin.flow_trig_sin import inports, outports
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests

@@ -6,7 +6,7 @@ from flow_py_library_general_maths.array.assemble.reshape_array.flow_reshape_arr
 from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
-component_file = "general_maths/array/assemble/reshape_array"
+component_file = "array_maths/assemble/reshape_array"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
