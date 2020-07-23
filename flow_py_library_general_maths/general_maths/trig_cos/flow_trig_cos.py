@@ -8,8 +8,8 @@ outports = ["result"]
 
 definition = {
     "name": "cos",
-    "description": "Produces the result of cos(N) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle]}],
+    "description": "Produces the result of cos(theta) as a double",
+    "inports": [{"name": inports[0], "description": "The first number", "types": [eng.Angle]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 

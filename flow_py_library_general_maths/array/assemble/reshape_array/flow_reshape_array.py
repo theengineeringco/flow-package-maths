@@ -7,7 +7,7 @@ outports = ["result_array"]
 
 definition = {
     "name": "reshape_array",
-    "description": "Reshape an MdDouble array to a new shape provided as a list of integers.",
+    "description": "Reshape an MdDouble array to a new shape provided as an MdInt.",
     "inports": [
         {"name": inports[0], "description": "The array", "types": [base.MdDouble]},
         {"name": inports[1], "description": "The shape as a 1D array", "types": [base.MdInt]},

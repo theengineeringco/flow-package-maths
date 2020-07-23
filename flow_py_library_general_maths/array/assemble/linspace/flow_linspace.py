@@ -21,7 +21,7 @@ linspace_port = Outport(
 # Create definition
 definition = Definition(
     name="linspace",
-    description="Create a stream of values following Np Linspace procedure",
+    description="Create a List of values following Np Linspace procedure",
     inports=[start_port, stop_port, num_port],
     outports=[linspace_port],
 )

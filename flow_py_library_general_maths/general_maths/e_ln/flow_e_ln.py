@@ -8,7 +8,7 @@ outports = ["result"]
 
 definition = {
     "name": "natural_log",
-    "description": "Natural log of the value",
+    "description": "Natural log of the value.",
     "inports": [{"name": inports[0], "description": "The natural log of the value", "types": [base.Double]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }

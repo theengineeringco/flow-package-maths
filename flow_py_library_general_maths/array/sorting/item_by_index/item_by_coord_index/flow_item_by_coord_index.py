@@ -9,7 +9,7 @@ outports = ["result_array"]
 
 definition = {
     "name": "item_by_coord_index",
-    "description": "Get an item from an array by coordinate indices",
+    "description": "Get an item from an MdDouble array by coordinate indices (MdInt).",
     "inports": [
         {"name": inports[0], "description": "The array", "types": [base.MdDouble]},
         {

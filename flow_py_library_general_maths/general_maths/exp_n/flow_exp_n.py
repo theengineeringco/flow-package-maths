@@ -6,7 +6,7 @@ outports = ["result"]
 
 definition = {
     "name": "idx_to_power",
-    "description": "Raises an index to a power and returns the result. "
+    "description": "Raises an index to a power and returns the result."
     + "(Negative index values are treated as positive with negatived result).",
     "inports": [
         {"name": inports[0], "description": "The index (I ^ n)", "types": [base.Double]},

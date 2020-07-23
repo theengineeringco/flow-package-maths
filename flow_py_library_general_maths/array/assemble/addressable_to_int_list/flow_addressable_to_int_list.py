@@ -9,7 +9,7 @@ outports = ["array"]
 
 definition = {
     "name": "addressable_to_int_list",
-    "description": "Assemble the input values in to a list in the order with which they were recieved."
+    "description": "Assemble the input values in to a list in the order with which they were received."
     + "Specifically for integer values!",
     "inports": [
         {"name": inports[0], "description": "All of the integers", "types": [base.Int], "addressable": True},

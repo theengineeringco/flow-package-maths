@@ -9,7 +9,7 @@ outports = ["array"]
 
 definition = {
     "name": "addressable_to_list",
-    "description": "Assemble the input values in to a list in the order with which they were recieved.",
+    "description": "Assemble the input values in to a list in the order with which they were received.",
     "inports": [
         {"name": inports[0], "description": "All of the numbers", "types": [base.Double], "addressable": True},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?

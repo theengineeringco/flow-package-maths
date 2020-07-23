@@ -8,7 +8,7 @@ outports = ["result"]
 
 definition = {
     "name": "sin",
-    "description": "Produces the result of sin(N) as a double",
+    "description": "Produces the result of sin(theta) as a double",
     "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
