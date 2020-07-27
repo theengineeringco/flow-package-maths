@@ -9,7 +9,7 @@ repository = "https://github.com/theengineeringco/flow-py-library-general_maths.
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="dev"}
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git"}
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
@@ -22,7 +22,7 @@ tox-pyenv = "^1.1"                                    # Tox Testing
 nitpick = "^0.21"                                     # Style Guide
 toml = "<0.10.1"                                      # Style Guide
 
-flow-py = {git ="https://github.com/theengineeringco/flow-py.git", rev="dev", extras = ["testing"]}      # For Component Testing
+flow-py = {git ="https://github.com/theengineeringco/flow-py.git", extras = ["testing"]}      # For Component Testing
 flow-py-cookiecutter = {git ="https://github.com/theengineeringco/flow-py-cookiecutter.git"}  # For Component Generation
 
 # Pre-commit helps enforce code style. Use `pre-commit install` to install
