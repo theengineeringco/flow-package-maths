@@ -139,5 +139,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 .isort.cfg
-poetry.lock
 scratch.py
