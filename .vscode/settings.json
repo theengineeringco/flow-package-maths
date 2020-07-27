@@ -1,4 +1,18 @@
 {
+  "platformSettings.autoLoad": true,
+  "platformSettings.platforms": {
+    "win32": {
+      "nodes": {
+        "python.pythonPath": ".venv\\Scripts\\python.exe"
+      }
+    },
+    "linux": {
+      "nodes": {
+        "python.pythonPath": ".venv/bin/python"
+      }
+    }
+  },
+
   // File Settings
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
@@ -7,7 +21,6 @@
 
   // General Settings
   // https://code.visualstudio.com/docs/python/settings-reference#_general-settings
-  "python.pythonPath": ".venv\\Scripts\\python.exe",
   "python.terminal.activateEnvInCurrentTerminal": true,
 
   // Code analysis settings
