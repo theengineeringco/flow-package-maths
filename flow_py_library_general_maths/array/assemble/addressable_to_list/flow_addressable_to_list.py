@@ -1,7 +1,7 @@
 from typing import List
 
 import numpy as np
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["values"]
@@ -9,7 +9,7 @@ outports = ["array"]
 
 definition = {
     "name": "addressable_to_list",
-    "description": "Assemble the input values in to a list in the order with which they were recieved.",
+    "description": "Assemble the input values in to a list in the order with which they were received.",
     "inports": [
         {"name": inports[0], "description": "All of the numbers", "types": [base.Double], "addressable": True},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?
@@ -29,15 +29,14 @@ def process(component: Component):
     addr_lst = [
         idx_msg.value for idx_msg in addr_lst
     ]  # They come in as a list of FlowMessages, need to extract their numbers!
+    component.log(log_level=LogLevel.DEBUG, message=f"Values to assemble are {addr_lst}")
 
     array_msg = base.MdDouble()
     array_msg.set_array(np.array(addr_lst))  # Np List implementation automatically
 
-    print(f"Compiling the list of {addr_lst} in to an MdDouble of length {len(array_msg.values)} (1 dimensional).")
+    component.log(
+        log_level=LogLevel.DEBUG, message=f"Creating an MdDouble of length {len(array_msg.values)} (1 dimensional).",
+    )
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)

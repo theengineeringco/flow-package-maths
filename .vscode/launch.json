@@ -11,6 +11,15 @@
       "program": "${file}",
       "console": "integratedTerminal",
       "gevent": true
+    },
+    {
+      "name": "Python: noJMC",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "gevent": true,
+      "justMyCode": false
     }
   ]
 }

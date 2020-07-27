@@ -1,4 +1,4 @@
-from flow.testing.helpers import strip_test_data_unique_info
+from flow.test_framework.helpers import strip_test_data_unique_info
 
 
 def basic_test_eval(test_data: dict, tolerance: float = 1e-6, type_test: bool = True, normalise: bool = True) -> bool:

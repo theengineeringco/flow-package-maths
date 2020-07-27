@@ -1,5 +1,5 @@
 import numpy as np
-from flow import Component, print, run
+from flow import Component, LogLevel
 from flow_types import base
 
 inports = ["values"]
@@ -22,16 +22,11 @@ def process(component: Component):
     # source the data from the inports
     array_msg: base.MdDouble = component.get_data(inports[0])
     array: np.ndarray = array_msg.get_array()
+    component.log(LogLevel.DEBUG, message=f"Calculating the sum of {array}")
 
     # We are using numpy's built in functions so we don't have to worry
     result: float = np.sum(array)
-
-    if component.debug is True:
-        print(f"The sum of {array_msg} is {result} ")
+    component.log(LogLevel.DEBUG, message=f"The sum is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])
-
-
-if __name__ == "__main__":
-    run(definition, process)

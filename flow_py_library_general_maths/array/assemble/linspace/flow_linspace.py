@@ -1,5 +1,5 @@
 import numpy as np
-from flow import Component, Definition, Inport, Outport, print, run
+from flow import Component, Definition, Inport, LogLevel, Outport
 from flow_types import base
 
 # ---
@@ -21,7 +21,7 @@ linspace_port = Outport(
 # Create definition
 definition = Definition(
     name="linspace",
-    description="Create a stream of values following Np Linspace procedure",
+    description="Create a List of values following Np Linspace procedure",
     inports=[start_port, stop_port, num_port],
     outports=[linspace_port],
 )
@@ -37,18 +37,15 @@ def process(component: Component):
     start: float = component.get_data(start_port.name).value
     stop: float = component.get_data(stop_port.name).value
     num: float = component.get_data(num_port.name).value
+    component.log(
+        log_level=LogLevel.DEBUG, message=f"Creating linspace between {start} and {stop} with {num} elements.",
+    )
 
     array = np.linspace(start, stop, num)
-
-    print(f"Creating linspace between {start} and {stop} with {num} elements.")
-    print(f"Produced:\n{array}")
+    component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array}")
 
     array_msg = base.MdDouble()
     array_msg.set_array(array)
 
     # Send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, linspace_port.name)
-
-
-if __name__ == "__main__":
-    run(definition, process)
