@@ -403,18 +403,18 @@ description = "flake8 plugin that integrates isort ."
 name = "flake8-isort"
 optional = false
 python-versions = "*"
-version = "2.9.1"
+version = "3.0.1"
 
 [package.dependencies]
-flake8 = ">=3.2.1"
-testfixtures = "*"
+flake8 = ">=3.2.1,<4"
+testfixtures = ">=6.8.0,<7"
 
 [package.dependencies.isort]
 extras = ["pyproject"]
-version = ">=4.3.5"
+version = ">=4.3.5,<5"
 
 [package.extras]
-test = ["pytest"]
+test = ["pytest (>=4.0.2,<6)"]
 
 [[package]]
 category = "dev"
@@ -508,16 +508,19 @@ category = "dev"
 description = ""
 name = "flow-py-cookiecutter"
 optional = false
-python-versions = "^3.6"
-version = "0.1.0"
+python-versions = "^3.6.1"
+version = "0.2.0"
 
 [package.dependencies]
+boltons = "^20.2.0"
 click = "^7.1.1"
 cookiecutter = "1.7.0"
+jsonschema = "^3.2.0"
+stringcase = "^1.2.0"
 toml = "^0.10.0"
 
 [package.source]
-reference = "a7ffda74b123938e01e6e16e76f3acf72a87c33a"
+reference = "b11326647921456c6f173a8473a2dd57df53945b"
 type = "git"
 url = "https://github.com/theengineeringco/flow-py-cookiecutter.git"
 [[package]]
@@ -526,7 +529,7 @@ description = ""
 name = "flow-py-proto"
 optional = false
 python-versions = "^3.6.1"
-version = "0.1.0"
+version = "1.0.0"
 
 [package.dependencies]
 attrs = "^19.3.0"
@@ -538,7 +541,7 @@ stringcase = "^1.2.0"
 plugin = ["black (^19.10b0)", "jinja2 (^2.11.2)"]
 
 [package.source]
-reference = "ec49171e06a2f51c244cfe0aca296d44cbc71689"
+reference = "13d39ef7228e4112206a483bf0a6458af413694f"
 type = "git"
 url = "https://github.com/theengineeringco/flow-py-proto.git"
 [[package]]
@@ -547,7 +550,7 @@ description = ""
 name = "flow-py-types"
 optional = false
 python-versions = "^3.6.1"
-version = "0.1.0"
+version = "1.0.0"
 
 [package.dependencies]
 attrs = "^19.3.0"
@@ -559,7 +562,7 @@ protobuf = "^3.12.2"
 typeguard = "^2.7.1"
 
 [package.source]
-reference = "40d35a1e2599e816303533061c270166d4a27c68"
+reference = "7ce11aef60ab733a5d6fb2ae7c1de74e4c06e518"
 type = "git"
 url = "https://github.com/theengineeringco/flow-py-types.git"
 [[package]]
@@ -571,14 +574,14 @@ python-versions = "^3.6.1"
 version = "0.1.0"
 
 [package.dependencies]
-flow-py-proto = "tag alpha-2020-07-24"
+flow-py-proto = "branch master"
 protobuf = "^3.10"
 
 [package.extras]
 grpc = ["grpclib (^0.3.0)"]
 
 [package.source]
-reference = "02149a51e5e62e36d3d7cfab021854749c4b3fbf"
+reference = "f072affbeb63680b6cb07cc2663b558b6abd8965"
 type = "git"
 url = "https://github.com/theengineeringco/proto.git"
 [[package]]
@@ -1293,7 +1296,7 @@ description = "tox is a generic virtualenv management and test command line tool
 name = "tox"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
-version = "3.18.0"
+version = "3.18.1"
 
 [package.dependencies]
 colorama = ">=0.4.1"
@@ -1311,7 +1314,7 @@ version = ">=0.12,<2"
 
 [package.extras]
 docs = ["pygments-github-lexers (>=0.0.5)", "sphinx (>=2.0.0)", "sphinxcontrib-autoprogram (>=0.1.5)", "towncrier (>=18.5.0)"]
-testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "pathlib2 (>=2.3.3)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "pytest-xdist (>=1.22.2)", "psutil (>=5.6.1)"]
+testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "pathlib2 (>=2.3.3)", "psutil (>=5.6.1)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "pytest-xdist (>=1.22.2)"]
 
 [[package]]
 category = "dev"
@@ -1413,7 +1416,7 @@ description = "The strictest and most opinionated python linter ever"
 name = "wemake-python-styleguide"
 optional = false
 python-versions = ">=3.6,<4.0"
-version = "0.14.0"
+version = "0.14.1"
 
 [package.dependencies]
 astor = ">=0.8,<0.9"
@@ -1428,7 +1431,7 @@ flake8-comprehensions = ">=3.1.0,<4.0.0"
 flake8-debugger = ">=3.1,<4.0"
 flake8-docstrings = ">=1.3.1,<2.0.0"
 flake8-eradicate = ">=0.3,<0.4"
-flake8-isort = ">=2.9.0,<3.0.0"
+flake8-isort = ">=3.0.1,<4"
 flake8-quotes = ">=2.0.1,<3.0.0"
 flake8-rst-docstrings = ">=0.0.12,<0.0.13"
 flake8-string-format = ">=0.2,<0.3"
@@ -1606,8 +1609,8 @@ flake8-eradicate = [
     {file = "flake8_eradicate-0.3.0-py3-none-any.whl", hash = "sha256:e8b32b32300bfb407fe7ef74667c8d2d3a6a81bdf6f09c14a7bcc82b7b870f8b"},
 ]
 flake8-isort = [
-    {file = "flake8-isort-2.9.1.tar.gz", hash = "sha256:0d34b266080e1748412b203a1690792245011706b1858c203476b43460bf3652"},
-    {file = "flake8_isort-2.9.1-py2.py3-none-any.whl", hash = "sha256:a77df28778a1ac6ac4153339ebd9d252935f3ed4379872d4f8b84986296d8cc3"},
+    {file = "flake8-isort-3.0.1.tar.gz", hash = "sha256:5d976da513cc390232ad5a9bb54aee8a092466a15f442d91dfc525834bee727a"},
+    {file = "flake8_isort-3.0.1-py2.py3-none-any.whl", hash = "sha256:df1dd6dd73f6a8b128c9c783356627231783cccc82c13c6dc343d1a5a491699b"},
 ]
 flake8-polyfill = [
     {file = "flake8-polyfill-1.0.2.tar.gz", hash = "sha256:e44b087597f6da52ec6393a709e7108b2905317d0c0b744cdca6208e670d8eda"},
@@ -2020,8 +2023,8 @@ toml = [
     {file = "toml-0.10.0.tar.gz", hash = "sha256:229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c"},
 ]
 tox = [
-    {file = "tox-3.18.0-py2.py3-none-any.whl", hash = "sha256:c60692d92fe759f46c610ac04c03cf0169432d1ff8e981e8ae63e068d0954fc3"},
-    {file = "tox-3.18.0.tar.gz", hash = "sha256:f179cb4043d7dc1339425dd49ab1dd8c916246b0d9173143c1b0af7498a03ab0"},
+    {file = "tox-3.18.1-py2.py3-none-any.whl", hash = "sha256:3d914480c46232c2d1a035482242535a26d76cc299e4fd28980c858463206f45"},
+    {file = "tox-3.18.1.tar.gz", hash = "sha256:5c82e40046a91dbc80b6bd08321b13b4380d8ce3bcb5b62616cb17aaddefbb3a"},
 ]
 tox-pyenv = [
     {file = "tox-pyenv-1.1.0.tar.gz", hash = "sha256:916c2213577aec0b3b5452c5bfb32fd077f3a3196f50a81ad57d7ef3fc2599e4"},
@@ -2096,8 +2099,8 @@ websockets = [
     {file = "websockets-8.1.tar.gz", hash = "sha256:5c65d2da8c6bce0fca2528f69f44b2f977e06954c8512a952222cea50dad430f"},
 ]
 wemake-python-styleguide = [
-    {file = "wemake-python-styleguide-0.14.0.tar.gz", hash = "sha256:633d738b65c7ddf0c2b9e26e9d889d76f0f1993a82902821da359f08b233dbc8"},
-    {file = "wemake_python_styleguide-0.14.0-py3-none-any.whl", hash = "sha256:21e09b786a38f62399dc727ca801f49084dcbc025b5ac44faf8182f959deb6e0"},
+    {file = "wemake-python-styleguide-0.14.1.tar.gz", hash = "sha256:e13dc580fa56b7b548de8da170bccb8ddff2d4ab026ca987db8a9893bf8a7b5b"},
+    {file = "wemake_python_styleguide-0.14.1-py3-none-any.whl", hash = "sha256:73a501e0547275287a2b926515c000cc25026a8bceb9dcc1bf73ef85a223a3c6"},
 ]
 whichcraft = [
     {file = "whichcraft-0.6.1-py2.py3-none-any.whl", hash = "sha256:deda9266fbb22b8c64fd3ee45c050d61139cd87419765f588e37c8d23e236dd9"},
