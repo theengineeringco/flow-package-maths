@@ -9,7 +9,7 @@ outports = ["result"]
 definition = {
     "name": "tan",
     "description": "Produces the result of tan(theta) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double, eng.Angle]}],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [eng.Angle]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
 }
 
