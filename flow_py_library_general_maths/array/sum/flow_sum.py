@@ -22,11 +22,13 @@ def process(component: Component):
     # source the data from the inports
     array_msg: base.MdDouble = component.get_data(inports[0])
     array: np.ndarray = array_msg.get_array()
-    component.log(LogLevel.DEBUG, message=f"Calculating the sum of {array}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Calculating the sum of {array}")
 
     # We are using numpy's built in functions so we don't have to worry
     result: float = np.sum(array)
-    component.log(LogLevel.DEBUG, message=f"The sum is {result}.")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The sum is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])

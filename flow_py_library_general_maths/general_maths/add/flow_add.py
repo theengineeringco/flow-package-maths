@@ -27,12 +27,14 @@ def process(component: Component):
 
     val1 = value1_msg.value
     val2 = value2_msg.value
-    component.log(log_level=LogLevel.DEBUG, message=f"Adding {val1} to {val2}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Adding {val1} to {val2}")
 
     # calculate the result
     result = val1 + val2
     result_msg = base.Double(result)
-    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(result_msg, outports[0])

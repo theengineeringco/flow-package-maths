@@ -42,7 +42,8 @@ def process(component: Component):
     )
 
     array = np.linspace(start, stop, num)
-    component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array}")
 
     array_msg = base.MdDouble()
     array_msg.set_array(array)

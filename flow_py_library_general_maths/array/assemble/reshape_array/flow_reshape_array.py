@@ -28,7 +28,10 @@ def process(component: Component):
     array: base.MdDouble = component.get_data(inports[0])
     shape: base.MdInt = component.get_data(inports[1])
 
-    component.log(LogLevel.DEBUG, message=f"Reshaping\n{array.get_array()}\nto a shape of\n{shape.values}")
+    if component.debug:
+        component.log(
+            log_level=LogLevel.DEBUG, message=f"Reshaping\n{array.get_array()}\nto a shape of\n{shape.values}",
+        )
     if len(shape.shape) != 1:  # Assert that the shape is only 1 dimensional, e.g. 2x2x3x1 is [2, 2, 3, 1]
         component.log(
             LogLevel.ERROR,
@@ -53,6 +56,7 @@ def process(component: Component):
     array_msg = base.MdDouble()
     array_msg.set_array(np_array)
 
-    component.log(LogLevel.DEBUG, message=f"Produced:\n{np_array}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{np_array}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
