@@ -1,0 +1,33 @@
+name: Release
+
+# Trigger the workflow on release by the semantic-release automation
+on:
+  release:
+    types:
+      - published
+      - edited
+
+jobs:
+  publish:
+    name: Publish Wheels
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+
+      - name: Set up Poetry
+        uses: Gr1N/setup-poetry@v2
+
+      - name: Build Wheels
+        run: |
+          poetry build -vvv
+      - name: Publish Wheels
+        run: |
+          poetry config repositories.flow-pypi http://flow-pypi.herokuapp.com/simple/
+          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry publish --repository flow-pypi
