@@ -24,12 +24,14 @@ def process(component: Component):
     value_msg: base.Double = component.get_data(inports[0])
 
     val = value_msg.value
-    component.log(log_level=LogLevel.DEBUG, message=f"Getting the Natural Log of {val}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Getting the Natural Log of {val}")
 
     # calculate the results
     result = math.log(val)
     result_msg = base.Double(result)
-    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(result_msg, outports[0])

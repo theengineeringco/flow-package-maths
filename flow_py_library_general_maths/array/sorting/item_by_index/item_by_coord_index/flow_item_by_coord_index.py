@@ -44,13 +44,16 @@ def process(component: Component):
         return
 
     index_coords: List[int] = index.values
-    component.log(LogLevel.DEBUG, message=f"Retrieving the {index_coords}th...")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Retrieving the {index_coords}th...")
 
     np_array: np.array = array.get_array()
-    component.log(LogLevel.DEBUG, message=f"...from the array {np_array}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"...from the array {np_array}")
 
     return_value: float = np_array[tuple(index_coords)]
 
-    component.log(LogLevel.DEBUG, message=f"Retrieved:\n{return_value}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Retrieved:\n{return_value}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(return_value), outports[0])

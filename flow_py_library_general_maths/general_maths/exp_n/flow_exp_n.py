@@ -28,7 +28,8 @@ def process(component: Component):
 
     val1 = value1_msg.value
     val2 = value2_msg.value
-    component.log(log_level=LogLevel.DEBUG, message=f"Calculating the index: {val1} to the power of: {val2}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Calculating the index: {val1} to the power of: {val2}")
 
     if val1 < 0 and not val2.is_integer():
         component.log(log_level=LogLevel.ERROR, message="Flow currently does not support Complex Numbers!")
@@ -37,7 +38,8 @@ def process(component: Component):
     # calculate the result
     result = val1 ** val2
     result_msg = base.Double(result)
-    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(result_msg, outports[0])

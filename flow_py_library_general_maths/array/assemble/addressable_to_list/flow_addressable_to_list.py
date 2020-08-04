@@ -29,7 +29,8 @@ def process(component: Component):
     addr_lst = [
         idx_msg.value for idx_msg in addr_lst
     ]  # They come in as a list of FlowMessages, need to extract their numbers!
-    component.log(log_level=LogLevel.DEBUG, message=f"Values to assemble are {addr_lst}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Values to assemble are {addr_lst}")
 
     array_msg = base.MdDouble()
     array_msg.set_array(np.array(addr_lst))  # Np List implementation automatically

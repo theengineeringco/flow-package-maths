@@ -24,12 +24,14 @@ def process(component: Component) -> None:
     value_msg: base.Double = component.get_data(inports[0])
 
     theta = value_msg.value
-    component.log(log_level=LogLevel.DEBUG, message=f"Calculating tan({theta})")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Calculating tan({theta})")
 
     # calculate the result
     result = math.tan(theta)
     result_msg = base.Double(result)
-    component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(result_msg, outports[0])

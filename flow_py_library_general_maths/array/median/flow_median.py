@@ -22,12 +22,14 @@ def process(component: Component):
     # source the data from the inports
     array_msg: base.MdDouble = component.get_data(inports[0])
     array: np.array = array_msg.get_array()
-    component.log(LogLevel.DEBUG, message=f"Calculating the median of {array}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Calculating the median of {array}")
 
     # We are using numpy's built in functions so we don't have to worry
     result: float = np.median(array)
 
-    component.log(LogLevel.DEBUG, message=f"The median is {result} ")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The median is {result} ")
 
     # send the result message to the outports (as addressable)
     component.send_data_addressable(base.Double(result), outports[0])

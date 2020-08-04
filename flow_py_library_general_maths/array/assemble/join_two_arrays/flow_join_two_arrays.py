@@ -34,7 +34,8 @@ def process(component: Component):
     for ndx in (0, 1):
         array: base.MdDouble = component.get_data(inports[ndx])
         vals.append(array.get_array())
-    component.log(log_level=LogLevel.DEBUG, message=f"Combinining the two arrays: {vals}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Combinining the two arrays: {vals}")
 
     array_msg = base.MdDouble()
 
@@ -47,6 +48,7 @@ def process(component: Component):
     component.log(
         log_level=LogLevel.DEBUG, message=f"Joining array 1 with array 2 {'vertical' if vertical else 'horizontal'}ly.",
     )  # noqa: WPS221 - Allow complex line
-    component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array_msg.get_array()}")
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array_msg.get_array()}")
     # send the result message to the outports (as addressable)
     component.send_data_addressable(array_msg, outports[0])
