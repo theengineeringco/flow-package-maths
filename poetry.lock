@@ -172,7 +172,7 @@ description = "Validate configuration and produce human readable error messages.
 name = "cfgv"
 optional = false
 python-versions = ">=3.6.1"
-version = "3.1.0"
+version = "3.2.0"
 
 [[package]]
 category = "dev"
@@ -463,127 +463,132 @@ flake8 = "*"
 
 [[package]]
 category = "main"
-description = ""
+description = "Python Component Library for Flow"
 name = "flow-py"
 optional = false
-python-versions = "^3.6.1"
-version = "0.2.0"
+python-versions = ">=3.6.1,<4.0.0"
+version = "1.0.1"
 
 [package.dependencies]
-aiorun = "^2020.2.1"
-async-generator = "^1.10"
-asyncio-nats-streaming = "^0.4.0"
-attrs = "^19.3"
-cattrs = "^1.0"
-click = "^7.1.2"
-flow-py-types = "branch master"
-flow-schema = "branch master"
-jsonschema = "^3.2"
-shortid = "^0.1.2"
-stringcase = "^1.2"
-toml = "^0.10"
-websockets = "^8.1"
+aiorun = ">=2020.2.1,<2021.0.0"
+async-generator = ">=1.10,<2.0"
+asyncio-nats-streaming = ">=0.4.0,<0.5.0"
+attrs = ">=19.3,<20.0"
+cattrs = ">=1.0,<2.0"
+click = ">=7.1.2,<8.0.0"
+flow-py-types = ">=1.0.0,<2.0.0"
+flow-schema = ">=1.0.0,<2.0.0"
+jsonschema = ">=3.2,<4.0"
+shortid = ">=0.1.2,<0.2.0"
+stringcase = ">=1.2,<2.0"
+toml = ">=0.10,<0.11"
+websockets = ">=8.1,<9.0"
 
 [package.dependencies.dataclasses]
 python = ">=3.6,<3.7"
-version = "^0.6"
+version = ">=0.6,<0.7"
 
 [package.dependencies.psutil]
 optional = true
-version = "^5.7"
+version = ">=5.7,<6.0"
 
 [package.dependencies.pytest]
 optional = true
-version = "^5.4"
+version = ">=5.4,<6.0"
 
 [package.extras]
-testing = ["psutil (^5.7)", "pytest (^5.4)"]
+testing = ["psutil (>=5.7,<6.0)", "pytest (>=5.4,<6.0)"]
 
 [package.source]
-reference = "b769250c73c5e06576350f4400e26ea574d57a8e"
-type = "git"
-url = "https://github.com/theengineeringco/flow-py.git"
+reference = "flow-pypi"
+type = "legacy"
+url = "http://flow-pypi.herokuapp.com/simple"
+
 [[package]]
 category = "dev"
-description = ""
+description = "Cookiecutter for building Python Flow component packages"
 name = "flow-py-cookiecutter"
 optional = false
-python-versions = "^3.6.1"
-version = "0.2.0"
+python-versions = ">=3.6.1,<4.0.0"
+version = "1.0.0"
 
 [package.dependencies]
-boltons = "^20.2.0"
-click = "^7.1.1"
+boltons = ">=20.2.0,<21.0.0"
+click = ">=7.1.1,<8.0.0"
 cookiecutter = "1.7.0"
-jsonschema = "^3.2.0"
-stringcase = "^1.2.0"
-toml = "^0.10.0"
+jsonschema = ">=3.2.0,<4.0.0"
+stringcase = ">=1.2.0,<2.0.0"
+toml = ">=0.10.0,<0.11.0"
 
 [package.source]
-reference = "b11326647921456c6f173a8473a2dd57df53945b"
-type = "git"
-url = "https://github.com/theengineeringco/flow-py-cookiecutter.git"
+reference = "flow-pypi"
+type = "legacy"
+url = "http://flow-pypi.herokuapp.com/simple"
+
 [[package]]
 category = "main"
 description = ""
 name = "flow-py-proto"
 optional = false
-python-versions = "^3.6.1"
-version = "1.0.0"
+python-versions = ">=3.6.1,<4.0.0"
+version = "1.0.1"
 
 [package.dependencies]
-attrs = "^19.3.0"
-boltons = "^20.1.0"
-protobuf = "^3.11.3"
-stringcase = "^1.2.0"
+attrs = ">=19.3.0,<20.0.0"
+boltons = ">=20.1.0,<21.0.0"
+protobuf = ">=3.11.3,<4.0.0"
+stringcase = ">=1.2.0,<2.0.0"
 
 [package.extras]
-plugin = ["black (^19.10b0)", "jinja2 (^2.11.2)"]
+plugin = ["black (>=19.10b0,<20.0)", "jinja2 (>=2.11.2,<3.0.0)"]
 
 [package.source]
-reference = "13d39ef7228e4112206a483bf0a6458af413694f"
-type = "git"
-url = "https://github.com/theengineeringco/flow-py-proto.git"
+reference = "flow-pypi"
+type = "legacy"
+url = "http://flow-pypi.herokuapp.com/simple"
+
 [[package]]
 category = "main"
-description = ""
+description = "Python Component Library for Flow"
 name = "flow-py-types"
 optional = false
-python-versions = "^3.6.1"
-version = "1.0.0"
+python-versions = ">=3.6.1,<4.0.0"
+version = "1.0.1"
 
 [package.dependencies]
-attrs = "^19.3.0"
-flow-py-proto = "branch master"
-flow-schema = "branch master"
-grpclib = "^0.3.1"
-numpy = "^1.18.5"
-protobuf = "^3.12.2"
-typeguard = "^2.7.1"
+attrs = ">=19.3.0,<20.0.0"
+flow-py-proto = ">=1.0.0,<2.0.0"
+flow-schema = ">=1.0.0,<2.0.0"
+grpclib = ">=0.3.1,<0.4.0"
+numpy = ">=1.18.5,<2.0.0"
+protobuf = ">=3.12.2,<4.0.0"
+typeguard = ">=2.7.1,<3.0.0"
 
 [package.source]
-reference = "7ce11aef60ab733a5d6fb2ae7c1de74e4c06e518"
-type = "git"
-url = "https://github.com/theengineeringco/flow-py-types.git"
+reference = "flow-pypi"
+type = "legacy"
+url = "http://flow-pypi.herokuapp.com/simple"
+
 [[package]]
 category = "main"
 description = ""
 name = "flow-schema"
 optional = false
-python-versions = "^3.6.1"
-version = "0.1.0"
+python-versions = ">=3.6.1,<4.0.0"
+version = "1.0.0"
 
 [package.dependencies]
-flow-py-proto = "branch master"
-protobuf = "^3.10"
+flow-py-proto = ">=1.0.0,<2.0.0"
+protobuf = ">=3.10,<4.0"
 
 [package.extras]
-grpc = ["grpclib (^0.3.0)"]
+grpc = ["grpclib (>=0.3.0,<0.4.0)"]
 
 [package.source]
-reference = "f072affbeb63680b6cb07cc2663b558b6abd8965"
-type = "git"
-url = "https://github.com/theengineeringco/proto.git"
+reference = "flow-pypi"
+type = "legacy"
+url = "http://flow-pypi.herokuapp.com/simple"
+
 [[package]]
 category = "dev"
 description = "Clean single-source support for Python 3 and 2"
@@ -997,7 +1002,7 @@ description = "Protocol Buffers"
 name = "protobuf"
 optional = false
 python-versions = "*"
-version = "3.12.2"
+version = "3.12.4"
 
 [package.dependencies]
 setuptools = "*"
@@ -1374,7 +1379,7 @@ description = "Virtual Python Environment builder"
 name = "virtualenv"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
-version = "20.0.28"
+version = "20.0.29"
 
 [package.dependencies]
 appdirs = ">=1.4.3,<2"
@@ -1465,7 +1470,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4212837305cd4fe8836b8cd7875e4934d075d57e7201f510fddd157a83b13e6e"
+content-hash = "53e53111d6d12ecc1f25ff232cc47dc7a81181afe418cb5cc5e218752755680c"
 python-versions = "^3.6.1"
 
 [metadata.files]
@@ -1528,8 +1533,8 @@ certifi = [
     {file = "certifi-2020.6.20.tar.gz", hash = "sha256:5930595817496dd21bb8dc35dad090f1c2cd0adfaf21204bf6732ca5d8ee34d3"},
 ]
 cfgv = [
-    {file = "cfgv-3.1.0-py2.py3-none-any.whl", hash = "sha256:1ccf53320421aeeb915275a196e23b3b8ae87dea8ac6698b1638001d4a486d53"},
-    {file = "cfgv-3.1.0.tar.gz", hash = "sha256:c8e8f552ffcc6194f4e18dd4f68d9aef0c0d58ae7e7be8c82bee3c5e9edfa513"},
+    {file = "cfgv-3.2.0-py2.py3-none-any.whl", hash = "sha256:32e43d604bbe7896fe7c248a9c2276447dbef840feb28fe20494f62af110211d"},
+    {file = "cfgv-3.2.0.tar.gz", hash = "sha256:cf22deb93d4bcf92f345a5c3cd39d3d41d6340adc60c78bbbd6588c384fda6a1"},
 ]
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
@@ -1626,11 +1631,34 @@ flake8-string-format = [
     {file = "flake8-string-format-0.2.3.tar.gz", hash = "sha256:774d56103d9242ed968897455ef49b7d6de272000cfa83de5814273a868832f1"},
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
-flow-py = []
-flow-py-cookiecutter = []
-flow-py-proto = []
-flow-py-types = []
-flow-schema = []
+flow-py = [
+    {file = "flow-py-1.0.1.tar.gz", hash = "sha256:4580f614b838ff576f8d0f2b1ab95be4ea36be7b4f10377da98f8ac80ea7b955"},
+    {file = "flow_py-1.0.1-cp36-cp36m-linux_x86_64.whl", hash = "sha256:65c3b48a7be78c4ac7a9374e3b83b2cd2eb09d06cf86a4f74403322202762728"},
+    {file = "flow_py-1.0.1-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:a06c333fd72a75c65e4ac00d028d47959abd5d666f723034dc9d7a404f0e5413"},
+    {file = "flow_py-1.0.1-cp36-cp36m-win_amd64.whl", hash = "sha256:4954597fbe62e2dfc0d91f91d639f58119dba2b225d9076e02c7ecf028c73b69"},
+    {file = "flow_py-1.0.1-cp37-cp37m-linux_x86_64.whl", hash = "sha256:912f44becdfb1deff972a487f4d9a32bf2c709455dd5a875993007cec0db15d3"},
+    {file = "flow_py-1.0.1-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:0ae1a1428c9307993df586811df2f87eff8f5888844b6245dd07fc2a388d3463"},
+    {file = "flow_py-1.0.1-cp37-cp37m-win_amd64.whl", hash = "sha256:a85e6813ce9e62af605bc12be9bd908cf15b818cda74744fa5417839e0019bec"},
+    {file = "flow_py-1.0.1-cp38-cp38-linux_x86_64.whl", hash = "sha256:ec8647569fc7c0b523a6c227a16a59138302481357c8c46908a7148955c3b7a0"},
+    {file = "flow_py-1.0.1-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:3a5fa7841e3f3e55900603af8deb5a846c85eca8207701d9e62ed32512cda57d"},
+    {file = "flow_py-1.0.1-cp38-cp38-win_amd64.whl", hash = "sha256:a47c661f34894eb5ae4d3783529d5bd15beefe7c04d90fb83c3885e7ab7111d6"},
+]
+flow-py-cookiecutter = [
+    {file = "flow-py-cookiecutter-1.0.0.tar.gz", hash = "sha256:625f91867cc59dc5224bcdabaeffa7993a6edfdeca75b2d1416fbe4beed230f5"},
+    {file = "flow_py_cookiecutter-1.0.0-py3-none-any.whl", hash = "sha256:ceb302d88f97564fe4ae54d072909654447822f6279bb75107046e41a4f822f6"},
+]
+flow-py-proto = [
+    {file = "flow-py-proto-1.0.1.tar.gz", hash = "sha256:b84de2322e5b0b7f05f5393000da99e24b7423a512c53ad4bc5fce3697139441"},
+    {file = "flow_py_proto-1.0.1-py3-none-any.whl", hash = "sha256:026c0acdb9afa656e58465d89aab86161e3def4f52736589191d16ebd927d6f9"},
+]
+flow-py-types = [
+    {file = "flow-py-types-1.0.1.tar.gz", hash = "sha256:3aff7d4335618b8d87b6929b044dde80601a9c2e44a2e467f60bddbd51c18d40"},
+    {file = "flow_py_types-1.0.1-py3-none-any.whl", hash = "sha256:3b5031409aba4150861ac8b585e91351a3a860721386d67d9cdc8c549daabafa"},
+]
+flow-schema = [
+    {file = "flow-schema-1.0.0.tar.gz", hash = "sha256:63aa777973dc50ff821ffc5d8643a6b7442cd5ff20407c5d798544823c919411"},
+    {file = "flow_schema-1.0.0-py3-none-any.whl", hash = "sha256:821a722ab38855efb7223e5e31e3e42898cf9bb3692532f84019bdbd0035d2f1"},
+]
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
 ]
@@ -1846,24 +1874,24 @@ pre-commit = [
     {file = "pre_commit-2.6.0.tar.gz", hash = "sha256:1657663fdd63a321a4a739915d7d03baedd555b25054449090f97bb0cb30a915"},
 ]
 protobuf = [
-    {file = "protobuf-3.12.2-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:e1464a4a2cf12f58f662c8e6421772c07947266293fb701cb39cd9c1e183f63c"},
-    {file = "protobuf-3.12.2-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:6f349adabf1c004aba53f7b4633459f8ca8a09654bf7e69b509c95a454755776"},
-    {file = "protobuf-3.12.2-cp35-cp35m-macosx_10_9_intel.whl", hash = "sha256:be04fe14ceed7f8641e30f36077c1a654ff6f17d0c7a5283b699d057d150d82a"},
-    {file = "protobuf-3.12.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:f4b73736108a416c76c17a8a09bc73af3d91edaa26c682aaa460ef91a47168d3"},
-    {file = "protobuf-3.12.2-cp35-cp35m-win32.whl", hash = "sha256:5524c7020eb1fb7319472cb75c4c3206ef18b34d6034d2ee420a60f99cddeb07"},
-    {file = "protobuf-3.12.2-cp35-cp35m-win_amd64.whl", hash = "sha256:bff02030bab8b969f4de597543e55bd05e968567acb25c0a87495a31eb09e925"},
-    {file = "protobuf-3.12.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:c9ca9f76805e5a637605f171f6c4772fc4a81eced4e2f708f79c75166a2c99ea"},
-    {file = "protobuf-3.12.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:304e08440c4a41a0f3592d2a38934aad6919d692bb0edfb355548786728f9a5e"},
-    {file = "protobuf-3.12.2-cp36-cp36m-win32.whl", hash = "sha256:b5a114ea9b7fc90c2cc4867a866512672a47f66b154c6d7ee7e48ddb68b68122"},
-    {file = "protobuf-3.12.2-cp36-cp36m-win_amd64.whl", hash = "sha256:85b94d2653b0fdf6d879e39d51018bf5ccd86c81c04e18a98e9888694b98226f"},
-    {file = "protobuf-3.12.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:a7ab28a8f1f043c58d157bceb64f80e4d2f7f1b934bc7ff5e7f7a55a337ea8b0"},
-    {file = "protobuf-3.12.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:eafe9fa19fcefef424ee089fb01ac7177ff3691af7cc2ae8791ae523eb6ca907"},
-    {file = "protobuf-3.12.2-cp37-cp37m-win32.whl", hash = "sha256:612bc97e42b22af10ba25e4140963fbaa4c5181487d163f4eb55b0b15b3dfcd2"},
-    {file = "protobuf-3.12.2-cp37-cp37m-win_amd64.whl", hash = "sha256:e72736dd822748b0721f41f9aaaf6a5b6d5cfc78f6c8690263aef8bba4457f0e"},
-    {file = "protobuf-3.12.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:87535dc2d2ef007b9d44e309d2b8ea27a03d2fa09556a72364d706fcb7090828"},
-    {file = "protobuf-3.12.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:50b5fee674878b14baea73b4568dc478c46a31dd50157a5b5d2f71138243b1a9"},
-    {file = "protobuf-3.12.2-py2.py3-none-any.whl", hash = "sha256:a96f8fc625e9ff568838e556f6f6ae8eca8b4837cdfb3f90efcb7c00e342a2eb"},
-    {file = "protobuf-3.12.2.tar.gz", hash = "sha256:49ef8ab4c27812a89a76fa894fe7a08f42f2147078392c0dee51d4a444ef6df5"},
+    {file = "protobuf-3.12.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:3d59825cba9447e8f4fcacc1f3c892cafd28b964e152629b3f420a2fb5918b5a"},
+    {file = "protobuf-3.12.4-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:6009f3ebe761fad319b52199a49f1efa7a3729302947a78a3f5ea8e7e89e3ac2"},
+    {file = "protobuf-3.12.4-cp35-cp35m-macosx_10_9_intel.whl", hash = "sha256:e2bd5c98952db3f1bb1af2e81b6a208909d3b8a2d32f7525c5cc10a6338b6593"},
+    {file = "protobuf-3.12.4-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:2becd0e238ae34caf96fa7365b87f65b88aebcf7864dfe5ab461c5005f4256d9"},
+    {file = "protobuf-3.12.4-cp35-cp35m-win32.whl", hash = "sha256:ef991cbe34d7bb935ba6349406a210d3558b9379c21621c6ed7b99112af7350e"},
+    {file = "protobuf-3.12.4-cp35-cp35m-win_amd64.whl", hash = "sha256:a7b6cf201e67132ca99b8a6c4812fab541fdce1ceb54bb6f66bc336ab7259138"},
+    {file = "protobuf-3.12.4-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:4794a7748ee645d2ae305f3f4f0abd459e789c973b5bc338008960f83e0c554b"},
+    {file = "protobuf-3.12.4-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:f1796e0eb911bf5b08e76b753953effbeb6bc42c95c16597177f627eaa52c375"},
+    {file = "protobuf-3.12.4-cp36-cp36m-win32.whl", hash = "sha256:c0c8d7c8f07eacd9e98a907941b56e57883cf83de069cfaeaa7e02c582f72ddb"},
+    {file = "protobuf-3.12.4-cp36-cp36m-win_amd64.whl", hash = "sha256:2db6940c1914fa3fbfabc0e7c8193d9e18b01dbb4650acac249b113be3ba8d9e"},
+    {file = "protobuf-3.12.4-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:b6842284bb15f1b19c50c5fd496f1e2a4cfefdbdfa5d25c02620cb82793295a7"},
+    {file = "protobuf-3.12.4-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:0b00429b87821f1e6f3d641327864e6f271763ae61799f7540bc58a352825fe2"},
+    {file = "protobuf-3.12.4-cp37-cp37m-win32.whl", hash = "sha256:f10ba89f9cd508dc00e469918552925ef7cba38d101ca47af1e78f2f9982c6b3"},
+    {file = "protobuf-3.12.4-cp37-cp37m-win_amd64.whl", hash = "sha256:2636c689a6a2441da9a2ef922a21f9b8bfd5dfe676abd77d788db4b36ea86bee"},
+    {file = "protobuf-3.12.4-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:50b7bb2124f6a1fb0ddc6a44428ae3a21e619ad2cdf08130ac6c00534998ef07"},
+    {file = "protobuf-3.12.4-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:e77ca4e1403b363a88bde9e31c11d093565e925e1685f40b29385a52f2320794"},
+    {file = "protobuf-3.12.4-py2.py3-none-any.whl", hash = "sha256:32f0bcdf85e0040f36b4f548c71177027f2a618cab00ba235197fa9e230b7289"},
+    {file = "protobuf-3.12.4.tar.gz", hash = "sha256:c99e5aea75b6f2b29c8d8da5bdc5f5ed8d9a5b4f15115c8316a3f0a850f94656"},
 ]
 psutil = [
     {file = "psutil-5.7.2-cp27-none-win32.whl", hash = "sha256:f2018461733b23f308c298653c8903d32aaad7873d25e1d228765e91ae42c3f2"},
@@ -2067,8 +2095,8 @@ urllib3 = [
     {file = "urllib3-1.25.10.tar.gz", hash = "sha256:91056c15fa70756691db97756772bb1eb9678fa585d9184f24534b100dc60f4a"},
 ]
 virtualenv = [
-    {file = "virtualenv-20.0.28-py2.py3-none-any.whl", hash = "sha256:8f582a030156282a9ee9d319984b759a232b07f86048c1d6a9e394afa44e78c8"},
-    {file = "virtualenv-20.0.28.tar.gz", hash = "sha256:688a61d7976d82b92f7906c367e83bb4b3f0af96f8f75bfcd3da95608fe8ac6c"},
+    {file = "virtualenv-20.0.29-py2.py3-none-any.whl", hash = "sha256:8aa9c37b082664dbce2236fa420759c02d64109d8e6013593ad13914718a30fd"},
+    {file = "virtualenv-20.0.29.tar.gz", hash = "sha256:f14a0a98ea4397f0d926cff950361766b6a73cd5975ae7eb259d12919f819a25"},
 ]
 wcwidth = [
     {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},

@@ -1,0 +1,44 @@
+#  https://semantic-release.gitbook.io/semantic-release/
+#
+# On the master branch a normal release will be made, while on the develop branch a pre-release will be made
+#
+# This config will:
+#   - Check Github Credentials
+#   - Analyse commits to determine the next semantic version
+#   - Generate Release Notes
+#   - Update the Changelog
+#   - Bump the poetry version to the newly calculated version and update
+#   - Push the changes back to the repo with a [skip ci] commit to prevent CI running again
+#   - Finally create a tag in github
+
+branches:
+  - master
+  - name: "develop"
+    prerelease: true
+
+plugins:
+  # https://github.com/semantic-release/commit-analyzer
+  - "@semantic-release/commit-analyzer"
+
+  # https://github.com/semantic-release/release-notes-generator
+  - "@semantic-release/release-notes-generator"
+
+  # https://github.com/semantic-release/changelog
+  - "@semantic-release/changelog"
+
+  # https://github.com/semantic-release/exec
+  - - "@semantic-release/exec"
+    - prepareCmd: "poetry version <%= nextRelease.version.replace('develop', 'dev') %> && poetry lock"
+
+  # https://github.com/semantic-release/git
+  # See the following about pushing sematic-release changes to a protected branch
+  #   - https://github.com/semantic-release/github/issues/175#issuecomment-484964034
+  #   - https://github.com/semantic-release/github/issues/175#issuecomment-559004304
+  - - "@semantic-release/git"
+    - assets:
+        - "pyproject.toml"
+        - "poetry.lock"
+        - "CHANGELOG.md"
+
+  # https://github.com/semantic-release/github
+  - "@semantic-release/github"
