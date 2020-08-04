@@ -1,81 +1,92 @@
 name: Pull Request
 
-# Trigger the workflow on pull request to master branch
+# Trigger the workflow on pull request to either master or develop branch
 on:
   pull_request:
     branches:
       - master
+      - develop
 
 jobs:
-  Linting:
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 5
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
-
-      - name: Setup Git Credentials
-        uses: fusion-engineering/setup-git-credentials@v2
-        with:
-          credentials: https://TEC-DevBot:${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}@github.com/
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.6
 
+      - name: Get Full Python Version
+        id: full-python-version
+        shell: bash
+        run: |
+          echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
-      - name: Poetry Lock (For Windows Only)
-        if: startsWith(runner.os, 'Windows')
-        run: poetry lock -v
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
+      - name: Set up Cache
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Setup Linting
-        run: pip install tox
-
+      - name: Install Dependencies
+        run: |
+          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry run pip install pip --upgrade
+          poetry install -vvv
       - name: Run Linting
-        run: tox -e lint
+        run: |
+          poetry run pre-commit run --all
+          poetry run flake8 --format wemake
+          poetry run mypy .
+  testing:
+    name: Testing
+    needs: linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
 
-  Testing:
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest]
         python: [3.6, 3.7, 3.8]
 
-      fail-fast: false
-
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 6
-
     steps:
       - name: Clone Repo
         uses: actions/checkout@v2
 
-      - name: Setup Git Credentials
-        uses: fusion-engineering/setup-git-credentials@v2
-        with:
-          credentials: https://TEC-DevBot:${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}@github.com/
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: ${{ matrix.python }}
 
+      - name: Get Full Python Version
+        id: full-python-version
+        shell: bash
+        run: |
+          echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
-      - name: Poetry Lock (For Windows Only)
-        if: startsWith(runner.os, 'Windows')
-        run: poetry lock -v
-        env:
-          POETRY_VIRTUALENVS_CREATE: false
+      - name: Set up Cache
+        uses: actions/cache@v2
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Setup Testing
-        run: pip install tox tox-gh-actions
-
+      - name: Install Dependencies
+        run: |
+          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry run python -m pip install pip --upgrade
+          poetry install -vvv
       - name: Run Tests
-        run: tox
+        run: |
+          poetry run pytest
