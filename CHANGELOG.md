@@ -1,3 +1,11 @@
+# 1.0.0 (2020-08-04)
+
+
+### Bug Fixes
+
+* All components' debug messages only in Debug mode. ([e28b61e](https://github.com/theengineeringco/flow-py-library-general_maths/commit/e28b61eece4bfe93e58a5b8c8be42ffb6b7883ec))
+* Inports of some trig functions were incorrectly typed. ([9fa1b19](https://github.com/theengineeringco/flow-py-library-general_maths/commit/9fa1b19aa4e4292c6ced069692c6d7ede8e0210b))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
