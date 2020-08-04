@@ -467,7 +467,7 @@ description = "Python Component Library for Flow"
 name = "flow-py"
 optional = false
 python-versions = ">=3.6.1,<4.0.0"
-version = "1.0.1"
+version = "1.0.3"
 
 [package.dependencies]
 aiorun = ">=2020.2.1,<2021.0.0"
@@ -1632,16 +1632,16 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-1.0.1.tar.gz", hash = "sha256:4580f614b838ff576f8d0f2b1ab95be4ea36be7b4f10377da98f8ac80ea7b955"},
-    {file = "flow_py-1.0.1-cp36-cp36m-linux_x86_64.whl", hash = "sha256:65c3b48a7be78c4ac7a9374e3b83b2cd2eb09d06cf86a4f74403322202762728"},
-    {file = "flow_py-1.0.1-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:a06c333fd72a75c65e4ac00d028d47959abd5d666f723034dc9d7a404f0e5413"},
-    {file = "flow_py-1.0.1-cp36-cp36m-win_amd64.whl", hash = "sha256:4954597fbe62e2dfc0d91f91d639f58119dba2b225d9076e02c7ecf028c73b69"},
-    {file = "flow_py-1.0.1-cp37-cp37m-linux_x86_64.whl", hash = "sha256:912f44becdfb1deff972a487f4d9a32bf2c709455dd5a875993007cec0db15d3"},
-    {file = "flow_py-1.0.1-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:0ae1a1428c9307993df586811df2f87eff8f5888844b6245dd07fc2a388d3463"},
-    {file = "flow_py-1.0.1-cp37-cp37m-win_amd64.whl", hash = "sha256:a85e6813ce9e62af605bc12be9bd908cf15b818cda74744fa5417839e0019bec"},
-    {file = "flow_py-1.0.1-cp38-cp38-linux_x86_64.whl", hash = "sha256:ec8647569fc7c0b523a6c227a16a59138302481357c8c46908a7148955c3b7a0"},
-    {file = "flow_py-1.0.1-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:3a5fa7841e3f3e55900603af8deb5a846c85eca8207701d9e62ed32512cda57d"},
-    {file = "flow_py-1.0.1-cp38-cp38-win_amd64.whl", hash = "sha256:a47c661f34894eb5ae4d3783529d5bd15beefe7c04d90fb83c3885e7ab7111d6"},
+    {file = "flow-py-1.0.3.tar.gz", hash = "sha256:545053ef49e5bca6c78efe5430925380160692442cd0b8eaf40c10cc16d3bfbf"},
+    {file = "flow_py-1.0.3-cp36-cp36m-linux_x86_64.whl", hash = "sha256:24a35159bdf01123da9fb5ee67bfdb3e0fa41288a75c5800c9675c3bddfd863a"},
+    {file = "flow_py-1.0.3-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:8ceea12065ad60a9370097d1f493b6e62884265dc29f364921e74667f4c9cdd4"},
+    {file = "flow_py-1.0.3-cp36-cp36m-win_amd64.whl", hash = "sha256:93b1b9dd6940e38e7fdfa4844bcad724d6da2f0d2f8e92b4be8bc70ed92b68d6"},
+    {file = "flow_py-1.0.3-cp37-cp37m-linux_x86_64.whl", hash = "sha256:f9b3beab3d06b1bf0fe6220f26c5414ff2dbded2c396aee258b66d3195396b46"},
+    {file = "flow_py-1.0.3-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:b77759c96818bbd09a2c4acaf1f1f8ab1ffa2ed5d5b0b0adda98badee9f3a29c"},
+    {file = "flow_py-1.0.3-cp37-cp37m-win_amd64.whl", hash = "sha256:35a0c69709f21da34712a7aa5d2387e7cf8758c58b437b64c7f82509c150a03c"},
+    {file = "flow_py-1.0.3-cp38-cp38-linux_x86_64.whl", hash = "sha256:5bcac9911d36c1bff771b24a88bc8684d09618826c8e5545390e580ac44160dd"},
+    {file = "flow_py-1.0.3-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:85b06859106765e1c9ba14d92bf2daed2edb43d08e3f8a4681f75532ffa3a8e8"},
+    {file = "flow_py-1.0.3-cp38-cp38-win_amd64.whl", hash = "sha256:7f6e6ad612ceb8105203b9c2825ba2dcc74f00914d45f224bb0e7e5d22544fa5"},
 ]
 flow-py-cookiecutter = [
     {file = "flow-py-cookiecutter-1.0.0.tar.gz", hash = "sha256:625f91867cc59dc5224bcdabaeffa7993a6edfdeca75b2d1416fbe4beed230f5"},
