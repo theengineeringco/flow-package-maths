@@ -1,0 +1,30 @@
+name: GitFlow
+# This workflow makes sure that when PRs are made to the master branch,
+# they are also made to the develop branch. This is the convention GitFlow specifies
+
+# Runs when a PR to the master branch is closed
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  create-pr:
+    name: Create PR to Develop Branch
+    runs-on: ubuntu-latest
+    # Creates a PR from a branch to the develop branch when a PR from the branch to the master branch is merged and closed.
+    # Only runs when the source branch is not the Develop Branch
+    if: >
+      github.event.pull_request.merged == true &&
+      github.head_ref != 'develop'
+    steps:
+      - name: Clone Repo
+        uses: actions/checkout@v2
+
+      - name: Create PR to Develop
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "develop"
+          github_token: ${{ secrets.TEC_DEVBOT_ACCESS_TOKEN }}
