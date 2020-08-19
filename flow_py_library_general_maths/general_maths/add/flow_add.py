@@ -1,5 +1,5 @@
 from flow import Component, LogLevel
-from flow_types import base
+from flow_types import base, unions
 
 inports = ["val1", "val2"]
 outports = ["result"]
@@ -8,10 +8,10 @@ definition = {
     "name": "add",
     "description": "Adds two numbers together.",
     "inports": [
-        {"name": inports[0], "description": "The first number", "types": [base.Double]},
-        {"name": inports[1], "description": "The second number", "types": [base.Double]},
+        {"name": inports[0], "description": "The first number", "types": unions.Number},
+        {"name": inports[1], "description": "The second number", "types": unions.Number},
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": unions.Number}],
 }
 
 

@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base
+from flow_types import base, unions
 
 inports = ["value"]
 outports = ["result"]
@@ -9,8 +9,8 @@ outports = ["result"]
 definition = {
     "name": "natural_log",
     "description": "Natural log of the value.",
-    "inports": [{"name": inports[0], "description": "The natural log of the value", "types": [base.Double]}],
-    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
+    "inports": [{"name": inports[0], "description": "The natural log of the value", "types": unions.Number}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": unions.Number}],
 }
 
 

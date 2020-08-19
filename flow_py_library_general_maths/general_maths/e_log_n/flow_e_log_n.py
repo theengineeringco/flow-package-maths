@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base
+from flow_types import base, unions
 
 inports = ["index", "base"]
 outports = ["result"]
@@ -12,10 +12,10 @@ definition = {
     "description": "Raises an index to a power and returns the result."
     + "(Negative index values are treated as positive with negatived result).",
     "inports": [
-        {"name": inports[0], "description": "The index to log, log(I, b)", "types": [base.Double]},
-        {"name": inports[1], "description": "The base to log, log(i, B)", "types": [base.Double]},
+        {"name": inports[0], "description": "The index to log, log(I, b)", "types": unions.Number},
+        {"name": inports[1], "description": "The base to log, log(i, B)", "types": unions.Number},
     ],
-    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": unions.Number}],
 }
 
 

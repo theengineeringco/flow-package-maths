@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base, eng
+from flow_types import base, unions, eng
 
 inports = ["theta"]
 outports = ["result"]
@@ -10,7 +10,7 @@ definition = {
     "name": "sin",
     "description": "Produces the result of sin(theta) as a double",
     "inports": [{"name": inports[0], "description": "The first number", "types": [eng.Angle]}],
-    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": unions.Number}],
 }
 
 

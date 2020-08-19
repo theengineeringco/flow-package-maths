@@ -2,7 +2,7 @@ from typing import List
 
 import numpy as np
 from flow import Component, LogLevel
-from flow_types import base
+from flow_types import base, unions
 
 inports = ["values"]
 outports = ["array"]
@@ -11,7 +11,7 @@ definition = {
     "name": "multi_connection_to_list",
     "description": "Assemble the input values in to a list in the order with which they were received.",
     "inports": [
-        {"name": inports[0], "description": "All of the numbers", "types": [base.Double], "multi_connection": True},
+        {"name": inports[0], "description": "All of the numbers", "types": unions.Number, "multi_connection": True},
     ],  # TODO these will also be used for MdArrays. Need a consistent way, or do we have specific versions?
     "outports": [{"name": outports[0], "description": "The resulting array (list)", "types": [base.MdDouble]}],
     # We enforce doubles for maths
@@ -27,7 +27,7 @@ def process(component: Component):
     # source the data from the inports
     addr_lst: List[float] = component.get_data(inports[0], latest=False)
     addr_lst = [
-        idx_msg.value for idx_msg in addr_lst
+        float(idx_msg.value) for idx_msg in addr_lst
     ]  # They come in as a list of FlowMessages, need to extract their numbers!
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"Values to assemble are {addr_lst}")
