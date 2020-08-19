@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base, eng, unions
+from flow_types import base, eng
 
 inports = ["number"]
 outports = ["result"]
@@ -9,7 +9,7 @@ outports = ["result"]
 definition = {
     "name": "acos",
     "description": "Produces the result of acos(n) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": unions.Number}],
+    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double]}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [eng.Angle]}],
 }
 
