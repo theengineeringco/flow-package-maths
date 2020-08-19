@@ -1,9 +1,10 @@
 import numpy as np
 import pytest
 from flow.test_framework import FlowTest, flow_test
-from flow_types import base
-from flow_py_library_general_maths.array.assemble.join_two_arrays.flow_join_two_arrays import inports, outports
 from flow.test_framework.helpers import assert_test_data_expected
+from flow_types import base
+
+from flow_py_library_general_maths.array.assemble.join_two_arrays.flow_join_two_arrays import inports, outports
 
 # Tests
 component_file = "array_maths/assemble/join_two_arrays"

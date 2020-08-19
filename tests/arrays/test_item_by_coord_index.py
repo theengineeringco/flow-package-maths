@@ -1,13 +1,13 @@
 import numpy as np
 import pytest
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
 from flow_py_library_general_maths.array.sorting.item_by_index.item_by_coord_index.flow_item_by_coord_index import (
     inports,
     outports,
 )
-from flow.test_framework.helpers import assert_test_data_expected
 
 # Tests
 component_file = "array_maths/sorting/item_by_index/item_by_coord_index"
@@ -18,7 +18,7 @@ def run_test_func(inputs, outputs, flow: FlowTest):
     assert_test_data_expected(test_data)
 
 
-@pytest.mark.parametrize(  # noqa: WPS114 - Allow underscore named pattern
+@pytest.mark.parametrize(
     ("index", "result"),
     [
         (base.MdInt(np.array([0, 0])), base.Double(1)),
@@ -26,7 +26,7 @@ def run_test_func(inputs, outputs, flow: FlowTest):
         (base.MdInt(np.array([-1, -1])), base.Double(25)),
     ],  # We can test this function multiple times with different values
 )
-def test_5_2(index: base.MdInt, result: base.Double, flow: FlowTest):
+def test_5_2(index: base.MdInt, result: base.Double, flow: FlowTest):  # noqa: WPS114 - Allow underscored name pattern
     inputs = {
         inports[0]: base.MdDouble(
             np.array(

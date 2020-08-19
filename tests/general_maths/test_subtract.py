@@ -1,8 +1,8 @@
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
 from flow_py_library_general_maths.general_maths.subtract.flow_subtract import inports, outports
-from flow.test_framework.helpers import assert_test_data_expected
 
 # Tests
 component_file = "general_maths/subtract"

@@ -1,9 +1,9 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
 from flow_py_library_general_maths.array.assemble.reshape_array.flow_reshape_array import inports, outports
-from flow.test_framework.helpers import assert_test_data_expected
 
 # Tests
 component_file = "array_maths/assemble/reshape_array"

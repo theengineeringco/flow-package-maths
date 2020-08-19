@@ -1,10 +1,10 @@
 import math
 
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
 from flow_py_library_general_maths.general_maths.e_log_n.flow_e_log_n import inports, outports
-from flow.test_framework.helpers import assert_test_data_expected
 
 component_file = "general_maths/e_log_n"
 
