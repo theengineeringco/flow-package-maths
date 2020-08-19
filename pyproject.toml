@@ -44,7 +44,7 @@ style = "https://raw.githubusercontent.com/theengineeringco/python-styleguide/ma
 
 [tool.black]
 line-length = 120
-target-version = ["py36"]
+target-version = ["py38"]
 
 [tool.isort]
 line_length = 120
