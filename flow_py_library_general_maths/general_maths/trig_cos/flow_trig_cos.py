@@ -41,5 +41,5 @@ def process(component: Component):
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(result_msg, outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(result_msg, outports[0])

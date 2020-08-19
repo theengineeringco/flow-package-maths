@@ -93,7 +93,7 @@ Finally, the Flow Process for the component is pretty easy to implement as we si
 ```python
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not (component.has_data(inports[0]) and component.has_data(inports[1])):
+    if not component.has_data(all_connections=True):
         return
 
     # source the data from the inports
@@ -107,8 +107,8 @@ def process(component: Component):
     print("{0} is {1}".format(inports, get_data_arr))
     print("The Result of dividing A by B is {0} ".format(the_result))
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(the_result), outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(base.Double(the_result), outports[0])
 ```
 
 ## License

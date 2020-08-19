@@ -26,7 +26,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all(component.has_data(idx) for idx in inports):
+    if not component.has_data(all_connections=True):
         return
 
     # source the data from the inports
@@ -45,10 +45,12 @@ def process(component: Component):
     else:  # Populate horizontally
         array_msg.set_array(np.hstack(tuple(vals)))
 
-    component.log(
-        log_level=LogLevel.DEBUG, message=f"Joining array 1 with array 2 {'vertical' if vertical else 'horizontal'}ly.",
-    )  # noqa: WPS221 - Allow complex line
+    if component.debug:
+        component.log(
+            log_level=LogLevel.DEBUG,
+            message=f"Joining array 1 with array 2 {'vertical' if vertical else 'horizontal'}ly.",
+        )  # noqa: WPS221 - Allow complex line
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{array_msg.get_array()}")
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(array_msg, outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(array_msg, outports[0])

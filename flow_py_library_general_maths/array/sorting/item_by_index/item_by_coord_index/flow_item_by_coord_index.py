@@ -26,7 +26,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all(component.has_data(idx) for idx in inports):
+    if not component.has_data(all_connections=True):
         return
 
     # source the data from the inports
@@ -55,5 +55,5 @@ def process(component: Component):
 
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"Retrieved:\n{return_value}")
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(return_value), outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(base.Double(return_value), outports[0])

@@ -17,7 +17,7 @@ component_file = "array_maths/assemble/linspace"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
-    test_data = flow.test(component_file, inputs, outputs, timeout=1000)
+    test_data = flow.test(component_file, inputs, outputs)
     basic_test_eval(test_data)
 
 
