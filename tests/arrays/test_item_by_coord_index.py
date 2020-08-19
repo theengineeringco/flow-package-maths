@@ -7,7 +7,7 @@ from flow_py_library_general_maths.array.sorting.item_by_index.item_by_coord_ind
     inports,
     outports,
 )
-from flow_py_library_general_maths.util.utils_tests import basic_test_eval
+from flow.test_framework.helpers import assert_test_data_expected
 
 # Tests
 component_file = "array_maths/sorting/item_by_index/item_by_coord_index"
@@ -15,7 +15,7 @@ component_file = "array_maths/sorting/item_by_index/item_by_coord_index"
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    basic_test_eval(test_data)
+    assert_test_data_expected(test_data)
 
 
 @pytest.mark.parametrize(  # noqa: WPS114 - Allow underscore named pattern

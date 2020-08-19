@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base, unions, eng
+from flow_types import base, eng, unions
 
 inports = ["theta"]
 outports = ["result"]

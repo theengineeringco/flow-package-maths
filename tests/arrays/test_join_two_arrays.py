@@ -2,9 +2,8 @@ import numpy as np
 import pytest
 from flow.test_framework import FlowTest, flow_test
 from flow_types import base
-
 from flow_py_library_general_maths.array.assemble.join_two_arrays.flow_join_two_arrays import inports, outports
-from flow_py_library_general_maths.util.utils_tests import basic_test_eval
+from flow.test_framework.helpers import assert_test_data_expected
 
 # Tests
 component_file = "array_maths/assemble/join_two_arrays"
@@ -12,7 +11,7 @@ component_file = "array_maths/assemble/join_two_arrays"
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    basic_test_eval(test_data)
+    assert_test_data_expected(test_data)
 
 
 @pytest.mark.parametrize(
