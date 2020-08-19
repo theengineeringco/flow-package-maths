@@ -46,7 +46,7 @@ def process(component: Component):
             np_array.reshape(shape.values)
         except ValueError:
             component.log(
-                LogLevel.ERROR, message=f"You cannot reshape an array of {np_array.size} into an shape {shape.values}!",
+                LogLevel.ERROR, message=f"You cannot reshape an array of {np_array.size} into a shape {shape.values}!",
             )
             return
 
