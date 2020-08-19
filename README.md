@@ -31,12 +31,11 @@ flow library add --type python git+https://github.com/theengineeringco/flow_py_l
 
 ## Example code implementation
 
-A typical Basic Maths component is made up of 4 things:
+A typical Basic Maths component is made up of 3 things:
 
 1. Port Definitions
 2. Flow Component Definition
-3. Mathematical Equation (as a function)
-4. Flow Process (as a function)
+3. Flow Process (as a function)
 
 The port definitions are typically handled as arrays to allow the UI, the component, and the testing to access the names easily. _In many other component libraries the inports and outports are expressed as dicts to allow a name and a type to be assigned. All Basic Maths components allow for Ints and Doubles as inputs (or in the case of inherent Array functions, such as Mass_Sum, we allow MdInts and MdDoubles)._
 
@@ -48,7 +47,7 @@ outports = ["result"]
 The Flow Definition is used by Flow: backend for types and port handling; front-end for Name, Description, and any other functionality we might add (such as Icons, Web-links, Viewport definitions).
 
 ```python
-allowable_types = [base.Double]
+allowable_types = unions.Number  # This is a union of base.Int and base.Double
 definition = {
     "name": "divide",
     "description": "Divides the first number by the second number.",
@@ -74,21 +73,7 @@ definition = {
 }
 ```
 
-The reason we have the mathematical function separate from the `process` function is so that the process can behave agnostically to the function (splitting two conceptually different tasks up).
-
-```python
-# The actual numeric function we are performing
-def dividing_function(use_values=None):
-    if use_values is None:
-        use_values: dict = {"val1": 1, "val2": 2.5}
-    the_values = list(use_values.values())
-    return_value = the_values[0]
-    for idx in range(1, len(the_values)):
-        return_value /= the_values[idx]
-    return return_value
-```
-
-Finally, the Flow Process for the component is pretty easy to implement as we simply call the mathematical directly with the component port data.
+The Flow Process for the component is pretty easy to implement as we simply call the mathematical directly with the component port data.
 
 ```python
 def process(component: Component):
@@ -97,18 +82,22 @@ def process(component: Component):
         return
 
     # source the data from the inports
-    data1 = component.get_data(inports[0])
-    data2 = component.get_data(inports[1])
+    value1_msg: base.Double = component.get_data(inports[0])
+    value2_msg: base.Double = component.get_data(inports[1])
 
-    get_data_arr = {inports[0]: data1.value, inports[1]: data2.value}
-    # actually run the dividing function with the inputs.
-    the_result = dividing_function(get_data_arr)
+    val1 = value1_msg.value
+    val2 = value2_msg.value
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"Dividing {val1} by {val2}")
 
-    print("{0} is {1}".format(inports, get_data_arr))
-    print("The Result of dividing A by B is {0} ".format(the_result))
+    # calculate the result
+    result = val1 / val2
+    result_msg = base.Double(result)
+    if component.debug:
+        component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
     # send the result message to the outports (as multi_connection)
-    component.send_data(base.Double(the_result), outports[0])
+    component.send_data(result_msg, outports[0])
 ```
 
 ## License
