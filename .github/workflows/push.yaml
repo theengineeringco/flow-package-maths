@@ -12,14 +12,12 @@ jobs:
   testing:
     name: Testing
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python: [3.6, 3.7, 3.8]
 
     steps:
       - name: Clone Repo
@@ -28,7 +26,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python }}
+          python-version: 3.8
 
       - name: Get Full Python Version
         id: full-python-version
@@ -45,18 +43,19 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install Dependencies
+        timeout-minutes: 10
         run: |
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
       - name: Run Tests
+        timeout-minutes: 5
         run: |
           poetry run pytest
   release:
     name: Release
     needs: testing
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -76,6 +75,7 @@ jobs:
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
+        timeout-minutes: 5
         with:
           extra_plugins: |
             @semantic-release/changelog
