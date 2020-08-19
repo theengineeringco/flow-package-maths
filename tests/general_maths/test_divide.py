@@ -24,6 +24,18 @@ def test_divide_double2double(flow: FlowTest):
     run_test_func(inputs, outputs, flow=flow)
 
 
+def test_divide_int2double(flow: FlowTest):
+    inputs = {
+        inports[0]: [base.Int(1000)],
+        inports[1]: [base.Int(255)],
+    }
+
+    outputs = {outports[0]: [base.Double(3.9215686274509802)]}
+
+    run_test_func(inputs, outputs, flow=flow)
+
+
 if __name__ == "__main__":
     with flow_test() as flow:
         test_divide_double2double(flow)
+        test_divide_int2double(flow)
