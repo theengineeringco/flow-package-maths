@@ -1,3 +1,11 @@
+# [1.1.0-develop.1](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.0.0...v1.1.0-develop.1) (2020-08-20)
+
+
+### Features
+
+* updated all relevant components to allow unions ([83b41a0](https://github.com/theengineeringco/flow-py-library-general_maths/commit/83b41a0ab20f050ec0b3a48b3e02c7e8729a5783))
+* Updated to new Python Abs 2.0 changes. ([469baae](https://github.com/theengineeringco/flow-py-library-general_maths/commit/469baae3285c4dee4decb6582a3be1982c8dc9d5))
+
 # 1.0.0 (2020-08-04)
 
 

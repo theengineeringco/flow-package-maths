@@ -544,7 +544,7 @@ description = ""
 name = "flow-schema"
 optional = false
 python-versions = ">=3.8,<4.0"
-version = "1.3.3"
+version = "1.3.4"
 
 [package.dependencies]
 flow-py-proto = ">=1.0.2,<2.0.0"
@@ -1505,8 +1505,8 @@ flow-py-types = [
     {file = "flow_py_types-1.1.0.dev2-py3-none-any.whl", hash = "sha256:027156ca495b67bcfc8c4ce9e4a5d3802a7c439ae295be4c90e8bcd37e43a468"},
 ]
 flow-schema = [
-    {file = "flow-schema-1.3.3.tar.gz", hash = "sha256:96d084937104e07e5d1c3ad88104bf3ee0462c02282428ff994186512866e0ea"},
-    {file = "flow_schema-1.3.3-py3-none-any.whl", hash = "sha256:c9b71a3a1d17d66a8a231da0709d1061be7c594fce120f0a1247f3965dd996e8"},
+    {file = "flow-schema-1.3.4.tar.gz", hash = "sha256:feb76b7c348cea11f0bf66ee9cc57cf853f68aa17ab2b92f87c05823026a34af"},
+    {file = "flow_schema-1.3.4-py3-none-any.whl", hash = "sha256:75307f0dfa564aa425118a9ebb5f43a55ff47732e98a6ff1c5b7053a5654ab7e"},
 ]
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
