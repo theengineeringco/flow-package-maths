@@ -1,9 +1,9 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
 from flow_py_library_general_maths.array.assemble.reshape_array.flow_reshape_array import inports, outports
-from flow_py_library_general_maths.util.utils_tests import basic_test_eval
 
 # Tests
 component_file = "array_maths/assemble/reshape_array"
@@ -11,7 +11,7 @@ component_file = "array_maths/assemble/reshape_array"
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs, 1200)
-    basic_test_eval(test_data)
+    assert_test_data_expected(test_data)
 
 
 def test_5_2_to_3_3_3(flow: FlowTest):  # noqa: WPS114 - Allow underscore named pattern

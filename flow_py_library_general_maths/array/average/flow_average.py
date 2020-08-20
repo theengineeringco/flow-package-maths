@@ -30,5 +30,5 @@ def process(component: Component):
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"The average is {result}.")
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(result), outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(base.Double(result), outports[0])

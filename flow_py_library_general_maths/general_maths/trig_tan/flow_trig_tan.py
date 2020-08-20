@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base, eng
+from flow_types import base, eng, unions
 
 inports = ["theta"]
 outports = ["result"]
@@ -10,7 +10,7 @@ definition = {
     "name": "tan",
     "description": "Produces the result of tan(theta) as a double",
     "inports": [{"name": inports[0], "description": "The first number", "types": [eng.Angle]}],
-    "outports": [{"name": outports[0], "description": "The result number", "types": [base.Double]}],
+    "outports": [{"name": outports[0], "description": "The result number", "types": unions.Number}],
 }
 
 
@@ -33,5 +33,5 @@ def process(component: Component) -> None:
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(result_msg, outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(result_msg, outports[0])

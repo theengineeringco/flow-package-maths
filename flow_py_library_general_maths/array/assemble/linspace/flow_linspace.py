@@ -15,7 +15,7 @@ linspace_port = Outport(
     name="linspace",
     description="The elements of your linspace stream.",
     types=[base.MdDouble],
-    addressable=True,  # This is default but stated explicitly.
+    multi_connection=True,  # This is default but stated explicitly.
 )
 
 # Create definition
@@ -30,16 +30,17 @@ definition = Definition(
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all(component.has_data(idx.name) for idx in (start_port, stop_port, num_port)):
+    if not component.has_data(all_connections=True):
         return
 
     # source the data from the inports
-    start: float = component.get_data(start_port.name).value
-    stop: float = component.get_data(stop_port.name).value
-    num: float = component.get_data(num_port.name).value
-    component.log(
-        log_level=LogLevel.DEBUG, message=f"Creating linspace between {start} and {stop} with {num} elements.",
-    )
+    start: float = component.get_data(start_port).value
+    stop: float = component.get_data(stop_port).value
+    num: float = component.get_data(num_port).value
+    if component.debug:
+        component.log(
+            log_level=LogLevel.DEBUG, message=f"Creating linspace between {start} and {stop} with {num} elements.",
+        )
 
     array = np.linspace(start, stop, num)
     if component.debug:
@@ -48,5 +49,5 @@ def process(component: Component):
     array_msg = base.MdDouble()
     array_msg.set_array(array)
 
-    # Send the result message to the outports (as addressable)
-    component.send_data_addressable(array_msg, linspace_port.name)
+    # Send the result message to the outports (as multi_connection)
+    component.send_data(array_msg, linspace_port)

@@ -46,7 +46,7 @@ def process(component: Component):
             np_array.reshape(shape.values)
         except ValueError:
             component.log(
-                LogLevel.ERROR, message=f"You cannot reshape an array of {np_array.size} into an shape {shape.values}!",
+                LogLevel.ERROR, message=f"You cannot reshape an array of {np_array.size} into a shape {shape.values}!",
             )
             return
 
@@ -58,5 +58,5 @@ def process(component: Component):
 
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"Produced:\n{np_array}")
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(array_msg, outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(array_msg, outports[0])
