@@ -1,3 +1,15 @@
+# [1.1.0-develop.2](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.1...v1.1.0-develop.2) (2020-08-24)
+
+
+### Bug Fixes
+
+* Was using has_data incorrectly. Now improved. ([9687f4c](https://github.com/theengineeringco/flow-py-library-general_maths/commit/9687f4c4d17857ed363a1fb92ada2b2a74e0a3f4))
+
+
+### Performance Improvements
+
+* Have number (unions) in Linspace. ([634343c](https://github.com/theengineeringco/flow-py-library-general_maths/commit/634343cd808018c0dcb4f11aff4d88ad471c198c))
+
 # [1.1.0-develop.1](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.0.0...v1.1.0-develop.1) (2020-08-20)
 
 
