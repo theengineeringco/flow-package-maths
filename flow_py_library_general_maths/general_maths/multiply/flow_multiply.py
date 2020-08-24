@@ -28,7 +28,7 @@ def multiplying_function(use_values=None):
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not component.has_data(all_connections=True):
+    if not component.has_data():
         return
 
     # source the data from the inports

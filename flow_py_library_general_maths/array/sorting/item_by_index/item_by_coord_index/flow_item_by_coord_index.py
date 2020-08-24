@@ -26,7 +26,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not component.has_data(all_connections=True):
+    if not component.has_data():
         return
 
     # source the data from the inports

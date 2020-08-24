@@ -21,7 +21,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not all(component.has_data(idx) for idx in inports):
+    if not component.has_data(inports=inports):  # We do not require "Strict"
         return
 
     # source the data from the inports

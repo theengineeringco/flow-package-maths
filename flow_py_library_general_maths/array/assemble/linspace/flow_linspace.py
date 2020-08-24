@@ -1,13 +1,13 @@
 import numpy as np
 from flow import Component, Definition, Inport, LogLevel, Outport
-from flow_types import base
+from flow_types import base, unions
 
 # ---
 # Component Definition
 # ---
 # Inports
-start_port = Inport(name="start", description="The start number to begin your range from.", types=[base.Double])
-stop_port = Inport(name="stop", description="The stop number to end your range from.", types=[base.Double])
+start_port = Inport(name="start", description="The start number to begin your range from.", types=unions.Number)
+stop_port = Inport(name="stop", description="The stop number to end your range from.", types=unions.Number)
 num_port = Inport(name="num", description="The number of elements in your linspace stream.", types=[base.Int])
 
 # Outports
@@ -30,7 +30,7 @@ definition = Definition(
 # The process that the component performs
 def process(component: Component):
     # Check that all inports have data
-    if not component.has_data(all_connections=True):
+    if not component.has_data():
         return
 
     # source the data from the inports
