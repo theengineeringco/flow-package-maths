@@ -78,7 +78,7 @@ The Flow Process for the component is pretty easy to implement as we simply call
 ```python
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not component.has_data(all_connections=True):
+    if not component.has_data():
         return
 
     # source the data from the inports
