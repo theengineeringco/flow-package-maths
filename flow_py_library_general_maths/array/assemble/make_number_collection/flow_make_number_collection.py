@@ -8,7 +8,7 @@ inports = ["values"]
 outports = ["array"]
 
 definition = {
-    "name": "multi_connection_to_array",
+    "name": "make_number_collection",
     "description": "Assemble the input values in to a list in the order with which they were received.",
     "inports": [
         {"name": inports[0], "description": "All of the numbers", "types": unions.Number, "multi_connection": True},
