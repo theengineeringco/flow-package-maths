@@ -439,7 +439,7 @@ description = "Python Component Library for Flow"
 name = "flow-py"
 optional = false
 python-versions = ">=3.8,<4.0"
-version = "1.1.0.dev3"
+version = "1.1.0.dev4"
 
 [package.dependencies]
 async-generator = ">=1.10,<2.0"
@@ -448,7 +448,7 @@ attrs = ">=19.3,<20.0"
 cattrs = ">=1.0,<2.0"
 click = ">=7.1,<8.0"
 flow-py-types = ">=1.1.0-dev.1,<2.0.0"
-flow-schema = ">=1.3.2,<2.0.0"
+flow-schema = ">=1.4.1,<2.0.0"
 jsonschema = ">=3.2,<4.0"
 stringcase = ">=1.2,<2.0"
 toml = ">=0.10,<0.11"
@@ -544,7 +544,7 @@ description = ""
 name = "flow-schema"
 optional = false
 python-versions = ">=3.8,<4.0"
-version = "1.3.5"
+version = "1.4.1"
 
 [package.dependencies]
 flow-py-proto = ">=1.0.2,<2.0.0"
@@ -594,7 +594,7 @@ description = "File identification library for Python"
 name = "identify"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,>=2.7"
-version = "1.4.28"
+version = "1.4.29"
 
 [package.extras]
 license = ["editdistance"]
@@ -1487,13 +1487,13 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-1.1.0.dev3.tar.gz", hash = "sha256:c41e4b300aa4d5f70234e09ee5c87c8fe14a82abe611caddab89c47d1afccda9"},
-    {file = "flow_py-1.1.0.dev3-cp38-cp38-linux_x86_64.whl", hash = "sha256:7608a5812a82d6557a0c0f2079bfa72dd32c59b96b9f37cca8131d91c1d333db"},
-    {file = "flow_py-1.1.0.dev3-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:ffd485aa3dee8445cc538112898f0d6eb833f20ec8436bff6153d4ee9f267842"},
-    {file = "flow_py-1.1.0.dev3-cp38-cp38-win_amd64.whl", hash = "sha256:c3147975e57c9f89baffd158a91857c98ce1be2cb0c996eab3cda07a6ed2b647"},
+    {file = "flow-py-1.1.0.dev4.tar.gz", hash = "sha256:06f66ec3de6faff8c6ceef777f0b1343d7e8a5f3afaaa90a9f083aa3d00f2095"},
+    {file = "flow_py-1.1.0.dev4-cp38-cp38-linux_x86_64.whl", hash = "sha256:5eb9da883d53a7315d13ba8f6cde86669abf7f9b2013cefa5f7a680b4145587b"},
+    {file = "flow_py-1.1.0.dev4-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:9e2dac3c3764535e8bd30ec7cffa0b72d1ed2907478e3b9ca32794ace08397af"},
+    {file = "flow_py-1.1.0.dev4-cp38-cp38-win_amd64.whl", hash = "sha256:205d4601ec67f96aeb26d95ca10571da367abd87ff734a2f5279877d87816bf1"},
 ]
 flow-py-cookiecutter = [
-    {file = "flow-py-cookiecutter-1.0.0.tar.gz", hash = "sha256:625f91867cc59dc5224bcdabaeffa7993a6edfdeca75b2d1416fbe4beed230f5"},
+    {file = "flow-py-cookiecutter-1.0.0.tar.gz", hash = "sha256:795893c166c72f80d55a84f70dbde691bee45ae62ed94f8a4e50aaa066591b8e"},
     {file = "flow_py_cookiecutter-1.0.0-py3-none-any.whl", hash = "sha256:ceb302d88f97564fe4ae54d072909654447822f6279bb75107046e41a4f822f6"},
 ]
 flow-py-proto = [
@@ -1505,8 +1505,8 @@ flow-py-types = [
     {file = "flow_py_types-1.1.0.dev2-py3-none-any.whl", hash = "sha256:027156ca495b67bcfc8c4ce9e4a5d3802a7c439ae295be4c90e8bcd37e43a468"},
 ]
 flow-schema = [
-    {file = "flow-schema-1.3.5.tar.gz", hash = "sha256:8a540cedf0165603405cefa6e40d03aa91ab4fd14acc24165b6e37e29567ee7c"},
-    {file = "flow_schema-1.3.5-py3-none-any.whl", hash = "sha256:47d302d70cc09fa9842d293efada053ba3e4284a9668e3b0f5b00b15c8c19939"},
+    {file = "flow-schema-1.4.1.tar.gz", hash = "sha256:ce724be3a491ac65d531ff150cd3932ccd18760d26e81b7ab7d4edae0a16e9f0"},
+    {file = "flow_schema-1.4.1-py3-none-any.whl", hash = "sha256:d7eaa077a0dbeb14d94a57574ddd81b4db0a9242532c4d946703c82963e79b05"},
 ]
 future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
@@ -1520,8 +1520,8 @@ gitpython = [
     {file = "GitPython-3.1.7.tar.gz", hash = "sha256:2db287d71a284e22e5c2846042d0602465c7434d910406990d5b74df4afb0858"},
 ]
 identify = [
-    {file = "identify-1.4.28-py2.py3-none-any.whl", hash = "sha256:69c4769f085badafd0e04b1763e847258cbbf6d898e8678ebffc91abdb86f6c6"},
-    {file = "identify-1.4.28.tar.gz", hash = "sha256:d6ae6daee50ba1b493e9ca4d36a5edd55905d2cf43548fdc20b2a14edef102e7"},
+    {file = "identify-1.4.29-py2.py3-none-any.whl", hash = "sha256:b1aa2e05863dc80242610d46a7b49105e2eafe00ef0c8ff311c1828680760c76"},
+    {file = "identify-1.4.29.tar.gz", hash = "sha256:9f5fcf22b665eaece583bd395b103c2769772a0f646ffabb5b1f155901b07de2"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},

@@ -3,13 +3,13 @@ from flow.test_framework import FlowTest, flow_test
 from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
-from flow_py_library_general_maths.array.assemble.multi_connection_to_number_array.flow_multi_connection_to_number_array import (  # noqa: E501
+from flow_py_library_general_maths.array.assemble.make_number_collection.flow_make_number_collection import (  # noqa: E501
     inports,
     outports,
 )
 
 # Tests
-component_file = "array_maths/assemble/multi_connection_to_number_array"
+component_file = "array_maths/assemble/make_number_collection"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

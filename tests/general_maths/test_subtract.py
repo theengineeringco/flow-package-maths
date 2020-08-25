@@ -5,7 +5,7 @@ from flow_types import base
 from flow_py_library_general_maths.general_maths.subtract.flow_subtract import inports, outports
 
 # Tests
-component_file = "general_maths/subtract"
+component_file = "maths/subtract"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

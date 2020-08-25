@@ -4,7 +4,7 @@ from flow_types import base
 
 from flow_py_library_general_maths.general_maths.exp_n.flow_exp_n import inports, outports
 
-component_file = "general_maths/exp_n"
+component_file = "maths/exp_n"
 
 
 # Tests
