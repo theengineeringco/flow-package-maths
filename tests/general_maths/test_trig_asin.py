@@ -7,7 +7,7 @@ from flow_types import base, eng
 from flow_py_library_general_maths.general_maths.trig_asin.flow_trig_asin import inports, outports
 
 # Tests
-component_file = "general_maths/trig_asin"
+component_file = "maths/trig_asin"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

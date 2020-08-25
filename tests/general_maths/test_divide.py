@@ -5,7 +5,7 @@ from flow_types import base
 from flow_py_library_general_maths.general_maths.divide.flow_divide import inports, outports
 
 # Tests
-component_file = "general_maths/divide"
+component_file = "maths/divide"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

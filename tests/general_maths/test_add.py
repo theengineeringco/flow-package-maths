@@ -5,7 +5,7 @@ from flow_types import base
 from flow_py_library_general_maths.general_maths.add.flow_add import inports, outports
 
 # Tests
-component_file = "general_maths/add"
+component_file = "maths/add"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):

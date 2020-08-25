@@ -7,7 +7,7 @@ from flow_types import base, eng
 from flow_py_library_general_maths.general_maths.trig_cos.flow_trig_cos import inports, outports
 
 # Tests
-component_file = "general_maths/trig_cos"
+component_file = "maths/trig_cos"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
