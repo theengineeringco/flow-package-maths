@@ -1,3 +1,10 @@
+# [1.1.0-develop.4](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.3...v1.1.0-develop.4) (2020-08-26)
+
+
+### Bug Fixes
+
+* changed name of item by coord index to number at coordinate index ([7b9268d](https://github.com/theengineeringco/flow-py-library-general_maths/commit/7b9268da6f5dc37aa647860b74dc11fc3c62d64b))
+
 # [1.1.0-develop.3](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.2...v1.1.0-develop.3) (2020-08-25)
 
 
