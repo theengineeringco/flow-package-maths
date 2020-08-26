@@ -1,3 +1,10 @@
+# [1.1.0-develop.3](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.2...v1.1.0-develop.3) (2020-08-25)
+
+
+### Bug Fixes
+
+* Updated namespace (previous commits) ([374fcd2](https://github.com/theengineeringco/flow-py-library-general_maths/commit/374fcd21282891b41c5677c517c186651c5a0319))
+
 # [1.1.0-develop.2](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.1...v1.1.0-develop.2) (2020-08-24)
 
 

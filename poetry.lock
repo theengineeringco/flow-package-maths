@@ -1497,7 +1497,7 @@ flow-py-cookiecutter = [
     {file = "flow_py_cookiecutter-1.0.0-py3-none-any.whl", hash = "sha256:ceb302d88f97564fe4ae54d072909654447822f6279bb75107046e41a4f822f6"},
 ]
 flow-py-proto = [
-    {file = "flow-py-proto-1.0.2.tar.gz", hash = "sha256:7fb6d547c05a62c29389db736c82ee3b3b721c35239b628e5144cd6905b2caaa"},
+    {file = "flow-py-proto-1.0.2.tar.gz", hash = "sha256:45fe1dc523cc0490edd67d881581039c2bb613f074e6201bf72b76c8ff37a654"},
     {file = "flow_py_proto-1.0.2-py3-none-any.whl", hash = "sha256:e886724a7e4e676fd2d3136a128a5fb7ca1d031df5b73405bd3cc5d3f849a3a2"},
 ]
 flow-py-types = [
@@ -1505,7 +1505,7 @@ flow-py-types = [
     {file = "flow_py_types-1.1.0.dev3-py3-none-any.whl", hash = "sha256:ac845fb17cdd5979bb61efc54e4dbe0fc63d5ae4c542735f11ec24b59e917245"},
 ]
 flow-schema = [
-    {file = "flow-schema-1.4.1.tar.gz", hash = "sha256:ce724be3a491ac65d531ff150cd3932ccd18760d26e81b7ab7d4edae0a16e9f0"},
+    {file = "flow-schema-1.4.1.tar.gz", hash = "sha256:092960c25ae31876ab56bcd3194b3fac8518fa55fbcad981be8956a5d88d8e51"},
     {file = "flow_schema-1.4.1-py3-none-any.whl", hash = "sha256:d7eaa077a0dbeb14d94a57574ddd81b4db0a9242532c4d946703c82963e79b05"},
 ]
 future = [
@@ -1754,6 +1754,7 @@ pycodestyle = [
 ]
 pydocstyle = [
     {file = "pydocstyle-5.1.0-py3-none-any.whl", hash = "sha256:08374b9d4d2b7164bae50b71bb24eb0d74a56b309029d5d502264092fa7db0c3"},
+    {file = "pydocstyle-5.1.0.tar.gz", hash = "sha256:4ca3c7736d36f92bb215dd74ef84ac3d6c146edd795c7afc5154c10f1eb1f65a"},
 ]
 pyflakes = [
     {file = "pyflakes-2.2.0-py2.py3-none-any.whl", hash = "sha256:0d94e0e05a19e57a99444b6ddcf9a6eb2e5c68d3ca1e98e90707af8152c90a92"},
