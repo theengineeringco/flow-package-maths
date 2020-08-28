@@ -1,24 +1,24 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
-from flow_py_library_general_maths.array.range.flow_range import inports, outports
-from flow_py_library_general_maths.util.utils_tests import basic_test_eval
+from flow_py_library_general_maths.array.median.flow_median import inports, outports
 
 # Tests
-component_file = "array_maths/range"
+component_file = "array_maths/median"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    basic_test_eval(test_data)
+    assert_test_data_expected(test_data)
 
 
 def test_MdDouble2x2(flow: FlowTest):
     array = base.MdDouble(np.array([[1, 2], [3, 4]]))
     inputs = {inports[0]: [array]}
 
-    outputs = {outports[0]: base.Double(3.0)}
+    outputs = {outports[0]: base.Double(2.5)}
 
     run_test_func(inputs, outputs, flow=flow)
 
@@ -27,7 +27,7 @@ def test_MdDouble2x2mixed(flow: FlowTest):
     array = base.MdDouble(np.array([[-1, 2.2], [4, 4]]))
     inputs = {inports[0]: [array]}
 
-    outputs = {outports[0]: base.Double(5.0)}
+    outputs = {outports[0]: base.Double(3.1)}
 
     run_test_func(inputs, outputs, flow=flow)
 
@@ -41,7 +41,7 @@ def test_MdDouble5x5x5x5x5(flow: FlowTest):
 
     inputs = {inports[0]: [array]}
 
-    outputs = {outports[0]: base.Double(24)}
+    outputs = {outports[0]: base.Double(13)}
 
     run_test_func(inputs, outputs, flow=flow)
 

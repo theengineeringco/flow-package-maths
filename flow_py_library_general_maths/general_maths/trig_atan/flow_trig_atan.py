@@ -1,7 +1,7 @@
 import math
 
 from flow import Component, LogLevel
-from flow_types import base, eng
+from flow_types import base, eng, unions
 
 inports = ["number"]
 outports = ["result"]
@@ -9,7 +9,7 @@ outports = ["result"]
 definition = {
     "name": "atan",
     "description": "Produces the result of atan(theta) as a double",
-    "inports": [{"name": inports[0], "description": "The first number", "types": [base.Double]}],
+    "inports": [{"name": inports[0], "description": "The first number", "types": unions.Number}],
     "outports": [{"name": outports[0], "description": "The result number", "types": [eng.Angle]}],
 }
 
@@ -17,7 +17,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not component.has_data(inports[0]):
+    if not component.has_data():
         return
 
     # source the data from the inports
@@ -33,5 +33,5 @@ def process(component: Component):
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"The result is {result}.")
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(result_msg, outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(result_msg, outports[0])

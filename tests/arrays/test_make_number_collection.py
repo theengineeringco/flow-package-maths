@@ -1,17 +1,20 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
+from flow.test_framework.helpers import assert_test_data_expected
 from flow_types import base
 
-from flow_py_library_general_maths.array.assemble.addressable_to_list.flow_addressable_to_list import inports, outports
-from flow_py_library_general_maths.util.utils_tests import basic_test_eval
+from flow_py_library_general_maths.array.assemble.make_number_collection.flow_make_number_collection import (  # noqa: E501
+    inports,
+    outports,
+)
 
 # Tests
-component_file = "array_maths/assemble/addressable_to_list"
+component_file = "array_maths/assemble/make_number_collection"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
     test_data = flow.test(component_file, inputs, outputs)
-    basic_test_eval(test_data)
+    assert_test_data_expected(test_data)
 
 
 def test_doubles(flow: FlowTest):

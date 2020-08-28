@@ -16,7 +16,7 @@ definition = {
 # The process that the component performs
 def process(component: Component):
     # check that the components have data --> this can be modified if you want to set explicit defaults etc.
-    if not component.has_data(inports[0]):
+    if not component.has_data():
         return
 
     # source the data from the inports
@@ -31,5 +31,5 @@ def process(component: Component):
     if component.debug:
         component.log(log_level=LogLevel.DEBUG, message=f"The median is {result} ")
 
-    # send the result message to the outports (as addressable)
-    component.send_data_addressable(base.Double(result), outports[0])
+    # send the result message to the outports (as multi_connection)
+    component.send_data(base.Double(result), outports[0])

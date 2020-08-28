@@ -2,14 +2,14 @@
 name = "flow-py-library-general_maths"
 description = "A Package of Python Flow Components"
 authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
-version = "1.0.0"
+version = "1.1.0-dev.4"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/theengineeringco/flow-py-library-general_maths.git"
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
-flow-py = "^1.0.0"
+python = "^3.8"
+flow-py = "^1.1.0"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
@@ -22,7 +22,7 @@ tox-pyenv = "^1.1"                                    # Tox Testing
 nitpick = "^0.21"                                     # Style Guide
 toml = "<0.10.1"                                      # Style Guide
 
-flow-py = {version = "^1.0.0", extras = ["testing"]}      # For Component Testing
+flow-py = {version = "^1.1.0", extras = ["testing"]}      # For Component Testing.
 flow-py-cookiecutter = "^1.0.0"  # For Component Generation
 
 # Pre-commit helps enforce code style. Use `pre-commit install` to install
@@ -33,7 +33,7 @@ name = "flow-pypi"
 url = "http://flow-pypi.herokuapp.com/simple/"
 
 [tool.poetry.plugins."flow.components"]
-"general_maths" = "flow_py_library_general_maths.general_maths"
+"maths" = "flow_py_library_general_maths.general_maths"
 "array_maths" = "flow_py_library_general_maths.array"
 
 [tool.taskipy.tasks]
@@ -44,7 +44,7 @@ style = "https://raw.githubusercontent.com/theengineeringco/python-styleguide/ma
 
 [tool.black]
 line-length = 120
-target-version = ["py36"]
+target-version = ["py38"]
 
 [tool.isort]
 line_length = 120

@@ -11,7 +11,6 @@ jobs:
   linting:
     name: Linting
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -21,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.6
+          python-version: 3.8
 
       - name: Get Full Python Version
         id: full-python-version
@@ -38,11 +37,13 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install Dependencies
+        timeout-minutes: 10
         run: |
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
           poetry run pip install pip --upgrade
           poetry install -vvv
       - name: Run Linting
+        timeout-minutes: 5
         run: |
           poetry run pre-commit run --all
           poetry run flake8 --format wemake
@@ -51,13 +52,7 @@ jobs:
     name: Testing
     needs: linting
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-
-    strategy:
-      fail-fast: false
-      matrix:
-        python: [3.6, 3.7, 3.8]
 
     steps:
       - name: Clone Repo
@@ -66,7 +61,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python }}
+          python-version: 3.8
 
       - name: Get Full Python Version
         id: full-python-version
@@ -83,10 +78,12 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Install Dependencies
+        timeout-minutes: 10
         run: |
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
       - name: Run Tests
+        timeout-minutes: 5
         run: |
           poetry run pytest

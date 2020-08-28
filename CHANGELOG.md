@@ -1,3 +1,37 @@
+# [1.1.0-develop.4](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.3...v1.1.0-develop.4) (2020-08-26)
+
+
+### Bug Fixes
+
+* changed name of item by coord index to number at coordinate index ([7b9268d](https://github.com/theengineeringco/flow-py-library-general_maths/commit/7b9268da6f5dc37aa647860b74dc11fc3c62d64b))
+
+# [1.1.0-develop.3](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.2...v1.1.0-develop.3) (2020-08-25)
+
+
+### Bug Fixes
+
+* Updated namespace (previous commits) ([374fcd2](https://github.com/theengineeringco/flow-py-library-general_maths/commit/374fcd21282891b41c5677c517c186651c5a0319))
+
+# [1.1.0-develop.2](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0-develop.1...v1.1.0-develop.2) (2020-08-24)
+
+
+### Bug Fixes
+
+* Was using has_data incorrectly. Now improved. ([9687f4c](https://github.com/theengineeringco/flow-py-library-general_maths/commit/9687f4c4d17857ed363a1fb92ada2b2a74e0a3f4))
+
+
+### Performance Improvements
+
+* Have number (unions) in Linspace. ([634343c](https://github.com/theengineeringco/flow-py-library-general_maths/commit/634343cd808018c0dcb4f11aff4d88ad471c198c))
+
+# [1.1.0-develop.1](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.0.0...v1.1.0-develop.1) (2020-08-20)
+
+
+### Features
+
+* updated all relevant components to allow unions ([83b41a0](https://github.com/theengineeringco/flow-py-library-general_maths/commit/83b41a0ab20f050ec0b3a48b3e02c7e8729a5783))
+* Updated to new Python Abs 2.0 changes. ([469baae](https://github.com/theengineeringco/flow-py-library-general_maths/commit/469baae3285c4dee4decb6582a3be1982c8dc9d5))
+
 # 1.0.0 (2020-08-04)
 
 
