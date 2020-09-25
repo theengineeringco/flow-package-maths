@@ -9,14 +9,14 @@ repository = "https://github.com/theengineeringco/flow-py-library-general_maths.
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flow-py = "^1.1.0"
+flow-py = "^1.1.1"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
 mypy = "^0.770"                                       # Linting
 black = "^19.10b0"                                    # Formatting
 isort = { version = "^4.3", extras = ["pyproject"] }  # Formatting
-pytest = "^5.4"                                       # Runnning Tests
+pytest = "^6.0"                                       # Runnning Tests
 tox = "^3.15"                                         # Tox Testing
 tox-pyenv = "^1.1"                                    # Tox Testing
 nitpick = "^0.21"                                     # Style Guide
@@ -60,5 +60,5 @@ include = '^flow_py_library_general_maths|^tests'
 exclude = '(__init__.py)'
 
 [build-system]
-requires = ["poetry>=1.0", "pip>=20.0"]
+requires = ["poetry>=1.0",]
 build-backend = "poetry.masonry.api"
