@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.1.0...v1.1.1) (2020-09-25)
+
+
+### Bug Fixes
+
+* fixed tests ([f53358b](https://github.com/theengineeringco/flow-py-library-general_maths/commit/f53358b3a8cfc404323e6848e508cd4bfebcc9c9))
+* updated to latest flow_py ([a2d3a6e](https://github.com/theengineeringco/flow-py-library-general_maths/commit/a2d3a6e6f5d06a0372c76d3a9760231e8bcd3a2f))
+
 # [1.1.0](https://github.com/theengineeringco/flow-py-library-general_maths/compare/v1.0.0...v1.1.0) (2020-08-28)
 
 
