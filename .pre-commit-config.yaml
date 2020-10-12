@@ -1,18 +1,17 @@
 repos:
+  - repo: https://github.com/andreoliwa/nitpick
+    rev: v0.23.0
+    hooks:
+      - id: nitpick
+
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.0.0
+    rev: v2.4.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
 
-  - repo: https://github.com/andreoliwa/nitpick
-    rev: v0.22.2
-    hooks:
-      - id: nitpick
-        additional_dependencies: ["toml==0.10.0"]
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+    rev: v3.2.0
     hooks:
       - id: check-ast
       - id: debug-statements
@@ -20,7 +19,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.5.1
+    rev: v1.6.0
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-mock-methods
@@ -34,35 +33,28 @@ repos:
       - id: pyupgrade
         args: [--py36-plus]
 
-  - repo: https://github.com/hakancelik96/unimport
-    rev: 0.2.8
-    hooks:
-      - id: unimport
-        additional_dependencies: [toml]
-        args: [--config, pyproject.toml, --remove, --include-star-import]
-
-  - repo: https://github.com/asottile/seed-isort-config
-    rev: v2.2.0
-    hooks:
-      - id: seed-isort-config
-
-  - repo: https://github.com/timothycrosley/isort
-    rev: "5.2.1"
-    hooks:
-      - id: isort
-        additional_dependencies: [toml]
-
-  - repo: https://github.com/python/black
-    rev: 19.10b0
-    hooks:
-      - id: black
-
-  - repo: https://github.com/asottile/blacken-docs
-    rev: v1.7.0
-    hooks:
-      - id: blacken-docs
-
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v2.0.1
     hooks:
       - id: add-trailing-comma
+
+  - repo: https://github.com/hakancelik96/unimport
+    rev: 0.3.0
+    hooks:
+      - id: unimport
+        args: [--remove, --include-star-import]
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: "5.5.4"
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/python/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.8.0
+    hooks:
+      - id: blacken-docs

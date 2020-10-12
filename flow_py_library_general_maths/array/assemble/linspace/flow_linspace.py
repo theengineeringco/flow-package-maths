@@ -39,7 +39,8 @@ def process(component: Component):
     num: float = component.get_data(num_port).value
     if component.debug:
         component.log(
-            log_level=LogLevel.DEBUG, message=f"Creating linspace between {start} and {stop} with {num} elements.",
+            log_level=LogLevel.DEBUG,
+            message=f"Creating linspace between {start} and {stop} with {num} elements.",
         )
 
     array = np.linspace(start, stop, num)

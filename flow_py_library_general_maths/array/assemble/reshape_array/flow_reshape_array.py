@@ -30,7 +30,8 @@ def process(component: Component):
 
     if component.debug:
         component.log(
-            log_level=LogLevel.DEBUG, message=f"Reshaping\n{array.get_array()}\nto a shape of\n{shape.values}",
+            log_level=LogLevel.DEBUG,
+            message=f"Reshaping\n{array.get_array()}\nto a shape of\n{shape.values}",
         )
     if len(shape.shape) != 1:  # Assert that the shape is only 1 dimensional, e.g. 2x2x3x1 is [2, 2, 3, 1]
         component.log(
@@ -46,7 +47,8 @@ def process(component: Component):
             np_array.reshape(shape.values)
         except ValueError:
             component.log(
-                LogLevel.ERROR, message=f"You cannot reshape an array of {np_array.size} into a shape {shape.values}!",
+                LogLevel.ERROR,
+                message=f"You cannot reshape an array of {np_array.size} into a shape {shape.values}!",
             )
             return
 
