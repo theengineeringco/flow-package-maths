@@ -1,0 +1,16 @@
+[component]
+file = "divide.py"
+id = "f0199dde-f344-4b06-a082-296fe3187fe1"
+
+[component.details]
+name = "Divide"
+namespace = "Maths"
+description = "Divides the numerator from the denominator number."
+keywords = [ "/", "division", "arithmetic" ]
+
+[component.details.inports]
+numerator = { name = "Numerator", description = "" }
+denominator = { name = "Denominator", description = "" }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

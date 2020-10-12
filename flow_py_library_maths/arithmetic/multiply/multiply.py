@@ -21,14 +21,14 @@ def process(component: Component):
     val1: float = cast(base.Double, component.get_data(value1)).value
     val2: float = cast(base.Double, component.get_data(value2)).value
 
-    # add
-    res = val1 + val2
+    # multiply
+    res = val1 * val2
 
     # output message
     result_msg = base.Double(res)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Adding {val1} to {val2} gives {res}.")
+    component.log(log_level=LogLevel.DEBUG, message=f"Multiplying {val1} by {val2} gives {res}.")
 
     # send message to outports
     component.send_data(result_msg, result)

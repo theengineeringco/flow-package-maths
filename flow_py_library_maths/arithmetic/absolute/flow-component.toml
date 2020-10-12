@@ -1,0 +1,15 @@
+[component]
+file = "absolute.py"
+id = "fccbf8c9-ec62-432a-b196-29a59c8fceb4"
+
+[component.details]
+name = "Absolute"
+namespace = "Maths"
+description = "Computes the absolute or the non-negative of a value."
+keywords = [ "modulus", "||", "abs", "arithmetic" ]
+
+[component.details.inports]
+value = { name = "Value", description = "" }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

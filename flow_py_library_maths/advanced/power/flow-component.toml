@@ -1,0 +1,16 @@
+[component]
+file = "power.py"
+id = "dab652a2-af9e-494a-ae35-25759357dc0c"
+
+[component.details]
+name = "Power"
+namespace = "Maths"
+description = "Raises a value to a power (x^n)."
+keywords = [ "^", "exponetiation" ]
+
+[component.details.inports]
+value = { name = "Value", description = "Value to be raised." }
+exponent = { name = "Exponent", description = "Exponent number." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

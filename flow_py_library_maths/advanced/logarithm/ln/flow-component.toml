@@ -1,0 +1,15 @@
+[component]
+file = "ln.py"
+id = "a21f4177-0302-4303-a4a3-12436ca6cba1"
+
+[component.details]
+name = "ln"
+namespace = "Maths"
+description = "Computes the natural log of a value."
+keywords = [ "natural log", "logarithms" ]
+
+[component.details.inports]
+value = { name = "Value", description = "Value to be raised." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

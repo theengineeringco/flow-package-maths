@@ -1,12 +1,12 @@
 [component]
-file = "add.py"
-id = "a3938fef-32be-48c3-a5e6-35e32b62bdd1"
+file = "multiply.py"
+id = "50fea825-f592-40df-a2e5-cdfa1350ae8c"
 
 [component.details]
-name = "Add"
+name = "Multiply"
 namespace = "Maths"
-description = "Adds two values together."
-keywords = [ "+", "addition", "arithmetic", "plus" ]
+description = "Multiplies two values together."
+keywords = [ "*", "multiplication", "arithmetic", "product", "times" ]
 
 [component.details.inports]
 value1 = { name = "Value 1", description = "" }

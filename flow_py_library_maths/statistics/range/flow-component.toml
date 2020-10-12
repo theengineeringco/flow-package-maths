@@ -1,0 +1,15 @@
+[component]
+file = "range.py"
+id = "9b1839c1-6d44-4a6e-8bb6-a480fed4abbd"
+
+[component.details]
+name = "Range"
+namespace = "Maths"
+description = "Computes the difference between the largest and smallest number of list of values."
+keywords = [ "difference", "statistics" ]
+
+[component.details.inports]
+values = { name = "Values", description = "A list of values." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

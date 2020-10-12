@@ -1,12 +1,12 @@
 [component]
-file = "add.py"
-id = "a3938fef-32be-48c3-a5e6-35e32b62bdd1"
+file = "subtract.py"
+id = "b63b0eb2-11c7-4fbd-9317-f2a96e249bde"
 
 [component.details]
-name = "Add"
+name = "Subtract"
 namespace = "Maths"
-description = "Adds two values together."
-keywords = [ "+", "addition", "arithmetic", "plus" ]
+description = "Subtracts the first value from the second value."
+keywords = [ "-", "subtraction", "arithmetic", "minus" ]
 
 [component.details.inports]
 value1 = { name = "Value 1", description = "" }
