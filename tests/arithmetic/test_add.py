@@ -40,13 +40,13 @@ def test_decimals(flow: FlowTest):
 
 def test_negative_doubles(flow: FlowTest):
 
-    val1 = base.Double(-1e6)
-    val2 = base.Double(3.5)
+    val1 = base.Double(-1.2e6)
+    val2 = base.Double(2.5)
 
     inputs = {"value1": val1, "value2": val2}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-999996.5)})
+    assert check_outport_data(test_data, {"result": base.Double(-1199997.5)})
 
 
 if __name__ == "__main__":

@@ -1,29 +1,57 @@
-from flow.test_framework import FlowTest, flow_test
-from flow.test_framework.helpers import assert_test_data_expected
+from flow.testing import FlowTest, flow_test
+from flow.testing.helpers import check_outport_data
 from flow_types import base
 
-from flow_package_maths.general_maths.subtract.flow_subtract import inports, outports
-
-# Tests
-component_file = "maths/subtract"
+component_dir = "flow_package_maths/arithmetic/subtract"
 
 
-def run_test_func(inputs, outputs, flow: FlowTest):
-    test_data = flow.test(component_file, inputs, outputs)
-    assert_test_data_expected(test_data)
+def test_int(flow: FlowTest):
+
+    val1 = base.Int(10)
+    val2 = base.Int(5)
+
+    inputs = {"value1": val1, "value2": val2}
+    outputs = ["result"]
+    test_data = flow.test(component_dir, inputs, outputs)
+    assert check_outport_data(test_data, {"result": base.Double(5)})
 
 
-def test_subtract_double2double(flow: FlowTest):
-    inputs = {
-        inports[0]: [base.Double(3.67)],
-        inports[1]: [base.Double(-1e9)],
-    }
+def test_negative_int(flow: FlowTest):
 
-    outputs = {outports[0]: [base.Double(3.67 + 1e9)]}
+    val1 = base.Int(-4)
+    val2 = base.Int(-2)
 
-    run_test_func(inputs, outputs, flow=flow)
+    inputs = {"value1": val1, "value2": val2}
+    outputs = ["result"]
+    test_data = flow.test(component_dir, inputs, outputs)
+    assert check_outport_data(test_data, {"result": base.Double(-2)})
+
+
+def test_decimals(flow: FlowTest):
+
+    val1 = base.Double(0.99)
+    val2 = base.Double(0.99)
+
+    inputs = {"value1": val1, "value2": val2}
+    outputs = ["result"]
+    test_data = flow.test(component_dir, inputs, outputs)
+    assert check_outport_data(test_data, {"result": base.Double(0)})
+
+
+def test_negative_doubles(flow: FlowTest):
+
+    val1 = base.Double(-1.2e6)
+    val2 = base.Double(2.5)
+
+    inputs = {"value1": val1, "value2": val2}
+    outputs = ["result"]
+    test_data = flow.test(component_dir, inputs, outputs)
+    assert check_outport_data(test_data, {"result": base.Double(-1200002.5)})
 
 
 if __name__ == "__main__":
     with flow_test() as flow:
-        test_subtract_double2double(flow)
+        test_int(flow)
+        test_negative_int(flow)
+        test_decimals(flow)
+        test_negative_doubles(flow)

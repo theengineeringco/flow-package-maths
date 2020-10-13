@@ -18,7 +18,7 @@ def process(component: Component):
         return
 
     # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
+    val: float = cast(base.Int, component.get_data(value)).value
 
     # root
     res = math.factorial(val)
@@ -27,4 +27,4 @@ def process(component: Component):
     component.log(log_level=LogLevel.DEBUG, message=f"{val}! gives {res}.")
 
     # send message to outports
-    component.send_data(base.Double(res), result)
+    component.send_data(base.Int(res), result)

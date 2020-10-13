@@ -20,7 +20,17 @@ def process(component: Component):
 
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
-    base_log_val: float = cast(base.Double, component.get_data(value)).value
+    base_log_val: float = cast(base.Double, component.get_data(base_log)).value
+
+    if val < 0:
+        component.log(log_level=LogLevel.ERROR, message=f"Input value is {val} which is <0. Needs to be positive.")
+        return
+    elif base_log_val < 0:
+        component.log(log_level=LogLevel.ERROR, message=f"Input base is {val} which is <0. Needs to be positive.")
+        return
+    elif base_log_val == 1:
+        component.log(log_level=LogLevel.ERROR, message="Input base is 1. Needs to be positive and not equal to 1.")
+        return
 
     # logarithm
     res = math.log(val, base_log_val)

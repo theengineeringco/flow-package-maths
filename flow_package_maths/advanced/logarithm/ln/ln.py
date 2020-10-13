@@ -20,6 +20,13 @@ def process(component: Component):
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
 
+    if val < 0:
+        component.log(log_level=LogLevel.ERROR, message=f"Input value is {val} which is <0 and is invalid for ln.")
+        return
+    elif val == 0:
+        component.log(log_level=LogLevel.ERROR, message=f"Input value is 0 which will give infinity.")
+        return
+
     # natural log
     res = math.log(val)
 

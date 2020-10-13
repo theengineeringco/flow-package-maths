@@ -1,5 +1,5 @@
 [component]
-file = "cos.py"
+file = "sin.py"
 id = "bfce4f5f-8b5f-4a9f-8755-31dca45686b2"
 
 [component.details]
