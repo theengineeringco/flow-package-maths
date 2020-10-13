@@ -1,11 +1,12 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
 from flow.test_framework.helpers import assert_test_data_expected
-from flow_py_library_general_maths.array.median.flow_median import inports, outports
 from flow_types import base
 
+from flow_package_maths.array.sum.flow_sum import inports, outports
+
 # Tests
-component_file = "array_maths/median"
+component_file = "array_maths/sum"
 
 
 def run_test_func(inputs, outputs, flow: FlowTest):
@@ -15,32 +16,22 @@ def run_test_func(inputs, outputs, flow: FlowTest):
 
 def test_MdDouble2x2(flow: FlowTest):
     array = base.MdDouble(np.array([[1, 2], [3, 4]]))
+
     inputs = {inports[0]: [array]}
 
-    outputs = {outports[0]: base.Double(2.5)}
-
-    run_test_func(inputs, outputs, flow=flow)
-
-
-def test_MdDouble2x2mixed(flow: FlowTest):
-    array = base.MdDouble(np.array([[-1, 2.2], [4, 4]]))
-    inputs = {inports[0]: [array]}
-
-    outputs = {outports[0]: base.Double(3.1)}
+    outputs = {outports[0]: base.Double(10)}
 
     run_test_func(inputs, outputs, flow=flow)
 
 
 def test_MdDouble5x5x5x5x5(flow: FlowTest):
     array = base.MdDouble(
-        np.array(
-            [[1, 1, 1, 1, 1], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]],
-        ),
+        np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]]),
     )
 
     inputs = {inports[0]: [array]}
 
-    outputs = {outports[0]: base.Double(13)}
+    outputs = {outports[0]: base.Double(325)}
 
     run_test_func(inputs, outputs, flow=flow)
 

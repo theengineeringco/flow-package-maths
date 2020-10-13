@@ -2,8 +2,9 @@ import math
 
 from flow.test_framework import FlowTest, flow_test
 from flow.test_framework.helpers import assert_test_data_expected
-from flow_py_library_general_maths.general_maths.trig_tan.flow_trig_tan import inports, outports
 from flow_types import base, eng
+
+from flow_package_maths.general_maths.trig_tan.flow_trig_tan import inports, outports
 
 # Tests
 component_file = "maths/trig_tan"

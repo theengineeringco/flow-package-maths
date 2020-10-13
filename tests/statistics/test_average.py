@@ -1,8 +1,9 @@
 import numpy as np
 from flow.test_framework import FlowTest, flow_test
 from flow.test_framework.helpers import assert_test_data_expected
-from flow_py_library_general_maths.array.average.flow_average import inports, outports
 from flow_types import base
+
+from flow_package_maths.array.average.flow_average import inports, outports
 
 # Tests
 component_file = "array_maths/average"
