@@ -1,3 +1,5 @@
+import math
+
 from flow.testing import FlowTest, flow_test
 from flow.testing.helpers import check_outport_data
 from flow_types import base
@@ -24,7 +26,7 @@ def test_int2double(flow: FlowTest):
     inputs = {"value": val, "base": log_base}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.5849625007211563)})
+    assert check_outport_data(test_data, {"result": base.Double(math.log(3, 2))})
 
 
 def test_doubles(flow: FlowTest):
@@ -35,7 +37,7 @@ def test_doubles(flow: FlowTest):
     inputs = {"value": val, "base": log_base}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-0.24948879955231923)})
+    assert check_outport_data(test_data, {"result": base.Double(math.log(1.26, 0.396))})
 
 
 if __name__ == "__main__":

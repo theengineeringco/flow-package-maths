@@ -29,7 +29,7 @@ def test_acos_double(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir_acos, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.0239453760989525)})
+    assert check_outport_data(test_data, {"result": base.Double(math.acos(0.52))})
 
 
 def test_asin_int(flow: FlowTest):
@@ -39,7 +39,7 @@ def test_asin_int(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir_asin, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(math.pi / 2)})
+    assert check_outport_data(test_data, {"result": base.Double(math.asin(1))})
 
 
 def test_asin_double(flow: FlowTest):
@@ -49,7 +49,7 @@ def test_asin_double(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir_asin, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.5468509506959441)})
+    assert check_outport_data(test_data, {"result": base.Double(math.asin(0.52))})
 
 
 def test_atan_int(flow: FlowTest):
@@ -59,7 +59,7 @@ def test_atan_int(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir_atan, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.2490457723982544)})
+    assert check_outport_data(test_data, {"result": base.Double(math.atan(3))})
 
 
 def test_atan_double(flow: FlowTest):
@@ -69,7 +69,7 @@ def test_atan_double(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir_atan, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.4795192919925962)})
+    assert check_outport_data(test_data, {"result": base.Double(math.atan(0.52))})
 
 
 def test_cos_int(flow: FlowTest):
@@ -99,7 +99,7 @@ def test_sin_int(flow: FlowTest):
     inputs = {"angle": angle}
     outputs = ["result"]
     test_data = flow.test(component_dir_sin, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.8414709848078965)})
+    assert check_outport_data(test_data, {"result": base.Double(math.sin(1))})
 
 
 def test_sin_double(flow: FlowTest):
@@ -119,7 +119,7 @@ def test_tan_int(flow: FlowTest):
     inputs = {"angle": angle}
     outputs = ["result"]
     test_data = flow.test(component_dir_tan, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.5574077246549023)})
+    assert check_outport_data(test_data, {"result": base.Double(math.tan(1))})
 
 
 def test_tan_double(flow: FlowTest):
@@ -129,7 +129,7 @@ def test_tan_double(flow: FlowTest):
     inputs = {"angle": angle}
     outputs = ["result"]
     test_data = flow.test(component_dir_tan, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.5725618302516684)})
+    assert check_outport_data(test_data, {"result": base.Double(math.tan(0.52))})
 
 
 if __name__ == "__main__":

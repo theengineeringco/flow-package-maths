@@ -1,3 +1,5 @@
+import math
+
 from flow.testing import FlowTest, flow_test
 from flow.testing.helpers import check_outport_data
 from flow_types import base
@@ -22,7 +24,7 @@ def test_small_number(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(24)})
+    assert check_outport_data(test_data, {"result": base.Int(math.factorial(4))})
 
 
 def test_big_number(flow: FlowTest):
@@ -32,7 +34,7 @@ def test_big_number(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(479001600)})
+    assert check_outport_data(test_data, {"result": base.Int(math.factorial(12))})
 
 
 if __name__ == "__main__":

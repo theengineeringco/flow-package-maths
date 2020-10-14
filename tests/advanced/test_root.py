@@ -46,7 +46,7 @@ def test_doubles(flow: FlowTest):
     inputs = {"value": val, "root": exponent}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.6542816693895579)})
+    assert check_outport_data(test_data, {"result": base.Double(0.431 ** (1 / 1.984))})
 
 
 def test_doubles_negative_root(flow: FlowTest):
@@ -57,7 +57,7 @@ def test_doubles_negative_root(flow: FlowTest):
     inputs = {"value": val, "root": exponent}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.5283937282439777)})
+    assert check_outport_data(test_data, {"result": base.Double(0.431 ** (1 / -1.984))})
 
 
 if __name__ == "__main__":

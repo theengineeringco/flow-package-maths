@@ -57,7 +57,7 @@ def test_negative_doubles(flow: FlowTest):
     inputs = {"numerator": num, "denominator": denom}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-480000)})
+    assert check_outport_data(test_data, {"result": base.Double(-1.2e6 / 2.5)})
 
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ def test_negative_int_exponent(flow: FlowTest):
     inputs = {"value": val, "exponent": exponent}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.001953125)})
+    assert check_outport_data(test_data, {"result": base.Double(8 ** -3)})
 
 
 def test_decimal_exponent(flow: FlowTest):
@@ -46,7 +46,7 @@ def test_doubles(flow: FlowTest):
     inputs = {"value": val, "exponent": exponent}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.18827944263826563)})
+    assert check_outport_data(test_data, {"result": base.Double(0.431 ** 1.984)})
 
 
 def test_doubles_negative_exponent(flow: FlowTest):
@@ -57,7 +57,7 @@ def test_doubles_negative_exponent(flow: FlowTest):
     inputs = {"value": val, "exponent": exponent}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(5.311254303643034)})
+    assert check_outport_data(test_data, {"result": base.Double(0.431 ** -1.984)})
 
 
 if __name__ == "__main__":

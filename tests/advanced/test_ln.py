@@ -1,3 +1,5 @@
+import math
+
 from flow.testing import FlowTest, flow_test
 from flow.testing.helpers import check_outport_data
 from flow_types import base
@@ -12,7 +14,7 @@ def test_int(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(1.0986122886681098)})
+    assert check_outport_data(test_data, {"result": base.Double(math.log(3))})
 
 
 def test_log_one(flow: FlowTest):
@@ -32,7 +34,7 @@ def test_negative_results(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-1.5050778971098575)})
+    assert check_outport_data(test_data, {"result": base.Double(math.log(0.222))})
 
 
 def test_positive_results(flow: FlowTest):
@@ -42,7 +44,7 @@ def test_positive_results(flow: FlowTest):
     inputs = {"value": val}
     outputs = ["result"]
     test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.5007752879124892)})
+    assert check_outport_data(test_data, {"result": base.Double(math.log(1.65))})
 
 
 if __name__ == "__main__":
