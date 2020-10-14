@@ -20,11 +20,11 @@ def process(component: Component):
     # get inports data
     values_arr: np.array = cast(base.MdDouble, component.get_data(values)).get_array()
 
-    # average
-    res = np.mean(values_arr)
+    # range
+    res = np.min(values_arr)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Average of {values_arr} is {res}.")
+    component.log(log_level=LogLevel.DEBUG, message=f"Smallest value in {values_arr} is {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

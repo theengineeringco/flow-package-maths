@@ -10,7 +10,7 @@ readme = "README.md"
 keywords = [ "natural log", "logarithms" ]
 
 [component.details.inports]
-value = { name = "Value", description = "Value to be raised." }
+value = { name = "Value", description = "Value to be raised. This needs to be more than 0 for it to be valid." }
 
 [component.details.outports]
 result = { name = "Result", description = "" }

@@ -1,1 +1,7 @@
-Computes the cosine of an angle which is equal to the adjacent length of a right angled triangle divided by its hypotenuse length.
+Computes the cosine of an angle and is defined as:
+
+$$
+\cos \theta = \frac{adjacent}{hypotenuse}
+$$
+
+where $\theta$ is an acute angle of right-angled triangle and the $hypothenuse$ is the side that connects the two acute angles.

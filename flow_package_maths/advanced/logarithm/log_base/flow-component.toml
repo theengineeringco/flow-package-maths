@@ -10,8 +10,8 @@ readme = "README.md"
 keywords = [ "log", "logarithms" ]
 
 [component.details.inports]
-value = { name = "Value", description = "" }
-base = { name = "Base", description = "" }
+value = { name = "Value", description = "The input value which must be a positive number." }
+base = { name = "Base", description = "The logarithm base which must be a positive number and not equal to 1." }
 
 [component.details.outports]
 result = { name = "Result", description = "" }

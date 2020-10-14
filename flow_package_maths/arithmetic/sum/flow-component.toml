@@ -10,7 +10,7 @@ readme = "README.md"
 keywords = [ "summation", "arithmetic" ]
 
 [component.details.inports]
-values = { name = "Values", description = "" }
+values = { name = "Values", description = "A collection of values." }
 
 [component.details.outports]
 result = { name = "Result", description = "" }

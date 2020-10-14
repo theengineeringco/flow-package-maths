@@ -1,1 +1,1 @@
-Computes the negative of a value.
+Outputs the negative of a value.

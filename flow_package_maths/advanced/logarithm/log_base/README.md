@@ -1,1 +1,19 @@
-Computes the logarithm of a value given its base typically written as log_base(x). Note that the value given must be positive numbers. The base must also be positive and not equal to 1.
+Computes the logarithm of the given `Value` and its base. The logarithm is the inverse function to exponentiation as shown in the two expressions below:
+
+$$
+log_{b}(x) = y
+$$
+$$
+b^{y} = x
+$$
+
+For example:
+
+$$
+log_{10}(1000) = 3
+$$
+
+There are three widely used logarithms:
+- Common logarithm, $log_{10}(x)$
+- Natural logarithm, $log_{e}(x)$
+- Binary logarithm, $log_{2}(x)$

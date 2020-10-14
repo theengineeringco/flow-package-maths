@@ -1,1 +1,1 @@
-Computes the middle number in a sorted, ascending or descending, list of values.
+Computes the "middle number" in a collection of values by first sorting them in ascending order.

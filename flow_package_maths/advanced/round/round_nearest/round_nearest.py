@@ -5,11 +5,11 @@ from flow_types import base, unions
 
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
-root = Inport(id="root", types=unions.Number, multi_connection=False, required=False)
+decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=False, required=False)
 result = Outport(id="result", types=unions.Number)
 
 # comp definition
-definition = Definition(inports=[value, root], outports=[result])
+definition = Definition(inports=[value], outports=[result])
 
 
 def process(component: Component):
@@ -17,19 +17,19 @@ def process(component: Component):
     if not component.has_data(value):
         return
 
-    if component.has_data(root):
-        root_val: float = cast(base.Double, component.get_data(root)).value
-    else:
-        root_val = 2
-
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
 
-    # root
-    res = val ** (1 / root_val)
+    if component.has_data(decimal_places):
+        dec: int = cast(base.Int, component.get_data(decimal_places)).value
+    else:
+        dec = 0
+
+    # round
+    res = round(val, dec)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"{root_val} root of {val} gives {res}.")
+    component.log(log_level=LogLevel.DEBUG, message=f"Rounding {val} to {dec} decimal places gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

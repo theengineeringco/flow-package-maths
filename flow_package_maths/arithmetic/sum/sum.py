@@ -5,7 +5,7 @@ from flow import Component, Definition, Inport, LogLevel, Outport
 from flow_types import base, unions
 
 # ports
-values = Inport(id="values", types=[base.MdDouble], multi_connection=False)
+values = Inport(id="values", types=[base.MdDouble])
 result = Outport(id="result", types=unions.Number)
 
 # comp definition

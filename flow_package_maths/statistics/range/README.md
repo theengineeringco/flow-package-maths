@@ -1,1 +1,1 @@
-Computes the difference between the largest and smallest number of list of values.
+Computes the difference between the largest and smallest number in a collection of values.

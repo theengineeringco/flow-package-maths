@@ -1,1 +1,1 @@
-Computes the root of a value.
+Computes the nth root of a value and is typically written as $\sqrt[n]{x}$ or $x^{1/n}$.

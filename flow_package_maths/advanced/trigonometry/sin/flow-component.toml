@@ -13,4 +13,4 @@ keywords = [ "sine", "trigonometry", "triangle" ]
 angle = { name = "Angle", description = "Angle in radians." }
 
 [component.details.outports]
-result = { name = "Result", description = "" }
+result = { name = "Result", description = "Outputs a value in a domain of -1 to 1." }
