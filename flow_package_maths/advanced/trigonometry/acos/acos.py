@@ -29,7 +29,7 @@ def process(component: Component):
     res = math.acos(val)
 
     # logs
-    res_deg = res * 180 / math.pi
+    res_deg = res * 180 / math.pi  # noqa: WPS432
     component.log(log_level=LogLevel.DEBUG, message=f"acos({val}) gives {res}rad or {res_deg}°.")
 
     # send message to outports

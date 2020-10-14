@@ -24,7 +24,7 @@ def process(component: Component):
         component.log(log_level=LogLevel.ERROR, message=f"Input value is {val} which is <0 and is invalid for ln.")
         return
     elif val == 0:
-        component.log(log_level=LogLevel.ERROR, message=f"Input value is 0 which will give infinity.")
+        component.log(log_level=LogLevel.ERROR, message="Input value is 0 which will give infinity.")
         return
 
     # natural log
