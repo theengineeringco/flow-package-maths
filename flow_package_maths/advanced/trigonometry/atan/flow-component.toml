@@ -6,6 +6,7 @@ id = "d510b25e-23c4-4e89-82e2-6fe30e855f6f"
 name = "atan"
 namespace = "Maths"
 description = "Computes the inverse tangent function of a value to give an angle in radians."
+readme = "README.md"
 keywords = [ "arctangent", "trigonometry", "triangle" ]
 
 [component.details.inports]

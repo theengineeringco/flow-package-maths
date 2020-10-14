@@ -6,6 +6,7 @@ id = "ac1f5353-736e-465e-b7ee-9d3fb7e106ce"
 name = "Negative"
 namespace = "Maths"
 description = "Computes the negative of a value."
+readme = "README.md"
 keywords = [ "-", "arithmetic" ]
 
 [component.details.inports]

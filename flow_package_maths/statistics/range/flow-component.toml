@@ -6,6 +6,7 @@ id = "9b1839c1-6d44-4a6e-8bb6-a480fed4abbd"
 name = "Range"
 namespace = "Maths"
 description = "Computes the difference between the largest and smallest number of list of values."
+readme = "README.md"
 keywords = [ "difference", "statistics" ]
 
 [component.details.inports]

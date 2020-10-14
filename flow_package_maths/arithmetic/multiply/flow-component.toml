@@ -6,6 +6,7 @@ id = "50fea825-f592-40df-a2e5-cdfa1350ae8c"
 name = "Multiply"
 namespace = "Maths"
 description = "Multiplies two values together."
+readme = "README.md"
 keywords = [ "*", "multiplication", "arithmetic", "product", "times" ]
 
 [component.details.inports]

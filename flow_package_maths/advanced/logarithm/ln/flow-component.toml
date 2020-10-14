@@ -6,6 +6,7 @@ id = "a21f4177-0302-4303-a4a3-12436ca6cba1"
 name = "ln"
 namespace = "Maths"
 description = "Computes the natural log of a value."
+readme = "README.md"
 keywords = [ "natural log", "logarithms" ]
 
 [component.details.inports]

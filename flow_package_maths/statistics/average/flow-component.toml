@@ -6,6 +6,7 @@ id = "c9cd6e61-628f-4e35-a46b-3637f8614c77"
 name = "Average"
 namespace = "Maths"
 description = "Computes the arithmetic mean of a list of values."
+readme = "README.md"
 keywords = [ "mean", "statistics" ]
 
 [component.details.inports]

@@ -6,6 +6,7 @@ id = "a3938fef-32be-48c3-a5e6-35e32b62bdd1"
 name = "Add"
 namespace = "Maths"
 description = "Adds two values together."
+readme = "README.md"
 keywords = [ "+", "addition", "arithmetic", "plus" ]
 
 [component.details.inports]

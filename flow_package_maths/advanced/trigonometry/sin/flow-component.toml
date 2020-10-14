@@ -6,6 +6,7 @@ id = "bfce4f5f-8b5f-4a9f-8755-31dca45686b2"
 name = "sin"
 namespace = "Maths"
 description = "Computes the sine of an angle which is equal to the opposite length of a right angled triangle divided by its hypotenuse length."
+readme = "README.md"
 keywords = [ "sine", "trigonometry", "triangle" ]
 
 [component.details.inports]

@@ -6,6 +6,7 @@ id = "b63b0eb2-11c7-4fbd-9317-f2a96e249bde"
 name = "Subtract"
 namespace = "Maths"
 description = "Subtracts the first value from the second value."
+readme = "README.md"
 keywords = [ "-", "subtraction", "arithmetic", "minus" ]
 
 [component.details.inports]

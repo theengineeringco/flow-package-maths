@@ -6,6 +6,7 @@ id = "dd89daaf-f04b-447c-9220-9791ed55fbd5"
 name = "acos"
 namespace = "Maths"
 description = "Computes the inverse cosine function of a value to give an angle in radians."
+readme = "README.md"
 keywords = [ "arccosine", "trigonometry", "triangle" ]
 
 [component.details.inports]

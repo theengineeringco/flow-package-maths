@@ -5,7 +5,8 @@ id = "dab652a2-af9e-494a-ae35-25759357dc0c"
 [component.details]
 name = "Power"
 namespace = "Maths"
-description = "Raises a value to a power (x^n)."
+description = "Raises a value to a power."
+readme = "README.md"
 keywords = [ "^", "exponetiation" ]
 
 [component.details.inports]

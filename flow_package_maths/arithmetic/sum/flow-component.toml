@@ -6,6 +6,7 @@ id = "c9477619-3ccc-4399-b756-fbc57ea5893a"
 name = "Sum"
 namespace = "Maths"
 description = "Adds a sequence of values together."
+readme = "README.md"
 keywords = [ "summation", "arithmetic" ]
 
 [component.details.inports]

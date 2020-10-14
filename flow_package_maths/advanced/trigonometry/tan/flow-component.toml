@@ -5,7 +5,8 @@ id = "57f9e0c1-62d9-492e-b6aa-73e7d93be1bf"
 [component.details]
 name = "tan"
 namespace = "Maths"
-description = "Computes the tangent of an angle which is equal to the opposite length of a right angled triangle divided by its hypotenuse length."
+description = "Computes the tangent of an angle which is equal to the opposite length of a right angled triangle divided by its adjacent length."
+readme = "README.md"
 keywords = [ "sine", "trigonometry", "triangle" ]
 
 [component.details.inports]

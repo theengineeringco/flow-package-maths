@@ -6,6 +6,7 @@ id = "a765c61d-5303-4a7a-995b-1bddc8bf79bc"
 name = "Median"
 namespace = "Maths"
 description = "Computes the middle number in a sorted, ascending or descending, list of values."
+readme = "README.md"
 keywords = [ "median", "middle", "statistics" ]
 
 [component.details.inports]

@@ -6,6 +6,7 @@ id = "15fd71bf-b61e-4b13-a127-1d13f3dd3f48"
 name = "Root"
 namespace = "Maths"
 description = "Computes the root of a value."
+readme = "README.md"
 keywords = [ "sqrt", "square root", "^1/2", "cube root" ]
 
 [component.details.inports]

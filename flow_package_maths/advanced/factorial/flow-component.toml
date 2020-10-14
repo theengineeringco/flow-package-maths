@@ -6,6 +6,7 @@ id = "49162650-7299-4a97-a189-260c2ea416ea"
 name = "Factorial"
 namespace = "Maths"
 description = "Computes the product of all positive integers less than or equal to the value provided."
+readme = "README.md"
 keywords = [ "!" ]
 
 [component.details.inports]
