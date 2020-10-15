@@ -27,7 +27,8 @@ def process(component: Component):
         dec = 0
 
     # round up
-    res = int(math.ceil(val / 10 ** -dec)) * 10 ** -dec
+    res_untruncated = int(math.ceil(val / 10 ** -dec)) * 10 ** -dec
+    res = round(res_untruncated, dec)
 
     # logs
     component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
