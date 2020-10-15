@@ -1,0 +1,17 @@
+[component]
+file = "log_base.py"
+id = "55afd7a7-7df2-4df0-b6de-610717537400"
+
+[component.details]
+name = "log"
+namespace = "Maths"
+description = "Computes the log of a value given its base."
+readme = "README.md"
+keywords = [ "log", "logarithms" ]
+
+[component.details.inports]
+value = { name = "Value", description = "The input value which must be a positive number." }
+base = { name = "Base", description = "The logarithm base which must be a positive number and not equal to 1." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

@@ -1,0 +1,16 @@
+[component]
+file = "max.py"
+id = "0d5b4cbb-6a46-4142-b749-0a72aac5b94d"
+
+[component.details]
+name = "Max"
+namespace = "Maths"
+description = "Finds the largest value."
+readme = "README.md"
+keywords = [ "maximum", "largest" ]
+
+[component.details.inports]
+Values = { name = "Values", description = "A collection of values." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

@@ -1,46 +1,43 @@
 [tool.poetry]
-name = "flow-py-library-general_maths"
+name = "flow-package-maths"
 description = "A Package of Python Flow Components"
-authors = ["Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
+authors = ["Eu Chian Tan <euchian@theengineeringcompany.com>", "Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
 version = "1.1.0-dev.4"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/theengineeringco/flow-py-library-general_maths.git"
+repository = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flow-py = "^1.1.0-dev.1"
+flow-py = "^2.0-dev.3"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
-mypy = "^0.770"                                       # Linting
-black = "^19.10b0"                                    # Formatting
+mypy = "^0.780"                                       # Linting
+black = "^20.8b1"                                     # Formatting
 isort = { version = "^4.3", extras = ["pyproject"] }  # Formatting
-pytest = "^5.4"                                       # Runnning Tests
-tox = "^3.15"                                         # Tox Testing
-tox-pyenv = "^1.1"                                    # Tox Testing
-nitpick = "^0.21"                                     # Style Guide
-toml = "<0.10.1"                                      # Style Guide
+pytest = "^6.0"                                       # Runnning Tests
+tox = "^3.20"                                         # Tox Testing
 
-flow-py = {version = "^1.1.0-dev.1", extras = ["testing"]}      # For Component Testing.
-flow-py-cookiecutter = "^1.0.0"  # For Component Generation
+flow-py = {version = "^2.0-dev.3", extras = ["testing"]}      # For Component Testing
 
-# Pre-commit helps enforce code style. Use `pre-commit install` to install
-pre-commit = "^2.5"
+# Pre-commit - helps enforce code style. Use `pre-commit install` to install
+pre-commit = "^2.7"
 
 [[tool.poetry.source]]
 name = "flow-pypi"
 url = "http://flow-pypi.herokuapp.com/simple/"
 
-[tool.poetry.plugins."flow.components"]
-"maths" = "flow_py_library_general_maths.general_maths"
-"array_maths" = "flow_py_library_general_maths.array"
-
-[tool.taskipy.tasks]
-create_component = "flow_python_cookiecutter -t component"
+[tool.poetry.plugins.flow_package]
+"maths" = "flow_package_maths"
 
 [tool.nitpick]
 style = "https://raw.githubusercontent.com/theengineeringco/python-styleguide/master/TEC-style.toml"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
 
 [tool.black]
 line-length = 120
@@ -53,12 +50,11 @@ indent = 4
 include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
-known_third_party = ["flow", "flow_types", "numpy", "pytest"]
 
 [tool.unimport]
-include = '^flow_py_library_general_maths|^tests'
+include = '^flow_package_maths|^tests'
 exclude = '(__init__.py)'
 
 [build-system]
-requires = ["poetry>=1.0", "pip>=20.0"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
