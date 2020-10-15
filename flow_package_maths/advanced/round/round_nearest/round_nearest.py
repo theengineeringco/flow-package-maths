@@ -9,7 +9,7 @@ decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=
 result = Outport(id="result", types=unions.Number)
 
 # comp definition
-definition = Definition(inports=[value], outports=[result])
+definition = Definition(inports=[value, decimal_places], outports=[result])
 
 
 def process(component: Component):

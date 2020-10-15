@@ -10,7 +10,7 @@ decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=
 result = Outport(id="result", types=unions.Number)
 
 # comp definition
-definition = Definition(inports=[value], outports=[result])
+definition = Definition(inports=[value, decimal_places], outports=[result])
 
 
 def process(component: Component):
@@ -27,7 +27,8 @@ def process(component: Component):
         dec = 0
 
     # round up
-    res = int(math.floor(val / 10 ** -dec)) * 10 ** -dec
+    untruncated_res = int(math.floor(val / 10 ** -dec)) * 10 ** -dec
+    res = round(untruncated_res, dec)
 
     # logs
     component.log(log_level=LogLevel.DEBUG, message=f"Rounding down {val} to {dec} decimal places gives {res}.")
