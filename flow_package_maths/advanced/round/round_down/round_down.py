@@ -15,20 +15,20 @@ definition = Definition(inports=[value, decimal_places], outports=[result])
 
 def process(component: Component):
 
-    if not component.has_data(value):
+    if not component.has_data():
         return
 
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
 
-    if component.has_data(decimal_places):
+    if component.is_connected(decimal_places):
         dec: int = cast(base.Int, component.get_data(decimal_places)).value
     else:
         dec = 0
 
-    # round up
-    untruncated_res = int(math.floor(val / 10 ** -dec)) * 10 ** -dec
-    res = round(untruncated_res, dec)
+    # round down
+    multiplier = 10 ** dec
+    res = math.floor(val * multiplier) / multiplier
 
     # logs
     component.log(log_level=LogLevel.DEBUG, message=f"Rounding down {val} to {dec} decimal places gives {res}.")
