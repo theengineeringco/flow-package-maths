@@ -21,14 +21,14 @@ def process(component: Component):
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
 
-    if component.has_data(decimal_places):
+    if component.is_connected(decimal_places):
         dec: int = cast(base.Int, component.get_data(decimal_places)).value
     else:
         dec = 0
 
     # round up
-    res_untruncated = int(math.ceil(val / 10 ** -dec)) * 10 ** -dec
-    res = round(res_untruncated, dec)
+    multiplier = 10 ** dec
+    res = math.ceil(val * multiplier) / multiplier
 
     # logs
     component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
