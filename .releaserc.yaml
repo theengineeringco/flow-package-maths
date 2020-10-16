@@ -28,7 +28,7 @@ plugins:
 
   # https://github.com/semantic-release/exec
   - - "@semantic-release/exec"
-    - prepareCmd: "poetry version <%= nextRelease.version.replace('develop', 'dev') %> && poetry lock"
+    - prepareCmd: "poetry version <%= nextRelease.version.replace('develop', 'dev') %>"
 
   # https://github.com/semantic-release/git
   # See the following about pushing sematic-release changes to a protected branch

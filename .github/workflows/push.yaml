@@ -33,25 +33,30 @@ jobs:
         shell: bash
         run: |
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
       - name: Set up Cache
         uses: actions/cache@v2
         with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          path: ~/.cache/poetry
+          key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
       - name: Install Dependencies
         timeout-minutes: 10
         run: |
+          poetry config cache-dir ~/.cache/poetry
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
+
       - name: Run Tests
         timeout-minutes: 5
+        shell: bash
         run: |
           poetry run pytest
+
   release:
     name: Release
     needs: testing
@@ -71,8 +76,10 @@ jobs:
         uses: Gr1N/setup-poetry@v2
 
       - name: Set Flow PyPi Credentials
+        shell: bash
         run: |
           poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
         timeout-minutes: 5
