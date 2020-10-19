@@ -3,7 +3,7 @@ file = "log_base.py"
 id = "55afd7a7-7df2-4df0-b6de-610717537400"
 
 [component.details]
-name = "log"
+name = "Log"
 namespace = "Maths"
 description = "Computes the log of a value given its base."
 readme = "README.md"
