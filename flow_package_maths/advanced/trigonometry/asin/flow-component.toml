@@ -3,7 +3,7 @@ file = "asin.py"
 id = "a1a3e0ad-a2be-42e9-881c-8d285499392e"
 
 [component.details]
-name = "acos"
+name = "asin"
 namespace = "Maths"
 description = "Computes the inverse sine function of a value to give an angle in radians."
 readme = "README.md"
