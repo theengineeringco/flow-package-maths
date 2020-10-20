@@ -9,7 +9,7 @@ repository = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flow-py = "^2.0.0-dev.8"
+flow-py = "^2.0.0-dev.9"
 numpy = "^1.19"
 
 [tool.poetry.dev-dependencies]
@@ -20,7 +20,7 @@ isort = { version = "^4.3", extras = ["pyproject"] }  # Formatting
 pytest = "^6.0"                                       # Runnning Tests
 tox = "^3.20"                                         # Tox Testing
 
-flow-py = {version = "^2.0.0-dev.8", extras = ["testing"]}      # For Component Testing
+flow-py = {version = "^2.0.0-dev.9", extras = ["testing"]}      # For Component Testing
 
 # Pre-commit - helps enforce code style. Use `pre-commit install` to install
 pre-commit = "^2.7"

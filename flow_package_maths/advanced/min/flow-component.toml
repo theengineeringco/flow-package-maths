@@ -10,7 +10,7 @@ readme = "README.md"
 keywords = [ "minimum", "smallest" ]
 
 [component.details.inports]
-Values = { name = "Values", description = "A collection of values." }
+values = { name = "Values", description = "A collection of values." }
 
 [component.details.outports]
 result = { name = "Result", description = "" }
