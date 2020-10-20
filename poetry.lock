@@ -348,7 +348,7 @@ flake8 = "*"
 
 [[package]]
 name = "flow-py"
-version = "2.0.0.dev8"
+version = "2.0.0.dev9"
 description = "Python Component Library for Flow"
 category = "main"
 optional = false
@@ -1026,7 +1026,7 @@ typing_extensions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2068dfa26b67d2db9b37604ad3498ba797b054d48fa905b5c8a1fce510e744d0"
+content-hash = "438c3f66c9ec10154682696bb86f0da9c9f109fdac44a93e83248093a928f986"
 
 [metadata.files]
 appdirs = [
@@ -1149,7 +1149,7 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-2.0.0.dev8.tar.gz", hash = "sha256:6cba0887774c3021f1d8a265f7b9b2940e078c398c68f7cc75cc212f367bbe36"},
+    {file = "flow-py-2.0.0.dev9.tar.gz", hash = "sha256:4172c5dabd9764b7054eaeb65044f87b8056b8e43db27823bedd6c89825b01c7"},
 ]
 flow-py-types = [
     {file = "flow-py-types-2.1.0.dev10.tar.gz", hash = "sha256:9b74ab207701428548ecb5b1503698306a3dc262e1a73520eb03fccfa527d98f"},

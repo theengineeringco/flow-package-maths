@@ -11,7 +11,7 @@ keywords = [ "sqrt", "square root", "^1/2", "cube root" ]
 
 [component.details.inports]
 value = { name = "Value", description = "Complex numbers are not yet supported so the root of a negative value will be invalid." }
-exponent = { name = "Root", description = "Root or radix value. Default value is 2 which gives a square root." }
+root = { name = "Root", description = "Root or radix value. Default value is 2 which gives a square root." }
 
 [component.details.outports]
 result = { name = "Result", description = "" }

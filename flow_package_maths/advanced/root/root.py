@@ -17,13 +17,13 @@ def process(component: Component):
     if not component.has_data(value):
         return
 
-    if component.has_data(root):
-        root_val: float = cast(base.Double, component.get_data(root)).value
-    else:
-        root_val = 2
-
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
+
+    if component.is_connected(root):
+        root_val: int = cast(base.Int, component.get_data(root)).value
+    else:
+        root_val = 2
 
     # root
     res = val ** (1 / root_val)
