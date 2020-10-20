@@ -20,7 +20,7 @@ def process(component: Component):
     # get inports data
     val: float = cast(base.Double, component.get_data(value)).value
 
-    if component.has_data(decimal_places):
+    if component.is_connected(decimal_places):
         dec: int = cast(base.Int, component.get_data(decimal_places)).value
     else:
         dec = 0

@@ -18,9 +18,9 @@ def test_round_integer(flow: FlowTest):
     test_data_up = flow.test(component_dir_up, inputs, outputs)
     test_data_down = flow.test(component_dir_down, inputs, outputs)
 
-    assert check_outport_data(test_data_nearest, {"result": base.Double(98)})
-    assert check_outport_data(test_data_up, {"result": base.Double(99)})
-    assert check_outport_data(test_data_down, {"result": base.Double(98)})
+    assert check_outport_data(test_data_nearest, {"result": base.Double(98.0)})
+    assert check_outport_data(test_data_up, {"result": base.Double(99.0)})
+    assert check_outport_data(test_data_down, {"result": base.Double(98.0)})
 
 
 def test_round_decimal2(flow: FlowTest):
@@ -69,9 +69,9 @@ def test_round_tenths(flow: FlowTest):
     test_data_up = flow.test(component_dir_up, inputs, outputs)
     test_data_down = flow.test(component_dir_down, inputs, outputs)
 
-    assert check_outport_data(test_data_nearest, {"result": base.Double(1190)})
-    assert check_outport_data(test_data_up, {"result": base.Double(1200)})
-    assert check_outport_data(test_data_down, {"result": base.Double(1190)})
+    assert check_outport_data(test_data_nearest, {"result": base.Double(1190.0)})
+    assert check_outport_data(test_data_up, {"result": base.Double(1200.0)})
+    assert check_outport_data(test_data_down, {"result": base.Double(1190.0)})
 
 
 def test_round_thousandths(flow: FlowTest):
@@ -86,9 +86,9 @@ def test_round_thousandths(flow: FlowTest):
     test_data_up = flow.test(component_dir_up, inputs, outputs)
     test_data_down = flow.test(component_dir_down, inputs, outputs)
 
-    assert check_outport_data(test_data_nearest, {"result": base.Double(1000)})
-    assert check_outport_data(test_data_up, {"result": base.Double(2000)})
-    assert check_outport_data(test_data_down, {"result": base.Double(1000)})
+    assert check_outport_data(test_data_nearest, {"result": base.Double(1000.0)})
+    assert check_outport_data(test_data_up, {"result": base.Double(2000.0)})
+    assert check_outport_data(test_data_down, {"result": base.Double(1000.0)})
 
 
 if __name__ == "__main__":
