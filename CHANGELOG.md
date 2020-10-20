@@ -1,3 +1,11 @@
+# [2.0.0-develop.4](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.3...v2.0.0-develop.4) (2020-10-20)
+
+
+### Bug Fixes
+
+* fix non-required port for root ([15332a3](https://github.com/theengineeringco/flow-package-maths/commit/15332a3bb7146587046c930fea31fd8cd804862e))
+* fix port id typo ([8729d9d](https://github.com/theengineeringco/flow-package-maths/commit/8729d9d00536d9c872e40383f792fe7d98457e91))
+
 # [2.0.0-develop.3](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.2...v2.0.0-develop.3) (2020-10-20)
 
 
