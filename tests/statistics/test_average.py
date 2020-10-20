@@ -8,7 +8,7 @@ component_dir = "flow_package_maths/statistics/average"
 
 def test_int(flow: FlowTest):
 
-    vals = base.MdDouble(np.array([1, 2, 3, 4, 5]))
+    vals = base.MdDouble([1, 2, 3, 4, 5])
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -18,7 +18,7 @@ def test_int(flow: FlowTest):
 
 def test_int_zero_average(flow: FlowTest):
 
-    vals = base.MdDouble(np.array([-3, -2, -1, 0, 1, 2, 3]))
+    vals = base.MdDouble([-3, -2, -1, 0, 1, 2, 3])
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -31,7 +31,7 @@ def test_int_zero_average(flow: FlowTest):
 def test_doubles(flow: FlowTest):
 
     test_array = [-1.2e3, 5.432, 0.697, 1, -0.03, 0.0101, 1000.01]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -44,7 +44,7 @@ def test_doubles(flow: FlowTest):
 def test_matrix(flow: FlowTest):
 
     test_array = [[1.1, 1.2], [1.3, 1.4]]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -64,7 +64,7 @@ def test_d4_array(flow: FlowTest):
             [[12.5, -2], [12.5, -2]],
         ],
     ]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]

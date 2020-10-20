@@ -37,6 +37,13 @@ jobs:
           path: ~/.cache/poetry
           key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
+      - name: Check Poetry Lock File
+        shell: bash
+        run: |
+          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
+          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
+
       - name: Install Dependencies
         timeout-minutes: 10
         shell: bash
@@ -59,9 +66,6 @@ jobs:
     needs: linting
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'skip ci')"
-
-    strategy:
-      fail-fast: false
 
     steps:
       - name: Clone Repo

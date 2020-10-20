@@ -43,6 +43,13 @@ jobs:
           path: ~/.cache/poetry
           key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
+      - name: Check Poetry Lock File
+        shell: bash
+        run: |
+          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
+          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
+
       - name: Install Dependencies
         timeout-minutes: 10
         run: |
@@ -64,10 +71,10 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
-      - name: Checkout
+      - name: Clone Repo
         uses: actions/checkout@v2
         with:
-          token: ${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}
+          token: ${{ secrets.TEC_DEVBOT_ACCESS_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -89,4 +96,4 @@ jobs:
             @semantic-release/exec
             @semantic-release/git
         env:
-          GITHUB_TOKEN: ${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.TEC_DEVBOT_ACCESS_TOKEN }}

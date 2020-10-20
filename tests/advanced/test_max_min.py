@@ -10,7 +10,7 @@ component_dir_min = "flow_package_maths/advanced/min"
 def test_single_element(flow: FlowTest):
 
     test_array = [1]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -23,7 +23,7 @@ def test_single_element(flow: FlowTest):
 def test_list_input(flow: FlowTest):
 
     test_array = [0.1, 1, 3, -4, 9.2553, 0.0422]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -36,7 +36,7 @@ def test_list_input(flow: FlowTest):
 def test_repeated_values(flow: FlowTest):
 
     test_array = [100.2, 0.1, 1, 3, -4, 0, 100.2, -4, 0.1, 1, 6.42]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -56,7 +56,7 @@ def test_d4_array(flow: FlowTest):
             [[113.012, -8], [-10.6, 65.3]],
         ],
     ]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]

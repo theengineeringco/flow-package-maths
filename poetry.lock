@@ -348,7 +348,7 @@ flake8 = "*"
 
 [[package]]
 name = "flow-py"
-version = "2.0.0.dev4"
+version = "2.0.0.dev8"
 description = "Python Component Library for Flow"
 category = "main"
 optional = false
@@ -358,7 +358,7 @@ python-versions = ">=3.8,<4.0"
 asyncio-nats-streaming = ">=0.4,<0.5"
 click = ">=7.1,<8.0"
 entrypoints = ">=0.3,<0.4"
-flow-py-types = ">=2.1.0-dev.7,<3.0.0"
+flow-py-types = ">=2.1.0-dev.10,<3.0.0"
 flow-schema = ">=1.9.0-dev.2,<2.0.0"
 inflection = ">=0.3,<0.4"
 psutil = {version = ">=5.7,<6.0", optional = true, markers = "extra == \"testing\""}
@@ -367,7 +367,7 @@ pytobuf = ">=1.1.2,<2.0.0"
 stringcase = ">=1.2,<2.0"
 toml = ">=0.10,<0.11"
 typical = ">=2.0,<3.0"
-ujson = ">=3.2.0,<4.0.0"
+ujson = ">=3.2,<4.0"
 websockets = ">=8.1,<9.0"
 
 [package.extras]
@@ -380,7 +380,7 @@ reference = "flow-pypi"
 
 [[package]]
 name = "flow-py-types"
-version = "2.1.0.dev7"
+version = "2.1.0.dev10"
 description = "Flow Types Python Library"
 category = "main"
 optional = false
@@ -388,10 +388,9 @@ python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
 flow-schema = ">=1.9.0-dev.5,<2.0.0"
-numpy = ">=1.18,<2.0"
 protobuf = ">=3.12,<4.0"
 pytobuf = ">=1.2,<2.0"
-typing-inspect = ">=0.6,<0.7"
+typing-inspect = ">=0.6.0,<0.7.0"
 
 [package.source]
 type = "legacy"
@@ -609,7 +608,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "pbr"
-version = "5.5.0"
+version = "5.5.1"
 description = "Python Build Reasonableness"
 category = "dev"
 optional = false
@@ -1027,7 +1026,7 @@ typing_extensions = ">=3.6,<4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "d474eea0bf869dc43ccf7f610bc490a3a822f6f1cb99ac00d5682efad0c9c97f"
+content-hash = "2068dfa26b67d2db9b37604ad3498ba797b054d48fa905b5c8a1fce510e744d0"
 
 [metadata.files]
 appdirs = [
@@ -1150,11 +1149,11 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-2.0.0.dev4.tar.gz", hash = "sha256:58db303508546d93b4f51fcc92a983c10d3b589d7a84b5c0f752d04db6024403"},
+    {file = "flow-py-2.0.0.dev8.tar.gz", hash = "sha256:6cba0887774c3021f1d8a265f7b9b2940e078c398c68f7cc75cc212f367bbe36"},
 ]
 flow-py-types = [
-    {file = "flow-py-types-2.1.0.dev7.tar.gz", hash = "sha256:600af7daa8d5e6ab1043a323dac7f738626dd2da94dcaa568b16f66d22e656b8"},
-    {file = "flow_py_types-2.1.0.dev7-py3-none-any.whl", hash = "sha256:0b133485a9a45a8a3b53174a8a9ffa0726e52d6db62aaf5390295fadc71a7927"},
+    {file = "flow-py-types-2.1.0.dev10.tar.gz", hash = "sha256:9b74ab207701428548ecb5b1503698306a3dc262e1a73520eb03fccfa527d98f"},
+    {file = "flow_py_types-2.1.0.dev10-py3-none-any.whl", hash = "sha256:bd3873d3269db7036653eda33ccee624091b18154f5fc0b473e1d3d1105ae239"},
 ]
 flow-schema = [
     {file = "flow-schema-1.9.0.dev5.tar.gz", hash = "sha256:366cefc5a11278f7fab10f887bb069e97908d43415591ae43fab627a191a4073"},
@@ -1301,8 +1300,8 @@ pathspec = [
     {file = "pathspec-0.8.0.tar.gz", hash = "sha256:da45173eb3a6f2a5a487efba21f050af2b41948be6ab52b6a1e3ff22bb8b7061"},
 ]
 pbr = [
-    {file = "pbr-5.5.0-py2.py3-none-any.whl", hash = "sha256:5adc0f9fc64319d8df5ca1e4e06eea674c26b80e6f00c530b18ce6a6592ead15"},
-    {file = "pbr-5.5.0.tar.gz", hash = "sha256:14bfd98f51c78a3dd22a1ef45cf194ad79eee4a19e8e1a0d5c7f8e81ffe182ea"},
+    {file = "pbr-5.5.1-py2.py3-none-any.whl", hash = "sha256:b236cde0ac9a6aedd5e3c34517b423cd4fd97ef723849da6b0d2231142d89c00"},
+    {file = "pbr-5.5.1.tar.gz", hash = "sha256:5fad80b613c402d5b7df7bd84812548b2a61e9977387a80a5fc5c396492b13c9"},
 ]
 pendulum = [
     {file = "pendulum-2.1.2-cp27-cp27m-macosx_10_15_x86_64.whl", hash = "sha256:b6c352f4bd32dff1ea7066bd31ad0f71f8d8100b9ff709fb343f3b86cee43efe"},

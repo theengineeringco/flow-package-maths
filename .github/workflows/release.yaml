@@ -5,13 +5,11 @@ on:
   release:
     types:
       - published
-      - edited
 
 jobs:
   publish:
     name: Publish Wheels
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - name: Clone Repo
@@ -26,6 +24,7 @@ jobs:
       - name: Build Wheels
         run: |
           poetry build -vvv
+
       - name: Publish Wheels
         run: |
           poetry config repositories.flow-pypi http://flow-pypi.herokuapp.com/simple/

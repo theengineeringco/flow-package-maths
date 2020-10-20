@@ -18,7 +18,7 @@ def process(component: Component):
         return
 
     # get inports data
-    values_arr: np.array = cast(base.MdDouble, component.get_data(values)).get_array()
+    values_arr = cast(base.MdDouble, component.get_data(values)).get_array()
 
     # sum
     res = np.sum(values_arr)

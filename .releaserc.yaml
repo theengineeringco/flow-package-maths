@@ -37,7 +37,6 @@ plugins:
   - - "@semantic-release/git"
     - assets:
         - "pyproject.toml"
-        - "poetry.lock"
         - "CHANGELOG.md"
 
   # https://github.com/semantic-release/github

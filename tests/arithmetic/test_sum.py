@@ -20,7 +20,7 @@ def test_int(flow: FlowTest):
 
 def test_int_zero_sum(flow: FlowTest):
 
-    vals = base.MdDouble(np.array([-3, -2, -1, 0, 1, 2, 3]))
+    vals = base.MdDouble([-3, -2, -1, 0, 1, 2, 3])
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -33,7 +33,7 @@ def test_int_zero_sum(flow: FlowTest):
 def test_decimals(flow: FlowTest):
 
     test_array = [-1.2e3, 5.432, 0.697, 1, -0.03, 0.0101, 1000.01]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -46,7 +46,7 @@ def test_decimals(flow: FlowTest):
 def test_matrix(flow: FlowTest):
 
     test_array = [[1.1, 1.2], [1.3, 1.4]]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
@@ -66,7 +66,7 @@ def test_d4_array(flow: FlowTest):
             [[1.1, 2], [1.1, 2]],
         ],
     ]
-    vals = base.MdDouble(np.array(test_array))
+    vals = base.MdDouble(test_array)
 
     inputs = {"values": vals}
     outputs = ["result"]
