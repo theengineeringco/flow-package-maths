@@ -1,3 +1,35 @@
+# [2.0.0](https://github.com/theengineeringco/flow-package-maths/compare/v1.1.1...v2.0.0) (2020-10-23)
+
+
+### Bug Fixes
+
+* added README for explorer in FE ([0d04049](https://github.com/theengineeringco/flow-package-maths/commit/0d04049a8ba8347cfaf09465c119b74bef98300b))
+* change rounding method and port checking ([378a617](https://github.com/theengineeringco/flow-package-maths/commit/378a617a22b6ccfa5b40bec514a05f513ba4fde0))
+* fix non-required port for root ([15332a3](https://github.com/theengineeringco/flow-package-maths/commit/15332a3bb7146587046c930fea31fd8cd804862e))
+* fix port id typo ([8729d9d](https://github.com/theengineeringco/flow-package-maths/commit/8729d9d00536d9c872e40383f792fe7d98457e91))
+* fixed remaining flake8 errors ([27a33e8](https://github.com/theengineeringco/flow-package-maths/commit/27a33e835f99a1da4a22ad765c910c3ad453c14d))
+* fixed round_up ([9ba54ed](https://github.com/theengineeringco/flow-package-maths/commit/9ba54ed523f8f16b2890d40f927edb9521a018b6))
+* improved tests ([d0da52d](https://github.com/theengineeringco/flow-package-maths/commit/d0da52d89002d0c0cf8f17904e29577f623cd3c3))
+* poetry update and windows CI fix ([25f8ac5](https://github.com/theengineeringco/flow-package-maths/commit/25f8ac5c2de31b39806b5aac641000f2c3bedd74))
+* Release ([fb8bd1e](https://github.com/theengineeringco/flow-package-maths/commit/fb8bd1e5356c6b5f3776571793be96a83699fe56))
+* Update flow-py ([e411665](https://github.com/theengineeringco/flow-package-maths/commit/e4116650b81edd3c2bdaae73479a2492f285e29d))
+* updated repo name ([7d21f1a](https://github.com/theengineeringco/flow-package-maths/commit/7d21f1abd1a42a46c7d8bb37389bd7106ec279db))
+
+
+### Code Refactoring
+
+* prepare repo for metadata refactor ([259ddf9](https://github.com/theengineeringco/flow-package-maths/commit/259ddf92271d5fdb432e0724d565c4fb766a130b))
+
+
+### Features
+
+* update readmes and add new components ([27ab183](https://github.com/theengineeringco/flow-package-maths/commit/27ab1839d0a7eac46f285684a3908245cc1f175d))
+
+
+### BREAKING CHANGES
+
+* Metadata update with component ids
+
 # [2.0.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.4...v2.0.0-develop.5) (2020-10-23)
 
 
