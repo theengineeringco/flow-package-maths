@@ -10,6 +10,7 @@ jobs:
   publish:
     name: Publish Wheels
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Clone Repo
@@ -27,6 +28,5 @@ jobs:
 
       - name: Publish Wheels
         run: |
-          poetry config repositories.flow-pypi http://flow-pypi.herokuapp.com/simple/
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
-          poetry publish --repository flow-pypi
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
+          poetry publish --repository tec-pypi

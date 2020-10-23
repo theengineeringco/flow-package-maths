@@ -11,6 +11,7 @@ jobs:
   linting:
     name: Linting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -45,16 +46,14 @@ jobs:
           && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
-        timeout-minutes: 10
         shell: bash
         run: |
           poetry config cache-dir ~/.cache/poetry
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
 
       - name: Run Linting
-        timeout-minutes: 5
         shell: bash
         run: |
           poetry run pre-commit run --all
@@ -65,6 +64,7 @@ jobs:
     name: Testing
     needs: linting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -92,16 +92,14 @@ jobs:
           key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
       - name: Install Dependencies
-        timeout-minutes: 10
         shell: bash
         run: |
           poetry config cache-dir ~/.cache/poetry
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
 
       - name: Run Tests
-        timeout-minutes: 5
         shell: bash
         run: |
           poetry run pytest
