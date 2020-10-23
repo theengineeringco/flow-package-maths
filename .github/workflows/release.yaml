@@ -5,7 +5,6 @@ on:
   release:
     types:
       - published
-      - edited
 
 jobs:
   publish:
@@ -26,8 +25,8 @@ jobs:
       - name: Build Wheels
         run: |
           poetry build -vvv
+
       - name: Publish Wheels
         run: |
-          poetry config repositories.flow-pypi http://flow-pypi.herokuapp.com/simple/
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
-          poetry publish --repository flow-pypi
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
+          poetry publish --repository tec-pypi

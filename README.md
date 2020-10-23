@@ -1,4 +1,4 @@
-# flow_py_library_general_maths
+# flow_package_maths
 
 [![python-version](https://img.shields.io/badge/python-3.8%2B-blue)]()
 [![wemake-python-styleguide](https://img.shields.io/badge/style-wemake-000000.svg)](https://github.com/wemake-services/wemake-python-styleguide)
@@ -26,7 +26,7 @@ A faster practice is to copy the "divide" folder and work from there. `flow_divi
 ## Installation
 
 ```bash
-flow library add --type python git+https://github.com/theengineeringco/flow_py_library_general_maths.git
+flow library add --type python git+https://github.com/theengineeringco/flow_package_maths.git
 ```
 
 ## Example code implementation
@@ -102,7 +102,7 @@ def process(component: Component):
 
 ## License
 
-[MIT](https://github.com/theengineeringco/flow_py_library_general_maths/blob/master/LICENSE)
+[MIT](https://github.com/theengineeringco/flow_package_maths/blob/master/LICENSE)
 
 ## Credits
 

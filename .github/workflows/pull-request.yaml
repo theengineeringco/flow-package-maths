@@ -11,6 +11,7 @@ jobs:
   linting:
     name: Linting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -27,31 +28,43 @@ jobs:
         shell: bash
         run: |
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
       - name: Set up Cache
         uses: actions/cache@v2
         with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          path: ~/.cache/poetry
+          key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
+
+      - name: Check Poetry Lock File
+        shell: bash
+        run: |
+          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
+          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
-        timeout-minutes: 10
+        shell: bash
         run: |
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
-          poetry run pip install pip --upgrade
+          poetry config cache-dir ~/.cache/poetry
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
+          poetry run python -m pip install pip --upgrade
           poetry install -vvv
+
       - name: Run Linting
-        timeout-minutes: 5
+        shell: bash
         run: |
           poetry run pre-commit run --all
           poetry run flake8 --format wemake
           poetry run mypy .
+
   testing:
     name: Testing
     needs: linting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
@@ -68,22 +81,25 @@ jobs:
         shell: bash
         run: |
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
       - name: Set up Cache
         uses: actions/cache@v2
         with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          path: ~/.cache/poetry
+          key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
       - name: Install Dependencies
-        timeout-minutes: 10
+        shell: bash
         run: |
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry config cache-dir ~/.cache/poetry
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
+
       - name: Run Tests
-        timeout-minutes: 5
+        shell: bash
         run: |
           poetry run pytest

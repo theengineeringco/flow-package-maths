@@ -17,24 +17,18 @@
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
 
+  // Docstring format
+  "autoDocstring.docstringFormat": "google",
+
   // ---- Python Settings ----
 
   // General Settings
-  // https://code.visualstudio.com/docs/python/settings-reference#_general-settings
+  // https://code.visualstudio.com/docs/python/settings-reference#_general-settingsn",
   "python.terminal.activateEnvInCurrentTerminal": true,
 
   // Code analysis settings
   // https://code.visualstudio.com/docs/python/settings-reference#_code-analysis-settings
-  // Choose either Jedi or Microsoft Python Language Server below
-
-  // ---- Jedi ----
-  // Make sure to do run the command `poetry add --dev jedi rope` first
-  // "python.languageServer": "Jedi",
-  // "python.jediEnabled": true,
-
-  // ---- Microsoft Python Language Server ----
-  "python.languageServer": "Microsoft",
-  "python.jediEnabled": false,
+  "python.languageServer": "Pylance",
 
   // AutoComplete settings
   // https://code.visualstudio.com/docs/python/settings-reference#_autocomplete-settings
@@ -48,9 +42,10 @@
   // https://code.visualstudio.com/docs/python/settings-reference#_formatting-settings
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": false,
+  "python.linting.mypyEnabled": true,
 
   // Testing settings
   //https://code.visualstudio.com/docs/python/settings-reference#_testing-settings
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "python.analysis.completeFunctionParens": true
 }

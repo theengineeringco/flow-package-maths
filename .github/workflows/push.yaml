@@ -12,6 +12,7 @@ jobs:
   testing:
     name: Testing
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     strategy:
@@ -33,36 +34,47 @@ jobs:
         shell: bash
         run: |
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
       - name: Set up Cache
         uses: actions/cache@v2
         with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+          path: ~/.cache/poetry
+          key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
+
+      - name: Check Poetry Lock File
+        shell: bash
+        run: |
+          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
+          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
-        timeout-minutes: 10
         run: |
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry config cache-dir ~/.cache/poetry
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
           poetry run python -m pip install pip --upgrade
           poetry install -vvv
+
       - name: Run Tests
-        timeout-minutes: 5
+        shell: bash
         run: |
           poetry run pytest
+
   release:
     name: Release
     needs: testing
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     steps:
-      - name: Checkout
+      - name: Clone Repo
         uses: actions/checkout@v2
         with:
-          token: ${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}
+          token: ${{ secrets.TEC_DEVBOT_ACCESS_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -70,16 +82,17 @@ jobs:
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v2
 
-      - name: Set Flow PyPi Credentials
+      - name: Set TEC PyPi Credentials
+        shell: bash
         run: |
-          poetry config http-basic.flow-pypi flow-pypi ${{ secrets.FLOW_PYPI_PASSWORD }}
+          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
+
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
-        timeout-minutes: 5
         with:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/exec
             @semantic-release/git
         env:
-          GITHUB_TOKEN: ${{secrets.TEC_DEVBOT_ACCESS_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.TEC_DEVBOT_ACCESS_TOKEN }}

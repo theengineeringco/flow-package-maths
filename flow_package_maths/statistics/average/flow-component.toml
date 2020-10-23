@@ -1,0 +1,16 @@
+[component]
+file = "average.py"
+id = "c9cd6e61-628f-4e35-a46b-3637f8614c77"
+
+[component.details]
+name = "Average"
+namespace = "Maths"
+description = "Computes the arithmetic mean of a list of values."
+readme = "README.md"
+keywords = [ "mean", "statistics" ]
+
+[component.details.inports]
+values = { name = "Values", description = "A list of values." }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

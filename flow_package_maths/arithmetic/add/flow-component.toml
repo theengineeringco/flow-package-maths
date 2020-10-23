@@ -1,0 +1,17 @@
+[component]
+file = "add.py"
+id = "a3938fef-32be-48c3-a5e6-35e32b62bdd1"
+
+[component.details]
+name = "Add"
+namespace = "Maths"
+description = "Adds two values together."
+readme = "README.md"
+keywords = [ "+", "addition", "arithmetic", "plus" ]
+
+[component.details.inports]
+value1 = { name = "Value 1", description = "" }
+value2 = { name = "Value 2", description = "" }
+
+[component.details.outports]
+result = { name = "Result", description = "" }

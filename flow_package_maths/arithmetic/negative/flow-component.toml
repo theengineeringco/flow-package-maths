@@ -1,0 +1,16 @@
+[component]
+file = "negative.py"
+id = "b3674dca-8a1c-4926-880c-ead3f32964f7"
+
+[component.details]
+name = "Negative"
+namespace = "Maths"
+description = "Computes the negative of a value."
+readme = "README.md"
+keywords = [ "-", "arithmetic" ]
+
+[component.details.inports]
+value = { name = "Value", description = "" }
+
+[component.details.outports]
+result = { name = "Result", description = "" }
