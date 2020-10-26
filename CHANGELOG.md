@@ -1,3 +1,14 @@
+# [2.1.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.5...v2.0.0-develop.6) (2020-10-26)
+
+### Features
+
+* update readmes and add new components ([27ab183](https://github.com/theengineeringco/flow-package-maths/commit/27ab1839d0a7eac46f285684a3908245cc1f175d))
+
+### BREAKING CHANGES
+
+* Metadata update with component ids
+* add increment and decrement ([9f338a0](https://github.com/theengineeringco/flow-package-maths/commit/9f338a0486aa87c21d5b54389f8dcb00333ad176))
+
 # [2.0.0](https://github.com/theengineeringco/flow-package-maths/compare/v1.1.1...v2.0.0) (2020-10-23)
 
 
@@ -19,16 +30,6 @@
 ### Code Refactoring
 
 * prepare repo for metadata refactor ([259ddf9](https://github.com/theengineeringco/flow-package-maths/commit/259ddf92271d5fdb432e0724d565c4fb766a130b))
-
-
-### Features
-
-* update readmes and add new components ([27ab183](https://github.com/theengineeringco/flow-package-maths/commit/27ab1839d0a7eac46f285684a3908245cc1f175d))
-
-
-### BREAKING CHANGES
-
-* Metadata update with component ids
 
 # [2.0.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.4...v2.0.0-develop.5) (2020-10-23)
 
