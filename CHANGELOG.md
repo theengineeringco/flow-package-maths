@@ -1,3 +1,10 @@
+# [2.1.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0...v2.1.0-develop.1) (2020-10-26)
+
+
+### Features
+
+* add increment and decrement ([9f338a0](https://github.com/theengineeringco/flow-package-maths/commit/9f338a0486aa87c21d5b54389f8dcb00333ad176))
+
 # [2.1.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0-develop.5...v2.0.0-develop.6) (2020-10-26)
 
 ### Features
