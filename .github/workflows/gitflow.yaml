@@ -1,26 +1,20 @@
 name: GitFlow
-# This workflow makes sure that when PRs are made to the master branch,
-# they are also made to the develop branch. This is the convention GitFlow specifies
+# This workflow makes sure that when the master branch is updated and a new
+# release is made, a PR is made to the develop branch to keep it up to date.
+# This is the convention GitFlow specifies
 
-# Runs when a PR to the master branch is closed
+# Trigger the workflow on stable release from master
+# branch by the semantic-release automation
 on:
-  pull_request:
-    branches:
-      - master
+  release:
     types:
-      - closed
+      - released
 
 jobs:
   create-pr:
     name: Create PR to Develop Branch
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
-    # Creates a PR from a branch to the develop branch when a PR from the branch to the master branch is merged and closed.
-    # Only runs when the source branch is not the Develop Branch
-    if: >
-      github.event.pull_request.merged == true &&
-      github.head_ref != 'develop'
 
     steps:
       - name: Clone Repo
