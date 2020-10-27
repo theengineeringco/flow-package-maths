@@ -17,10 +17,10 @@ wemake-python-styleguide = "^0.14"                    # Linting
 mypy = "^0.780"                                       # Linting
 black = "^20.8b1"                                     # Formatting
 isort = { version = "^4.3", extras = ["pyproject"] }  # Formatting
-pytest = "^6.0"                                       # Runnning Tests
+pytest = "^6.0"                                       # Running Tests
 tox = "^3.20"                                         # Tox Testing
 
-flow-py = {version = "^2.0", extras = ["testing"]}      # For Component Testing
+flow-py = {version = "^2", allow-prereleases = true, extras = ["testing"]}  # For Component Testing
 
 # Pre-commit - helps enforce code style. Use `pre-commit install` to install
 pre-commit = "^2.7"
