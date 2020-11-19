@@ -1,7 +1,7 @@
 from typing import cast
 
 import numpy as np
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
@@ -24,7 +24,7 @@ def process(component: Component):
     res = np.mean(values_arr)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Average of {values_arr} is {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Average of {values_arr} is {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

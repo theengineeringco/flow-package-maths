@@ -1,7 +1,7 @@
 import math
 from typing import cast
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
@@ -31,7 +31,7 @@ def process(component: Component):
     res = math.ceil(val * multiplier) / multiplier
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

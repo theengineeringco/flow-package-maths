@@ -1,6 +1,6 @@
 from typing import cast
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base
 
 # ports
@@ -25,7 +25,7 @@ def process(component: Component):
     res = val + increment_val
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Decrementing {val} by {increment_val} gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Decrementing {val} by {increment_val} gives {res}.")
 
     # send message to outports
     component.send_data(base.Int(res), result)

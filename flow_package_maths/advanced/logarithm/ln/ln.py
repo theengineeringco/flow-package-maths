@@ -31,7 +31,7 @@ def process(component: Component):
     res = math.log(val)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"ln({val}) gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"ln({val}) gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)
