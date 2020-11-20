@@ -1,6 +1,6 @@
 from typing import cast
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
@@ -28,7 +28,7 @@ def process(component: Component):
     result_msg = base.Double(res)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Multiplying {val1} by {val2} gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Multiplying {val1} by {val2} gives {res}.")
 
     # send message to outports
     component.send_data(result_msg, result)
