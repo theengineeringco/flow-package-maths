@@ -190,11 +190,11 @@ reference = "tec-pypi"
 
 [[package]]
 name = "darglint"
-version = "1.5.5"
+version = "1.5.6"
 description = "A utility for ensuring Google-style docstrings stay up to date with the source code."
 category = "dev"
 optional = false
-python-versions = ">=3.5,<4.0"
+python-versions = ">=3.6,<4.0"
 
 [package.source]
 type = "legacy"
@@ -508,7 +508,7 @@ reference = "tec-pypi"
 
 [[package]]
 name = "flow-py"
-version = "2.0.1.dev1"
+version = "2.1.0.dev1"
 description = "Python Component Library for Flow"
 category = "main"
 optional = false
@@ -518,8 +518,7 @@ python-versions = ">=3.8,<4.0"
 asyncio-nats-streaming = ">=0.4,<0.5"
 click = ">=7.1,<8.0"
 entrypoints = ">=0.3,<0.4"
-flow-py-types = ">=2.1.1-dev.1,<3.0.0"
-flow-schema = ">=1.9.1-dev.2,<2.0.0"
+flow-py-types = ">=v2.2.0-dev.3,<3.0.0"
 inflection = ">=0.3,<0.4"
 psutil = {version = ">=5.7,<6.0", optional = true, markers = "extra == \"testing\""}
 pytest = {version = ">=6.0,<7.0", optional = true, markers = "extra == \"testing\""}
@@ -540,14 +539,15 @@ reference = "tec-pypi"
 
 [[package]]
 name = "flow-py-types"
-version = "2.1.1.dev1"
+version = "2.2.0.dev3"
 description = "Flow Types Python Library"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
-flow-schema = ">=1.9.1-dev.2,<2.0.0"
+flow-schema = ">=1.10.0-dev3,<2.0.0"
+numpy = ">=1.18,<2.0"
 protobuf = ">=3.12,<4.0"
 pytobuf = ">=1.2,<2.0"
 typing-inspect = ">=0.6.0,<0.7.0"
@@ -559,7 +559,7 @@ reference = "tec-pypi"
 
 [[package]]
 name = "flow-schema"
-version = "1.10.0.dev1"
+version = "1.10.0.dev3"
 description = ""
 category = "main"
 optional = false
@@ -925,7 +925,7 @@ reference = "tec-pypi"
 
 [[package]]
 name = "pre-commit"
-version = "2.8.2"
+version = "2.9.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -1398,7 +1398,7 @@ reference = "tec-pypi"
 
 [[package]]
 name = "virtualenv"
-version = "20.1.0"
+version = "20.2.0"
 description = "Virtual Python Environment builder"
 category = "dev"
 optional = false
@@ -1469,7 +1469,7 @@ reference = "tec-pypi"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "0163fa4fb761e7297eecdf3ca42b83711f8380526e1257c6f1628cc41e131e67"
+content-hash = "18ff231e564708d18a14dd76a8c4a3b18c042014e66aadfdd340ac3de681222f"
 
 [metadata.files]
 appdirs = [
@@ -1518,8 +1518,8 @@ colorama = [
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
 ]
 darglint = [
-    {file = "darglint-1.5.5-py3-none-any.whl", hash = "sha256:cd882c812f28ee3b5577259bfd8d6d25962386dd87fc1f3756eac24370aaa060"},
-    {file = "darglint-1.5.5.tar.gz", hash = "sha256:2f12ce2ef3d8189279a8f2eb4c53fd215dbacae50e37765542a91310400a9cd6"},
+    {file = "darglint-1.5.6-py3-none-any.whl", hash = "sha256:6fcef385e646c4da9ea6fc547e28c77a33ae0cba4806b8585ae18a490a797e82"},
+    {file = "darglint-1.5.6.tar.gz", hash = "sha256:98acb4064bae73ec02146cb123dd3c930bd5272e562ad4d19c59857443632dd1"},
 ]
 distlib = [
     {file = "distlib-0.3.1-py2.py3-none-any.whl", hash = "sha256:8c09de2c67b3e7deef7184574fc060ab8a793e7adbb183d942c389c8b13c52fb"},
@@ -1593,15 +1593,15 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-2.0.1.dev1.tar.gz", hash = "md5:4ad487b455f28467ad7fa8bbc2c95d8c"},
+    {file = "flow-py-2.1.0.dev1.tar.gz", hash = "md5:b043630829463ea1d0e52ccd144c5c0d"},
 ]
 flow-py-types = [
-    {file = "flow-py-types-2.1.1.dev1.tar.gz", hash = "md5:addb74bf3751c3d0a90189429be2cb2b"},
-    {file = "flow_py_types-2.1.1.dev1-py3-none-any.whl", hash = "md5:639e8480e818592ee2ee39156650ad9e"},
+    {file = "flow-py-types-2.2.0.dev3.tar.gz", hash = "md5:1f21b3b9f560b43a3e4bfe3a072ad2ea"},
+    {file = "flow_py_types-2.2.0.dev3-py3-none-any.whl", hash = "md5:3eca11dfaccd0e117228b994390fa3e3"},
 ]
 flow-schema = [
-    {file = "flow-schema-1.10.0.dev1.tar.gz", hash = "md5:f3a8d491dc8f6d4bb02c7cdfb7a6684b"},
-    {file = "flow_schema-1.10.0.dev1-py3-none-any.whl", hash = "md5:ec0e24d8a418971cd864f22627f9ac16"},
+    {file = "flow-schema-1.10.0.dev3.tar.gz", hash = "md5:ab930cd1e8a33ebcf59b914394be7adc"},
+    {file = "flow_schema-1.10.0.dev3-py3-none-any.whl", hash = "md5:a1d9d84e34c9400998e9aaf7406a4b9f"},
 ]
 gitdb = [
     {file = "gitdb-4.0.5-py3-none-any.whl", hash = "sha256:91f36bfb1ab7949b3b40e23736db18231bf7593edada2ba5c3a174a7b23657ac"},
@@ -1792,8 +1792,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.8.2-py2.py3-none-any.whl", hash = "sha256:22e6aa3bd571debb01eb7d34483f11c01b65237be4eebbf30c3d4fb65762d315"},
-    {file = "pre_commit-2.8.2.tar.gz", hash = "sha256:905ebc9b534b991baec87e934431f2d0606ba27f2b90f7f652985f5a5b8b6ae6"},
+    {file = "pre_commit-2.9.0-py2.py3-none-any.whl", hash = "sha256:4aee0db4808fa48d2458cedd5b9a084ef24dda1a0fa504432a11977a4d1cfd0a"},
+    {file = "pre_commit-2.9.0.tar.gz", hash = "sha256:b2d106d51c6ba6217e859d81774aae33fd825fe7de0dcf0c46e2586333d7a92e"},
 ]
 protobuf = [
     {file = "protobuf-3.14.0-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:629b03fd3caae7f815b0c66b41273f6b1900a579e2ccb41ef4493a4f5fb84f3a"},
@@ -1879,6 +1879,8 @@ pyyaml = [
     {file = "PyYAML-5.3.1-cp37-cp37m-win_amd64.whl", hash = "sha256:73f099454b799e05e5ab51423c7bcf361c58d3206fa7b0d555426b1f4d9a3eaf"},
     {file = "PyYAML-5.3.1-cp38-cp38-win32.whl", hash = "sha256:06a0d7ba600ce0b2d2fe2e78453a470b5a6e000a985dd4a4e54e436cc36b0e97"},
     {file = "PyYAML-5.3.1-cp38-cp38-win_amd64.whl", hash = "sha256:95f71d2af0ff4227885f7a6605c37fd53d3a106fcab511b8860ecca9fcf400ee"},
+    {file = "PyYAML-5.3.1-cp39-cp39-win32.whl", hash = "sha256:ad9c67312c84def58f3c04504727ca879cb0013b2517c85a9a253f0cb6380c0a"},
+    {file = "PyYAML-5.3.1-cp39-cp39-win_amd64.whl", hash = "sha256:6034f55dab5fea9e53f436aa68fa3ace2634918e8b5994d82f3621c04ff5ed2e"},
     {file = "PyYAML-5.3.1.tar.gz", hash = "sha256:b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"},
 ]
 regex = [
@@ -2032,8 +2034,8 @@ ujson = [
     {file = "ujson-3.2.0.tar.gz", hash = "sha256:abb1996ba1c1d2faf5b1e38efa97da7f64e5373a31f705b96fe0587f5f778db4"},
 ]
 virtualenv = [
-    {file = "virtualenv-20.1.0-py2.py3-none-any.whl", hash = "sha256:b0011228208944ce71052987437d3843e05690b2f23d1c7da4263fde104c97a2"},
-    {file = "virtualenv-20.1.0.tar.gz", hash = "sha256:b8d6110f493af256a40d65e29846c69340a947669eec8ce784fcf3dd3af28380"},
+    {file = "virtualenv-20.2.0-py2.py3-none-any.whl", hash = "sha256:6af42359fbb33a6c7eab4d3246524b96fd9d8e07e7141b7a65998f96e28b2c57"},
+    {file = "virtualenv-20.2.0.tar.gz", hash = "sha256:fd4147c5ba3f694e2e4fc3c767407dc2226899623bb9b49c2f15637c2ee335b3"},
 ]
 websockets = [
     {file = "websockets-8.1-cp36-cp36m-macosx_10_6_intel.whl", hash = "sha256:3762791ab8b38948f0c4d281c8b2ddfa99b7e510e46bd8dfa942a5fff621068c"},

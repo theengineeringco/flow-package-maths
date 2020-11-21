@@ -10,7 +10,7 @@ repository = "https://github.com/theengineeringco/flow-package-maths.git"
 [tool.poetry.dependencies]
 python = "^3.8"
 flow-py = { version = "^2", allow-prereleases = true }
-numpy = "^1.19"
+numpy = "^1.18"
 
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.14"                    # Linting
