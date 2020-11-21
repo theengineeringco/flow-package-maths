@@ -36,7 +36,7 @@ jobs:
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
       - name: Set up Poetry
-        uses: Gr1N/setup-poetry@v2
+        uses: Gr1N/setup-poetry@v4
 
       - name: Set up Cache
         uses: actions/cache@v2
@@ -80,7 +80,7 @@ jobs:
         uses: actions/setup-python@v2
 
       - name: Set up Poetry
-        uses: Gr1N/setup-poetry@v2
+        uses: Gr1N/setup-poetry@v4
 
       - name: Set TEC PyPi Credentials
         shell: bash

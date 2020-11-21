@@ -1,7 +1,7 @@
 from typing import cast
 
 import numpy as np
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
