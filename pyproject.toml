@@ -2,7 +2,7 @@
 name = "flow-package-maths"
 description = "A Package of Python Flow Components"
 authors = ["Eu Chian Tan <euchian@theengineeringcompany.com>", "Matthew Stedman <matt@theengineeringcompany.com>", "Neil Cameron <neil@theengineeringcompany.com>"]
-version = "2.1.0-dev.1"
+version = "2.1.0-dev.2"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/theengineeringco/flow-package-maths.git"
