@@ -1,3 +1,11 @@
+# [2.1.0-develop.2](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.1...v2.1.0-develop.2) (2020-11-21)
+
+
+### Bug Fixes
+
+* Comment out debuf messages ([f813733](https://github.com/theengineeringco/flow-package-maths/commit/f8137334a95cf22b15a09baf07f2470479660abe))
+* Update to latest flow-py ([1028169](https://github.com/theengineeringco/flow-package-maths/commit/102816947b2a9b77e89f345e00e19b834f809a2a))
+
 # [2.1.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0...v2.1.0-develop.1) (2020-10-26)
 
 
