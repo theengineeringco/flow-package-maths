@@ -1,7 +1,7 @@
 import math
 from typing import cast
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
@@ -25,7 +25,7 @@ def process(component: Component):
     res = math.atan(val)
 
     # logs
-    res_deg = res * 180 / math.pi  # noqa: WPS432
+    # res_deg = res * 180 / math.pi  # noqa: WPS432
     # component.log(log_level=LogLevel.DEBUG, message=f"atan({val}) gives {res}rad or {res_deg}°.")
 
     # send message to outports

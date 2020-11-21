@@ -1,7 +1,7 @@
 import math
 from typing import cast
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Component, Definition, Inport, Outport
 from flow_types import base, unions
 
 # ports
@@ -25,7 +25,7 @@ def process(component: Component):
     res = math.cos(angle_val)
 
     # logs
-    angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
+    # angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
     # component.log(log_level=LogLevel.DEBUG, message=f"cos({angle_val}rad or {angle_val_deg}°) gives {res}.")
 
     # send message to outports
