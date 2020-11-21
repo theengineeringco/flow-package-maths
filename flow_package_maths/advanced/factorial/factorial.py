@@ -24,7 +24,7 @@ def process(component: Component):
     res = math.factorial(val)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"{val}! gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"{val}! gives {res}.")
 
     # send message to outports
     component.send_data(base.Int(res), result)

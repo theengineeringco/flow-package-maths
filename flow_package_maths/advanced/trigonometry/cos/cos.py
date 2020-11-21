@@ -26,7 +26,7 @@ def process(component: Component):
 
     # logs
     angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
-    component.log(log_level=LogLevel.DEBUG, message=f"cos({angle_val}rad or {angle_val_deg}°) gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"cos({angle_val}rad or {angle_val_deg}°) gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

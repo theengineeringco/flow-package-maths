@@ -34,7 +34,7 @@ def process(component: Component):
     res = val ** exp
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"{val} to the power of {exp} gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"{val} to the power of {exp} gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

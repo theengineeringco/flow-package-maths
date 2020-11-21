@@ -24,7 +24,7 @@ def process(component: Component):
     res = np.ptp(values_arr)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Range of {values_arr} is {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Range of {values_arr} is {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

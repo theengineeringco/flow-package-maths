@@ -30,7 +30,7 @@ def process(component: Component):
 
     # logs
     res_deg = res * 180 / math.pi  # noqa: WPS432
-    component.log(log_level=LogLevel.DEBUG, message=f"asin({val}) gives {res}rad or {res_deg}°.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"asin({val}) gives {res}rad or {res_deg}°.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

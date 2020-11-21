@@ -26,7 +26,7 @@ def process(component: Component):
     result_msg = base.Double(res)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Absolute of {val} is {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Absolute of {val} is {res}.")
 
     # send message to outports
     component.send_data(result_msg, result)

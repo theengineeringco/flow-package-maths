@@ -31,7 +31,7 @@ def process(component: Component):
     res = math.floor(val * multiplier) / multiplier
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Rounding down {val} to {dec} decimal places gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Rounding down {val} to {dec} decimal places gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

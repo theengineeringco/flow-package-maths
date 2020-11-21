@@ -29,7 +29,7 @@ def process(component: Component):
     res = val ** (1 / root_val)
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"{root_val} root of {val} gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"{root_val} root of {val} gives {res}.")
 
     # send message to outports
     component.send_data(base.Double(res), result)

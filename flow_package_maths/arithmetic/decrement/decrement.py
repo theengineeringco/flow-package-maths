@@ -25,7 +25,7 @@ def process(component: Component):
     res = val - decrement_val
 
     # logs
-    component.log(log_level=LogLevel.DEBUG, message=f"Drecrement {val} by {decrement_val} gives {res}.")
+    # component.log(log_level=LogLevel.DEBUG, message=f"Drecrement {val} by {decrement_val} gives {res}.")
 
     # send message to outports
     component.send_data(base.Int(res), result)
