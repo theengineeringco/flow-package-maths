@@ -1,3 +1,10 @@
+# [2.1.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.4...v2.1.0-develop.5) (2020-12-11)
+
+
+### Bug Fixes
+
+* Update round components to output ints ([6ab3542](https://github.com/theengineeringco/flow-package-maths/commit/6ab3542beb4c7a15c4b4d71f7e9c901ac7af1d23))
+
 # [2.1.0-develop.4](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.3...v2.1.0-develop.4) (2020-12-11)
 
 
