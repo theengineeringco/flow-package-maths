@@ -9,8 +9,7 @@
       "type": "python",
       "request": "launch",
       "program": "${file}",
-      "console": "integratedTerminal",
-      "gevent": true
+      "console": "integratedTerminal"
     },
     {
       "name": "Python: noJMC",
@@ -18,7 +17,6 @@
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
-      "gevent": true,
       "justMyCode": false
     }
   ]

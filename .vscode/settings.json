@@ -1,24 +1,9 @@
 {
-  "platformSettings.autoLoad": true,
-  "platformSettings.platforms": {
-    "win32": {
-      "nodes": {
-        "python.pythonPath": ".venv\\Scripts\\python.exe"
-      }
-    },
-    "linux": {
-      "nodes": {
-        "python.pythonPath": ".venv/bin/python"
-      }
-    }
-  },
+  // ---- General Settings ----
 
   // File Settings
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
-
-  // Docstring format
-  "autoDocstring.docstringFormat": "google",
 
   // ---- Python Settings ----
 
@@ -47,5 +32,27 @@
   // Testing settings
   //https://code.visualstudio.com/docs/python/settings-reference#_testing-settings
   "python.testing.pytestEnabled": true,
-  "python.analysis.completeFunctionParens": true
+
+  // ---- Extension Settings ----
+
+  // Even Better Toml
+  "evenBetterToml.formatter.alignEntries": true,
+
+  // Auto Doc String
+  "autoDocstring.docstringFormat": "google",
+
+  // Platform Settings
+  "platformSettings.autoLoad": true,
+  "platformSettings.platforms": {
+    "win32": {
+      "nodes": {
+        "python.pythonPath": ".venv\\Scripts\\python.exe"
+      }
+    },
+    "linux": {
+      "nodes": {
+        "python.pythonPath": ".venv/bin/python"
+      }
+    }
+  }
 }

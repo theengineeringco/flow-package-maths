@@ -18,10 +18,10 @@ def process(component: Component):
         return
 
     # get inports data
-    values_arr = cast(base.MdDouble, component.get_data(values)).to_list()
+    values_arr = cast(base.MdDouble, component.get_data(values)).to_ndarray()
 
     # range
-    res = np.ptp(values_arr)
+    res = float(np.ptp(values_arr))
 
     # logs
     # component.log(log_level=LogLevel.DEBUG, message=f"Range of {values_arr} is {res}.")
