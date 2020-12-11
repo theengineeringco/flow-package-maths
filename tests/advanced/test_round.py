@@ -18,9 +18,9 @@ def test_round_integer(flow: FlowTest):
     test_data_up = flow.test(component_dir_up, inputs, outputs)
     test_data_down = flow.test(component_dir_down, inputs, outputs)
 
-    assert check_outport_data(test_data_nearest, {"result": base.Double(98.0)})
-    assert check_outport_data(test_data_up, {"result": base.Double(99.0)})
-    assert check_outport_data(test_data_down, {"result": base.Double(98.0)})
+    assert check_outport_data(test_data_nearest, {"result": base.Int(98)})
+    assert check_outport_data(test_data_up, {"result": base.Int(99)})
+    assert check_outport_data(test_data_down, {"result": base.Int(98)})
 
 
 def test_round_decimal2(flow: FlowTest):

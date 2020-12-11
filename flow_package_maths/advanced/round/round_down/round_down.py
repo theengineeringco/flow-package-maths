@@ -33,5 +33,11 @@ def process(component: Component):
     # logs
     # component.log(log_level=LogLevel.DEBUG, message=f"Rounding down {val} to {dec} decimal places gives {res}.")
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # Create Message
+    if dec == 0:
+        message = base.Int(int(res))
+    else:
+        message = base.Double(res)
+
+    # Send message to outports
+    component.send_data(message, result)
