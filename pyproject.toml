@@ -25,11 +25,9 @@ isort                    = "^4.3"    # Formatting
 toml                     = "^0.10"   # For isort to use pyproject.toml
 pytest                   = "^6.0"    # Running Tests
 tox                      = "^3.20"   # Tox Testing
+pre-commit               = "^2.7"    # Code Style
 
 flow-py = { version = "^2", allow-prereleases = true, extras = ["testing"] }# For Component Testing
-
-# Pre-commit - helps enforce code style. Use `pre-commit install` to install
-pre-commit = "^2.7"
 
 [[tool.poetry.source]]
 name = "tec-pypi"
