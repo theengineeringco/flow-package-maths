@@ -1,3 +1,10 @@
+# [2.1.0-develop.6](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.5...v2.1.0-develop.6) (2020-12-15)
+
+
+### Bug Fixes
+
+* Fix port types ([5d83d34](https://github.com/theengineeringco/flow-package-maths/commit/5d83d34a477eaee419e5b2dc874bddda8ed81572))
+
 # [2.1.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.4...v2.1.0-develop.5) (2020-12-11)
 
 
