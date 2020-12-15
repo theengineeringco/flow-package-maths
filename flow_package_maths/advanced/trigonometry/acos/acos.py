@@ -6,7 +6,7 @@ from flow_types import base, unions
 
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=unions.Number)
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[value], outports=[result])
@@ -28,7 +28,7 @@ def process(component: Component):
     # acos
     res = math.acos(val)
 
-    # logs
+    # Log
     # res_deg = res * 180 / math.pi  # noqa: WPS432
     # component.log(log_level=LogLevel.DEBUG, message=f"acos({val}) gives {res}rad or {res_deg}°.")
 

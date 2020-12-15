@@ -6,7 +6,7 @@ from flow_types import base, unions
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
 exponent = Inport(id="exponent", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=unions.Number)
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[value, exponent], outports=[result])
@@ -33,7 +33,7 @@ def process(component: Component):
     # power
     res = val ** exp
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"{val} to the power of {exp} gives {res}.")
 
     # send message to outports

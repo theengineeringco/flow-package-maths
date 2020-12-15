@@ -7,7 +7,7 @@ from flow_types import base, unions
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
 base_log = Inport(id="base", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=unions.Number)
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[value, base_log], outports=[result])
@@ -35,7 +35,7 @@ def process(component: Component):
     # logarithm
     res = math.log(val, base_log_val)
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"log_{base_log_val} of {val} gives {res}.")
 
     # send message to outports

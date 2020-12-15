@@ -2,11 +2,11 @@ from typing import cast
 
 import numpy as np
 from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow_types import base
 
-# ports
-values = Inport(id="values", types=[base.MdDouble])
-result = Outport(id="result", types=unions.Number)
+# Ports
+values = Inport(id="values", types=[base.MdDouble, base.MdInt])
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[values], outports=[result])
@@ -23,7 +23,7 @@ def process(component: Component):
     # median
     res = float(np.median(values_arr))
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"Median of {values_arr} is {res}.")
 
     # send message to outports

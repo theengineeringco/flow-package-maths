@@ -28,7 +28,7 @@ def process(component: Component):
     # round
     res = round(val, dec)
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"Rounding {val} to {dec} decimal places gives {res}.")
 
     # Create Message

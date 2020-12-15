@@ -5,7 +5,7 @@ from flow_types import base, unions
 
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=unions.Number)
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[value], outports=[result])
@@ -22,11 +22,8 @@ def process(component: Component):
     # negative
     res = -val
 
-    # output message
-    result_msg = base.Double(res)
-
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"Negative of {val} is {res}.")
 
     # send message to outports
-    component.send_data(result_msg, result)
+    component.send_data(base.Double(res), result)

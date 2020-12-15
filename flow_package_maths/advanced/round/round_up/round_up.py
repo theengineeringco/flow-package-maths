@@ -30,7 +30,7 @@ def process(component: Component):
     multiplier = 10 ** dec
     res = math.ceil(val * multiplier) / multiplier
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
 
     # Create Message

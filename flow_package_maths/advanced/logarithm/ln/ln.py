@@ -6,7 +6,7 @@ from flow_types import base, unions
 
 # ports
 value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=unions.Number)
+result = Outport(id="result", types=[base.Double])
 
 # comp definition
 definition = Definition(inports=[value], outports=[result])
@@ -30,7 +30,7 @@ def process(component: Component):
     # natural log
     res = math.log(val)
 
-    # logs
+    # Log
     # component.log(log_level=LogLevel.DEBUG, message=f"ln({val}) gives {res}.")
 
     # send message to outports
