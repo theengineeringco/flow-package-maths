@@ -1,3 +1,21 @@
+# [2.1.0](https://github.com/theengineeringco/flow-package-maths/compare/v2.0.0...v2.1.0) (2021-01-05)
+
+
+### Bug Fixes
+
+* Comment out debuf messages ([f813733](https://github.com/theengineeringco/flow-package-maths/commit/f8137334a95cf22b15a09baf07f2470479660abe))
+* Fix flow type errors and tests ([6aef766](https://github.com/theengineeringco/flow-package-maths/commit/6aef766e598d1b604349406857976d5a5aaf327f))
+* Fix port types ([5d83d34](https://github.com/theengineeringco/flow-package-maths/commit/5d83d34a477eaee419e5b2dc874bddda8ed81572))
+* Update flow-py and fixed style violations ([1469ed3](https://github.com/theengineeringco/flow-package-maths/commit/1469ed3b238d75acb338495a1394654a5dcced86))
+* Update flow-py version ([8109765](https://github.com/theengineeringco/flow-package-maths/commit/8109765cd716999e9c7111927b98afe918f91b22))
+* Update round components to output ints ([6ab3542](https://github.com/theengineeringco/flow-package-maths/commit/6ab3542beb4c7a15c4b4d71f7e9c901ac7af1d23))
+* Update to latest flow-py ([1028169](https://github.com/theengineeringco/flow-package-maths/commit/102816947b2a9b77e89f345e00e19b834f809a2a))
+
+
+### Features
+
+* add increment and decrement ([9f338a0](https://github.com/theengineeringco/flow-package-maths/commit/9f338a0486aa87c21d5b54389f8dcb00333ad176))
+
 # [2.1.0-develop.6](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.0-develop.5...v2.1.0-develop.6) (2020-12-15)
 
 
