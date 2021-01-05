@@ -7,14 +7,14 @@ authors     = [
   "Matthew Stedman <matt@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
 ]
-version = "2.1.0-dev.6"
+version     = "2.1.0-dev.6"
 license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python  = "^3.8"
-flow-py = { version = "^2", allow-prereleases = true }
+flow-py = "^2"
 numpy   = "^1.18"
 
 [tool.poetry.dev-dependencies]
@@ -27,7 +27,8 @@ pytest                   = "^6.0"    # Running Tests
 tox                      = "^3.20"   # Tox Testing
 pre-commit               = "^2.7"    # Code Style
 
-flow-py = { version = "^2", allow-prereleases = true, extras = ["testing"] }# For Component Testing
+# For Component Testing
+flow-py = { version = "^2", allow-prereleases = true, extras = ["testing"] }
 
 [[tool.poetry.source]]
 name = "tec-pypi"
