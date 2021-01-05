@@ -1546,7 +1546,7 @@ reference = "tec-pypi"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "82a5583fdee31bb8285e1c4edfc17175b7e863d8fd41860913737082fdda2293"
+content-hash = "3e0ddb5c96003363977d2c080e666c9652e3996339c759f7aa7972b4bf087c44"
 
 [metadata.files]
 appdirs = [

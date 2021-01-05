@@ -7,14 +7,14 @@ authors     = [
   "Matthew Stedman <matt@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
 ]
-version = "2.1.0"
+version     = "2.1.0"
 license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python  = "^3.8"
-flow-py = "^2"
+flow-py = { version = "^2", allow-prereleases = true }
 numpy   = "^1.18"
 
 [tool.poetry.dev-dependencies]
