@@ -7,7 +7,7 @@ authors     = [
   "Matthew Stedman <matt@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
 ]
-version = "2.1.0"
+version     = "2.1.1-dev.1"
 license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/theengineeringco/flow-package-maths.git"
@@ -28,7 +28,7 @@ tox                      = "^3.20"   # Tox Testing
 pre-commit               = "^2.7"    # Code Style
 
 # For Component Testing
-flow-py = { version = "^2", allow-prereleases = true, extras = ["testing"] }
+flow-py = { version = "^2", extras = ["testing"] }
 
 [[tool.poetry.source]]
 name = "tec-pypi"
