@@ -545,7 +545,7 @@ reference = "tec-pypi"
 
 [[package]]
 name = "flow-py"
-version = "2.2.1.dev1"
+version = "2.2.1.dev2"
 description = "Python Component Library for Flow"
 category = "main"
 optional = false
@@ -1636,7 +1636,7 @@ flake8-string-format = [
     {file = "flake8_string_format-0.2.3-py2.py3-none-any.whl", hash = "sha256:68ea72a1a5b75e7018cae44d14f32473c798cf73d75cbaed86c6a9a907b770b2"},
 ]
 flow-py = [
-    {file = "flow-py-2.2.1.dev1.tar.gz", hash = "md5:83f88043252f1b01a2dc14a9d6751155"},
+    {file = "flow-py-2.2.1.dev2.tar.gz", hash = "md5:91a8f6623a97b5020d7cfb6831368976"},
 ]
 flow-py-types = [
     {file = "flow-py-types-2.4.0.dev3.tar.gz", hash = "md5:ca995ecf19215d7492fc273392c54a68"},
