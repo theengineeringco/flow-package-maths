@@ -1,9 +1,11 @@
-## [2.1.2-develop.2](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.2-develop.1...v2.1.2-develop.2) (2021-02-16)
+## [2.1.2](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.1...v2.1.2) (2021-02-15)
 
 
 ### Bug Fixes
 
-* add dimension field to array inports ([dd9dc0a](https://github.com/theengineeringco/flow-package-maths/commit/dd9dc0a0c915943bd0f9fc5650b994c781687394))
+* Master merge ([b5ceee9](https://github.com/theengineeringco/flow-package-maths/commit/b5ceee949d8e170e13371845f8f4bdaf0e50274b))
+* Release ([1c2c36c](https://github.com/theengineeringco/flow-package-maths/commit/1c2c36c37a179a19dd46de14d566a17c783c0ebe))
+* Update flow-py ([4c74e54](https://github.com/theengineeringco/flow-package-maths/commit/4c74e5425daf2513ec66946755f0c69672b25e08))
 
 ## [2.1.2-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.1...v2.1.2-develop.1) (2021-02-01)
 
