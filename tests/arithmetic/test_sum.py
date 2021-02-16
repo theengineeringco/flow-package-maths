@@ -43,43 +43,8 @@ def test_decimals(flow: FlowTest):
     assert check_outport_data(test_data, {"result": base.Double(np.sum(test_array))})
 
 
-def test_matrix(flow: FlowTest):
-
-    test_array = [[1.1, 1.2], [1.3, 1.4]]
-    vals = base.MdDouble(test_array)
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(np.sum(test_array))})
-
-
-def test_d4_array(flow: FlowTest):
-
-    test_array = [
-        [
-            [[1.1, 2], [1.1, 2]],
-            [[1.1, 2], [1.1, 2]],
-            [[1.1, 2], [1.1, 2]],
-            [[1.1, 2], [1.1, 2]],
-        ],
-    ]
-    vals = base.MdDouble(test_array)
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(24.8)})
-
-
 if __name__ == "__main__":
     with flow_test() as flow:
         test_int(flow)
         test_int_zero_sum(flow)
         test_decimals(flow)
-        test_matrix(flow)
-        test_d4_array(flow)
