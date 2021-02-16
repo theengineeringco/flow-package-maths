@@ -5,7 +5,7 @@ from flow import Component, Definition, Inport, Outport
 from flow_types import base
 
 # Ports
-values = Inport(id="values", types=[base.MdDouble, base.MdInt])
+values = Inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1)])
 result = Outport(id="result", types=[base.Double])
 
 # comp definition

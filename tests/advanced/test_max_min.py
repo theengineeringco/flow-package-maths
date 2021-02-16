@@ -46,29 +46,8 @@ def test_repeated_values(flow: FlowTest):
     assert check_outport_data(test_data_min, {"result": base.Double(np.min(test_array))})
 
 
-def test_d4_array(flow: FlowTest):
-
-    test_array = [
-        [
-            [[12.5, -2.54], [103.11, 0.02]],
-            [[7.3, 0.18], [43, -20.07]],
-            [[-5.778, -7.523], [0.00123, 0.099]],
-            [[113.012, -8], [-10.6, 65.3]],
-        ],
-    ]
-    vals = base.MdDouble(test_array)
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data_max = flow.test(component_dir_max, inputs, outputs)
-    test_data_min = flow.test(component_dir_min, inputs, outputs)
-    assert check_outport_data(test_data_max, {"result": base.Double(np.max(test_array))})
-    assert check_outport_data(test_data_min, {"result": base.Double(np.min(test_array))})
-
-
 if __name__ == "__main__":
     with flow_test() as flow:
         test_single_element(flow)
         test_list_input(flow)
         test_repeated_values(flow)
-        test_d4_array(flow)
