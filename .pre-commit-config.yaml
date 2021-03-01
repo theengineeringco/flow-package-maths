@@ -1,11 +1,11 @@
 repos:
   - repo: https://github.com/andreoliwa/nitpick
-    rev: v0.23.1
+    rev: v0.24.0
     hooks:
       - id: nitpick
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.13.0
+    rev: v2.15.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -19,7 +19,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.7.0
+    rev: v1.8.0
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-mock-methods
@@ -28,18 +28,18 @@ repos:
       - id: python-use-type-annotations
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.7.4
+    rev: v2.10.0
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
 
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.0.2
+    rev: v2.1.0
     hooks:
       - id: add-trailing-comma
 
   - repo: https://github.com/hakancelik96/unimport
-    rev: 0.7.1
+    rev: 0.7.4
     hooks:
       - id: unimport
         args: [--remove, --include-star-import]
@@ -55,6 +55,6 @@ repos:
       - id: black
 
   - repo: https://github.com/asottile/blacken-docs
-    rev: v1.9.1
+    rev: v1.9.2
     hooks:
       - id: blacken-docs
