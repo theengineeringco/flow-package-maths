@@ -62,7 +62,6 @@ jobs:
 
   testing:
     name: Testing
-    needs: linting
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: "!contains(github.event.head_commit.message, 'skip ci')"
