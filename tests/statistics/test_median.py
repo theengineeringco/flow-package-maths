@@ -51,44 +51,9 @@ def test_doubles(flow: FlowTest):
     assert check_outport_data(test_data, {"result": base.Double(np.median(test_array))})
 
 
-def test_matrix(flow: FlowTest):
-
-    test_array = [[1.1, 1.2], [1.3, 1.4]]
-    vals = base.MdDouble(test_array)
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(np.mean(test_array))})
-
-
-def test_d4_array(flow: FlowTest):
-
-    test_array = [
-        [
-            [[12.5, -2], [12.5, -2]],
-            [[12.5, -2], [12.5, -2]],
-            [[12.5, -2], [12.5, -2]],
-            [[12.5, -2], [12.5, -2]],
-        ],
-    ]
-    vals = base.MdDouble(test_array)
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(np.mean(test_array))})
-
-
 if __name__ == "__main__":
     with flow_test() as flow:
         test_int_result(flow)
         test_double_result(flow)
         test_int_zero(flow)
         test_doubles(flow)
-        test_matrix(flow)
-        test_d4_array(flow)
