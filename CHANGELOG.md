@@ -1,3 +1,11 @@
+## [2.1.3](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.2...v2.1.3) (2021-03-01)
+
+
+### Bug Fixes
+
+* add dimension field to array inports ([dd9dc0a](https://github.com/theengineeringco/flow-package-maths/commit/dd9dc0a0c915943bd0f9fc5650b994c781687394))
+* Release ([27b4f32](https://github.com/theengineeringco/flow-package-maths/commit/27b4f3238ab0a476ebc0b71fc2f836b44fd99b63))
+
 ## [2.1.3-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.2...v2.1.3-develop.1) (2021-02-16)
 
 
