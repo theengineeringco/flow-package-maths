@@ -6,7 +6,7 @@ authors     = [
   "Eu Chian Tan <euchian@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
 ]
-version = "2.1.3"
+version     = "2.1.3"
 license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/theengineeringco/flow-package-maths.git"
@@ -19,12 +19,12 @@ numpy   = "^1.18"
 [tool.poetry.dev-dependencies]
 wemake-python-styleguide = "^0.15"  # Linting
 mypy                     = "^0.812" # Linting
-black                    = "^21b.0" # Formatting
+black                    = "^21b"   # Formatting
 isort                    = "^5.0"   # Formatting
 unimport                 = "^0.8"   # Formatting
 pytest                   = "^6.0"   # Tests
 tox                      = "^3.0"   # Tests
-pre-commit               = "^2.0"   # Code Style
+pre-commit               = "^2.10"  # Code Style
 
 [[tool.poetry.source]]
 name = "tec-pypi"
