@@ -1637,13 +1637,6 @@ flake8-string-format = [
     {file = "flake8-string-format-0.3.0.tar.gz", hash = "sha256:65f3da786a1461ef77fca3780b314edb2853c377f2e35069723348c8917deaa2"},
     {file = "flake8_string_format-0.3.0-py2.py3-none-any.whl", hash = "sha256:812ff431f10576a74c89be4e85b8e075a705be39bc40c4b4278b5b13e2afa9af"},
 ]
-flow-py = [
-    {file = "flow-py-2.4.0.tar.gz", hash = "md5:6c7968a0ae022c9e5a3bacfa9e9187f5"},
-]
-flow-py-types = [
-    {file = "flow-py-types-2.6.0.tar.gz", hash = "md5:9c34d089ed2108667c82f54aa1687ed1"},
-    {file = "flow_py_types-2.6.0-py3-none-any.whl", hash = "md5:a64d974c420a98cc1ea3c1d8f410ee7d"},
-]
 gitdb = [
     {file = "gitdb-4.0.5-py3-none-any.whl", hash = "sha256:91f36bfb1ab7949b3b40e23736db18231bf7593edada2ba5c3a174a7b23657ac"},
     {file = "gitdb-4.0.5.tar.gz", hash = "sha256:c9e1f2d0db7ddb9a704c2a0217be31214e91a4fe1dea1efad19ae42ba0c285c9"},
