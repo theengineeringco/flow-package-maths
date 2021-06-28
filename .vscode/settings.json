@@ -54,5 +54,6 @@
         "python.pythonPath": ".venv/bin/python"
       }
     }
-  }
+  },
+  "python.analysis.completeFunctionParens": true
 }
