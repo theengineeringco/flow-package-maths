@@ -8,9 +8,8 @@ keywords  = ["+", "addition", "arithmetic", "plus"]
 [component.files]
 main = "add.py"
 
-[component.inports]
-value1 = { name="Value 1", description="" }
-value2 = { name="Value 2", description="" }
-
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result" }
+
+[component.settings]
+terms = { name = "Number of Terms" }
