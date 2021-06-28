@@ -1,6 +1,9 @@
 {
   // ---- General Settings ----
 
+  // Editor Settings
+  "editor.formatOnSave": true,
+
   // File Settings
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
@@ -8,12 +11,13 @@
   // ---- Python Settings ----
 
   // General Settings
-  // https://code.visualstudio.com/docs/python/settings-reference#_general-settingsn",
+  // https://code.visualstudio.com/docs/python/settings-reference#_general-settings",
   "python.terminal.activateEnvInCurrentTerminal": true,
 
   // Code analysis settings
   // https://code.visualstudio.com/docs/python/settings-reference#_code-analysis-settings
   "python.languageServer": "Pylance",
+  "python.analysis.completeFunctionParens": true
 
   // AutoComplete settings
   // https://code.visualstudio.com/docs/python/settings-reference#_autocomplete-settings
@@ -55,5 +59,4 @@
       }
     }
   },
-  "python.analysis.completeFunctionParens": true
 }
