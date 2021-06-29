@@ -1,31 +1,45 @@
-from typing import cast
+from typing import Dict, List
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import IntField, Ports, Process, Settings, Setup
+from flow.testing import ComponentTest
+from flow_types import base
+from flow_types.typing import FlowType
+import math
 
-# ports
-value1 = Inport(id="value1", types=unions.Number, multi_connection=False)
-value2 = Inport(id="value2", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Ports
+ports = Ports()
+ports.add_outport(id="result", types=[base.Double])
 
-# comp definition
-definition = Definition(inports=[value1, value2], outports=[result])
+# Settings
+settings = Settings()
+settings.add_setting(id="terms", field=IntField(min=2), default=base.Int(2))
 
 
-def process(component: Component):
+def setup(component: Setup):
 
-    if not component.has_data():
-        return
+    terms = int(component.get_setting("terms"))
 
-    # get inports data
-    val1: float = cast(base.Double, component.get_data(value1)).value
-    val2: float = cast(base.Double, component.get_data(value2)).value
+    inport_ids: List[str] = []
+    for idx in range(terms):
+        inport_id = f"value{idx + 1}"
+        inport_ids.append(inport_id)
+        component.add_inport(name=f"Value {idx + 1}", id=inport_id, types=[base.Double, base.Int, base.Bool])
 
-    # multiply
-    res = val1 * val2
+    component.set_variable("inport_ids", inport_ids)
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Multiplying {val1} by {val2} gives {res}.")
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+def process(component: Process):
+
+    inport_ids: List[str] = component.get_variable("inport_ids")
+    result = math.prod(float(component.get_data(inport_id)) for inport_id in inport_ids)
+
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+
+    setting_data = {"terms": base.Int(3)}
+    inports_data: Dict[str, FlowType] = {"value1": base.Double(2), "value2": base.Int(2), "value3": base.Int(5)}
+
+    outport_value = ComponentTest(__file__).run(inports_data, setting_data)
+    print(outport_value["result"])

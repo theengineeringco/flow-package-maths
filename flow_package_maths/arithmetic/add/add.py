@@ -1,8 +1,9 @@
-from typing import List
+from typing import Dict, List
 
 from flow import IntField, Ports, Process, Settings, Setup
 from flow.testing import ComponentTest
 from flow_types import base
+from flow_types.typing import FlowType
 
 # Ports
 ports = Ports()
@@ -37,7 +38,7 @@ def process(component: Process):
 if __name__ == "__main__":
 
     setting_data = {"terms": base.Int(3)}
-    inports_data = {"value1": base.Double(2), "value2": base.Double(2), "value3": base.Double(1)}
+    inports_data: Dict[str, FlowType] = {"value1": base.Double(2), "value2": base.Int(2), "value3": base.Bool(False)}
 
     outport_value = ComponentTest(__file__).run(inports_data, setting_data)
     print(outport_value["result"])

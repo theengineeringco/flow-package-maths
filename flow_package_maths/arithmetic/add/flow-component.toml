@@ -7,6 +7,7 @@ keywords  = ["+", "addition", "arithmetic", "plus"]
 
 [component.files]
 main = "add.py"
+readme = "README.md"
 
 [component.outports]
 result = { name = "Result" }
