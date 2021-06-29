@@ -1,47 +1,29 @@
 {
   // ---- General Settings ----
-
+  // Editor Settings
+  "editor.formatOnSave": true,
   // File Settings
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
-
   // ---- Python Settings ----
-
   // General Settings
-  // https://code.visualstudio.com/docs/python/settings-reference#_general-settingsn",
+  // https://code.visualstudio.com/docs/python/settings-reference#_general-settings
   "python.terminal.activateEnvInCurrentTerminal": true,
-
   // Code analysis settings
   // https://code.visualstudio.com/docs/python/settings-reference#_code-analysis-settings
   "python.languageServer": "Pylance",
-
+  "python.analysis.completeFunctionParens": true,
   // AutoComplete settings
   // https://code.visualstudio.com/docs/python/settings-reference#_autocomplete-settings
   "python.autoComplete.addBrackets": true,
-
   // Formatting settings
   // https://code.visualstudio.com/docs/python/settings-reference#_formatting-settings
   "python.formatting.provider": "black",
-
-  // Linting settings
-  // https://code.visualstudio.com/docs/python/settings-reference#_formatting-settings
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-
   // Testing settings
   //https://code.visualstudio.com/docs/python/settings-reference#_testing-settings
   "python.testing.pytestEnabled": true,
-
   // ---- Extension Settings ----
-
-  // Even Better Toml
   "evenBetterToml.formatter.alignEntries": true,
-
-  // Auto Doc String
-  "autoDocstring.docstringFormat": "google",
-
-  // Platform Settings
   "platformSettings.autoLoad": true,
   "platformSettings.platforms": {
     "win32": {
