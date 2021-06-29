@@ -24,7 +24,7 @@ def setup(component: Setup):
     component.add_inport(name="Denominator", id=inport_ids[1], types=[base.Double, base.Int, base.Bool])
 
     # additional terms will all be denominators
-    for idx in range(terms-2):
+    for idx in range(terms - 2):
         inport_id = f"denominator{idx + 2}"
         inport_ids.append(inport_id)
         component.add_inport(name=f"Denominator {idx + 2}", id=inport_id, types=[base.Double, base.Int, base.Bool])

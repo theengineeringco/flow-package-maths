@@ -1,10 +1,10 @@
+from functools import reduce
 from typing import Dict, List
 
 from flow import IntField, Ports, Process, Settings, Setup
 from flow.testing import ComponentTest
 from flow_types import base
 from flow_types.typing import FlowType
-from functools import reduce
 
 # Ports
 ports = Ports()

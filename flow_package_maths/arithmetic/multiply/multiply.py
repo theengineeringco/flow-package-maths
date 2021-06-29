@@ -1,10 +1,10 @@
+import math
 from typing import Dict, List
 
 from flow import IntField, Ports, Process, Settings, Setup
 from flow.testing import ComponentTest
 from flow_types import base
 from flow_types.typing import FlowType
-import math
 
 # Ports
 ports = Ports()

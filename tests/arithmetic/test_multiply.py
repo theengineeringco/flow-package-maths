@@ -1,57 +1,54 @@
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
 
 component_dir = "flow_package_maths/arithmetic/multiply"
 
 
-def test_int(flow: FlowTest):
+@pytest.mark.parametrize(
+    "value1, value2, result",
+    [
+        (base.Int(1), base.Int(1), base.Double(1)),
+        (base.Int(-2), base.Int(-4), base.Double(8)),
+        (base.Bool(False), base.Bool(True), base.Double(0)),
+        (base.Double(0.99), base.Double(3), base.Double(0.99 * 3)),
+        (base.Double(-1.2e6), base.Double(1.2e6), base.Double(-(1.2e6 ** 2))),
+    ],
+)
+def test_multiply_default(value1, value2, result):
 
-    val1 = base.Int(10)
-    val2 = base.Int(5)
+    inports = {
+        "value1": value1,
+        "value2": value2,
+    }
 
-    inputs = {"value1": val1, "value2": val2}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(50)})
-
-
-def test_negative_int(flow: FlowTest):
-
-    val1 = base.Int(-4)
-    val2 = base.Int(-2)
-
-    inputs = {"value1": val1, "value2": val2}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(8)})
-
-
-def test_decimals(flow: FlowTest):
-
-    val1 = base.Double(0.99)
-    val2 = base.Double(0.99)
-
-    inputs = {"value1": val1, "value2": val2}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.99 ** 2)})
+    outport = ComponentTest(component_dir).run(inports)
+    assert outport["result"] == result
 
 
-def test_negative_doubles(flow: FlowTest):
+@pytest.mark.parametrize(
+    "value1, value2, value3, result",
+    [
+        (base.Int(1), base.Int(1), base.Int(1), base.Double(1)),
+        (base.Int(-2), base.Int(-4), base.Int(-1), base.Double(-8)),
+        (base.Bool(False), base.Bool(True), base.Bool(False), base.Double(0)),
+        (base.Double(0.99), base.Double(0.09), base.Double(1e-4), base.Double(0.99 * 0.09 * 1e-4)),
+        (base.Double(-1.2e6), base.Double(1.2e6), base.Double(-1.2e-6), base.Double((1.2e6 ** 2) * 1.2e-6)),
+        (base.Int(2), base.Bool(True), base.Double(0.2), base.Double(2 * 0.2)),
+    ],
+)
+def test_multiply_terms3(value1, value2, value3, result):
 
-    val1 = base.Double(-1.2e6)
-    val2 = base.Double(2.5)
+    settings = {"terms": base.Int(3)}
+    inports = {
+        "value1": value1,
+        "value2": value2,
+        "value3": value3,
+    }
 
-    inputs = {"value1": val1, "value2": val2}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-1.2e6 * 2.5)})
+    outport = ComponentTest(component_dir).run(inports, settings)
+    assert outport["result"] == result
 
 
 if __name__ == "__main__":
-    with flow_test() as flow:
-        test_int(flow)
-        test_negative_int(flow)
-        test_decimals(flow)
-        test_negative_doubles(flow)
+    test_multiply_default(base.Int(1), base.Int(1), base.Double(1))
