@@ -2,18 +2,18 @@ import pytest
 from flow.testing import ComponentTest
 from flow_types import base
 
-component_dir = "flow_package_maths/statistics/range"
+component_dir = "flow_package_maths/advanced/max"
 
 
 @pytest.mark.parametrize(
     "values, result",
     [
-        (base.MdDouble([1, 2, 3, 4, 5, 6]), base.Double(5)),
-        (base.MdDouble([2, 2, 2, 2]), base.Double(0)),
-        (base.MdDouble([-1.2e3, 5.432, 0.697, 1, -0.03, 0.0101, 1000.01]), base.Double(2200.01)),
+        (base.MdDouble([1]), base.Double(1)),
+        (base.MdDouble([0.1, 1, 3, -4, 9.2553, 0.0422]), base.Double(9.2553)),
+        (base.MdDouble([100.2, 0.1, 1, -4, 0, 100.2, -4, 0.1, 1]), base.Double(100.2)),  # repeated values
     ],
 )
-def test_range(values, result):
+def test_max(values, result):
 
     inports = {"values": values}
 
@@ -24,12 +24,12 @@ def test_range(values, result):
 @pytest.mark.parametrize(
     "values, result",
     [
-        (base.MdInt([3, 1, 6, 9, 13, 2]), base.Double(12)),
-        (base.MdInt([1, -1, 2, -2, 3, -3]), base.Double(6)),
+        (base.MdInt([1, 2, 3, 4, 5, 6]), base.Double(6)),
+        (base.MdInt([1, 2, 3, 4, 3, 4]), base.Double(4)),
         (base.MdBool([True, False, True, False]), base.Double(1)),
     ],
 )
-def test_range_other_types(values, result):
+def test_max_other_types(values, result):
 
     inports = {"values": values}
 
