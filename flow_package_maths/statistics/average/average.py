@@ -1,30 +1,20 @@
-from typing import cast
-
 import numpy as np
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
 from flow_types import base
 
 # Ports
-values = Inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1)])
-result = Outport(id="result", types=[base.Double])
-
-# comp definition
-definition = Definition(inports=[values], outports=[result])
+ports = Ports()
+ports.add_inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1), base.MdBool(dimension=1)])
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
-
-    if not component.has_data():
-        return
+def process(component: Process):
 
     # get inports data
-    values_arr = cast(base.MdDouble, component.get_data(values)).to_ndarray()
+    values: np.ndarray = component.get_data("values").to_ndarray()
 
     # average
-    res = float(np.mean(values_arr))
+    result = float(np.mean(values))
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Average of {values_arr} is {res}.")
-
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # send to outport
+    component.send_data(base.Double(result), "result")

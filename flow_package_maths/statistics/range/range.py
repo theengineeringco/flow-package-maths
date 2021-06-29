@@ -1,30 +1,32 @@
-from typing import cast
-
 import numpy as np
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
+from flow.testing import ComponentTest
 from flow_types import base
 
 # Ports
-values = Inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1)])
-result = Outport(id="result", types=[base.Double])
-
-# comp definition
-definition = Definition(inports=[values], outports=[result])
+ports = Ports()
+ports.add_inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1), base.MdBool(dimension=1)])
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
-
-    if not component.has_data():
-        return
+def process(component: Process):
 
     # get inports data
-    values_arr = cast(base.MdDouble, component.get_data(values)).to_ndarray()
+    values: np.ndarray = component.get_data("values").to_ndarray()
 
-    # range
-    res = float(np.ptp(values_arr))
+    # explicit conversion needed since numpy ptp function doesn't work for list of bools
+    values = np.array([float(value) for value in values])
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Range of {values_arr} is {res}.")
+    # median
+    result = float(np.ptp(values))
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # send to outport
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+
+    inports_data = {"values": base.MdBool([True, False, True, False])}
+
+    outport_value = ComponentTest(__file__).run(inports_data)
+    print(outport_value["result"])

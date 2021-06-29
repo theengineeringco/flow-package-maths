@@ -1,16 +1,16 @@
 [component]
-file = "sum.py"
 id = "c9477619-3ccc-4399-b756-fbc57ea5893a"
-
-[component.details]
 name = "Sum"
 namespace = "Maths"
 description = "Adds a sequence of values together."
-readme = "README.md"
 keywords = [ "summation", "arithmetic" ]
 
-[component.details.inports]
-values = { name = "Values", description = "A collection of values." }
+[component.files]
+main = "sum.py"
+readme = "README.md"
 
-[component.details.outports]
+[component.inports]
+values = { name = "Values", description = "A list of values." }
+
+[component.outports]
 result = { name = "Result", description = "" }
