@@ -1,4 +1,5 @@
 from typing import Union
+
 import pytest
 from flow.testing import ComponentTest
 from flow_types import base
@@ -21,8 +22,6 @@ def test_absolute(value: Union[base.Int, base.Double], result: base.Double) -> N
         "value": value,
     }
 
-    a: int
-    a = "test"
     outport_data = ComponentTest(component_dir).run(inport_data)
 
     assert outport_data["result"] == result

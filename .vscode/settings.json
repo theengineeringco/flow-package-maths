@@ -19,6 +19,11 @@
   // Formatting settings
   // https://code.visualstudio.com/docs/python/settings-reference#_formatting-settings
   "python.formatting.provider": "black",
+  // Linting settings
+  // https://code.visualstudio.com/docs/python/settings-reference#_formatting-settings
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
   // Testing settings
   //https://code.visualstudio.com/docs/python/settings-reference#_testing-settings
   "python.testing.pytestEnabled": true,

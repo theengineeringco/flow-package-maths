@@ -1,29 +1,43 @@
-from typing import cast
+from flow import Ports, Process
+from flow.testing import ComponentTest
+from flow_types import base
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+# Define ports
+ports = Ports()
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Add inports
+ports.add_inport(id="value", types=[base.Double, base.Int])
 
-# comp definition
-definition = Definition(inports=[value], outports=[result])
+# Add outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+# Process
+def process(component: Process):
 
+    # Check all connected inports have data
     if not component.has_data():
         return
 
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
+    # Get the data from each import
+    value: float = component.get_data("value").value
 
-    # negative
-    res = -val
+    # Component Content
+    out_val = -value
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Negative of {val} is {res}.")
+    # Pack the produced data into messages that will be sent from each outport
+    result_msg = base.Double(out_val)
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # Send the data from each outport
+    component.send_data(result_msg, "result")
+
+
+# Test
+if __name__ == "__main__":
+    inports_data = {
+        "value": base.Double(1.0),
+    }
+
+    outport_value = ComponentTest(__file__).run(inports_data)
+    assert outport_value["result"] == base.Double(-1.0)
+    # print(outport_value["result"])
