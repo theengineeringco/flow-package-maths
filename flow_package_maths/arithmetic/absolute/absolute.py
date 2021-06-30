@@ -41,4 +41,4 @@ if __name__ == "__main__":
 
     outport_value = ComponentTest(__file__).run(inports_data)
     assert outport_value["result"] == base.Double(1.0)
-    print(outport_value["result"])
+    # print(outport_value["result"])

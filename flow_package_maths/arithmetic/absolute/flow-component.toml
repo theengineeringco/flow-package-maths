@@ -1,5 +1,5 @@
 [component]
-id        = "7038eb76-b98a-4cb4-898e-0d47f4aa8585"
+id        = "b297ab4c-8da2-4c6c-b82f-6da84ddcb93a"
 name      = "Absolute"
 namespace = "Maths"
 description = "Computes the absolute or the non-negative of a value"
