@@ -1,1 +1,0 @@
-Adds two values together.

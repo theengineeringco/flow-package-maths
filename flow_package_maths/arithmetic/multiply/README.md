@@ -1,1 +1,0 @@
-Multiplies two values together.
