@@ -14,6 +14,7 @@ component_dir = "flow_package_maths/arithmetic/absolute"
         [base.Int(-3), base.Double(3)],
         [base.Double(2.2), base.Double(2.2)],
         [base.Double(-3.3), base.Double(3.3)],
+        [base.Double(0), base.Double(0)],
     ],
 )
 def test_absolute(value: Union[base.Int, base.Double], result: base.Double) -> None:
