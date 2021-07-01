@@ -1,5 +1,6 @@
 from flow import Ports, Process
-from flow.testing import ComponentTest
+
+# from flow.testing import ComponentTest
 from flow_types import base
 
 # Define ports
@@ -32,12 +33,12 @@ def process(component: Process):
     component.send_data(result_msg, "result")
 
 
-# Test
-if __name__ == "__main__":
-    inports_data = {
-        "value": base.Double(1.0),
-    }
+# # Test
+# if __name__ == "__main__":
+#     inports_data = {
+#         "value": base.Double(1.0),
+#     }
 
-    outport_value = ComponentTest(__file__).run(inports_data)
-    assert outport_value["result"] == base.Double(-1.0)
-    # print(outport_value["result"])
+#     outport_value = ComponentTest(__file__).run(inports_data)
+#     assert outport_value["result"] == base.Double(-1.0)
+#     # print(outport_value["result"])

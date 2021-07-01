@@ -3,7 +3,8 @@ from typing import Union
 
 from flow import Ports, Process, SelectField, Settings, Setup
 from flow.definitions.settings.fields import Option
-from flow.testing import ComponentTest
+
+# from flow.testing import ComponentTest
 from flow_types import base
 
 # Define settings
@@ -76,19 +77,19 @@ def process(component: Process):
     component.send_data(result_msg, "result")
 
 
-# Test
-if __name__ == "__main__":
-    setting_data = {
-        # "base_choice": base.String(ln_choice),
-        "base_choice": base.String(log_choice),
-    }
+# # Test
+# if __name__ == "__main__":
+#     setting_data = {
+#         # "base_choice": base.String(ln_choice),
+#         "base_choice": base.String(log_choice),
+#     }
 
-    inports_data = {
-        "value": base.Double(2.0),
-        "base_inport": base.Double(10.0),
-    }
+#     inports_data = {
+#         "value": base.Double(2.0),
+#         "base_inport": base.Double(10.0),
+#     }
 
-    outport_value = ComponentTest(__file__).run(inports_data, setting_data)
-    # print(outport_value["result"])
-    # assert outport_value["result"] == base.Double(math.log(2.0))
-    assert outport_value["result"] == base.Double(math.log(2.0, 10))
+#     outport_value = ComponentTest(__file__).run(inports_data, setting_data)
+#     # print(outport_value["result"])
+#     # assert outport_value["result"] == base.Double(math.log(2.0))
+#     assert outport_value["result"] == base.Double(math.log(2.0, 10))
