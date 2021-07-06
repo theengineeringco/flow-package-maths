@@ -38,7 +38,7 @@ def test_divide_default(numerator, denominator, result):
 )
 def test_divide_terms3(numerator, denominator, denominator2, result):
 
-    settings = {"terms": base.Int(3)}
+    settings = {"terms": 3}
     inports = {
         "numerator": numerator,
         "denominator": denominator,
@@ -60,7 +60,7 @@ def test_divide_terms3(numerator, denominator, denominator2, result):
 )
 def test_zero_division(numerator, denominator, denominator2):
 
-    settings = {"terms": base.Int(3)}
+    settings = {"terms": 3}
     inports = {
         "numerator": numerator,
         "denominator": denominator,

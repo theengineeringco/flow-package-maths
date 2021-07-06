@@ -39,7 +39,7 @@ def test_add_default(value1, value2, result):
 )
 def test_add_terms3(value1, value2, value3, result):
 
-    settings = {"terms": base.Int(3)}
+    settings = {"terms": 3}
     inports = {
         "value1": value1,
         "value2": value2,
