@@ -1,40 +1,41 @@
-from typing import cast
+from typing import Dict
 
-from flow import Component, Definition, Inport, LogLevel, Outport
-from flow_types import base, unions
+from flow import Ports, Process
+from flow.testing import ComponentTest
+from flow_types import base
+from flow_types.typing import FlowType
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-exponent = Inport(id="exponent", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
-
-# comp definition
-definition = Definition(inports=[value, exponent], outports=[result])
+ports = Ports()
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="exponent", types=[base.Double, base.Int, base.Bool], default=base.Int(2))
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data():
-        return
-
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
-    exp: float = cast(base.Double, component.get_data(exponent)).value
+    in_val = float(component.get_data("value"))
+    exp_val = float(component.get_data("exponent"))
 
     # check for complex numbers
-    if val < 0 and not exp.is_integer():
-        component.log(
-            log_level=LogLevel.ERROR,
-            message=f"Value is negative ({val}) and the exponent is less than 1 ({exp}) "
-            + "which results in a complex number. Complex numbers are not supported yet.",
+    if in_val < 0 and not exp_val.is_integer():
+        raise ValueError(
+            f"Value is negative ({in_val}) and the exponent is less than 1 ({exp_val}) which results in a "
+            + "complex number. Complex numbers are not supported yet.",
         )
-        return
 
     # power
-    res = val ** exp
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"{val} to the power of {exp} gives {res}.")
+    result = in_val ** exp_val
 
     # send message to outports
-    component.send_data(base.Double(res), result)
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+
+    inports_data: Dict[str, FlowType] = {
+        "value": base.Bool(True),
+        "base": base.Int(4),
+    }
+
+    outport_value = ComponentTest(__file__).run(inports_data)
+    print(outport_value["result"])

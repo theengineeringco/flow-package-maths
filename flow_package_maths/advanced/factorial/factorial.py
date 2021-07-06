@@ -1,30 +1,21 @@
 import math
-from typing import cast
 
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
 from flow_types import base
 
 # ports
-value = Inport(id="value", types=[base.Int], multi_connection=False)
-result = Outport(id="result", types=[base.Int])
-
-# comp definition
-definition = Definition(inports=[value], outports=[result])
+ports = Ports()
+ports.add_inport(id="value", types=[base.Int, base.Bool])
+ports.add_outport(id="result", types=[base.Int])
 
 
-def process(component: Component):
-
-    if not component.has_data():
-        return
+def process(component: Process):
 
     # get inports data
-    val: float = cast(base.Int, component.get_data(value)).value
+    value: float = component.get_data("value")
 
     # root
-    res = math.factorial(val)
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"{val}! gives {res}.")
+    result = math.factorial(value)
 
     # send message to outports
-    component.send_data(base.Int(res), result)
+    component.send_data(base.Int(result), "result")

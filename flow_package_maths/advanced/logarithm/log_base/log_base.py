@@ -1,42 +1,42 @@
-import math
-from typing import cast
+from math import log
+from typing import Dict
 
-from flow import Component, Definition, Inport, LogLevel, Outport
-from flow_types import base, unions
+from flow import Ports, Process
+from flow.testing import ComponentTest
+from flow_types import base
+from flow_types.typing import FlowType
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-base_log = Inport(id="base", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
-
-# comp definition
-definition = Definition(inports=[value, base_log], outports=[result])
+ports = Ports()
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="base", types=[base.Double, base.Int, base.Bool], default=base.Int(10))
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data():
-        return
+    in_val = float(component.get_data("value"))
+    base_val = float(component.get_data("base"))
 
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
-    base_log_val: float = cast(base.Double, component.get_data(base_log)).value
+    if in_val < 0:
+        raise ValueError(f"Input value is {in_val} which is <0. Needs to be positive.")
+    elif base_val < 0:
+        raise ValueError(f"Input base is {base_val} which is <0. Needs to be positive and not equal to 1.")
+    elif base_val == 1:
+        raise ValueError("Input base is 1. Needs to be positive and not equal to 1.")
 
-    if val < 0:
-        component.log(log_level=LogLevel.ERROR, message=f"Input value is {val} which is <0. Needs to be positive.")
-        return
-    elif base_log_val < 0:
-        component.log(log_level=LogLevel.ERROR, message=f"Input base is {val} which is <0. Needs to be positive.")
-        return
-    elif base_log_val == 1:
-        component.log(log_level=LogLevel.ERROR, message="Input base is 1. Needs to be positive and not equal to 1.")
-        return
-
-    # logarithm
-    res = math.log(val, base_log_val)
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"log_{base_log_val} of {val} gives {res}.")
+    # log
+    result = log(in_val, base_val)
 
     # send message to outports
-    component.send_data(base.Double(res), result)
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+
+    inports_data: Dict[str, FlowType] = {
+        "value": base.Bool(True),
+        "base": base.Int(2),
+    }
+
+    outport_value = ComponentTest(__file__).run(inports_data)
+    print(outport_value["result"])

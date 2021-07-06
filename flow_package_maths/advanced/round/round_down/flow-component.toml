@@ -1,17 +1,17 @@
 [component]
-file = "round_down.py"
-id = "315a3b9f-cfdc-4b2d-b76d-e22746239c24"
-
-[component.details]
-name = "Round Down"
+id        = "315a3b9f-cfdc-4b2d-b76d-e22746239c24"
+name      = "Round Down"
 namespace = "Maths"
 description = "Always rounds down the value given the specified number of decimal places."
-readme = "README.md"
-keywords = [ "nearest" ]
+readme    = "README.md"
+keywords  = ["nearest"]
 
-[component.details.inports]
-value = { name = "Value", description = "" }
-decimal_places = { name = "Decimal Places", description = "If not given, output will be rounded to nearest integer." }
+[component.files]
+main = "round_down.py"
 
-[component.details.outports]
-result = { name = "Result", description = "" }
+[component.inports]
+value        = { name="Value", description="" }
+decimal_places = { name="Decimal Places", description="If not given, output will be rounded to nearest integer." }
+
+[component.outports]
+result = { name="Result", description="" }

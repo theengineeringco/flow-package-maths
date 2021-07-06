@@ -1,13 +1,16 @@
 [component]
-id        = "48ef8258-2d88-4604-97d2-418cb7037d9e"
-name      = "Round Up"
+id        = "e1aff00a-e709-4503-9658-78f9182fcc2f"
+name      = "Round"
 namespace = "Maths"
-description = "Always rounds up the value given the specified number of decimal places."
+description = "Rounds up, down, or to the nearest specified number of decimal places."
 readme    = "README.md"
 keywords  = ["nearest"]
 
 [component.files]
-main = "round_up.py"
+main = "round.py"
+
+[component.settings]
+round_type = { label="Round Type" }
 
 [component.inports]
 value        = { name="Value", description="" }
