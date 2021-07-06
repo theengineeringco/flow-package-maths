@@ -13,4 +13,4 @@ readme = "README.md"
 result = { name = "Result" }
 
 [component.settings]
-terms = { name = "Number of Terms" }
+terms = { label = "Number of Terms" }

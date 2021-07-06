@@ -1,6 +1,6 @@
 from typing import Dict, List
 
-from flow import IntField, Ports, Process, Settings, Setup
+from flow import Ports, Process, Settings, Setup
 from flow.testing import ComponentTest
 from flow_types import base
 from flow_types.typing import FlowType
@@ -11,7 +11,7 @@ ports.add_outport(id="result", types=[base.Double])
 
 # Settings
 settings = Settings()
-settings.add_setting(id="terms", field=IntField(min=2), default=base.Int(2))
+settings.add_int_setting(id="terms", default=2, minimum=2)
 
 
 def setup(component: Setup):
@@ -54,7 +54,7 @@ def process(component: Process):
 
 if __name__ == "__main__":
 
-    setting_data = {"terms": base.Int(2)}
+    setting_data = {"terms": 2}
     inports_data: Dict[str, FlowType] = {"numerator": base.Double(2), "denominator": base.Int(2)}
 
     outport_value = ComponentTest(__file__).run(inports_data, setting_data)
