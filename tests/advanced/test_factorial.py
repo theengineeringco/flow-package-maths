@@ -8,7 +8,7 @@ component_dir = "flow_package_maths/advanced/factorial"
 
 
 @pytest.mark.parametrize(
-    "values, result",
+    "value, result",
     [
         (base.Int(0), base.Int(1)),
         (base.Int(4), base.Int(math.factorial(4))),
@@ -17,9 +17,9 @@ component_dir = "flow_package_maths/advanced/factorial"
         (base.Bool(False), base.Int(1)),
     ],
 )
-def test_factorial(values, result):
+def test_factorial(value, result):
 
-    inports = {"values": values}
+    inports = {"value": value}
 
     outport = ComponentTest(component_dir).run(inports)
     assert outport["result"] == result
