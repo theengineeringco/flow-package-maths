@@ -1,0 +1,19 @@
+[component]
+id        = "a21f4177-0302-4303-a4a3-12436ca6cba1"
+name      = "Log"
+namespace = "Maths"
+description = "Computes the log of a value with the base selected in component settings"
+keywords  = ["natural log", "logarithms", "log"]
+
+[component.files]
+main = "log.py"
+readme = "README.md"
+
+[component.settings]
+base_choice = { label="Base Choice" }
+
+[component.inports]
+value = { name="Value", description="Value to compute the log of. Must be greater than 0." }
+
+[component.outports]
+result = { name="Result", description="" }

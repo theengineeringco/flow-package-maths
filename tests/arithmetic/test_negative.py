@@ -1,53 +1,34 @@
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+from typing import Union
+
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
 
 component_dir = "flow_package_maths/arithmetic/negative"
 
 
-def test_int(flow: FlowTest):
+@pytest.mark.parametrize(
+    "value, result",
+    [
+        [base.Int(2), base.Double(-2)],
+        [base.Int(-3), base.Double(3)],
+        [base.Double(1.5), base.Double(-1.5)],
+        [base.Double(-1.6), base.Double(1.6)],
+        [base.Double(0), base.Double(0)],
+        [base.Bool(True), base.Double(-1.0)],
+    ],
+)
+def test_negative(value: Union[base.Int, base.Double], result: base.Double) -> None:
+    inport_data = {
+        "value": value,
+    }
 
-    val = base.Int(3)
+    outport_data = ComponentTest(component_dir).run(
+        inport_data,
+    )
 
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-3)})
-
-
-def test_negative_int(flow: FlowTest):
-
-    val = base.Int(-3)
-
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(3)})
-
-
-def test_decimals(flow: FlowTest):
-
-    val = base.Double(0.99)
-
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-0.99)})
-
-
-def test_double(flow: FlowTest):
-
-    val = base.Double(1.3101e6)
-
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(-1.3101e6)})
+    assert outport_data["result"] == result
 
 
 if __name__ == "__main__":
-    with flow_test() as flow:
-        test_int(flow)
-        test_negative_int(flow)
-        test_decimals(flow)
-        test_double(flow)
+    test_negative(base.Int(2), base.Double(-2))
