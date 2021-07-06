@@ -70,5 +70,5 @@ def test_ln(
 
 
 if __name__ == "__main__":
-    test_log(base.String("User Defined Base"), base.Double(2.0), base.Double(10), base.Double(math.log(2.0, 10)))
-    test_ln(base.String("Natural Logarithm (e)"), base.Double(2.0), base.Double(math.log(2.0)))
+    test_log("log_choice", base.Double(2.0), base.Double(10), base.Double(math.log(2.0, 10)))
+    test_ln("ln_choice", base.Double(2.0), base.Double(math.log(2.0)))
