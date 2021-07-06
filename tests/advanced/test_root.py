@@ -1,69 +1,27 @@
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
-
-component_dir = "flow_package_maths/advanced/root"
-
-
-def test_int(flow: FlowTest):
-
-    val = base.Int(4)
-    root = base.Int(2)
-
-    inputs = {"value": val, "root": root}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(2)})
+from flow_types.typing import FlowType
 
 
-def test_negative_int_root(flow: FlowTest):
+@pytest.mark.parametrize(
+    "val_in, root_in, result",
+    [
+        [base.Double(47.2), base.Double(4.5), 2.3550],  # noqa: WPS339
+        [base.Bool(True), base.Int(2), 1],
+    ],
+)
+def test_root(val_in: FlowType, root_in: FlowType, result: float) -> None:
 
-    val = base.Int(4)
-    root = base.Int(-2)
+    inport_data = {
+        "value": val_in,
+        "root": root_in,
+    }
 
-    inputs = {"value": val, "root": root}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.5)})
+    outport_data = ComponentTest("flow_package_maths/advanced/root").run(inport_data)
 
-
-def test_decimal_root(flow: FlowTest):
-
-    val = base.Int(4)
-    exponent = base.Double(0.5)
-
-    inputs = {"value": val, "root": exponent}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(16)})
-
-
-def test_doubles(flow: FlowTest):
-
-    val = base.Double(0.431)
-    exponent = base.Double(1.984)
-
-    inputs = {"value": val, "root": exponent}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.431 ** (1 / 1.984))})
-
-
-def test_doubles_negative_root(flow: FlowTest):
-
-    val = base.Double(0.431)
-    exponent = base.Double(-1.984)
-
-    inputs = {"value": val, "root": exponent}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Double(0.431 ** (1 / -1.984))})
+    assert outport_data["result"] == pytest.approx(base.Double(result), abs=1e-4)
 
 
 if __name__ == "__main__":
-    with flow_test() as flow:
-        test_int(flow)
-        test_negative_int_root(flow)
-        test_decimal_root(flow)
-        test_doubles(flow)
-        test_doubles_negative_root(flow)
+    test_root(base.Double(47.2), base.Double(4.5), 2.3550)  # noqa: WPS339

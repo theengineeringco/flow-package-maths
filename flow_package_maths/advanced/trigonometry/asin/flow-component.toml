@@ -1,16 +1,19 @@
 [component]
-file = "asin.py"
-id = "a1a3e0ad-a2be-42e9-881c-8d285499392e"
-
-[component.details]
-name = "asin"
+id        = "a1a3e0ad-a2be-42e9-881c-8d285499392e"
+name      = "asin"
 namespace = "Maths"
 description = "Computes the inverse sine function of a value to give an angle in radians."
-readme = "README.md"
-keywords = [ "arcsine", "trigonometry", "triangle" ]
+readme    = "README.md"
+keywords  = ["arcsine", "trigonometry", "triangle"]
 
-[component.details.inports]
-value = { name = "Value", description = "Value bounded between -1 to 1." }
+[component.files]
+main = "asin.py"
 
-[component.details.outports]
-result = { name = "Result", description = "" }
+[component.settings]
+rad_or_deg_or_grad = { label="Angle Format" }
+
+[component.inports]
+value = { name="Value", description="Value bounded between -1 to 1." }
+
+[component.outports]
+result = { name="Result", description="" }

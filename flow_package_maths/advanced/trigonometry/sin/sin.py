@@ -1,14 +1,23 @@
 from math import pi, sin
 from typing import List
 
-from flow import Ports, Process, SelectField, Settings, Setup
+from flow import Ports, Process, Settings, Setup
+from flow.definitions.settings.setting import Option
 from flow.testing import ComponentTest
 from flow_types import base
 
-input_types: List = ["degrees", "radians", "gradians"]
+degrees_name = "degrees"
+radians_name = "radians"
+gradians_name = "gradians"
+
+input_types: List[Option] = [
+    Option(degrees_name, "Degrees"),
+    Option(radians_name, "Radians"),
+    Option(gradians_name, "Gradians"),
+]
 
 settings = Settings()
-settings.add_setting(id="rad_or_deg_or_grad", field=SelectField(options=input_types))
+settings.add_select_setting(id="rad_or_deg_or_grad", options=input_types, default=radians_name)
 
 ports = Ports()
 ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
@@ -19,13 +28,13 @@ def setup(component: Setup):
 
     input_type = str(component.get_setting("rad_or_deg_or_grad"))
 
-    if input_type == "degrees":
+    if input_type == degrees_name:
         angle_conversion = pi / 180  # noqa: WPS432
 
-    if input_type == "gradians":
+    if input_type == gradians_name:
         angle_conversion = pi / 200  # noqa: WPS432
 
-    if input_type == "radians":
+    if input_type == radians_name:
         angle_conversion = 1
 
     component.set_variable("angle_conversion", angle_conversion)
@@ -48,7 +57,7 @@ def process(component: Process):
 
 if __name__ == "__main__":
     setting_data = {
-        "rad_or_deg_or_grad": base.String("gradians"),
+        "rad_or_deg_or_grad": gradians_name,
     }
 
     inports_data = {

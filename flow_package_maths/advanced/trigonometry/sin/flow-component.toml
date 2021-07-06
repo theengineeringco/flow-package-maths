@@ -10,7 +10,7 @@ keywords  = ["sine", "trigonometry", "triangle"]
 main = "sin.py"
 
 [component.settings]
-rad_or_deg_or_grad = { name="Angle Format" }
+rad_or_deg_or_grad = { label="Angle Format" }
 
 [component.inports]
 angle = { name="Angle", description="Angle input." }

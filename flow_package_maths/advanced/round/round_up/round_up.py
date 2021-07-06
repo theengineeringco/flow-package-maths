@@ -1,43 +1,40 @@
-import math
-from typing import cast
+from math import ceil
+from typing import Dict
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import Ports, Process
+from flow.testing import ComponentTest
+from flow_types import base
+from flow_types.typing import FlowType
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=False, required=False)
-result = Outport(id="result", types=unions.Number)
-
-# comp definition
-definition = Definition(inports=[value, decimal_places], outports=[result])
+ports = Ports()
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data(value):
-        return
-
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
-
-    if component.is_connected(decimal_places):
-        dec: int = cast(base.Int, component.get_data(decimal_places)).value
-    else:
-        dec = 0
+    value = float(component.get_data("value"))
+    decimal_places = int(component.get_data("decimal_places"))
 
     # round up
-    multiplier = 10 ** dec
-    res = math.ceil(val * multiplier) / multiplier
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
-
-    # Create Message
-    if dec == 0:
-        message = base.Int(int(res))
+    multiplier = 10 ** decimal_places
+    intermediate = ceil(value * multiplier) / multiplier
+    if decimal_places <= 0:
+        result = int(intermediate)
     else:
-        message = base.Double(res)
+        result = intermediate
 
-    # Send message to outports
-    component.send_data(message, result)
+    # send message to outports
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+
+    inports_data: Dict[str, FlowType] = {
+        "value": base.Double(567.4354),  # noqa: WPS432
+        "decimal_places": base.Int(1),
+    }
+
+    outport_value = ComponentTest(__file__).run(inports_data)
+    print(outport_value["result"])

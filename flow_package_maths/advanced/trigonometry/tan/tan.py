@@ -1,32 +1,68 @@
-import math
-from typing import cast
+from math import pi, tan
+from typing import List
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import Ports, Process, Settings, Setup
+from flow.definitions.settings.setting import Option
+from flow.testing import ComponentTest
+from flow_types import base
 
-# ports
-angle = Inport(id="angle", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+degrees_name = "degrees"
+radians_name = "radians"
+gradians_name = "gradians"
 
-# comp definition
-definition = Definition(inports=[angle], outports=[result])
+input_types: List[Option] = [
+    Option(degrees_name, "Degrees"),
+    Option(radians_name, "Radians"),
+    Option(gradians_name, "Gradians"),
+]
+
+settings = Settings()
+settings.add_select_setting(id="rad_or_deg_or_grad", options=input_types, default=radians_name)
+
+ports = Ports()
+ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def setup(component: Setup):
 
-    if not component.has_data():
-        return
+    input_type = str(component.get_setting("rad_or_deg_or_grad"))
 
-    # get inports data
-    # note angle_val is in radians
-    angle_val: float = cast(base.Double, component.get_data(angle)).value
+    if input_type == degrees_name:
+        angle_conversion = pi / 180  # noqa: WPS432
+
+    if input_type == gradians_name:
+        angle_conversion = pi / 200  # noqa: WPS432
+
+    if input_type == radians_name:
+        angle_conversion = 1
+
+    component.set_variable("angle_conversion", angle_conversion)
+
+
+def process(component: Process):
+
+    angle_conversion: float = component.get_variable("angle_conversion")
+
+    angle_in = float(component.get_data("angle"))
+
+    angle_rad = angle_in * angle_conversion
 
     # tan
-    res = math.tan(angle_val)
-
-    # Log
-    # angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
-    # component.log(log_level=LogLevel.DEBUG, message=f"tan({angle_val}rad or {angle_val_deg}°) gives {res}.")
+    result = tan(angle_rad)
 
     # send message to outports
-    component.send_data(base.Double(res), result)
+    component.send_data(base.Double(result), "result")
+
+
+if __name__ == "__main__":
+    setting_data = {
+        "rad_or_deg_or_grad": gradians_name,
+    }
+
+    inports_data = {
+        "angle": base.Double(80),  # noqa: WPS432
+    }
+
+    outport_value = ComponentTest(__file__).run(inports_data, setting_data)
+    print(outport_value["result"])

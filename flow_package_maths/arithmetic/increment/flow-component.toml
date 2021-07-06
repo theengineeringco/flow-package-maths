@@ -1,17 +1,17 @@
 [component]
-file = "increment.py"
-id = "34170d07-f361-4221-969e-230e68211691"
-
-[component.details]
-name = "Increment"
+id        = "34170d07-f361-4221-969e-230e68211691"
+name      = "Increment"
 namespace = "Maths"
 description = "Increases an integer value given an increment value."
-readme = "README.md"
-keywords = [ "++", "addition", "arithmetic", "plus" ]
+readme    = "README.md"
+keywords  = ["++", "addition", "arithmetic", "plus"]
 
-[component.details.inports]
-value = { name = "Value", description = "Value to increment" }
-increment = { name = "Increment", description = "The amount to increment by" }
+[component.files]
+main = "increment.py"
 
-[component.details.outports]
-result = { name = "Result", description = "" }
+[component.inports]
+value   = { name="Value", description="Value to increment" }
+increment = { name="Increment", description="The amount to increment by" }
+
+[component.outports]
+result = { name="Result", description="" }
