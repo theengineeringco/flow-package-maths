@@ -7,7 +7,7 @@ from flow_types import base
 ports = Ports()
 
 # Add inports
-ports.add_inport(id="value", types=[base.Double, base.Int])
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 
 # Add outports
 ports.add_outport(id="result", types=[base.Double])

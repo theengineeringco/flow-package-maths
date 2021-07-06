@@ -15,6 +15,7 @@ component_dir = "flow_package_maths/arithmetic/negative"
         [base.Double(1.5), base.Double(-1.5)],
         [base.Double(-1.6), base.Double(1.6)],
         [base.Double(0), base.Double(0)],
+        [base.Bool(True), base.Double(-1.0)],
     ],
 )
 def test_negative(value: Union[base.Int, base.Double], result: base.Double) -> None:

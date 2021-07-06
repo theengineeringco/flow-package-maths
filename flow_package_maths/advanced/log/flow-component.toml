@@ -10,7 +10,7 @@ main = "log.py"
 readme = "README.md"
 
 [component.settings]
-base_choice = { name="Base Choice", description="The setting for the base of the lofarithm" }
+base_choice = { label="Base Choice" }
 
 [component.inports]
 value = { name="Value", description="Value to compute the log of. Must be greater than 0." }
