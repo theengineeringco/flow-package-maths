@@ -3,6 +3,8 @@ from flow.testing import ComponentTest
 from flow_types import base
 from flow_types.typing import FlowType
 
+component_dir = "flow_package_maths/arithmetic/increment"
+
 
 @pytest.mark.parametrize(
     "val_in, increment_in, result",
@@ -19,10 +21,5 @@ def test_increment(val_in: FlowType, increment_in: FlowType, result: int) -> Non
         "increment": increment_in,
     }
 
-    outport_data = ComponentTest("flow_package_maths/arithmetic/increment").run(inport_data)
-
+    outport_data = ComponentTest(component_dir).run(inport_data)
     assert outport_data["result"] == base.Int(result)
-
-
-if __name__ == "__main__":
-    test_increment(base.Bool(True), base.Int(1), 2)

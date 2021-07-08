@@ -1,3 +1,5 @@
+from typing import Union
+
 import pytest
 from flow.testing import ComponentTest
 from flow_types import base
@@ -15,7 +17,11 @@ component_dir = "flow_package_maths/arithmetic/add"
         (base.Double(-1.2e6), base.Double(1.2e6), base.Double(0)),
     ],
 )
-def test_add_default(value1, value2, result):
+def test_add_default(
+    value1: Union[base.Double, base.Int, base.Bool],
+    value2: Union[base.Double, base.Int, base.Bool],
+    result: base.Double,
+) -> None:
 
     inports = {
         "value1": value1,
