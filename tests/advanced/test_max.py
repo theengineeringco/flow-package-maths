@@ -1,3 +1,5 @@
+from typing import Union
+
 import pytest
 from flow.testing import ComponentTest
 from flow_types import base
@@ -13,7 +15,7 @@ component_dir = "flow_package_maths/advanced/max"
         (base.MdDouble([100.2, 0.1, 1, -4, 0, 100.2, -4, 0.1, 1]), base.Double(100.2)),  # repeated values
     ],
 )
-def test_max(values, result):
+def test_max(values: base.MdDouble, result: base.Double) -> None:
 
     inports = {"values": values}
 
@@ -29,7 +31,7 @@ def test_max(values, result):
         (base.MdBool([True, False, True, False]), base.Double(1)),
     ],
 )
-def test_max_other_types(values, result):
+def test_max_other_types(values: Union[base.MdInt, base.MdBool], result: base.Double) -> None:
 
     inports = {"values": values}
 

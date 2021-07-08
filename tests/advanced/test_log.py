@@ -25,18 +25,13 @@ def test_log(
     result: base.Double,
 ) -> None:
 
-    setting_values = {
-        "base_choice": setting,
-    }
-
+    setting_values = {"base_choice": setting}
     inport_data = {
         "value": value,
         "base_inport": base_inport,
     }
 
     outport_data = ComponentTest(component_dir).run(inport_data, setting_values)
-
-    # print(outport_data["result"])
     assert outport_data["result"] == result
 
 
@@ -55,20 +50,8 @@ def test_ln(
     result: base.Double,
 ) -> None:
 
-    setting_values = {
-        "base_choice": setting,
-    }
-
-    inport_data = {
-        "value": value,
-    }
+    setting_values = {"base_choice": setting}
+    inport_data = {"value": value}
 
     outport_data = ComponentTest(component_dir).run(inport_data, setting_values)
-
-    # print(outport_data["result"])
     assert outport_data["result"] == result
-
-
-if __name__ == "__main__":
-    test_log("log_choice", base.Double(2.0), base.Double(10), base.Double(math.log(2.0, 10)))
-    test_ln("ln_choice", base.Double(2.0), base.Double(math.log(2.0)))
