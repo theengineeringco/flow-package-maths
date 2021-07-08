@@ -10,7 +10,7 @@ main = "factorial.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description = "" }
+value = { name = "Value", description = "The integer to compute the factorial of." }
 
 [component.outports]
-result = { name = "Result", description = "" }
+result = { name = "Result", description = "Result of the factorial." }

@@ -1,19 +1,19 @@
 [component]
-id        = "d510b25e-23c4-4e89-82e2-6fe30e855f6f"
-name      = "atan"
+id = "d510b25e-23c4-4e89-82e2-6fe30e855f6f"
+name = "atan"
 namespace = "Maths"
 description = "Computes the inverse tangent function of a value to give an angle in radians."
-readme    = "README.md"
 keywords  = ["arctangent", "trigonometry", "triangle"]
 
 [component.files]
 main = "atan.py"
-
-[component.settings]
-rad_or_deg_or_grad = { label="Angle Format" }
+readme = "README.md"
 
 [component.inports]
-value = { name="Value", description="" }
+value = { name = "Value", description = "The value to compute the arccosine of. It must be bounded between -1 to 1." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result", description = "Result of arctangent." }
+
+[component.settings]
+angle_format = { label = "Angle Format" }

@@ -1,10 +1,7 @@
 from math import floor
-from typing import Dict
 
 from flow import Ports, Process
-from flow.testing import ComponentTest
 from flow_types import base
-from flow_types.typing import FlowType
 
 ports = Ports()
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
@@ -19,22 +16,6 @@ def process(component: Process):
 
     # round down
     multiplier = 10 ** decimal_places
-    intermediate = floor(value * multiplier) / multiplier
-    if decimal_places <= 0:
-        result = int(intermediate)
-    else:
-        result = intermediate
+    result = floor(value * multiplier) / multiplier
 
-    # send message to outports
     component.send_data(base.Double(result), "result")
-
-
-if __name__ == "__main__":
-
-    inports_data: Dict[str, FlowType] = {
-        "value": base.Double(567.4354),  # noqa: WPS432
-        "decimal_places": base.Int(1),
-    }
-
-    outport_value = ComponentTest(__file__).run(inports_data)
-    print(outport_value["result"])

@@ -1,19 +1,19 @@
 [component]
-id        = "dd89daaf-f04b-447c-9220-9791ed55fbd5"
-name      = "cos"
+id = "dd89daaf-f04b-447c-9220-9791ed55fbd5"
+name = "cos"
 namespace = "Maths"
 description = "Computes the cosine of an angle which is equal to the adjacent length of a right angled triangle divided by its hypotenuse length."
-readme    = "README.md"
 keywords  = ["cosine", "trigonometry", "triangle"]
 
 [component.files]
 main = "cos.py"
-
-[component.settings]
-rad_or_deg_or_grad = { label="Angle Format" }
+readme = "README.md"
 
 [component.inports]
-angle = { name="Angle", description="Angle input." }
+angle = { name = "Angle", description = "The angle to compute the cosine of." }
 
 [component.outports]
-result = { name="Result", description="Outputs a value in a domain of -1 to 1." }
+result = { name = "Result", description = "The result of cosine which will be between -1 to 1." }
+
+[component.settings]
+angle_format = { label = "Angle Format" }

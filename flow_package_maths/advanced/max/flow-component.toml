@@ -10,7 +10,7 @@ main = "max.py"
 readme = "README.md"
 
 [component.inports]
-values = { name = "Values", description = "A collection of values." }
+values = { name = "Values", description = "A list of values." }
 
 [component.outports]
-result = { name = "Result", description = "" }
+result = { name = "Result", description = "The maximum value in the list."}

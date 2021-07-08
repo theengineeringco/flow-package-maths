@@ -10,8 +10,8 @@ keywords  = ["log", "logarithms"]
 main = "log_base.py"
 
 [component.inports]
-value = { name="Value", description="The input value which must be a positive number." }
-base = { name="Base", description="The logarithm base which must be a positive number and not equal to 1." }
+value = { name = "Value", description = "The input value which must be a positive number." }
+base = { name = "Base", description = "The logarithm base which must be a positive number and not equal to 1." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result", description = "Result of the log." }

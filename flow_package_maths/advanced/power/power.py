@@ -1,9 +1,5 @@
-from typing import Dict
-
 from flow import Ports, Process
-from flow.testing import ComponentTest
 from flow_types import base
-from flow_types.typing import FlowType
 
 ports = Ports()
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
@@ -13,29 +9,17 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process):
 
-    in_val = float(component.get_data("value"))
-    exp_val = float(component.get_data("exponent"))
+    value = float(component.get_data("value"))
+    exponent = float(component.get_data("exponent"))
 
-    # check for complex numbers
-    if in_val < 0 and not exp_val.is_integer():
+    result = value ** exponent
+
+    # check if result has a imaginary part
+    if result.imag:
         raise ValueError(
-            f"Value is negative ({in_val}) and the exponent is less than 1 ({exp_val}) which results in a "
-            + "complex number. Complex numbers are not supported yet.",
+            "The Value inport must be positive and the Exponent inport must be more than 1 to give a real number. "
+            + f"Their current values are {value} and {exponent} correspondingly which results in a complex number. "
+            + "Complex numbers are not supported yet.",
         )
 
-    # power
-    result = in_val ** exp_val
-
-    # send message to outports
     component.send_data(base.Double(result), "result")
-
-
-if __name__ == "__main__":
-
-    inports_data: Dict[str, FlowType] = {
-        "value": base.Bool(True),
-        "base": base.Int(4),
-    }
-
-    outport_value = ComponentTest(__file__).run(inports_data)
-    print(outport_value["result"])

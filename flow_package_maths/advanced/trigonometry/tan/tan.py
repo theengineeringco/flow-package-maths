@@ -1,40 +1,35 @@
 from math import pi, tan
-from typing import List
 
-from flow import Ports, Process, Settings, Setup
-from flow.definitions.settings.setting import Option
-from flow.testing import ComponentTest
+from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
-
-degrees_name = "degrees"
-radians_name = "radians"
-gradians_name = "gradians"
-
-input_types: List[Option] = [
-    Option(degrees_name, "Degrees"),
-    Option(radians_name, "Radians"),
-    Option(gradians_name, "Gradians"),
-]
-
-settings = Settings()
-settings.add_select_setting(id="rad_or_deg_or_grad", options=input_types, default=radians_name)
 
 ports = Ports()
 ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
 ports.add_outport(id="result", types=[base.Double])
 
+settings = Settings()
+settings.add_select_setting(
+    id="angle_format",
+    options=[
+        Option("degrees", "Degrees"),
+        Option("radians", "Radians"),
+        Option("gradians", "Gradians"),
+    ],
+    default="radians",
+)
+
 
 def setup(component: Setup):
 
-    input_type = str(component.get_setting("rad_or_deg_or_grad"))
+    output_type = str(component.get_setting("angle_format"))
 
-    if input_type == degrees_name:
+    if output_type == "degrees":
         angle_conversion = pi / 180  # noqa: WPS432
 
-    if input_type == gradians_name:
+    if output_type == "gradians":
         angle_conversion = pi / 200  # noqa: WPS432
 
-    if input_type == radians_name:
+    if output_type == "radians":
         angle_conversion = 1
 
     component.set_variable("angle_conversion", angle_conversion)
@@ -43,26 +38,10 @@ def setup(component: Setup):
 def process(component: Process):
 
     angle_conversion: float = component.get_variable("angle_conversion")
-
     angle_in = float(component.get_data("angle"))
 
+    # sin
     angle_rad = angle_in * angle_conversion
-
-    # tan
     result = tan(angle_rad)
 
-    # send message to outports
     component.send_data(base.Double(result), "result")
-
-
-if __name__ == "__main__":
-    setting_data = {
-        "rad_or_deg_or_grad": gradians_name,
-    }
-
-    inports_data = {
-        "angle": base.Double(80),  # noqa: WPS432
-    }
-
-    outport_value = ComponentTest(__file__).run(inports_data, setting_data)
-    print(outport_value["result"])

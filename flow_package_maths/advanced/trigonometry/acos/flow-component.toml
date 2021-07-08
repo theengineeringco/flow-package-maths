@@ -1,19 +1,19 @@
 [component]
-id        = "75eb8136-cc27-48f5-9fa6-fa7ed57c0d6b"
-name      = "acos"
+id = "75eb8136-cc27-48f5-9fa6-fa7ed57c0d6b"
+name  = "acos"
 namespace = "Maths"
 description = "Computes the inverse cosine function of a value to give an angle in radians."
-readme    = "README.md"
 keywords  = ["arccosine", "trigonometry", "triangle"]
 
 [component.files]
 main = "acos.py"
-
-[component.settings]
-rad_or_deg_or_grad = { label="Angle Format" }
+readme = "README.md"
 
 [component.inports]
-value = { name="Value", description="Value bounded between -1 to 1." }
+value = { name = "Value", description = "The value to compute the arccosine of. It must be bounded between -1 to 1." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result", description = "Result of arccosine." }
+
+[component.settings]
+angle_format = { label = "Angle Format" }
