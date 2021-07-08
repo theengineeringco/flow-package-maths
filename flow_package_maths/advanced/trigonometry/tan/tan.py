@@ -3,10 +3,16 @@ from math import pi, tan
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
+# define ports
 ports = Ports()
+
+# add inports
 ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
+
+# add outports
 ports.add_outport(id="result", types=[base.Double])
 
+# settings
 settings = Settings()
 settings.add_select_setting(
     id="angle_format",

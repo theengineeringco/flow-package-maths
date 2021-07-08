@@ -1,6 +1,6 @@
 [component]
-id = "dab652a2-af9e-494a-ae35-25759357dc0c"
-name = "Power"
+id        = "dab652a2-af9e-494a-ae35-25759357dc0c"
+name      = "Power"
 namespace = "Maths"
 description = "Raises a value to a power."
 keywords  = ["^", "exponetiation"]
@@ -10,8 +10,8 @@ main = "power.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description = "Value to be raised." }
-exponent = { name = "Exponent", description = "Exponent number. Its default value is 2 giving a result to the power of 2." }
+value  = { name="Value", description="Value to be raised." }
+exponent = { name="Exponent", description="Exponent number. Its default value is 2 giving a result to the power of 2." }
 
 [component.outports]
-result = { name = "Result", description = "Result of the value raised." }
+result = { name="Result", description="Result of the value raised." }

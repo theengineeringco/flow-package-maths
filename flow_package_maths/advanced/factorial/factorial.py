@@ -3,8 +3,13 @@ import math
 from flow import Ports, Process
 from flow_types import base
 
+# define ports
 ports = Ports()
+
+# add inports
 ports.add_inport(id="value", types=[base.Int, base.Bool])
+
+# add outports
 ports.add_outport(id="result", types=[base.Int])
 
 

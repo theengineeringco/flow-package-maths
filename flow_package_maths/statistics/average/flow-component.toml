@@ -13,4 +13,4 @@ readme = "README.md"
 values = { name = "Values", description = "A list of values." }
 
 [component.outports]
-result = { name = "Result", description = "" }
+result = { name = "Result", description = "The average value in the list." }

@@ -2,9 +2,13 @@ import numpy as np
 from flow import Ports, Process
 from flow_types import base
 
-# Ports
+# define ports
 ports = Ports()
+
+# add inports
 ports.add_inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1), base.MdBool(dimension=1)])
+
+# add outports
 ports.add_outport(id="result", types=[base.Double])
 
 

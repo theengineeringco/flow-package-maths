@@ -1,16 +1,16 @@
 [component]
-id = "0e027500-1763-486b-b4fa-f10685368a33"
-name = "Min"
+id        = "0e027500-1763-486b-b4fa-f10685368a33"
+name      = "Min"
 namespace = "Maths"
 description = "Finds the lowest value."
-keywords = [ "minimum", "smallest" ]
+keywords  = ["minimum", "smallest"]
 
 [component.files]
 main = "min.py"
 readme = "README.md"
 
 [component.inports]
-values = { name = "Values", description = "A list of values." }
+values = { name="Values", description="A list of values." }
 
 [component.outports]
-result = { name = "Result", description = "The lowest value in the list." }
+result = { name="Result", description="The lowest value in the list." }

@@ -1,17 +1,17 @@
 [component]
-id        = "1b819eac-d410-43ae-be7c-92d8440ae278"
-name      = "Decrement"
+id = "1b819eac-d410-43ae-be7c-92d8440ae278"
+name = "Decrement"
 namespace = "Maths"
 description = "Decreases an integer value given an increment value."
-readme    = "README.md"
 keywords  = ["--", "subtraction", "arithmetic", "minus"]
 
 [component.files]
 main = "decrement.py"
+readme = "README.md"
 
 [component.inports]
-value   = { name="Value", description="Value to decrement" }
-decrement = { name="Decrement", description="The amount to decrement by" }
+value = { name = "Value", description = "Value to decrement." }
+decrement = { name = "Decrement", description = "The amount to decrement by." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result", description = "Result after decrementing." }

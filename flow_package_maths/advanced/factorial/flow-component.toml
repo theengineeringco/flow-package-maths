@@ -1,16 +1,16 @@
 [component]
-id = "49162650-7299-4a97-a189-260c2ea416ea"
-name = "Factorial"
+id        = "49162650-7299-4a97-a189-260c2ea416ea"
+name      = "Factorial"
 namespace = "Maths"
 description = "Computes the product of all positive integers less than or equal to the value provided."
-keywords = [ "!" ]
+keywords  = ["!"]
 
 [component.files]
 main = "factorial.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description = "The integer to compute the factorial of." }
+value = { name="Value", description="The integer to compute the factorial of." }
 
 [component.outports]
-result = { name = "Result", description = "Result of the factorial." }
+result = { name="Result", description="Result of the factorial." }

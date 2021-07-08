@@ -1,6 +1,6 @@
 [component]
-id = "e1aff00a-e709-4503-9658-78f9182fcc2f"
-name = "Round"
+id        = "e1aff00a-e709-4503-9658-78f9182fcc2f"
+name      = "Round"
 namespace = "Maths"
 description = "Rounds up, down, or to the nearest specified number of decimal places."
 keywords  = ["nearest", "up", "down"]
@@ -10,11 +10,11 @@ main = "round.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description= "Value to be rounded." }
-decimal_places = { name = "Decimal Places", description = "The decimal place to round off on. If not given, the value will be rounded to nearest integer." }
+value        = { name="Value", description="Value to be rounded." }
+decimal_places = { name="Decimal Places", description="The decimal place to round off on. If not given, the value will be rounded to nearest integer." }
 
 [component.outports]
-result = { name = "Result", description= "Result of the round." }
+result = { name="Result", description="Result of the round." }
 
 [component.settings]
-round_type = { label = "Round Type" }
+round_type = { label="Round Type" }

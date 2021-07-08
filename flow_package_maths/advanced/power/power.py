@@ -1,9 +1,14 @@
 from flow import Ports, Process
 from flow_types import base
 
+# define ports
 ports = Ports()
+
+# add inports
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 ports.add_inport(id="exponent", types=[base.Double, base.Int, base.Bool], default=base.Int(2))
+
+# add outports
 ports.add_outport(id="result", types=[base.Double])
 
 

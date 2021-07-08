@@ -10,7 +10,7 @@ main = "negative.py"
 readme = "README.md"
 
 [component.inports]
-value = { name="Value", description="" }
+value = { name="Value", description="Value to take the negative of." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name="Result", description="Negative of the value." }

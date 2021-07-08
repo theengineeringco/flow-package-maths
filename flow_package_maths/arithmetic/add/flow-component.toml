@@ -9,8 +9,12 @@ keywords  = ["+", "addition", "arithmetic", "plus"]
 main = "add.py"
 readme = "README.md"
 
+[component.inports]
+value1 = { name = "Value 1", description = "First value to be added." }
+value2 = { name = "Value 2", description = "Second value to be added." }
+
 [component.outports]
-result = { name = "Result" }
+result = { name = "Result", description = "Result of the addition." }
 
 [component.settings]
 terms = { label = "Number of Terms" }

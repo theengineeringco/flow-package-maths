@@ -1,12 +1,16 @@
-from typing import Dict, List
+from typing import List
 
 from flow import Ports, Process, Settings, Setup
-from flow.testing import ComponentTest
 from flow_types import base
-from flow_types.typing import FlowType
 
-# Ports
+# define ports
 ports = Ports()
+
+# add inports
+ports.add_inport(id="numerator", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="denominator", types=[base.Double, base.Int, base.Bool])
+
+# add outports
 ports.add_outport(id="result", types=[base.Double])
 
 # Settings
@@ -16,14 +20,10 @@ settings.add_int_setting(id="terms", default=2, minimum=2)
 
 def setup(component: Setup):
 
-    terms = int(component.get_setting("terms"))
-
-    # default ids and names
-    inport_ids: List[str] = ["numerator", "denominator"]
-    component.add_inport(name="Numerator", id=inport_ids[0], types=[base.Double, base.Int, base.Bool])
-    component.add_inport(name="Denominator", id=inport_ids[1], types=[base.Double, base.Int, base.Bool])
+    terms: int = component.get_setting("terms")
 
     # additional terms will all be denominators
+    inport_ids: List[str] = []
     for idx in range(terms - 2):
         inport_id = f"denominator{idx + 2}"
         inport_ids.append(inport_id)
@@ -34,28 +34,22 @@ def setup(component: Setup):
 
 def process(component: Process):
 
+    # get values for any variables set in settings
     inport_ids: List[str] = component.get_variable("inport_ids")
 
-    numerator = float(component.get_data(inport_ids[0]))
-    denominators = [float(component.get_data(inport_id)) for inport_id in inport_ids[1:]]
+    # get data from each inport
+    numerator = float(component.get_data("numerator"))
+    denominator = float(component.get_data("denominator"))
+    denominators = [denominator] + [float(component.get_data(inport_id)) for inport_id in inport_ids]
 
     if 0 in denominators:
-        raise ZeroDivisionError("Divide: Zero division error.")
+        raise ZeroDivisionError("The Denominator inport(s) must not be zero to prevent a zero division.")
 
     # multiply all denominators together
-    denominator: float = 1
+    final_denominator: float = 1
     for elem in denominators:
-        denominator *= elem
+        final_denominator *= elem
 
-    result = numerator / denominator
+    result = numerator / final_denominator
 
     component.send_data(base.Double(result), "result")
-
-
-if __name__ == "__main__":
-
-    setting_data = {"terms": 2}
-    inports_data: Dict[str, FlowType] = {"numerator": base.Double(2), "denominator": base.Int(2)}
-
-    outport_value = ComponentTest(__file__).run(inports_data, setting_data)
-    print(outport_value["result"])

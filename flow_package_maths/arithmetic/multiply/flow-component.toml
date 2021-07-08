@@ -1,16 +1,20 @@
 [component]
-id = "50fea825-f592-40df-a2e5-cdfa1350ae8c"
-name = "Multiply"
+id        = "50fea825-f592-40df-a2e5-cdfa1350ae8c"
+name      = "Multiply"
 namespace = "Maths"
 description = "Multiplies two values together."
-keywords = [ "*", "multiplication", "arithmetic", "product", "times" ]
+keywords  = ["*", "multiplication", "arithmetic", "product", "times"]
 
 [component.files]
 main = "multiply.py"
 readme = "README.md"
 
+[component.inports]
+value1 = { name="Value 1", description="First value to be multiplied." }
+value2 = { name="Value 2", description="Second value to be multiplied." }
+
 [component.outports]
-result = { name = "Result", description = "" }
+result = { name="Result", description="Result of the multiplication." }
 
 [component.settings]
-terms = { label = "Number of Terms" }
+terms = { label="Number of Terms" }

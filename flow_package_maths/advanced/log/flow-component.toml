@@ -10,10 +10,10 @@ main = "log.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description = "Value to compute the log of. Must be greater than 0." }
+value = { name="Value", description="Value to compute the log of. Must be greater than 0." }
 
 [component.outports]
-result = { name = "Result", description = "Result of the log." }
+result = { name="Result", description="Result of the log." }
 
 [component.settings]
-base_choice = { label = "Base Choice" }
+base_choice = { label="Base Choice" }

@@ -9,8 +9,12 @@ keywords = [ "-", "subtraction", "arithmetic", "minus" ]
 main = "subtract.py"
 readme = "README.md"
 
+[component.inports]
+value1 = { name = "Value 1", description = "First value to be subtracted." }
+value2 = { name = "Value 2", description = "Second value to be subtracted." }
+
 [component.outports]
-result = { name = "Result" }
+result = { name = "Result", description = "Result of the subtraction." }
 
 [component.settings]
 terms = { label = "Number of Terms" }

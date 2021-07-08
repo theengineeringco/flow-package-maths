@@ -1,16 +1,20 @@
 [component]
-id = "f0199dde-f344-4b06-a082-296fe3187fe1"
-name = "Divide"
+id        = "f0199dde-f344-4b06-a082-296fe3187fe1"
+name      = "Divide"
 namespace = "Maths"
 description = "Divides the numerator from the denominator value."
-keywords = [ "/", "division", "arithmetic" ]
+keywords  = ["/", "division", "arithmetic"]
 
 [component.files]
 main = "divide.py"
 readme = "README.md"
 
+[component.inports]
+numerator = { name="Numerator", description = "Top value in a fraction." }
+denominator = { name="Denominator", description = "Bottom value in a fraction." }
+
 [component.outports]
-result = { name = "Result" }
+result = { name = "Result", description = "Result of the division." }
 
 [component.settings]
 terms = { label = "Number of Terms" }
