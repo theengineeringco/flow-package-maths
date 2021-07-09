@@ -6,7 +6,7 @@ authors     = [
   "Eu Chian Tan <euchian@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
 ]
-version = "3.0.0-dev.1"
+version = "3.0.0-dev.2"
 license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/theengineeringco/flow-package-maths.git"

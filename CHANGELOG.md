@@ -1,3 +1,10 @@
+# [3.0.0-develop.2](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.1...v3.0.0-develop.2) (2021-07-09)
+
+
+### Bug Fixes
+
+* Release deprecation messages ([a45e5b0](https://github.com/theengineeringco/flow-package-maths/commit/a45e5b0aaf58ffaaab79570a789bfb5ec1f311e8))
+
 # [3.0.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.3...v3.0.0-develop.1) (2021-07-09)
 
 
