@@ -1,3 +1,36 @@
+# [3.0.0-develop.1](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.3...v3.0.0-develop.1) (2021-07-09)
+
+
+### Bug Fixes
+
+* add 0 test cases to absolute and negative tests ([2381852](https://github.com/theengineeringco/flow-package-maths/commit/238185235e1135794300f90849af5067060364e5))
+* add back missing abs and negative readmes ([088a6b1](https://github.com/theengineeringco/flow-package-maths/commit/088a6b14efd553836f8300cc6fb9c2d2a7464011))
+* comment out tests at the bottom of components to pass nitpick ([98683bb](https://github.com/theengineeringco/flow-package-maths/commit/98683bb6d0ee0b398d4356c09ac0e6e9af460ef7))
+* correct absolute component id so that it is an update to the existing component rather than a new component ([61cd525](https://github.com/theengineeringco/flow-package-maths/commit/61cd525f2566e60953f8cdc78c20291ff47b718f))
+* correct inline tests on test file ([ddafc79](https://github.com/theengineeringco/flow-package-maths/commit/ddafc7927fd9fe4d06db03615cc05814886073b9))
+* delete all non-refactored components in order to run tox ([3596222](https://github.com/theengineeringco/flow-package-maths/commit/3596222458376bf126fad15684a54eaf65bad8b8))
+* delete non-updated tests ([f4c6675](https://github.com/theengineeringco/flow-package-maths/commit/f4c6675bf16b0bdcfc833cb72b6a4c467ed8d2c0))
+* Makes minor changes ([3fa462c](https://github.com/theengineeringco/flow-package-maths/commit/3fa462cb6dfb13c5c89e490511ee2e11ba408918))
+* settings on log reconfigured for new be release, bool allowed on abs and neg ([92c429b](https://github.com/theengineeringco/flow-package-maths/commit/92c429bb07de0213c26a8ccb7310b06988e9a73f))
+
+
+### Features
+
+* add log component with setting to change between ln and user defined base ([6ad7515](https://github.com/theengineeringco/flow-package-maths/commit/6ad7515a2a0522274d223a243f0c9ed3bf6f7848))
+* add refactored negative component ([e79e4e8](https://github.com/theengineeringco/flow-package-maths/commit/e79e4e8c2fbd801362d8deb067ca39828035fade))
+* Maths components refactor for 6.0 ([6f549c9](https://github.com/theengineeringco/flow-package-maths/commit/6f549c99587de9869831899eda838725ff9e305c))
+* merge abs, negative, log ([eaafcef](https://github.com/theengineeringco/flow-package-maths/commit/eaafcefac94d5443435469ac71c8d6934015ea0e))
+* refactor absolute for 6.0 runtime ([b5e8378](https://github.com/theengineeringco/flow-package-maths/commit/b5e8378d06010285fa52871557b8534817dfc85b))
+* Sin component updated to dynamic ([78ebf32](https://github.com/theengineeringco/flow-package-maths/commit/78ebf3249a47561b2879ad352cb5c8233939feeb))
+* Update components to flow-py 3 ([cec67ba](https://github.com/theengineeringco/flow-package-maths/commit/cec67ba24100d53ea6587f4d533def30a6d76dd6))
+* upgraded add to dynamic add ([29923e3](https://github.com/theengineeringco/flow-package-maths/commit/29923e33808a3b9cf8c1db1a48b901fed6b7c306))
+* upgraded simple arithmetic to dynamic ([d175329](https://github.com/theengineeringco/flow-package-maths/commit/d1753295f9d4214239c508fe41541d2d88aec805))
+
+
+### BREAKING CHANGES
+
+* Now uses flow-py 3
+
 ## [2.1.3](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.2...v2.1.3) (2021-03-01)
 
 
