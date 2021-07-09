@@ -1,17 +1,18 @@
 [component]
-id = "ac1f5353-736e-465e-b7ee-9d3fb7e106ce"
-name = "Round Nearest"
+id        = "ac1f5353-736e-465e-b7ee-9d3fb7e106ce"
+name      = "Round Nearest"
 namespace = "Maths"
 description = "Outputs the nearest number given the specified number of decimal places."
 keywords  = ["nearest"]
+deprecation = "This component is deprecated and will be removed in a future release. Please use the newer component Round that enables rounding up, down and nearest using its settings."
 
 [component.files]
 main = "round_nearest.py"
 readme = "README.md"
 
 [component.inports]
-value = { name = "Value", description = "Value to be rounded." }
-decimal_places = { name = "Decimal Places", description = "The decimal place to round off on. If not given, the value will be rounded to nearest integer." }
+value        = { name="Value", description="Value to be rounded." }
+decimal_places = { name="Decimal Places", description="The decimal place to round off on. If not given, the value will be rounded to nearest integer." }
 
 [component.outports]
-result = { name = "Result", description = "Result of the round." }
+result = { name="Result", description="Result of the round." }
