@@ -6,7 +6,7 @@ ports = Ports()
 
 # Add Inports
 ports.add_inport(id="value", types=[base.Int, base.Bool])
-ports.add_inport(id="decrement", types=[base.Int, base.Bool])
+ports.add_inport(id="decrement", types=[base.Int, base.Bool], default=base.Int(1))
 
 # Add Outports
 ports.add_outport(id="result", types=[base.Int])
