@@ -3,16 +3,16 @@ from math import pi, tan
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
-# settings
+# Define Settings
 settings = Settings()
 settings.add_select_setting(
     id="angle_format",
@@ -27,7 +27,7 @@ settings.add_select_setting(
 
 def setup(component: Setup):
 
-    output_type = str(component.get_setting("angle_format"))
+    output_type: str = component.get_setting("angle_format")
 
     if output_type == "degrees":
         angle_conversion = pi / 180  # noqa: WPS432
@@ -46,7 +46,7 @@ def process(component: Process):
     angle_conversion: float = component.get_variable("angle_conversion")
     angle_in = float(component.get_data("angle"))
 
-    # sin
+    # Sin
     angle_rad = angle_in * angle_conversion
     result = tan(angle_rad)
 

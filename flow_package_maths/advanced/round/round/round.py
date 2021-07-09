@@ -3,17 +3,17 @@ from math import ceil, floor
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
-# settings
+# Define Settings
 settings = Settings()
 settings.add_select_setting(
     id="round_type",
@@ -34,14 +34,12 @@ def setup(component: Setup):
 
 def process(component: Process):
 
-    # get values for any variables set in settings
     round_type: str = component.get_variable("round_type")
 
-    # get the data from each inport
     value = float(component.get_data("value"))
     decimal_places = int(component.get_data("decimal_places"))
 
-    # round - component content
+    # Round - component content
     multiplier = 10 ** decimal_places
     if round_type == "nearest":
         result = round(value, decimal_places)
@@ -50,5 +48,4 @@ def process(component: Process):
     elif round_type == "down":
         result = floor(value * multiplier) / multiplier
 
-    # send the data to each outport
     component.send_data(base.Double(result), "result")

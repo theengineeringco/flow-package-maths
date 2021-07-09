@@ -1,25 +1,23 @@
 from flow import Ports, Process
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value", types=[base.Int, base.Bool])
 ports.add_inport(id="decrement", types=[base.Int, base.Bool])
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Int])
 
 
 def process(component: Process):
 
-    # get data from each inport
     value = int(component.get_data("value"))
     decrement = int(component.get_data("decrement"))
 
-    # increment
+    # Increment
     result = value - decrement
 
-    # send data to each outport
     component.send_data(base.Int(result), "result")

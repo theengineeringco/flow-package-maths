@@ -1,14 +1,14 @@
 from flow import Ports, Process
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 ports.add_inport(id="exponent", types=[base.Double, base.Int, base.Bool], default=base.Int(2))
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
 
@@ -19,7 +19,7 @@ def process(component: Process):
 
     result = value ** exponent
 
-    # check if result has a imaginary part
+    # Check if result has a imaginary part
     if result.imag:
         raise ValueError(
             "The Value inport must be positive and the Exponent inport must be more than 1 to give a real number. "

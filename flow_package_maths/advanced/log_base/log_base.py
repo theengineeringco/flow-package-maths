@@ -3,14 +3,14 @@ from math import log
 from flow import Ports, Process
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 ports.add_inport(id="base", types=[base.Double, base.Int, base.Bool], default=base.Int(10))
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
 

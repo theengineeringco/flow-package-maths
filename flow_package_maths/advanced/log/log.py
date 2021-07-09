@@ -4,16 +4,16 @@ from typing import Union
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
-# settings
+# Define Settings
 settings = Settings()
 settings.add_select_setting(
     id="base_choice",

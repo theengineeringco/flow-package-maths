@@ -4,17 +4,17 @@ from typing import List
 from flow import Ports, Process, Settings, Setup
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="value1", types=[base.Double, base.Int, base.Bool])
 ports.add_inport(id="value2", types=[base.Double, base.Int, base.Bool])
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
-# settings
+# Define Settings
 settings = Settings()
 settings.add_int_setting(id="terms", default=2, minimum=2)
 
@@ -34,15 +34,12 @@ def setup(component: Setup):
 
 def process(component: Process):
 
-    # get values for any variables set in settings
     inport_ids: List[str] = component.get_variable("inport_ids")
 
-    # get data from each inport
     value1 = float(component.get_data("value1"))
     value2 = float(component.get_data("value2"))
 
-    # add all values together
+    # Add all values together
     result = value1 * value2 * math.prod(float(component.get_data(inport_id)) for inport_id in inport_ids)
 
-    # send data to each outport
     component.send_data(base.Double(result), "result")

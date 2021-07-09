@@ -2,23 +2,21 @@ import numpy as np
 from flow import Ports, Process
 from flow_types import base
 
-# define ports
+# Define Ports
 ports = Ports()
 
-# add inports
+# Add Inports
 ports.add_inport(id="values", types=[base.MdDouble(dimension=1), base.MdInt(dimension=1), base.MdBool(dimension=1)])
 
-# add outports
+# Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
 
 def process(component: Process) -> None:
 
-    # get inports data
     values: np.ndarray = component.get_data("values").to_ndarray()
 
-    # sum
+    # Sum
     result = float(np.sum(values))
 
-    # send message to outports
     component.send_data(base.Double(result), "result")
