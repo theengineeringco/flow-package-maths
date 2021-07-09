@@ -1,44 +1,26 @@
 import math
+from typing import Union
 
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
 
 component_dir = "flow_package_maths/advanced/factorial"
 
 
-def test_zero_factorial(flow: FlowTest):
+@pytest.mark.parametrize(
+    "value, result",
+    [
+        (base.Int(0), 1),
+        (base.Int(4), math.factorial(4)),
+        (base.Int(12), math.factorial(12)),
+        (base.Bool(True), 1),
+        (base.Bool(False), 1),
+    ],
+)
+def test_factorial(value: Union[base.Int, base.Bool], result: int) -> None:
 
-    val = base.Int(0)
+    inports = {"value": value}
 
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(1)})
-
-
-def test_small_number(flow: FlowTest):
-
-    val = base.Int(4)
-
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(math.factorial(4))})
-
-
-def test_big_number(flow: FlowTest):
-
-    val = base.Int(12)
-
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(math.factorial(12))})
-
-
-if __name__ == "__main__":
-    with flow_test() as flow:
-        test_zero_factorial(flow)
-        test_small_number(flow)
-        test_big_number(flow)
+    outport = ComponentTest(component_dir).run(inports)
+    assert outport["result"] == base.Int(result)

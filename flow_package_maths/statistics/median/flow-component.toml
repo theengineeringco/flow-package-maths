@@ -1,16 +1,16 @@
 [component]
-file = "median.py"
 id = "d32eb010-353f-4c58-a898-c5ef179b934c"
-
-[component.details]
 name = "Median"
 namespace = "Maths"
 description = "Computes the middle number in a sorted, ascending or descending, list of values."
-readme = "README.md"
 keywords = [ "median", "middle", "statistics" ]
 
-[component.details.inports]
+[component.files]
+main = "median.py"
+readme = "README.md"
+
+[component.inports]
 values = { name = "Values", description = "A list of values." }
 
-[component.details.outports]
-result = { name = "Result", description = "" }
+[component.outports]
+result = { name = "Result", description = "The median value in the list." }

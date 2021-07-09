@@ -1,29 +1,21 @@
-from typing import cast
+from flow import Ports, Process
+from flow_types import base
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+# Define Ports
+ports = Ports()
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Add Inports
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
 
-# comp definition
-definition = Definition(inports=[value], outports=[result])
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+# Process
+def process(component: Process):
 
-    if not component.has_data():
-        return
+    value = float(component.get_data("value"))
 
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
+    out_val = abs(value)
 
-    # absolute
-    res = abs(val)
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Absolute of {val} is {res}.")
-
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    component.send_data(base.Double(out_val), "result")

@@ -1,43 +1,26 @@
-import math
-from typing import cast
+from math import ceil
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import Ports, Process
+from flow_types import base
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=False, required=False)
-result = Outport(id="result", types=unions.Number)
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value, decimal_places], outports=[result])
+# Add Inports
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data(value):
-        return
+    value = float(component.get_data("value"))
+    decimal_places = int(component.get_data("decimal_places"))
 
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
+    # Round up
+    multiplier = 10 ** decimal_places
+    result = ceil(value * multiplier) / multiplier
 
-    if component.is_connected(decimal_places):
-        dec: int = cast(base.Int, component.get_data(decimal_places)).value
-    else:
-        dec = 0
-
-    # round up
-    multiplier = 10 ** dec
-    res = math.ceil(val * multiplier) / multiplier
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Rounding up {val} to {dec} decimal places gives {res}.")
-
-    # Create Message
-    if dec == 0:
-        message = base.Int(int(res))
-    else:
-        message = base.Double(res)
-
-    # Send message to outports
-    component.send_data(message, result)
+    component.send_data(base.Double(result), "result")

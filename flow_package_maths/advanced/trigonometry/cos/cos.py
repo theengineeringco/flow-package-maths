@@ -1,32 +1,54 @@
-import math
-from typing import cast
+from math import cos, pi
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import Option, Ports, Process, Settings, Setup
+from flow_types import base
 
-# ports
-angle = Inport(id="angle", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[angle], outports=[result])
+# Add Inports
+ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
+
+# Define Settings
+settings = Settings()
+settings.add_select_setting(
+    id="angle_format",
+    options=[
+        Option("degrees", "Degrees"),
+        Option("radians", "Radians"),
+        Option("gradians", "Gradians"),
+    ],
+    default="radians",
+)
 
 
-def process(component: Component):
+def setup(component: Setup):
 
-    if not component.has_data():
-        return
+    output_type: str = component.get_setting("angle_format")
 
-    # get inports data
-    # note angle_val is in radians
-    angle_val: float = cast(base.Double, component.get_data(angle)).value
+    if output_type == "degrees":
+        angle_conversion = pi / 180  # noqa: WPS432
 
-    # cos
-    res = math.cos(angle_val)
+    if output_type == "gradians":
+        angle_conversion = pi / 200  # noqa: WPS432
 
-    # Log
-    # angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
-    # component.log(log_level=LogLevel.DEBUG, message=f"cos({angle_val}rad or {angle_val_deg}°) gives {res}.")
+    if output_type == "radians":
+        angle_conversion = 1
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    component.set_variable("angle_conversion", angle_conversion)
+
+
+def process(component: Process):
+
+    angle_conversion: float = component.get_variable("angle_conversion")
+
+    angle_in = float(component.get_data("angle"))
+
+    # Cos
+    angle_rad = angle_in * angle_conversion
+    result = cos(angle_rad)
+
+    component.send_data(base.Double(result), "result")

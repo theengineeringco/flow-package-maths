@@ -1,31 +1,23 @@
-from typing import cast
-
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
 from flow_types import base
 
-# ports
-value = Inport(id="value", types=[base.Int], multi_connection=False)
-decrement = Inport(id="decrement", types=[base.Int], multi_connection=False)
-result = Outport(id="result", types=[base.Int])
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value, decrement], outports=[result])
+# Add Inports
+ports.add_inport(id="value", types=[base.Int, base.Bool])
+ports.add_inport(id="decrement", types=[base.Int, base.Bool])
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Int])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data():
-        return
+    value = int(component.get_data("value"))
+    decrement = int(component.get_data("decrement"))
 
-    # get inports data
-    val: int = cast(base.Double, component.get_data(value)).value
-    decrement_val: int = cast(base.Double, component.get_data(decrement)).value
+    # Increment
+    result = value - decrement
 
-    # add
-    res = val - decrement_val
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Drecrement {val} by {decrement_val} gives {res}.")
-
-    # send message to outports
-    component.send_data(base.Int(res), result)
+    component.send_data(base.Int(result), "result")

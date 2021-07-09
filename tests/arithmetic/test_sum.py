@@ -1,50 +1,38 @@
 import numpy as np
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
 
 component_dir = "flow_package_maths/arithmetic/sum"
 
 
-def test_int(flow: FlowTest):
+@pytest.mark.parametrize(
+    "values, result",
+    [
+        (base.MdDouble(list(np.linspace(0, 10, 11))), base.Double(11 * 10 / 2)),
+        (base.MdDouble([-3, -2, -1, 0, 1, 2, 3]), base.Double(0)),
+        (base.MdDouble([-1.2e3, 5.432, 0.697, 1, -0.03, 0.0101, 1000.01]), base.Double(-192.8809000000001)),
+    ],
+)
+def test_sum(values, result):
 
-    vals = base.MdDouble(np.linspace(0, 10, 11))
+    inports = {"values": values}
 
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(11 * 10 / 2)})
-
-
-def test_int_zero_sum(flow: FlowTest):
-
-    vals = base.MdDouble([-3, -2, -1, 0, 1, 2, 3])
-
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(0)})
+    outport = ComponentTest(component_dir).run(inports)
+    assert outport["result"] == result
 
 
-def test_decimals(flow: FlowTest):
+@pytest.mark.parametrize(
+    "values, result",
+    [
+        (base.MdInt([1, 2, 3, 4, 5, 6]), base.Double(21)),
+        (base.MdInt([1, -1, 2, -2, 3, -3]), base.Double(0)),
+        (base.MdBool([True, False, True, False]), base.Double(2)),
+    ],
+)
+def test_sum_other_types(values, result):
 
-    test_array = [-1.2e3, 5.432, 0.697, 1, -0.03, 0.0101, 1000.01]
-    vals = base.MdDouble(test_array)
+    inports = {"values": values}
 
-    inputs = {"values": vals}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-
-    # using sum of arithmetic series formula for test
-    assert check_outport_data(test_data, {"result": base.Double(np.sum(test_array))})
-
-
-if __name__ == "__main__":
-    with flow_test() as flow:
-        test_int(flow)
-        test_int_zero_sum(flow)
-        test_decimals(flow)
+    outport = ComponentTest(component_dir).run(inports)
+    assert outport["result"] == result

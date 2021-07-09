@@ -1,100 +1,95 @@
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+from typing import Dict
+
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
-
-component_dir_nearest = "flow_package_maths/advanced/round/round_nearest"
-component_dir_up = "flow_package_maths/advanced/round/round_up"
-component_dir_down = "flow_package_maths/advanced/round/round_down"
+from flow_types.typing import FlowType
 
 
-def test_round_integer(flow: FlowTest):
+@pytest.mark.parametrize(
+    "val_in, decimal_in, result",
+    [
+        [base.Double(46.44), base.Int(-1), base.Double(40)],
+        [base.Double(46.44), base.Int(0), base.Double(46)],
+        [base.Double(46.44), base.Int(1), base.Double(46.4)],
+        [base.Double(46.46), base.Int(1), base.Double(46.4)],
+    ],
+)
+def test_round_down(val_in: base.Double, decimal_in: base.Int, result: base.Double) -> None:
 
-    val = base.Double(98.217)
+    inport_data: Dict[str, FlowType] = {
+        "value": val_in,
+        "decimal_places": decimal_in,
+    }
 
-    # decimal place input not specified to test required condition
-    inputs = {"value": val}
-    outputs = ["result"]
-    test_data_nearest = flow.test(component_dir_nearest, inputs, outputs)
-    test_data_up = flow.test(component_dir_up, inputs, outputs)
-    test_data_down = flow.test(component_dir_down, inputs, outputs)
-
-    assert check_outport_data(test_data_nearest, {"result": base.Int(98)})
-    assert check_outport_data(test_data_up, {"result": base.Int(99)})
-    assert check_outport_data(test_data_down, {"result": base.Int(98)})
-
-
-def test_round_decimal2(flow: FlowTest):
-
-    val = base.Double(98.217)
-    dec = base.Int(2)
-
-    # decimal place input not specified to test required condition
-    inputs = {"value": val, "decimal_places": dec}
-    outputs = ["result"]
-    test_data_nearest = flow.test(component_dir_nearest, inputs, outputs)
-    test_data_up = flow.test(component_dir_up, inputs, outputs)
-    test_data_down = flow.test(component_dir_down, inputs, outputs)
-
-    assert check_outport_data(test_data_nearest, {"result": base.Double(98.22)})
-    assert check_outport_data(test_data_up, {"result": base.Double(98.22)})
-    assert check_outport_data(test_data_down, {"result": base.Double(98.21)})
+    outport_data = ComponentTest("flow_package_maths/advanced/round/round_down").run(inport_data)
+    assert outport_data["result"] == result
 
 
-def test_round_decimal3(flow: FlowTest):
+@pytest.mark.parametrize(
+    "val_in, decimal_in, result",
+    [
+        [base.Double(46.44), base.Int(-1), base.Double(50)],
+        [base.Double(46.44), base.Int(0), base.Double(47)],
+        [base.Double(46.44), base.Int(1), base.Double(46.5)],
+        [base.Double(46.46), base.Int(1), base.Double(46.5)],
+    ],
+)
+def test_round_up(val_in: base.Double, decimal_in: base.Int, result: base.Double) -> None:
 
-    val = base.Double(24.019022)
-    dec = base.Int(3)
+    inport_data: Dict[str, FlowType] = {
+        "value": val_in,
+        "decimal_places": decimal_in,
+    }
 
-    # decimal place input not specified to test required condition
-    inputs = {"value": val, "decimal_places": dec}
-    outputs = ["result"]
-    test_data_nearest = flow.test(component_dir_nearest, inputs, outputs)
-    test_data_up = flow.test(component_dir_up, inputs, outputs)
-    test_data_down = flow.test(component_dir_down, inputs, outputs)
-
-    assert check_outport_data(test_data_nearest, {"result": base.Double(24.019)})
-    assert check_outport_data(test_data_up, {"result": base.Double(24.02)})
-    assert check_outport_data(test_data_down, {"result": base.Double(24.019)})
-
-
-def test_round_tenths(flow: FlowTest):
-
-    val = base.Double(1194.217)
-    dec = base.Int(-1)
-
-    # decimal place input not specified to test required condition
-    inputs = {"value": val, "decimal_places": dec}
-    outputs = ["result"]
-    test_data_nearest = flow.test(component_dir_nearest, inputs, outputs)
-    test_data_up = flow.test(component_dir_up, inputs, outputs)
-    test_data_down = flow.test(component_dir_down, inputs, outputs)
-
-    assert check_outport_data(test_data_nearest, {"result": base.Double(1190.0)})
-    assert check_outport_data(test_data_up, {"result": base.Double(1200.0)})
-    assert check_outport_data(test_data_down, {"result": base.Double(1190.0)})
+    outport_data = ComponentTest("flow_package_maths/advanced/round/round_up").run(inport_data)
+    assert outport_data["result"] == result
 
 
-def test_round_thousandths(flow: FlowTest):
+@pytest.mark.parametrize(
+    "val_in, decimal_in, result",
+    [
+        [base.Double(46.44), base.Int(-1), base.Double(50)],
+        [base.Double(46.44), base.Int(0), base.Double(46)],
+        [base.Double(46.44), base.Int(1), base.Double(46.4)],
+        [base.Double(46.46), base.Int(1), base.Double(46.5)],
+    ],
+)
+def test_round_nearest(val_in: base.Double, decimal_in: base.Int, result: base.Double) -> None:
 
-    val = base.Double(1194.217)
-    dec = base.Int(-3)
+    inport_data: Dict[str, FlowType] = {
+        "value": val_in,
+        "decimal_places": decimal_in,
+    }
 
-    # decimal place input not specified to test required condition
-    inputs = {"value": val, "decimal_places": dec}
-    outputs = ["result"]
-    test_data_nearest = flow.test(component_dir_nearest, inputs, outputs)
-    test_data_up = flow.test(component_dir_up, inputs, outputs)
-    test_data_down = flow.test(component_dir_down, inputs, outputs)
-
-    assert check_outport_data(test_data_nearest, {"result": base.Double(1000.0)})
-    assert check_outport_data(test_data_up, {"result": base.Double(2000.0)})
-    assert check_outport_data(test_data_down, {"result": base.Double(1000.0)})
+    outport_data = ComponentTest("flow_package_maths/advanced/round/round_nearest").run(inport_data)
+    assert outport_data["result"] == result
 
 
-if __name__ == "__main__":
-    with flow_test() as flow:
-        test_round_integer(flow)
-        test_round_decimal2(flow)
-        test_round_decimal3(flow)
-        test_round_tenths(flow)
-        test_round_thousandths(flow)
+@pytest.mark.parametrize(
+    "round_type, val_in, decimal_in, result",
+    [
+        ["nearest", base.Double(46.44), base.Int(-1), base.Double(50)],
+        ["nearest", base.Double(46.44), base.Int(0), base.Double(46)],
+        ["nearest", base.Double(46.44), base.Int(1), base.Double(46.4)],
+        ["nearest", base.Double(46.46), base.Int(1), base.Double(46.5)],
+        ["up", base.Double(46.44), base.Int(-1), base.Double(50)],
+        ["up", base.Double(46.44), base.Int(0), base.Double(47)],
+        ["up", base.Double(46.44), base.Int(1), base.Double(46.5)],
+        ["up", base.Double(46.46), base.Int(1), base.Double(46.5)],
+        ["down", base.Double(46.44), base.Int(-1), base.Double(40)],
+        ["down", base.Double(46.44), base.Int(0), base.Double(46)],
+        ["down", base.Double(46.44), base.Int(1), base.Double(46.4)],
+        ["down", base.Double(46.46), base.Int(1), base.Double(46.4)],
+    ],
+)
+def test_round(round_type: str, val_in: base.Double, decimal_in: base.Int, result: base.Double) -> None:
+
+    setting_values = {"round_type": round_type}
+    inport_data: Dict[str, FlowType] = {
+        "value": val_in,
+        "decimal_places": decimal_in,
+    }
+
+    outport_data = ComponentTest("flow_package_maths/advanced/round/round").run(inport_data, setting_values)
+    assert outport_data["result"] == result

@@ -1,31 +1,23 @@
-from typing import cast
-
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
 from flow_types import base
 
-# ports
-value = Inport(id="value", types=[base.Int], multi_connection=False)
-increment = Inport(id="increment", types=[base.Int], multi_connection=False)
-result = Outport(id="result", types=[base.Int])
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value, increment], outports=[result])
+# Add Inports
+ports.add_inport(id="value", types=[base.Int, base.Bool])
+ports.add_inport(id="increment", types=[base.Int, base.Bool])
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Int])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data():
-        return
+    value = int(component.get_data("value"))
+    increment = int(component.get_data("increment"))
 
-    # get inports data
-    val: int = cast(base.Double, component.get_data(value)).value
-    increment_val: int = cast(base.Double, component.get_data(increment)).value
+    # Increment
+    result = value + increment
 
-    # add
-    res = val + increment_val
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Decrementing {val} by {increment_val} gives {res}.")
-
-    # send message to outports
-    component.send_data(base.Int(res), result)
+    component.send_data(base.Int(result), "result")

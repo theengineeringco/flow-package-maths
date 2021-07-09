@@ -1,31 +1,44 @@
-from typing import cast
+from typing import List
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base, unions
+from flow import Ports, Process, Settings, Setup
+from flow_types import base
 
-# ports
-value1 = Inport(id="value1", types=unions.Number, multi_connection=False)
-value2 = Inport(id="value2", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value1, value2], outports=[result])
+# Add Inports
+ports.add_inport(id="value1", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="value2", types=[base.Double, base.Int, base.Bool])
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
+
+# Define Settings
+settings = Settings()
+settings.add_int_setting(id="terms", default=2, minimum=2)
 
 
-def process(component: Component):
+def setup(component: Setup):
 
-    if not component.has_data():
-        return
+    terms: int = component.get_setting("terms")
 
-    # get inports data
-    val1: float = cast(base.Double, component.get_data(value1)).value
-    val2: float = cast(base.Double, component.get_data(value2)).value
+    inport_ids: List[str] = []
+    for idx in range(terms - 2):
+        inport_id = f"value{idx + 3}"
+        inport_ids.append(inport_id)
+        component.add_inport(name=f"Value {idx + 3}", id=inport_id, types=[base.Double, base.Int, base.Bool])
 
-    # add
-    res = val1 + val2
+    component.set_variable("inport_ids", inport_ids)
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Adding {val1} to {val2} gives {res}.")
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+def process(component: Process):
+
+    inport_ids: List[str] = component.get_variable("inport_ids")
+
+    value1 = float(component.get_data("value1"))
+    value2 = float(component.get_data("value2"))
+
+    # Add all values together
+    result = value1 + value2 + sum(float(component.get_data(inport_id)) for inport_id in inport_ids)
+
+    component.send_data(base.Double(result), "result")
