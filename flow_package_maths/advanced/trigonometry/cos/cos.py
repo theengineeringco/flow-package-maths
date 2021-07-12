@@ -1,5 +1,6 @@
 from math import cos, pi
 
+import numpy as np
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
@@ -50,5 +51,11 @@ def process(component: Process):
     # Cos
     angle_rad = angle_in * angle_conversion
     result = cos(angle_rad)
+
+    # check if 'result' is a very small number which should give exactly 0
+    rel_bound = 1e-5
+    abs_bound = 1e-8
+    if np.allclose(0, result, rel_bound, abs_bound):
+        result = 0
 
     component.send_data(base.Double(result), "result")
