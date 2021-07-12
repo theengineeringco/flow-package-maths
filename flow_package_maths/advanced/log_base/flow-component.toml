@@ -3,12 +3,12 @@ id        = "55afd7a7-7df2-4df0-b6de-610717537400"
 name      = "Log (Deprecated)"
 namespace = "Maths"
 description = "Computes the log of a value given its base."
-readme    = "README.md"
 keywords  = ["log", "logarithms"]
 deprecation = "This component is deprecated and will be removed in a future release. Please use the newer component Log if needed."
 
 [component.files]
 main = "log_base.py"
+readme = "README.md"
 
 [component.inports]
 value = { name="Value", description="The input value which must be a positive number." }
