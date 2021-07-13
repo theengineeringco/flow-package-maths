@@ -1,15 +1,16 @@
 [tool.poetry]
-name        = "flow-package-maths"
+name = "flow-package-maths"
 description = "A Package of Python Flow Components"
-authors     = [
+authors = [
   "Arran Hobson Sayers <arran@theengineeringcompany.com>",
   "Eu Chian Tan <euchian@theengineeringcompany.com>",
   "Neil Cameron <neil@theengineeringcompany.com>",
+  "Harry Thompson <harry@theengineeringcompany.com>",
 ]
-version     = "2.1.3"
-license     = "MIT"
-readme      = "README.md"
-repository  = "https://github.com/theengineeringco/flow-package-maths.git"
+version = "3.0.0-dev.2"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python  = "^3.8"
