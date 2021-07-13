@@ -4,6 +4,8 @@ import numpy as np
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
+from flow_package_maths.advanced.trigonometry import constants
+
 # Define Ports
 ports = Ports()
 
@@ -59,9 +61,7 @@ def process(component: Process):
     result = tan(angle_rad)
 
     # check if 'result' is a very small number which should give exactly 0
-    rel_bound = 1e-5
-    abs_bound = 1e-8
-    if np.allclose(0, result, rel_bound, abs_bound):
+    if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
         result = 0
 
     component.send_data(base.Double(result), "result")
