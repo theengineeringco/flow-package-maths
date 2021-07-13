@@ -1,3 +1,11 @@
+# [3.0.0-develop.3](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.2...v3.0.0-develop.3) (2021-07-13)
+
+
+### Bug Fixes
+
+* correct trig for floating point issues ([e07d7ab](https://github.com/theengineeringco/flow-package-maths/commit/e07d7ab1ceecc441dcd2ddced421fc49b1fb6778))
+* fixed readme in toml ([53a727c](https://github.com/theengineeringco/flow-package-maths/commit/53a727c88d861e0ee863ba8ac4b3f94d22ba4fbc))
+
 # [3.0.0-develop.2](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.1...v3.0.0-develop.2) (2021-07-09)
 
 
