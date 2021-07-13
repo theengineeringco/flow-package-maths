@@ -27,7 +27,7 @@ Please try to follow our code style by using mypy, black and flake8 with the wem
 
 Please add tests for your new component to the `tests` folder
 
-If you have any questions, or want to contribute a component but don't know how to do some of the things mentioned above, feel free to contact the team or open a PR so a discussion can be started! 
+If you have any questions, or want to contribute a component but don't know how to do some of the things mentioned above, feel free to contact the team or open a PR so a discussion can be started!
 
 ## License
 

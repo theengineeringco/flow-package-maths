@@ -1,3 +1,4 @@
+import math
 from typing import Union
 
 import pytest
@@ -32,3 +33,47 @@ def test_tan(
 
     outport_data = ComponentTest(component_dir).run(inport_data, setting_values)
     assert outport_data["result"] == pytest.approx(base.Double(result), abs=1e-4)
+
+
+@pytest.mark.parametrize(
+    "settings_in, data_in, result",
+    [
+        ["degrees", base.Double(0), 0],
+        ["degrees", base.Double(180), 0],
+        ["degrees", base.Double(360), 0],
+        ["radians", base.Double(math.pi), 0],
+        ["radians", base.Double(2 * math.pi), 0],
+    ],
+)
+def test_tan_zero_results(
+    settings_in: str,
+    data_in: base.Double,
+    result: float,
+) -> None:
+
+    setting_values = {"angle_format": settings_in}
+    inport_data = {"angle": data_in}
+
+    outport_data = ComponentTest(component_dir).run(inport_data, setting_values)
+    assert outport_data["result"] == base.Double(result)
+
+
+@pytest.mark.parametrize(
+    "settings_in, data_in",
+    [
+        ["degrees", base.Double(90)],
+        ["degrees", base.Double(270)],
+        ["radians", base.Double(math.pi / 2)],
+        ["radians", base.Double(3 * math.pi / 2)],
+    ],
+)
+def test_tan_infinity_results(
+    settings_in: str,
+    data_in: base.Double,
+) -> None:
+
+    setting_values = {"angle_format": settings_in}
+    inport_data = {"angle": data_in}
+
+    with pytest.raises(ValueError):
+        ComponentTest(component_dir).run(inport_data, setting_values)

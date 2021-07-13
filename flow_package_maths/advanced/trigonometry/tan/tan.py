@@ -1,7 +1,10 @@
 from math import pi, tan
 
+import numpy as np
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
+
+from flow_package_maths.advanced.trigonometry import constants
 
 # Define Ports
 ports = Ports()
@@ -46,8 +49,19 @@ def process(component: Process):
     angle_conversion: float = component.get_variable("angle_conversion")
     angle_in = float(component.get_data("angle"))
 
-    # Sin
+    # Tan
     angle_rad = angle_in * angle_conversion
+    if angle_rad / (pi / 2) % 2 == 1:
+        # angles that are an odd multiple of pi/2 will approach infinity
+        raise ValueError(
+            "The Angle inport results in a tangent value that approaches infinity. "
+            + "Infinity numbers aren't supported yet.",
+        )
+
     result = tan(angle_rad)
+
+    # Check if 'result' is a very small number which should give exactly 0
+    if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
+        result = 0
 
     component.send_data(base.Double(result), "result")

@@ -1,7 +1,10 @@
 from math import pi, sin
 
+import numpy as np
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
+
+from flow_package_maths.advanced.trigonometry import constants
 
 # Define Ports
 ports = Ports()
@@ -48,5 +51,9 @@ def process(component: Process):
     # Sin
     angle_rad = angle_in * angle_conversion
     result = sin(angle_rad)
+
+    # Check if 'result' is a very small number which should give exactly 0
+    if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
+        result = 0
 
     component.send_data(base.Double(result), "result")
