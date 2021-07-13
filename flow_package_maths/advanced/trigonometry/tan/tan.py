@@ -60,7 +60,7 @@ def process(component: Process):
 
     result = tan(angle_rad)
 
-    # check if 'result' is a very small number which should give exactly 0
+    # Check if 'result' is a very small number which should give exactly 0
     if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
         result = 0
 
