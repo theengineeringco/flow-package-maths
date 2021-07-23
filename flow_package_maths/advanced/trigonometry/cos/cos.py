@@ -46,6 +46,10 @@ def setup(component: Setup):
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     angle_conversion: float = component.get_variable("angle_conversion")
 
     angle_in = float(component.get_data("angle"))

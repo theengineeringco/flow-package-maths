@@ -34,6 +34,10 @@ def setup(component: Setup):
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     inport_ids: List[str] = component.get_variable("inport_ids")
 
     value1 = float(component.get_data("value1"))

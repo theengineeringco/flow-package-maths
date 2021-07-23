@@ -34,6 +34,10 @@ def setup(component: Setup):
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     round_type: str = component.get_variable("round_type")
 
     value = float(component.get_data("value"))
