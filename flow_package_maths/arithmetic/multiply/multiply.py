@@ -16,7 +16,8 @@ ports.add_outport(id="result", types=[base.Double])
 
 # Define Settings
 settings = Settings()
-settings.add_int_setting(id="terms", default=2, minimum=2)
+max_terms = 20
+settings.add_int_setting(id="terms", default=2, minimum=2, maximum=max_terms)
 
 
 def setup(component: Setup):
