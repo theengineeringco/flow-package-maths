@@ -14,6 +14,10 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     value = float(component.get_data("value"))
     root = float(component.get_data("root"))
 

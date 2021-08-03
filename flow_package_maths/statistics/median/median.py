@@ -14,6 +14,10 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     values: np.ndarray = component.get_data("values").to_ndarray()
 
     # Median

@@ -15,7 +15,7 @@ ports.add_outport(id="result", types=[base.Double])
 
 # Define Settings
 settings = Settings()
-settings.add_int_setting(id="terms", default=2, minimum=2)
+settings.add_int_setting(id="terms", default=2, minimum=2, maximum=20)  # noqa: WPS 432
 
 
 def setup(component: Setup):
@@ -32,6 +32,10 @@ def setup(component: Setup):
 
 
 def process(component: Process):
+
+    # Check all connected inports have data
+    if not component.has_data():
+        return
 
     inport_ids: List[str] = component.get_variable("inport_ids")
 

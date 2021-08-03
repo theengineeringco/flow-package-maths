@@ -43,6 +43,10 @@ def setup(component: Setup):
 
 def process(component: Process):
 
+    # Check all connected inports have data
+    if not component.has_data():
+        return
+
     base_val: Union[float, None] = component.get_variable("base_val")
 
     if base_val is None:
