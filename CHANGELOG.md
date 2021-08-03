@@ -1,3 +1,16 @@
+# [3.0.0-develop.4](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.3...v3.0.0-develop.4) (2021-08-03)
+
+
+### Bug Fixes
+
+* add has_data back to all components ([11c7c6c](https://github.com/theengineeringco/flow-package-maths/commit/11c7c6cb2b8f920eae911ca95534ef69468e80a4))
+* removed max_term variable ([0dca521](https://github.com/theengineeringco/flow-package-maths/commit/0dca52128259dec16f9cfedf2676bee4884bf361))
+
+
+### Features
+
+* add max for int settings ([9038613](https://github.com/theengineeringco/flow-package-maths/commit/90386136a1702acc9cb2b18c2c1ed6a76cc99aca))
+
 # [3.0.0-develop.3](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.2...v3.0.0-develop.3) (2021-07-13)
 
 
