@@ -1,13 +1,16 @@
 [component]
-id = "f5c24b3d-9ca8-43b1-8917-7991d53874a5"
-name = "Subtract"
-namespace = "Maths"
+id          = "f5c24b3d-9ca8-43b1-8917-7991d53874a5"
+name        = "Subtract"
+namespace   = "Maths"
 description = "Subtracts the first value from the second value."
-keywords = [ "-", "subtraction", "arithmetic", "minus" ]
+keywords    = ["-", "subtraction", "arithmetic", "minus"]
 
 [component.files]
-main = "subtract.py"
+main   = "subtract.py"
 readme = "README.md"
+
+[component.settings]
+terms = { label = "Number of Terms" }
 
 [component.inports]
 value1 = { name = "Value 1", description = "First value to be subtracted." }
@@ -15,6 +18,3 @@ value2 = { name = "Value 2", description = "Second value to be subtracted." }
 
 [component.outports]
 result = { name = "Result", description = "Result of the subtraction." }
-
-[component.settings]
-terms = { label = "Number of Terms" }

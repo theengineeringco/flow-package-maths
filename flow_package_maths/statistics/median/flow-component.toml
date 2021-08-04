@@ -1,12 +1,12 @@
 [component]
-id = "d32eb010-353f-4c58-a898-c5ef179b934c"
-name = "Median"
-namespace = "Maths"
+id          = "d32eb010-353f-4c58-a898-c5ef179b934c"
+name        = "Median"
+namespace   = "Maths"
 description = "Computes the middle number in a sorted, ascending or descending, list of values."
-keywords = [ "median", "middle", "statistics" ]
+keywords    = ["median", "middle", "statistics"]
 
 [component.files]
-main = "median.py"
+main   = "median.py"
 readme = "README.md"
 
 [component.inports]

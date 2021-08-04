@@ -1,12 +1,12 @@
 [component]
-id = "57f9e0c1-62d9-492e-b6aa-73e7d93be1bf"
-name = "tan"
-namespace = "Maths"
+id          = "57f9e0c1-62d9-492e-b6aa-73e7d93be1bf"
+name        = "tan"
+namespace   = "Maths"
 description = "Computes the tangent of an angle which is equal to the opposite length of a right angled triangle divided by its adjacent length."
-keywords  = ["sine", "trigonometry", "triangle"]
+keywords    = ["sine", "trigonometry", "triangle"]
 
 [component.files]
-main = "tan.py"
+main   = "tan.py"
 readme = "README.md"
 
 [component.inports]

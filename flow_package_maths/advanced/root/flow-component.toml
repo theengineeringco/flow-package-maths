@@ -1,17 +1,17 @@
 [component]
-id        = "15fd71bf-b61e-4b13-a127-1d13f3dd3f48"
-name      = "Root"
-namespace = "Maths"
+id          = "15fd71bf-b61e-4b13-a127-1d13f3dd3f48"
+name        = "Root"
+namespace   = "Maths"
 description = "Computes the nth root of a value."
-keywords  = ["sqrt", "square root", "^1/2", "cube root"]
+keywords    = ["sqrt", "square root", "^1/2", "cube root"]
 
 [component.files]
-main = "root.py"
+main   = "root.py"
 readme = "README.md"
 
 [component.inports]
-value = { name="Value", description="Value to take the root of. Negative values are not supported yet." }
-root = { name="Root", description="The root or radix value. Its default value is 2 which gives a square root." }
+value = { name = "Value", description = "Value to take the root of. Negative values are not supported yet." }
+root  = { name = "Root", description = "The root or radix value. Its default value is 2 which gives a square root." }
 
 [component.outports]
-result = { name="Result", description="" }
+result = { name = "Result", description = "" }

@@ -3,16 +3,6 @@ from math import ceil, floor
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
-# Define Ports
-ports = Ports()
-
-# Add Inports
-ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
-ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
-
-# Add Outports
-ports.add_outport(id="result", types=[base.Double])
-
 # Define Settings
 settings = Settings()
 settings.add_select_setting(
@@ -24,6 +14,16 @@ settings.add_select_setting(
     ],
     default="nearest",
 )
+
+# Define Ports
+ports = Ports()
+
+# Add Inports
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
 def setup(component: Setup):

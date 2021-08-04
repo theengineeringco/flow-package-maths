@@ -1,12 +1,12 @@
 [component]
-id = "a1a3e0ad-a2be-42e9-881c-8d285499392e"
-name = "asin"
-namespace = "Maths"
+id          = "a1a3e0ad-a2be-42e9-881c-8d285499392e"
+name        = "asin"
+namespace   = "Maths"
 description = "Computes the inverse sine function of a value to give an angle in radians."
-keywords  = ["arcsine", "trigonometry", "triangle"]
+keywords    = ["arcsine", "trigonometry", "triangle"]
 
 [component.files]
-main = "asin.py"
+main   = "asin.py"
 readme = "README.md"
 
 [component.inports]
