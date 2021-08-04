@@ -28,7 +28,7 @@ def test_log(
     setting_values = {"base_choice": setting}
     inport_data = {
         "value": value,
-        "base_inport": base_inport,
+        "base": base_inport,
     }
 
     outport_data = ComponentTest(component_dir).run(inport_data, setting_values)
