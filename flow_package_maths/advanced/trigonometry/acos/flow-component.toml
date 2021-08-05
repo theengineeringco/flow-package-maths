@@ -1,12 +1,12 @@
 [component]
-id = "75eb8136-cc27-48f5-9fa6-fa7ed57c0d6b"
-name  = "acos"
-namespace = "Maths"
+id          = "75eb8136-cc27-48f5-9fa6-fa7ed57c0d6b"
+name        = "acos"
+namespace   = "Maths"
 description = "Computes the inverse cosine function of a value to give an angle in radians."
-keywords  = ["arccosine", "trigonometry", "triangle"]
+keywords    = ["arccosine", "trigonometry", "triangle"]
 
 [component.files]
-main = "acos.py"
+main   = "acos.py"
 readme = "README.md"
 
 [component.inports]

@@ -1,12 +1,12 @@
 [component]
-id = "bfce4f5f-8b5f-4a9f-8755-31dca45686b2"
-name = "sin"
-namespace = "Maths"
+id          = "bfce4f5f-8b5f-4a9f-8755-31dca45686b2"
+name        = "sin"
+namespace   = "Maths"
 description = "Computes the sine of an angle which is equal to the opposite length of a right angled triangle divided by its hypotenuse length."
-keywords  = ["sine", "trigonometry", "triangle"]
+keywords    = ["sine", "trigonometry", "triangle"]
 
 [component.files]
-main = "sin.py"
+main   = "sin.py"
 readme = "README.md"
 
 [component.inports]

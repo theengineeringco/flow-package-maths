@@ -1,12 +1,12 @@
 [component]
-id = "c9cd6e61-628f-4e35-a46b-3637f8614c77"
-name = "Average"
-namespace = "Maths"
+id          = "c9cd6e61-628f-4e35-a46b-3637f8614c77"
+name        = "Average"
+namespace   = "Maths"
 description = "Computes the arithmetic mean of a list of values."
-keywords = [ "mean", "statistics" ]
+keywords    = ["mean", "statistics"]
 
 [component.files]
-main = "average.py"
+main   = "average.py"
 readme = "README.md"
 
 [component.inports]

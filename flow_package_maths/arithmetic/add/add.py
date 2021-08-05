@@ -3,6 +3,10 @@ from typing import List
 from flow import Ports, Process, Settings, Setup
 from flow_types import base
 
+# Define Settings
+settings = Settings()
+settings.add_int_setting(id="terms", default=2, minimum=2, maximum=20)  # noqa: WPS 432
+
 # Define Ports
 ports = Ports()
 
@@ -12,10 +16,6 @@ ports.add_inport(id="value2", types=[base.Double, base.Int, base.Bool])
 
 # Add Outports
 ports.add_outport(id="result", types=[base.Double])
-
-# Define Settings
-settings = Settings()
-settings.add_int_setting(id="terms", default=2, minimum=2, maximum=20)  # noqa: WPS 432
 
 
 def setup(component: Setup):

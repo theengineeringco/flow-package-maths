@@ -4,15 +4,6 @@ from typing import Union
 from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base
 
-# Define Ports
-ports = Ports()
-
-# Add Inports
-ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
-
-# Add Outports
-ports.add_outport(id="result", types=[base.Double])
-
 # Define Settings
 settings = Settings()
 settings.add_select_setting(
@@ -24,6 +15,15 @@ settings.add_select_setting(
     default="ln_choice",
 )
 
+# Define Ports
+ports = Ports()
+
+# Add Inports
+ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
+
 
 def setup(component: Setup):
 
@@ -32,7 +32,7 @@ def setup(component: Setup):
     if base_choice == "log_choice":
         component.add_inport(
             name="Base",
-            id="base_inport",
+            id="base",
             types=[base.Double, base.Int, base.Bool],
             default=base.Double(10),
         )
@@ -50,7 +50,7 @@ def process(component: Process):
     base_val: Union[float, None] = component.get_variable("base_val")
 
     if base_val is None:
-        base_val = float(component.get_data("base_inport"))
+        base_val = float(component.get_data("base"))
 
     value = float(component.get_data("value"))
 
