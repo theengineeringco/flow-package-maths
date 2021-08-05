@@ -1,14 +1,14 @@
 from math import log
 
 from flow import Ports, Process
-from flow_types import base
+from flow_types import base, unions
 
 # Define Ports
 ports = Ports()
 
 # Add Inports
-ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
-ports.add_inport(id="base", types=[base.Double, base.Int, base.Bool], default=base.Int(10))
+ports.add_inport(id="value", types=unions.Number)
+ports.add_inport(id="base", types=unions.Number, default=base.Int(10))
 
 # Add Outports
 ports.add_outport(id="result", types=[base.Double])
@@ -16,10 +16,10 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process):
 
-    # Check all connected inports have data
     if not component.has_data():
         return
 
+    # Get Inport Data
     value = float(component.get_data("value"))
     log_base = float(component.get_data("base"))
 
@@ -40,4 +40,5 @@ def process(component: Process):
 
     result = log(value, log_base)
 
+    # Send Outport Data
     component.send_data(base.Double(result), "result")

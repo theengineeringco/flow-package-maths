@@ -14,13 +14,14 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process) -> None:
 
-    # Check all connected inports have data
     if not component.has_data():
         return
 
+    # Get Inport Data
     values: np.ndarray = component.get_data("values").to_ndarray()
 
     # Sum
     result = float(np.sum(values))
 
+    # Send Outport Data
     component.send_data(base.Double(result), "result")

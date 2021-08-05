@@ -1,7 +1,7 @@
 from math import ceil, floor
 
 from flow import Option, Ports, Process, Settings, Setup
-from flow_types import base
+from flow_types import base, unions
 
 # Define Settings
 settings = Settings()
@@ -15,12 +15,13 @@ settings.add_select_setting(
     default="nearest",
 )
 
+
 # Define Ports
 ports = Ports()
 
 # Add Inports
-ports.add_inport(id="value", types=[base.Double, base.Int, base.Bool])
-ports.add_inport(id="decimal_places", types=[base.Int, base.Bool], default=base.Int(0))
+ports.add_inport(id="value", types=unions.Number)
+ports.add_inport(id="decimal_places", types=unions.Integer, default=base.Int(0))
 
 # Add Outports
 ports.add_outport(id="result", types=[base.Double])
@@ -28,18 +29,22 @@ ports.add_outport(id="result", types=[base.Double])
 
 def setup(component: Setup):
 
+    # Get Setting Values
     round_type: str = component.get_setting("round_type")
+
+    # Set Instance Variables
     component.set_variable("round_type", round_type)
 
 
 def process(component: Process):
 
-    # Check all connected inports have data
     if not component.has_data():
         return
 
+    # Get Instance Variables
     round_type: str = component.get_variable("round_type")
 
+    # Get Inport Data
     value = float(component.get_data("value"))
     decimal_places = int(component.get_data("decimal_places"))
 
@@ -52,4 +57,5 @@ def process(component: Process):
     elif round_type == "down":
         result = floor(value * multiplier) / multiplier
 
+    # Send Outport Data
     component.send_data(base.Double(result), "result")

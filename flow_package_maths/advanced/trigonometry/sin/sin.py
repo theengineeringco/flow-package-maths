@@ -2,7 +2,7 @@ from math import pi, sin
 
 import numpy as np
 from flow import Option, Ports, Process, Settings, Setup
-from flow_types import base
+from flow_types import base, unions
 
 from flow_package_maths.advanced.trigonometry import constants
 
@@ -10,11 +10,13 @@ from flow_package_maths.advanced.trigonometry import constants
 ports = Ports()
 
 # Add Inports
-ports.add_inport(id="angle", types=[base.Double, base.Int, base.Bool])
+ports.add_inport(id="angle", types=unions.Number)
 
 # Add Outports
 ports.add_outport(id="result", types=[base.Double])
 
+
+# Define Settings
 settings = Settings()
 settings.add_select_setting(
     id="angle_format",
@@ -29,6 +31,7 @@ settings.add_select_setting(
 
 def setup(component: Setup):
 
+    # Get Setting Values
     output_type: str = component.get_setting("angle_format")
 
     if output_type == "degrees":
@@ -40,16 +43,19 @@ def setup(component: Setup):
     if output_type == "radians":
         angle_conversion = 1
 
+    # Set Instance Variables
     component.set_variable("angle_conversion", angle_conversion)
 
 
 def process(component: Process):
 
-    # Check all connected inports have data
     if not component.has_data():
         return
 
+    # Get Instance Variables
     angle_conversion: float = component.get_variable("angle_conversion")
+
+    # Get Inport Data
     angle_in = float(component.get_data("angle"))
 
     # Sin
@@ -60,4 +66,5 @@ def process(component: Process):
     if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
         result = 0
 
+    # Send Outport Data
     component.send_data(base.Double(result), "result")

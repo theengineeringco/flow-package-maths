@@ -14,14 +14,15 @@ ports.add_outport(id="result", types=[base.Double])
 
 def process(component: Process):
 
-    # Check all connected inports have data
     if not component.has_data():
         return
 
-    # Explicit conversion to float needed as numpy ptp function doesn't work with  bools
+    # Get Inport Data
+    # Explicit conversion to float needed as numpy ptp function doesn't work with bools
     values: np.ndarray = component.get_data("values").to_ndarray().astype(float)
 
     # Range
     result = float(np.ptp(values))
 
+    # Send Outport Data
     component.send_data(base.Double(result), "result")
