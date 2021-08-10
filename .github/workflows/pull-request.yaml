@@ -109,5 +109,4 @@ jobs:
       - name: Run Tests
         shell: bash
         run: |
-          make test_setup
           poetry run pytest
