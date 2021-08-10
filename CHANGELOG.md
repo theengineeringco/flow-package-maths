@@ -1,3 +1,11 @@
+# [3.0.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.4...v3.0.0-develop.5) (2021-08-10)
+
+
+### Bug Fixes
+
+* fix log test ([80d04d0](https://github.com/theengineeringco/flow-package-maths/commit/80d04d03161e0a035a6e8652095c1a29d75f252e))
+* style refactors ([bd58dd7](https://github.com/theengineeringco/flow-package-maths/commit/bd58dd7ee6a72ed45659f7e42530e8f4874add4c))
+
 # [3.0.0-develop.4](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.3...v3.0.0-develop.4) (2021-08-03)
 
 
