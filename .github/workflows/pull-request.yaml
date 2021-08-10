@@ -46,6 +46,7 @@ jobs:
           && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
+        shell: bash
         env:
           POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
           POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
