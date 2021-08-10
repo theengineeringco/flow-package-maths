@@ -10,7 +10,6 @@ jobs:
   publish:
     name: Publish Wheels
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - name: Clone Repo
@@ -18,15 +17,23 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v4
 
-      - name: Build Wheels
+      # We don't want wheels for this distribution
+      # We want NATS to be downloaded on install
+      # not included in the distribution as this reduces size
+      - name: Create tar gz Archive
         run: |
-          poetry build -vvv
+          rm -f flow/testing/nats
+          poetry build -vvv --format sdist
 
       - name: Publish Wheels
+        env:
+          POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
+          POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
         run: |
-          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
           poetry publish --repository tec-pypi
