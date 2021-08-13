@@ -1,3 +1,10 @@
+# [3.0.0-develop.6](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.5...v3.0.0-develop.6) (2021-08-13)
+
+
+### Bug Fixes
+
+* Add __init__.py to library root dir [skip-ci] ([4f51be6](https://github.com/theengineeringco/flow-package-maths/commit/4f51be644235e4c51c4b870c48162bd55a307213))
+
 # [3.0.0-develop.5](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0-develop.4...v3.0.0-develop.5) (2021-08-10)
 
 
