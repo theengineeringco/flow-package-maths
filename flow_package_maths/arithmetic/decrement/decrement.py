@@ -1,31 +1,28 @@
-from typing import cast
+from flow import Ports, Process
+from flow_types import base, unions
 
-from flow import Component, Definition, Inport, Outport
-from flow_types import base
+# Define Ports
+ports = Ports()
 
-# ports
-value = Inport(id="value", types=[base.Int], multi_connection=False)
-decrement = Inport(id="decrement", types=[base.Int], multi_connection=False)
-result = Outport(id="result", types=[base.Int])
+# Add Inports
+ports.add_inport(id="value", types=unions.Integer)
+ports.add_inport(id="decrement", types=unions.Integer, default=base.Int(1))
 
-# comp definition
-definition = Definition(inports=[value, decrement], outports=[result])
+# Add Outports
+ports.add_outport(id="result", types=[base.Int])
 
 
-def process(component: Component):
+def process(component: Process):
 
     if not component.has_data():
         return
 
-    # get inports data
-    val: int = cast(base.Double, component.get_data(value)).value
-    decrement_val: int = cast(base.Double, component.get_data(decrement)).value
+    # Get Inport Data
+    value = int(component.get_data("value"))
+    decrement = int(component.get_data("decrement"))
 
-    # add
-    res = val - decrement_val
+    # Increment
+    result = value - decrement
 
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Drecrement {val} by {decrement_val} gives {res}.")
-
-    # send message to outports
-    component.send_data(base.Int(res), result)
+    # Send Outport Data
+    component.send_data(base.Int(result), "result")

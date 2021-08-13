@@ -1,41 +1,28 @@
-from typing import cast
-
-from flow import Component, Definition, Inport, Outport
+from flow import Ports, Process
 from flow_types import base, unions
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-decimal_places = Inport(id="decimal_places", types=[base.Int], multi_connection=False, required=False)
-result = Outport(id="result", types=unions.Number)
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value, decimal_places], outports=[result])
+# Add Inports
+ports.add_inport(id="value", types=unions.Number)
+ports.add_inport(id="decimal_places", types=unions.Integer, default=base.Int(0))
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+def process(component: Process):
 
-    if not component.has_data(value):
+    if not component.has_data():
         return
 
-    # get inports data
-    val: float = cast(base.Double, component.get_data(value)).value
+    # Get Inport Data
+    value = float(component.get_data("value"))
+    decimal_places = int(component.get_data("decimal_places"))
 
-    if component.is_connected(decimal_places):
-        dec: int = cast(base.Int, component.get_data(decimal_places)).value
-    else:
-        dec = 0
+    # Round nearest
+    result = round(value, decimal_places)
 
-    # round
-    res = round(val, dec)
-
-    # Log
-    # component.log(log_level=LogLevel.DEBUG, message=f"Rounding {val} to {dec} decimal places gives {res}.")
-
-    # Create Message
-    if dec == 0:
-        message = base.Int(int(res))
-    else:
-        message = base.Double(res)
-
-    # Send message to outports
-    component.send_data(message, result)
+    # Send Outport Data
+    component.send_data(base.Double(result), "result")

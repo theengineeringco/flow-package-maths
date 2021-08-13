@@ -1,32 +1,70 @@
-import math
-from typing import cast
+from math import cos, pi
 
-from flow import Component, Definition, Inport, Outport
+import numpy as np
+from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base, unions
 
-# ports
-angle = Inport(id="angle", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+from flow_package_maths.advanced.trigonometry import constants
 
-# comp definition
-definition = Definition(inports=[angle], outports=[result])
+# Define Ports
+ports = Ports()
+
+# Add Inports
+ports.add_inport(id="angle", types=unions.Number)
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+# Define Settings
+settings = Settings()
+settings.add_select_setting(
+    id="angle_format",
+    options=[
+        Option("degrees", "Degrees"),
+        Option("radians", "Radians"),
+        Option("gradians", "Gradians"),
+    ],
+    default="radians",
+)
+
+
+def setup(component: Setup):
+
+    # Get Setting Values
+    output_type: str = component.get_setting("angle_format")
+
+    if output_type == "degrees":
+        angle_conversion = pi / 180  # noqa: WPS432
+
+    if output_type == "gradians":
+        angle_conversion = pi / 200  # noqa: WPS432
+
+    if output_type == "radians":
+        angle_conversion = 1
+
+    # Set Instance Variables
+    component.set_variable("angle_conversion", angle_conversion)
+
+
+def process(component: Process):
 
     if not component.has_data():
         return
 
-    # get inports data
-    # note angle_val is in radians
-    angle_val: float = cast(base.Double, component.get_data(angle)).value
+    # Get Instance Variables
+    angle_conversion: float = component.get_variable("angle_conversion")
 
-    # cos
-    res = math.cos(angle_val)
+    # Get Inport Data
+    angle_in = float(component.get_data("angle"))
 
-    # Log
-    # angle_val_deg = angle_val * 180 / math.pi  # noqa: WPS432
-    # component.log(log_level=LogLevel.DEBUG, message=f"cos({angle_val}rad or {angle_val_deg}°) gives {res}.")
+    # Cos
+    angle_rad = angle_in * angle_conversion
+    result = cos(angle_rad)
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # Check if 'result' is a very small number which should give exactly 0
+    if np.allclose(0, result, constants.rel_bound, constants.abs_bound):
+        result = 0
+
+    # Send Outport Data
+    component.send_data(base.Double(result), "result")

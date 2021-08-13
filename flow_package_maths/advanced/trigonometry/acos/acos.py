@@ -1,36 +1,65 @@
-import math
-from typing import cast
+from math import acos, pi
 
-from flow import Component, Definition, Inport, LogLevel, Outport
+from flow import Option, Ports, Process, Settings, Setup
 from flow_types import base, unions
 
-# ports
-value = Inport(id="value", types=unions.Number, multi_connection=False)
-result = Outport(id="result", types=[base.Double])
+# Define Ports
+ports = Ports()
 
-# comp definition
-definition = Definition(inports=[value], outports=[result])
+# Add Inports
+ports.add_inport(id="value", types=unions.Number)
+
+# Add Outports
+ports.add_outport(id="result", types=[base.Double])
 
 
-def process(component: Component):
+# Define Settings
+settings = Settings()
+settings.add_select_setting(
+    id="angle_format",
+    options=[
+        Option("degrees", "Degrees"),
+        Option("radians", "Radians"),
+        Option("gradians", "Gradians"),
+    ],
+    default="radians",
+)
+
+
+def setup(component: Setup):
+
+    # Get Setting Values
+    output_type: str = component.get_setting("angle_format")
+
+    if output_type == "degrees":
+        angle_conversion = 180 / pi  # noqa: WPS432
+
+    if output_type == "gradians":
+        angle_conversion = 200 / pi  # noqa: WPS432
+
+    if output_type == "radians":
+        angle_conversion = 1
+
+    # Set Instance Variables
+    component.set_variable("angle_conversion", angle_conversion)
+
+
+def process(component: Process):
 
     if not component.has_data():
         return
 
-    # get inports data
-    # note angle_val is in radians
-    val: float = cast(base.Double, component.get_data(value)).value
+    # Get Instance Variables
+    angle_conversion: float = component.get_variable("angle_conversion")
 
-    if abs(val) > 1:
-        component.log(log_level=LogLevel.ERROR, message=f"Input value is {val}, which needs to be between -1 to 1.")
-        return
+    # Get Inport Data
+    value = float(component.get_data("value"))
 
-    # acos
-    res = math.acos(val)
+    if abs(value) > 1:
+        raise ValueError(f"The Value inport must be between -1 to 1. Its current value is {value}.")
 
-    # Log
-    # res_deg = res * 180 / math.pi  # noqa: WPS432
-    # component.log(log_level=LogLevel.DEBUG, message=f"acos({val}) gives {res}rad or {res_deg}°.")
+    result = acos(value)
+    angle_out = result * angle_conversion
 
-    # send message to outports
-    component.send_data(base.Double(res), result)
+    # Send Outport Data
+    component.send_data(base.Double(angle_out), "result")

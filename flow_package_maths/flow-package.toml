@@ -1,7 +1,7 @@
 [flow.package]
-id = "maths"
-version = "1.1.0-dev.4"
+id           = "maths"
+version      = "1.1.0-dev.4"
 flow_version = ">=1.0.0"
 
 [flow.package.contributors]
-authors = [ "Eu Chian Tan <euchian@theengineeringcompany.com> [TEC]" ]
+authors = ["Eu Chian Tan <euchian@theengineeringcompany.com> [TEC]"]

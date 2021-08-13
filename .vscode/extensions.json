@@ -1,8 +1,11 @@
 {
   "recommendations": [
+    "editorconfig.editorconfig",
     "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
     "runarsf.platform-settings",
     "tamasfe.even-better-toml",
-    "njpwerner.autodocstring"
+    "yzhang.markdown-all-in-one"
   ]
 }

@@ -1,36 +1,25 @@
-from flow.testing import FlowTest, flow_test
-from flow.testing.helpers import check_outport_data
+import pytest
+from flow.testing import ComponentTest
 from flow_types import base
+from flow_types.typing import FlowType
 
 component_dir = "flow_package_maths/arithmetic/decrement"
 
 
-def test_zero(flow: FlowTest):
+@pytest.mark.parametrize(
+    "val_in, decrement_in, result",
+    [
+        [base.Int(2), base.Int(2), 0],
+        [base.Int(2), base.Int(-1), 3],
+        [base.Bool(True), base.Int(1), 0],
+    ],
+)
+def test_decrement(val_in: FlowType, decrement_in: FlowType, result: int) -> None:
 
-    inputs = {"value": base.Int(0), "decrement": base.Int(0)}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(0)})
+    inport_data = {
+        "value": val_in,
+        "decrement": decrement_in,
+    }
 
-
-def test_positive(flow: FlowTest):
-
-    inputs = {"value": base.Int(5), "decrement": base.Int(1)}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(4)})
-
-
-def test_negative(flow: FlowTest):
-
-    inputs = {"value": base.Int(-5), "decrement": base.Int(1)}
-    outputs = ["result"]
-    test_data = flow.test(component_dir, inputs, outputs)
-    assert check_outport_data(test_data, {"result": base.Int(-6)})
-
-
-if __name__ == "__main__":
-    with flow_test() as flow:
-        test_zero(flow)
-        test_positive(flow)
-        test_negative(flow)
+    outport_data = ComponentTest(component_dir).run(inport_data)
+    assert outport_data["result"] == base.Int(result)

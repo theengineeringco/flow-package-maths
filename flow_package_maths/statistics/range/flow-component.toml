@@ -1,16 +1,16 @@
 [component]
-file = "range.py"
-id = "4d39c4bf-6584-4b34-afa5-0ef5e1d783a1"
-
-[component.details]
-name = "Range"
-namespace = "Maths"
+id          = "4d39c4bf-6584-4b34-afa5-0ef5e1d783a1"
+name        = "Range"
+namespace   = "Maths"
 description = "Computes the difference between the largest and smallest number in a collection of values."
-readme = "README.md"
-keywords = [ "difference", "statistics" ]
+keywords    = ["difference", "statistics"]
 
-[component.details.inports]
+[component.files]
+main   = "range.py"
+readme = "README.md"
+
+[component.inports]
 values = { name = "Values", description = "A list of values." }
 
-[component.details.outports]
-result = { name = "Result", description = "" }
+[component.outports]
+result = { name = "Result", description = "The range value in the list." }

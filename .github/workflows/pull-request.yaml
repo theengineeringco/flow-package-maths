@@ -47,11 +47,12 @@ jobs:
 
       - name: Install Dependencies
         shell: bash
+        env:
+          POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
+          POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
         run: |
           poetry config cache-dir ~/.cache/poetry
-          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
-          poetry run python -m pip install pip --upgrade
-          poetry install -vvv
+          poetry install -vv
 
       - name: Run Linting
         shell: bash
@@ -90,13 +91,21 @@ jobs:
           path: ~/.cache/poetry
           key: cache-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}
 
-      - name: Install Dependencies
+      - name: Check Poetry Lock File
         shell: bash
         run: |
+          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
+          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
+
+      - name: Install Dependencies
+        shell: bash
+        env:
+          POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
+          POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
+        run: |
           poetry config cache-dir ~/.cache/poetry
-          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
-          poetry run python -m pip install pip --upgrade
-          poetry install -vvv
+          poetry install -vv
 
       - name: Run Tests
         shell: bash

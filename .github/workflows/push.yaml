@@ -52,11 +52,13 @@ jobs:
           && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
+        shell: bash
+        env:
+          POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
+          POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
         run: |
           poetry config cache-dir ~/.cache/poetry
-          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
-          poetry run python -m pip install pip --upgrade
-          poetry install -vvv
+          poetry install -vv
 
       - name: Run Tests
         shell: bash
@@ -81,11 +83,6 @@ jobs:
 
       - name: Set up Poetry
         uses: Gr1N/setup-poetry@v4
-
-      - name: Set TEC PyPi Credentials
-        shell: bash
-        run: |
-          poetry config http-basic.tec-pypi tec ${{ secrets.TEC_PYPI_PASSWORD }}
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
