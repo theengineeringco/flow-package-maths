@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/theengineeringco/flow-package-maths/compare/v3.0.0...v3.0.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* Update Dependancy Versions ([0b8e80a](https://github.com/theengineeringco/flow-package-maths/commit/0b8e80ac9150ae7838c6563bcc0c129118c0020e))
+
 # [3.0.0](https://github.com/theengineeringco/flow-package-maths/compare/v2.1.3...v3.0.0) (2021-08-13)
 
 
