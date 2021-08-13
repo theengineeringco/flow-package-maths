@@ -14,7 +14,7 @@ repository = "https://github.com/theengineeringco/flow-package-maths.git"
 
 [tool.poetry.dependencies]
 python  = "^3.8"
-flow-py = "^3-dev"
+flow-py = "^3"
 numpy   = "^1.18"
 
 [tool.poetry.dev-dependencies]
