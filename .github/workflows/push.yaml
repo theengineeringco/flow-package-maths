@@ -57,6 +57,7 @@ jobs:
           POETRY_HTTP_BASIC_TEC_PYPI_USERNAME: tec
           POETRY_HTTP_BASIC_TEC_PYPI_PASSWORD: ${{ secrets.TEC_PYPI_PASSWORD }}
         run: |
+          poetry config cache-dir ~/.cache/poetry
           poetry install -vv
 
       - name: Run Tests
