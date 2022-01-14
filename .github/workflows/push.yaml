@@ -36,7 +36,7 @@ jobs:
           echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
 
       - name: Set up Poetry
-        uses: Gr1N/setup-poetry@v4
+        uses: Gr1N/setup-poetry@v7
 
       - name: Set up Cache
         uses: actions/cache@v2
@@ -47,8 +47,8 @@ jobs:
       - name: Check Poetry Lock File
         shell: bash
         run: |
-          PYTHONPATH=$HOME/.poetry/lib:$HOME/.poetry/lib/poetry/_vendor/py3.8/ \
-          python -c "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
+          "$(dirname "$(readlink `which poetry`)")"/python -c \
+          "from poetry.factory import Factory; l = Factory().create_poetry('.').locker; exit(0) if l.is_locked() and l.is_fresh() else exit(1)" \
           && echo 'poetry.lock is up to date.' || (echo 'poetry.lock is out of date. Run "poetry lock" to fix.'; exit 1)
 
       - name: Install Dependencies
@@ -82,7 +82,7 @@ jobs:
         uses: actions/setup-python@v2
 
       - name: Set up Poetry
-        uses: Gr1N/setup-poetry@v4
+        uses: Gr1N/setup-poetry@v7
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v2

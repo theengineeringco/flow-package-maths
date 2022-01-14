@@ -21,7 +21,7 @@ jobs:
           python-version: 3.8
 
       - name: Set up Poetry
-        uses: Gr1N/setup-poetry@v4
+        uses: Gr1N/setup-poetry@v7
 
       # We don't want wheels for this distribution
       # We want NATS to be downloaded on install
